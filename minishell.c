@@ -25,6 +25,7 @@ int main(int argc, char **argv)
     read_history("minishell_history.txt");
 
     char *str;
+    char    **tokens;
     while (1)
     {
         // Read the command from the user
@@ -43,6 +44,9 @@ int main(int argc, char **argv)
 
         // Save the command history to a file
         write_history("minishell_history.txt");
+        
+        tokens = get_tokens(str);
+        (void)tokens;
 
         free(str);
     }

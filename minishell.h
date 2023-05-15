@@ -1,6 +1,14 @@
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
+typedef struct s_attr
+{
+    int     nb_tokens;
+    int     index;
+    char    **s_arr;
+
+}       t_attr;
+
 # include <stdio.h>
 # include <unistd.h>
 # include <signal.h>
@@ -9,5 +17,8 @@
 # include <stdlib.h>
 # include <readline/readline.h>
 # include <readline/history.h>
+
+char    **get_tokens(char *str);
+
 
 #endif

@@ -23,7 +23,7 @@ BOLD			:= \033[1;1m
 
 # MINISHELL
 NAME =	minishell.a
-SRCS =  minishell.c
+SRCS =  minishell.c get_tokens.c
 
 OBJSDIR = objects
 OBJS = $(addprefix $(OBJSDIR)/,$(SRCS:.c=.o))
