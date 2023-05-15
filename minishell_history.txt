@@ -1,3 +1,8 @@
 test
 helo
 test command
+test command printing all fine
+touch | hello | test
+touch | hello | test
+touch | hello | test
+touch | hello | test

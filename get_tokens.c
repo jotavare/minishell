@@ -52,6 +52,7 @@ char    **create_array(char *s, t_attr *att)
 
     att->index = 0;
     att->s_arr = malloc((att->nb_tokens + 1) * sizeof(char *));
+    att->s_arr[att->nb_tokens + 1] = NULL;
     if (!att->s_arr)
         return (0);
     count = 0;
@@ -75,8 +76,15 @@ char    **get_tokens(char * str)
     init_attributes(&in_str);
     count_tokens(str, &in_str); 
     create_array(str, &in_str);
-    //ft_print_array(in_str.s_arr, in_str.nb_tokens);
+    ft_print_array(in_str.s_arr, in_str.nb_tokens);
     return (in_str.s_arr);
+}
+
+void    free_tokens(char **tokens, t_attr   t)
+{
+    int i = 0;
+    while (i < t.nb_tokens)
+        free(tokens[i++]);
 }
 
 /*This part is only for test purposes*/
@@ -107,7 +115,9 @@ void	ft_print_array(char **array, int nb)
 		printf("Array is NULL\n");
 	else
 	{
-		for(i = 0; i < nb; i++)
+		for(i = 0; i < nb + 1; i++)
+        {
         	printf("%d - %s\n", i, array[i]);
+        }
 	}
 }
