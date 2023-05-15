@@ -52,7 +52,7 @@ clean:
 
 fclean: clean
 	@echo "$(RED)$(BOLD)Removing executable...$(RESET)"
-	$(RM) minishell minishell.a minishell_history.txt
+	$(RM) minishell minishell.a
 	@echo "$(RED)$(BOLD)Executable removed!$(RESET)"
 
 re: fclean all
