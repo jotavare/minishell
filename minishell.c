@@ -5,7 +5,7 @@ int main(void)
     char *str;
     while (1)
     {
-		// 
+        // Read the command from the user
         str = readline("\033[0;32mminishell$\033[0m ");
         if (str == NULL)
             break;
@@ -15,6 +15,7 @@ int main(void)
 
         // Save the command history to a file
 		write_history("minishell_history.txt");
+        
         free(str);
     }
     return 0;
