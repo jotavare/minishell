@@ -6,3 +6,8 @@ touch | hello | test
 touch | hello | test
 touch | hello | test
 touch | hello | test
+ls
+quit
+ls
+po
+ls

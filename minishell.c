@@ -46,7 +46,8 @@ int main(int argc, char **argv)
         write_history("minishell_history.txt");
         
         tokens = get_tokens(str);
-        (void)tokens;
+
+        exec_comand(tokens);
 
         free(str);
     }

@@ -20,5 +20,6 @@ typedef struct s_attr
 
 char    **get_tokens(char *str);
 void    free_tokens(char **tokens, t_attr   t);
+void    exec_comand(char **tok);
 
 #endif
