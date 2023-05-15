@@ -1,6 +1,6 @@
 # BASIC
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -lreadline
+CFLAGS = -Wall -Wextra -Werror
 RM = rm -rf
 GDB = gdb
 
@@ -42,7 +42,7 @@ $(OBJSDIR)/%.o: %.c
 
 minishell: $(MINISHELL_OBJ) $(NAME)
 	@echo "$(GREEN)$(BOLD)Creating executable...$(RESET)"
-	$(CC) $(CFLAGS) $(MINISHELL_OBJ) $(NAME) -o minishell
+	$(CC) $(CFLAGS) $(MINISHELL_OBJ) $(NAME) -o minishell -lreadline
 	@echo "$(GREEN)$(BOLD)Executable created!$(RESET)"
 
 clean:

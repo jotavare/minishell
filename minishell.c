@@ -9,14 +9,6 @@ void handle_interrupt(int signal)
         rl_on_new_line();       // Move to a new line
         rl_redisplay();         // Redisplay the prompt
     }
-    else if (signal == SIGQUIT)
-    {
-        // Ignore Ctrl+"\""
-    }
-    else if (signal == SIGTSTP)
-    {
-        // Ignore Ctrl+Z
-    }
 }
 
 int main(int argc, char **argv)
@@ -25,8 +17,8 @@ int main(int argc, char **argv)
     (void)argv;
 
     // Set up signal handlers
-    signal(SIGINT, handle_interrupt);
-    signal(SIGQUIT, handle_interrupt);  // Ignore Ctrl+"\"
+    signal(SIGINT, handle_interrupt);   // Handle Ctrl+C
+    signal(SIGQUIT, SIG_IGN);           // Ignore Ctrl+"\"
     signal(SIGTSTP, SIG_IGN);           // Ignore Ctrl+Z
 
     // Load the command history from a file
