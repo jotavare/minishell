@@ -1,15 +1,23 @@
-# BASIC
-CC = cc
-CFLAGS = -Wall -Wextra -Werror
-RM = rm -rf
-GDB = gdb
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: alexfern <alexfern@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/05/12 15:15:58 by alexandre         #+#    #+#              #
+#    Updated: 2023/05/16 21:59:18 by alexfern         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
-# TESTING
-VAL = valgrind --leak-check=full --track-origin=yes
-SANITIZE_THREAD = -fsanitize=thread
-SANITIZE_ADDRESS = -fsanitize=address
-HELGRIND = valgrind --tool=helgrind
-DRD = valgrind --tool=drd
+# BASIC
+CC = cc -g
+CFLAGS = -Wall -Wextra -Werror
+RLFLAG = -lreadline
+RM = rm -rf
+
+# LIBFT
+LIBFT = ./libft/libft.a
 
 # COLORS
 RESET			:= \033[0m
@@ -22,40 +30,45 @@ RED				:= \033[1;31m
 BOLD			:= \033[1;1m
 
 # MINISHELL
-NAME =	minishell.a
-SRCS =  minishell.c get_tokens.c exec_comand.c
+NAME = minishell
+SRC =	commands/cd.c \
+		commands/echo.c \
+		commands/env.c \
+		commands/exit.c \
+		commands/export.c \
+		commands/pwd.c \
+		commands/unset.c \
+		source/get_tokens.c \
+		source/lexer.c \
+		source/minishell.c \
+		source/signals.c \
+		utilities/utilities.c \
 
-OBJSDIR = objects
-OBJS = $(addprefix $(OBJSDIR)/,$(SRCS:.c=.o))
+OBJ = $(SRC:.c=.o)
 
 # MAKE RULES
-all: $(NAME) minishell
+all: $(NAME)
 
-$(NAME): $(OBJS)
-	@echo "$(GREEN)$(BOLD)Creating objects directory...$(RESET)"
-	ar -rcs $(NAME) $(OBJS)
-	@echo "$(GREEN)$(BOLD)Objects created!$(RESET)"
-	
+$(NAME): $(OBJ)
+	$(MAKE) -C ./libft
+	$(CC) $(CFLAGS) $(OBJ) $(LIBFT) $(RLFLAG) -o $(NAME)
+	echo "Everything Done!"
+
 $(OBJSDIR)/%.o: %.c
 	mkdir -p $(@D)
 	$(CC) $(CFLAGS) -c $< -o $@
 
-minishell: $(MINISHELL_OBJ) $(NAME)
-	@echo "$(GREEN)$(BOLD)Creating executable...$(RESET)"
-	$(CC) $(CFLAGS) $(MINISHELL_OBJ) $(NAME) -o minishell -lreadline
-	@echo "$(GREEN)$(BOLD)Executable created!$(RESET)"
-
 clean:
-	@echo "$(YELLOW)$(BOLD)Removing objects...$(RESET)"
-	$(RM) $(OBJSDIR)
-	@echo "$(YELLOW)$(BOLD)Objects removed!$(RESET)"
+	$(RM) $(OBJ)
+	$(MAKE)	clean -C ./libft
 
 fclean: clean
-	@echo "$(RED)$(BOLD)Removing executable...$(RESET)"
-	$(RM) minishell minishell.a
-	@echo "$(RED)$(BOLD)Executable removed!$(RESET)"
+	$(RM) $(NAME) $(OBJ)
+	$(MAKE) fclean -C ./libft 
+	echo "Everything Deleted..."
 
 re: fclean all
-	@echo "$(GREEN)$(BOLD)Recompiled successfully!$(RESET)"
-
+	
 .SILENT:
+
+.PHONY: all clean fclean re
