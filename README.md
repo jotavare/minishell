@@ -58,22 +58,23 @@
 | 🟢 | ` cd`                  | 0       | n/a                                                                        |
 | 🟢 | `  cd  `               | 0       | n/a                                                                        |
 | 🟢 | `cd .`                 | 0       | n/a                                                                        |
-| 🟢 | `cd ~`                 | 0       | navigate to home directory                                           |
-| 🟢 | `cd /`                 | 0       | navigate to root                                                                           |
-| 🟢 | `cd no_file`           | 0       | `bash: cd: no_file: No such file or directory` + `\n`                                                                            |
-| 🟢 | `cd1`                  | 127       | `cd1: command not found`                           |
-| 🟢 | `cd 0`                 | 1       | `bash: cd: 0: No such file or directory`                                                        |
-| 🟢 | `cd 1`                 | 1       | `bash: cd: 1: No such file or directory`                                                        |
-| 🟢 | `cd 123`               | 1	    | `bash: cd: 123: No such file or directory`                                                        |
-| 🟢 | `cd 1234`              | 1     | `bash: cd: 1234: No such file or directory`                                                         |
-| 🟢 | `cd 1 2 3 4`           | 1	      | `bash: cd: too many arguments`       |
-| 🟢 | `cd a`                 | 2	      | `exit` + `\n` + `bash: exit: a: numeric argument required` & closes bash    |
-| 🟢 | `cd abc`               | 2	      | `exit` + `\n` + `bash: exit: abc: numeric argument required` & closes bash  |
-| 🟢 | `cd a b c`             | 2	      | `exit` + `\n` + `bash: exit: a: numeric argument required` & closes bash    |
-| 🟢 | `cd a b c d`           | 2	      | `exit` + `\n` + `bash: exit: a: numeric argument required` & closes bash    |
-| 🟢 | `cd ../../../../../..` | 2	      | `exit` + `\n` + `bash: exit: a: numeric argument required` & closes bash    |
-| 🔵 | `cd \`                 | 0       | 0                                                                           |
-| 🔵 | `cd -`                 | 0       | 0                                                                           |
+| 🟢 | `cd ~`                 | 0       | navigate to home directory                                                 |
+| 🟢 | `cd /`                 | 0       | navigate to root                                                           |
+| 🟢 | `cd no_file`           | 0       | `bash: cd: no_file: No such file or directory` + `\n`                      |
+| 🟢 | `cd1`                  | 127     | `cd1: command not found`                                                   |
+| 🟢 | `cd 0`                 | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🟢 | `cd 1`                 | 1       | `bash: cd: 1: No such file or directory`                                   |
+| 🟢 | `cd 123`               | 1	      | `bash: cd: 123: No such file or directory`                                 |
+| 🟢 | `cd 1234`              | 1       | `bash: cd: 1234: No such file or directory`                                |
+| 🟢 | `cd 1 2 3 4`           | 1	      | `bash: cd: too many arguments`                                             |
+| 🟢 | `cd a`                 | 1	      | `bash: cd: a: No such file or directory`                                   |
+| 🟢 | `cd abc`               | 1	      | `bash: cd: abc: No such file or directory`                                 |
+| 🟢 | `cd a b c`             | 1	      | `bash: cd: too many arguments`                                             |
+| 🟢 | `cd a b c d`           | 1	      | `bash: cd: too many arguments`                                             |
+| 🟢 | `cd ../../`            | 0	      | navigate up two directories from the current directory                     |
+| 🟢 | `cd ../../../../../../`| 0	      | navigate up six directories from the current directory                     |
+| 🔵 | `cd \`                 | 0       | new prompt `>`                                                             |
+| 🔵 | `cd -`                 | 0       | change to previous directory                                               |
 
 </td></tr> </table
 </div>
@@ -92,3 +93,4 @@
 </td></tr> </table
 </div>
 
+../../
