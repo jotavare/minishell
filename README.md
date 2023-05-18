@@ -81,7 +81,9 @@
 | 🟢 | `cd .../../...`        | 1	      | bash: cd: .../../...: No such file or directory                            |
 | 🔵 | `cd \`                 | 1       | new prompt `>`                                                             |
 | 🔵 | `cd -`                 | 0       | change to previous directory                                               |
-
+| 🔵 | ../../                 | n/a     | n/a                                                                        |
+| 🔵 | $                      | n/a     | n/a                                                                        |
+  
 </td></tr> </table
 </div>
     
@@ -92,20 +94,16 @@
 
 | State | Built-In | `echo $?` | Output |
 | :---: | :--- | :--- | :--- |
-| 🟢 | `Ctrl` + `C`  | 130  | `^C` + `\n`           |
-| 🟢 | `Ctrl` + `D`  | 0    | `exit` & closes bash  |
-| 🟢 | `Ctrl` + `\`  | 0    | nothing               |
+| 🟢 | `Ctrl` + `C`                             | 130  | `^C` + `\n`           |
+| 🟢 | `Ctrl` + `D`                             | 0    | `exit` & closes bash  |
+| 🟢 | `Ctrl` + `\`                             | 0    | nothing               |
+| 🔴 | `# write something then press ctrl+c`    |  0  |  n/a  |
+| 🔴 | `# write something then press ctrl+d`    |  0  |  n/a  |
+| 🔴 | `# write something then press ctrl+\`    |  0  |  n/a  |
 
 </td></tr> </table
 </div>
 
-../../
-$
-# write something the press ctrl+c
- # write something then press ctrl+d
- # write something then press ctrl+\
-
-  
 <div align="center">
 <table>
 <tr><th>ECHO</th>
@@ -113,42 +111,40 @@ $
 
 | State | Built-In | `echo $?` | Output |
 | :---: | :--- | :--- | :--- |
-| 🟢 | `exit`          | 0        | `exit` & exits bash                                                  |
-
-echo bonjour ; |
-echo bonjour | |
-echo bonjour |;
-echo bonjour ; ls
-echo bonjour > test\ 1
-echo "\s" & echo "\s"
-echo >
-echo -n -n -nnnn -nnnnm
-echo test > file test1
-echo test > file test1
-echo bonjour >>> test
- echo bonjour > > out
- echo 2 >> out1 > out2
- echo 2 > out1 >> out2
-  echo "$HOME"
- echo '$HOME'
-   echo $HOME
-  echo hudifg d | | hugdfihd
- echo
- echo simple
- echo -n simple
- echo ''
- echo ""
- echo "\"
- echo "\n \n \n"
- echo "\n \n \\n"
- echo ;;
- echo hi";" hihi
- echo hi " ; " hihi
- echo $?
-  echo |
- | echo
- echo > a Hello World!
- > a echo Hello World!
+| 🔴 |  `echo bonjour ; |`                  |  n/a  |  n/a  |
+| 🔴 |  `echo bonjour | |`                  |  n/a  |  n/a  |
+| 🔴 |  `echo bonjour |;`                   |  n/a  |  n/a  |
+| 🔴 |  `echo bonjour ; ls`                 |  n/a  |  n/a  |
+| 🔴 |  `echo bonjour > test\ 1`            |  n/a  |  n/a  |
+| 🔴 |  `echo "\s" & echo "\s"`             |  n/a  |  n/a  |
+| 🔴 |  `echo >`                            |  n/a  |  n/a  |
+| 🔴 |  `echo -n -n -nnnn -nnnnm`           |  n/a  |  n/a  |
+| 🔴 |  `echo test > file test1`            |  n/a  |  n/a  |
+| 🔴 |  `echo test > file test1`            |  n/a  |  n/a  |
+| 🔴 |  `echo bonjour >>> test`             |  n/a  |  n/a  |
+| 🔴 |  `echo bonjour > > out`              |  n/a  |  n/a  |
+| 🔴 |  `echo 2 >> out1 > out2`             |  n/a  |  n/a  |
+| 🔴 |  `echo 2 > out1 >> out2`             |  n/a  |  n/a  |
+| 🔴 |  `echo "$HOME"`                      |  n/a  |  n/a  |
+| 🔴 |  `echo '$HOME'`                      |  n/a  |  n/a  |
+| 🔴 |  `echo $HOME`                        |  n/a  |  n/a  |
+| 🔴 |  `echo hudifg d | | hugdfihd`        |  n/a  |  n/a  |
+| 🔴 |  `echo`                              |  n/a  |  n/a  |
+| 🔴 |  `echo simple`                       |  n/a  |  n/a  |
+| 🔴 |  `echo -n simple`                    |  n/a  |  n/a  |
+| 🔴 |  `echo ''`                           |  n/a  |  n/a  |
+| 🔴 |  `echo ""`                           |  n/a  |  n/a  |
+| 🔴 |  `echo "\"`                          |  n/a  |  n/a  |
+| 🔴 |  `echo "\n \n \n"`                   |  n/a  |  n/a  |
+| 🔴 |  `echo "\n \n \\n"`                  |  n/a  |  n/a  |
+| 🔴 |  `echo ;;`                           |  n/a  |  n/a  |
+| 🔴 |  `echo hi";" hihi`                   |  n/a  |  n/a  |
+| 🔴 |  `echo hi " ; " hihi`                |  n/a  |  n/a  |
+| 🔴 |  `echo $?`                           |  n/a  |  n/a  |
+| 🔴 |  `echo |`                            |  n/a  |  n/a  |
+| 🔴 |  `| echo`                            |  n/a  |  n/a  |
+| 🔴 |  `echo > a Hello World!`             |  n/a  |  n/a  |
+| 🔴 |  `> a echo Hello World!`             |  n/a  |  n/a  |
   
 </td></tr> </table
 </div>
