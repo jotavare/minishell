@@ -36,7 +36,6 @@
 | 🟢 |` cd `          | 0                     | `\n`                              |
 | 🟢 |`cd .`          | 0                     | `\n`                              |
 | 🟢 |`cd ~`          | 0                     | navigate to your home directory.  |
-  
 | 🔵 | `cd \`        | 0                     | 0  |
 | 🟢 | `cd /`        | 0                     | 0  |
 | 🟢 | `cd no_file`  | 0                     | 0  |
@@ -50,7 +49,7 @@
 | 🟢 | `cd abc`      | 2	      | `exit` + `\n` + `bash: exit: abc: numeric argument required` & closes bash   |
 | 🟢 | `cd a b c`    | 2	      | `exit` + `\n` + `bash: exit: a: numeric argument required` & closes bash     |
 | 🟢 | `cd a b c d`  | 2	      | `exit` + `\n` + `bash: exit: a: numeric argument required` & closes bash     |
-| 🟢 | `cd ../../../../../..` | 2	      | `exit` + `\n` + `bash: exit: a: numeric argument required` & closes bash     |
+| 🟢 | `cd ../../../../../..` | 2	      | `exit` + `\n` + `bash: exit: a: numeric argument required` & closes bash |
 
 </td></tr> </table
 </div>
