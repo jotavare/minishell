@@ -12,7 +12,7 @@
 
 </td></tr> </table
 </div>
-
+  
 <div align="center">
 <table>
 <tr><th>EXIT</th>
@@ -94,3 +94,55 @@
 </div>
 
 ../../
+$
+# write something the press ctrl+c
+ # write something then press ctrl+d
+ # write something then press ctrl+\
+
+  
+<div align="center">
+<table>
+<tr><th>ECHO</th>
+<tr><td>
+
+| State | Built-In | `echo $?` | Output |
+| :---: | :--- | :--- | :--- |
+| 🟢 | `exit`          | 0        | `exit` & exits bash                                                  |
+
+echo bonjour ; |
+echo bonjour | |
+echo bonjour |;
+echo bonjour ; ls
+echo bonjour > test\ 1
+echo "\s" & echo "\s"
+echo >
+echo -n -n -nnnn -nnnnm
+echo test > file test1
+echo test > file test1
+echo bonjour >>> test
+ echo bonjour > > out
+ echo 2 >> out1 > out2
+ echo 2 > out1 >> out2
+  echo "$HOME"
+ echo '$HOME'
+   echo $HOME
+  echo hudifg d | | hugdfihd
+ echo
+ echo simple
+ echo -n simple
+ echo ''
+ echo ""
+ echo "\"
+ echo "\n \n \n"
+ echo "\n \n \\n"
+ echo ;;
+ echo hi";" hihi
+ echo hi " ; " hihi
+ echo $?
+  echo |
+ | echo
+ echo > a Hello World!
+ > a echo Hello World!
+  
+</td></tr> </table
+</div>
