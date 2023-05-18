@@ -8,7 +8,7 @@
 | 🟢 | `exit`          | 0        | `exit` + `\n` & closes bash                                                  |
 | 🟢 | `exit `         | 0        | `exit` + `\n` & closes bash                                                  |
 | 🟢 | ` exit`         | 0        | `exit` + `\n` & closes bash                                                  |
-| 🟢 | ` exit `        | 0        | `exit` + `\n` & closes bash                                                  |
+| 🟢 | `  exit  `        | 0        | `exit` + `\n` & closes bash                                                  |
 | 🟢 | `"exit test"`   | 127	    | `exit return: command not found` + `\n`                                      |
 | 🟢 | `"exit"`        | 48	      | `exit` + `\n`                                                                |
 | 🟢 | `exit1`         | 127      | `exit1: command not found`                                                   |
