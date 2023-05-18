@@ -28,28 +28,28 @@
 <tr><th>CD</th>
 <tr><td>
 
-| STATUS | COMMANDS | `echo $?` | OUTPUT |
+| State | Built-In | `echo $?` | Output |
 | :---: | :--- | :--- | :--- |
-| 🟢 |`cd`            | 0                     | `\n`                              |
-| 🟢 |`cd `           | 0                     | `\n`                              |
-| 🟢 |` cd`           | 0                     | `\n`                              |
-| 🟢 |` cd `          | 0                     | `\n`                              |
-| 🟢 |`cd .`          | 0                     | `\n`                              |
-| 🟢 |`cd ~`          | 0                     | navigate to your home directory.  |
-| 🔵 | `cd \`        | 0                     | 0  |
-| 🟢 | `cd /`        | 0                     | 0  |
-| 🟢 | `cd no_file`  | 0                     | 0  |
-| 🟢 | `cd1`         | 1       | `exit1: command not found` & doesn't close bash                       |
-| 🟢 | `cd 0`        | 0       | `exit` & closes bash                                                  |
-| 🟢 | `cd 1`        | 1       | `exit` & closes bash                                                  |
-| 🟢 | `cd 123`      | 123	    | `exit` & closes bash                                                  |
-| 🟢 | `cd 1234`     | 210     | `exit` & closes bash                                                  |
-| 🟢 | `cd 1 2 3 4`  | 1	      | `exit` + `\n` + `bash: exit: too many arguments` & doesn't close bash        |
-| 🟢 | `cd a`        | 2	      | `exit` + `\n` + `bash: exit: a: numeric argument required` & closes bash     |
-| 🟢 | `cd abc`      | 2	      | `exit` + `\n` + `bash: exit: abc: numeric argument required` & closes bash   |
-| 🟢 | `cd a b c`    | 2	      | `exit` + `\n` + `bash: exit: a: numeric argument required` & closes bash     |
-| 🟢 | `cd a b c d`  | 2	      | `exit` + `\n` + `bash: exit: a: numeric argument required` & closes bash     |
-| 🟢 | `cd ../../../../../..` | 2	      | `exit` + `\n` + `bash: exit: a: numeric argument required` & closes bash |
+| 🟢 |`cd`                    | 0       | `\n`                                                                        |
+| 🟢 |`cd `                   | 0       | `\n`                                                                        |
+| 🟢 |` cd`                   | 0       | `\n`                                                                        |
+| 🟢 |` cd `                  | 0       | `\n`                                                                        |
+| 🟢 |`cd .`                  | 0       | `\n`                                                                        |
+| 🟢 |`cd ~`                  | 0       | navigate to your home directory.                                            |
+| 🔵 | `cd \`                 | 0       | 0                                                                           |
+| 🟢 | `cd /`                 | 0       | 0                                                                           |
+| 🟢 | `cd no_file`           | 0       | 0                                                                           |
+| 🟢 | `cd1`                  | 1       | `exit1: command not found` & doesn't close bash                             |
+| 🟢 | `cd 0`                 | 0       | `exit` & closes bash                                                        |
+| 🟢 | `cd 1`                 | 1       | `exit` & closes bash                                                        |
+| 🟢 | `cd 123`               | 123	    | `exit` & closes bash                                                        |
+| 🟢 | `cd 1234`              | 210     | `exit` & closes bash                                                        |
+| 🟢 | `cd 1 2 3 4`           | 1	      | `exit` + `\n` + `bash: exit: too many arguments` & doesn't close bash       |
+| 🟢 | `cd a`                 | 2	      | `exit` + `\n` + `bash: exit: a: numeric argument required` & closes bash    |
+| 🟢 | `cd abc`               | 2	      | `exit` + `\n` + `bash: exit: abc: numeric argument required` & closes bash  |
+| 🟢 | `cd a b c`             | 2	      | `exit` + `\n` + `bash: exit: a: numeric argument required` & closes bash    |
+| 🟢 | `cd a b c d`           | 2	      | `exit` + `\n` + `bash: exit: a: numeric argument required` & closes bash    |
+| 🟢 | `cd ../../../../../..` | 2	      | `exit` + `\n` + `bash: exit: a: numeric argument required` & closes bash    |
 
 </td></tr> </table
 </div>
@@ -59,11 +59,11 @@
 <tr><th>CTRL</th>
 <tr><td>
 
-| STATUS | COMMANDS | `echo $?` | OUTPUT |
+| State | Built-In | `echo $?` | Output |
 | :---: | :--- | :--- | :--- |
-| 🟢 | `Ctrl` + `C`  | 130                   | `^C` + `\n`           |
-| 🟢 | `Ctrl` + `D`  | 0                     | `exit` & closes bash  |
-| 🟢 | `Ctrl` + `\`  | 0                     | nothing               |
+| 🟢 | `Ctrl` + `C`  | 130  | `^C` + `\n`           |
+| 🟢 | `Ctrl` + `D`  | 0    | `exit` & closes bash  |
+| 🟢 | `Ctrl` + `\`  | 0    | nothing               |
 
 </td></tr> </table
 </div>
