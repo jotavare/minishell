@@ -30,12 +30,12 @@
 
 | COMMANDS        | RETURN VALUE `echo $?`  | OUTPUT                          |
 | :---            | :---                  | :---                              |
-| `cd`            | 0                     | `\n`                              |
-| `cd `           | 0                     | `\n`                              |
-| ` cd`           | 0                     | `\n`                              |
-| ` cd `          | 0                     | `\n`                              |
-| `cd .`          | 0                     | `\n`                              |
-| `cd ~`          | 0                     | navigate to your home directory.  |
+| 🟢 `cd`            | 0                     | `\n`                              |
+| 🟢 `cd `           | 0                     | `\n`                              |
+| 🟢 ` cd`           | 0                     | `\n`                              |
+| 🟢 ` cd `          | 0                     | `\n`                              |
+| 🟢 `cd .`          | 0                     | `\n`                              |
+| 🟢 `cd ~`          | 0                     | navigate to your home directory.  |
   
 | `cd \`          | 0                     | 0  |
 | `cd /`          | 0                     | 0  |
