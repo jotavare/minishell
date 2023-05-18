@@ -1,5 +1,19 @@
 <div align="center">
 <table>
+<tr><th>COLORS</th>
+<tr><td>
+
+| State | Definition |
+| :---: | :--- |
+| 🟢 | Working        |
+| 🔴 | Not working    |
+| 🔵 | Not mandatory  |
+
+</td></tr> </table
+</div>
+
+<div align="center">
+<table>
 <tr><th>EXIT</th>
 <tr><td>
 
