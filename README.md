@@ -3,7 +3,7 @@
 <tr><th>EXIT</th>
 <tr><td>
 
-| COMMANDS        | RETURN VALUE echo $?  | OUTPUT                                                  |
+| COMMANDS        | RETURN VALUE `echo $?`  | OUTPUT                                                  |
 | :---            | :---    | :---                                                                  |
 | `exit`          | 0       | `exit` & closes bash                                                  |
 | `exit `         | 0       | `exit` & closes bash                                                  |
@@ -27,7 +27,7 @@
 <tr><th>CD</th>
 <tr><td>
 
-| COMMANDS        | RETURN VALUE echo $?  | OUTPUT                            |
+| COMMANDS        | RETURN VALUE `echo $?`  | OUTPUT                            |
 | :---            | :---                  | :---                              |
 | `cd`            | 0                     | `\n`                              |
 | `cd `           | 0                     | `\n`                              |
@@ -44,7 +44,7 @@
 <tr><th>CTRL</th>
 <tr><td>
 
-| COMMANDS      | RETURN VALUE echo $?  | OUTPUT                |
+| COMMANDS      | RETURN VALUE `echo $?`  | OUTPUT                |
 | :---          | :---                  | :---                  |
 | `Ctrl` + `C`  | 130                   | `^C` + `\n`           |
 | `Ctrl` + `D`  | 0                     | `exit` & closes bash  |
