@@ -5,11 +5,12 @@
 
 | State | Built-In | `echo $?` | Output |
 | :---: | :--- | :--- | :--- |
-| 🟢 | `exit`          | 0        | `exit` & closes bash                                                         |
-| 🟢 | `exit `         | 0        | `exit` & closes bash                                                         |
-| 🟢 | ` exit`         | 0        | `exit` & closes bash                                                         |
-| 🟢 | ` exit `        | 0        | `exit` & closes bash                                                         |
-| 🟢 | `exit1`         | 1        | `exit1: command not found` & doesn't close bash                              |
+| 🟢 | `exit`          | 0        | `exit` + `\n` & closes bash                                                  |
+| 🟢 | `exit `         | 0        | `exit` + `\n` & closes bash                                                  |
+| 🟢 | ` exit`         | 0        | `exit` + `\n` & closes bash                                                  |
+| 🟢 | ` exit `        | 0        | `exit` + `\n` & closes bash                                                  |
+| 🟢 | `exit1`         | 127      | `exit1: command not found` & doesn't close bash                              |
+| 🟢 | `exita`         | 127      | `exit1: command not found` & doesn't close bash                              |
 | 🟢 | `exit 0`        | 0        | `exit` & closes bash                                                         |
 | 🟢 | `exit 1`        | 1        | `exit` & closes bash                                                         |
 | 🟢 | `exit 123`      | 123	    | `exit` & closes bash                                                         |
@@ -19,6 +20,11 @@
 | 🟢 | `exit abc`      | 2	      | `exit` + `\n` + `bash: exit: abc: numeric argument required` & closes bash   |
 | 🟢 | `exit a b c`    | 2	      | `exit` + `\n` + `bash: exit: a: numeric argument required` & closes bash     |
 | 🟢 | `exit a b c d`  | 2	      | `exit` + `\n` + `bash: exit: a: numeric argument required` & closes bash     |
+| 🟢 | `exit #`        | 0	      | `exit` + `\n` & closes bash                                                  |
+| 🟢 | `exit +10`      | 10	      | `exit` + `\n` & closes bash                                                  |
+| 🟢 | `exit -10`      | 246	    | `exit` + `\n` & closes bash                                                  |
+| 🟢 | `exit +2000`    | 208	    | `exit` + `\n` & closes bash                                                  |
+| 🟢 | `exit -2000`    | 48	      | `exit` + `\n` & closes bash                                                  |
 
 </td></tr> </table
 </div>
