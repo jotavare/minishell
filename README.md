@@ -4,7 +4,7 @@
 <tr><td>
 
 | COMMANDS        | RETURN VALUE echo $?  | OUTPUT                                                                |
-| :---            | :---:                 | :---:                                                                 |
+| :---            | :---                  | :---                                                                  |
 | `exit`          | 0                     | `exit` & closes bash                                                  |
 | `exit `         | 0                     | `exit` & closes bash                                                  |
 | ` exit `        | 0                     | `exit` & closes bash                                                  |
