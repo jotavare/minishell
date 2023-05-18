@@ -4,7 +4,7 @@
 <tr><td>
 
 | STATUS | COMMANDS | `echo $?` | OUTPUT |
-| :--- | :--- | :--- | :--- |
+| :---: | :--- | :--- | :--- |
 | 🟢 | `exit`          | 0        | `exit` & closes bash                                                         |
 | 🟢 | `exit `         | 0        | `exit` & closes bash                                                         |
 | 🟢 | ` exit`         | 0        | `exit` & closes bash                                                         |
@@ -28,8 +28,8 @@
 <tr><th>CD</th>
 <tr><td>
 
-| STATUS | COMMANDS | RETURN VALUE `echo $?` | OUTPUT |
-| :--- | :--- | :--- | :--- |
+| STATUS | COMMANDS | `echo $?` | OUTPUT |
+| :---: | :--- | :--- | :--- |
 | 🟢 |`cd`            | 0                     | `\n`                              |
 | 🟢 |`cd `           | 0                     | `\n`                              |
 | 🟢 |` cd`           | 0                     | `\n`                              |
@@ -59,11 +59,11 @@
 <tr><th>CTRL</th>
 <tr><td>
 
-| COMMANDS      | RETURN VALUE `echo $?`  | OUTPUT                |
-| :---          | :---                  | :---                  |
-| `Ctrl` + `C`  | 130                   | `^C` + `\n`           |
-| `Ctrl` + `D`  | 0                     | `exit` & closes bash  |
-| `Ctrl` + `\`  | 0                     | nothing               |
+| STATUS | COMMANDS | `echo $?` | OUTPUT |
+| :---: | :--- | :--- | :--- |
+| 🟢 | `Ctrl` + `C`  | 130                   | `^C` + `\n`           |
+| 🟢 | `Ctrl` + `D`  | 0                     | `exit` & closes bash  |
+| 🟢 | `Ctrl` + `\`  | 0                     | nothing               |
 
 </td></tr> </table
 </div>
