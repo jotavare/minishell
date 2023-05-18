@@ -3,7 +3,7 @@
 <tr><th>EXIT</th>
 <tr><td>
 
-| STATUS | COMMANDS | `echo $?` | OUTPUT |
+| State | Built-In | `echo $?` | Output |
 | :---: | :--- | :--- | :--- |
 | 🟢 | `exit`          | 0        | `exit` & closes bash                                                         |
 | 🟢 | `exit `         | 0        | `exit` & closes bash                                                         |
