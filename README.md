@@ -24,24 +24,26 @@
 | 🟢 | `exit `         | 0        | `exit` & exits bash                                                  |
 | 🟢 | ` exit`         | 0        | `exit` & exits bash                                                  |
 | 🟢 | `  exit  `      | 0        | `exit` & exits bash                                                  |
+| 🟢 | `exit test`     | 2	      | `exit` + `bash: exit: test: numeric argument required` & exits bash  |
+| 🟢 | `exit "test"`   | 2	      | `exit` + `bash: exit: test: numeric argument required` & exits bash  |
 | 🟢 | `"exit test"`   | 127	    | `exit test: command not found`                                       |
-| 🟢 | `"exit"`        | 0	      | `exit` & exits bash                                                  |
-| 🟢 | `exit1`         | 127      | `exit1: command not found`                                           |
-| 🟢 | `exita`         | 127      | `exita: command not found`                                           |
+| 🔴 | `"exit"`        | 0	      | `exit` & exits bash                                                  |
+| 🔴 | `exit1`         | 127      | `exit1: command not found`                                           |
+| 🔴 | `exita`         | 127      | `exita: command not found`                                           |
 | 🟢 | `exit 0`        | 0        | `exit` & exits bash                                                  |
 | 🟢 | `exit 1`        | 1        | `exit` & exits bash                                                  |
 | 🟢 | `exit 123`      | 123	    | `exit` & exits bash                                                  |
 | 🟢 | `exit 1234`     | 210      | `exit` & exits bash                                                  |
-| 🟢 | `exit 1 2 3 4`  | 1	      | `exit` + `bash: exit: too many arguments`                            |
-| 🟢 | `exit +10`      | 10	      | `exit` & exits bash                                                  |
-| 🟢 | `exit -10`      | 246	    | `exit` & exits bash                                                  |
-| 🟢 | `exit +2000`    | 208	    | `exit` & exits bash                                                  |
-| 🟢 | `exit -2000`    | 48	      | `exit` & exits bash                                                  |
+| 🔴 | `exit 1 2 3 4`  | 1	      | `exit` + `bash: exit: too many arguments`                            |
+| 🔴 | `exit +10`      | 10	      | `exit` & exits bash                                                  |
+| 🔴 | `exit -10`      | 246	    | `exit` & exits bash                                                  |
+| 🔴 | `exit +2000`    | 208	    | `exit` & exits bash                                                  |
+| 🔴 | `exit -2000`    | 48	      | `exit` & exits bash                                                  |
 | 🟢 | `exit a`        | 2	      | `exit` + `bash: exit: a: numeric argument required` & exits bash     |
 | 🟢 | `exit abc`      | 2	      | `exit` + `bash: exit: abc: numeric argument required` & exits bash   |
-| 🟢 | `exit a b c`    | 2	      | `exit` + `bash: exit: a: numeric argument required` & exits bash     |
+| 🔴 | `exit a b c`    | 2	      | `exit` + `bash: exit: a: numeric argument required` & exits bash     |
 | 🟢 | `exit a b c d`  | 2	      | `exit` + `bash: exit: a: numeric argument required` & exits bash     |
-| 🟢 | `exit #`        | 0	      | `exit` & exits bash                                                  |
+| 🔴 | `exit #`        | 0	      | `exit` & exits bash                                                  |
 
 </td></tr> </table
 </div>
