@@ -97,9 +97,9 @@
 | 🟢 | `Ctrl` + `C`                             | 130  | `^C` + `\n`           |
 | 🟢 | `Ctrl` + `D`                             | 0    | `exit` & closes bash  |
 | 🟢 | `Ctrl` + `\`                             | 0    | nothing               |
-| 🔴 | `# write something then press ctrl+c`    |  0  |  n/a  |
-| 🔴 | `# write something then press ctrl+d`    |  0  |  n/a  |
-| 🔴 | `# write something then press ctrl+\`    |  0  |  n/a  |
+| 🟢 | `# write something then press ctrl+c`    |  0  |  n/a  |
+| 🟢 | `# write something then press ctrl+d`    |  0  |  n/a  |
+| 🟢 | `# write something then press ctrl+\`    |  0  |  n/a  |
 
 </td></tr> </table
 </div>
