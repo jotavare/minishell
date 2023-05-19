@@ -1,4 +1,4 @@
-<div align="center">
+<div>
 <table>
 <tr><th>COLORS</th>
 <tr><td>
@@ -11,8 +11,25 @@
 
 </td></tr> </table
 </div>
-  
-<div align="center">
+
+<div>
+<table>
+<tr><th>CTRL</th>
+<tr><td>
+
+| State | Built-In | `echo $?` | Output |
+| :---: | :--- | :--- | :--- |
+| 🟢 | `Ctrl` + `C`                                   | 130  | `^C` + `\n`           |
+| 🟢 | `Ctrl` + `D`                                   | 0    | `exit` & closes bash  |
+| 🟢 | `Ctrl` + `\`                                   | 0    | nothing               |
+| 🟢 | `write something then press` + `Ctrl` + `C`    | 0    |  n/a  |
+| 🟢 | `write something then press` + `Ctrl` + `D`    | 0    |  n/a  |
+| 🟢 | `write something then press` + `Ctrl` + `\`    | 0    |  n/a  |
+
+</td></tr> </table
+</div>  
+
+<div>
 <table>
 <tr><th>EXIT</th>
 <tr><td>
@@ -54,7 +71,7 @@
 </td></tr> </table
 </div>
   
-<div align="center">
+<div>
 <table>
 <tr><th>CD</th>
 <tr><td>
@@ -94,25 +111,8 @@
 
 </td></tr> </table
 </div>
-    
-<div align="center">
-<table>
-<tr><th>CTRL</th>
-<tr><td>
 
-| State | Built-In | `echo $?` | Output |
-| :---: | :--- | :--- | :--- |
-| 🟢 | `Ctrl` + `C`                                   | 130  | `^C` + `\n`           |
-| 🟢 | `Ctrl` + `D`                                   | 0    | `exit` & closes bash  |
-| 🟢 | `Ctrl` + `\`                                   | 0    | nothing               |
-| 🟢 | `write something then press` + `Ctrl` + `C`    | 0    |  n/a  |
-| 🟢 | `write something then press` + `Ctrl` + `D`    | 0    |  n/a  |
-| 🟢 | `write something then press` + `Ctrl` + `\`    | 0    |  n/a  |
-
-</td></tr> </table
-</div>
-
-<div align="center">
+<div>
 <table>
 <tr><th>ECHO</th>
 <tr><td>
