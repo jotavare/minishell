@@ -104,7 +104,7 @@
 | 🟢 | `cd .../../..`         | 1	      | bash: cd: .../../..: No such file or directory                             |
 | 🟢 | `cd .../../...`        | 1	      | bash: cd: .../../...: No such file or directory                            |
 | 🔵 | `cd \`                 | n/a     | n/a                                                                        |
-| 🔵 | `cd //`                | 0	      | navigate to root `//$`                                                     |
+| 🔵 | `cd //`                | n/a	    | n/a                                                                        |
 | 🔵 | `cd -`                 | n/a     | n/a                                                                        |
 | 🔵 | `../../`               | n/a     | n/a                                                                        |
 | 🔵 | `$`                    | n/a     | n/a                                                                        |
