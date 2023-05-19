@@ -22,9 +22,9 @@
 | 🟢 | `Ctrl` + `C`                                   | 130  | `^C` + `\n`           |
 | 🟢 | `Ctrl` + `D`                                   | 0    | `exit` & closes bash  |
 | 🟢 | `Ctrl` + `\`                                   | 0    | nothing               |
-| 🟢 | `write something then press` + `Ctrl` + `C`    | 0    |  n/a  |
-| 🟢 | `write something then press` + `Ctrl` + `D`    | 0    |  n/a  |
-| 🟢 | `write something then press` + `Ctrl` + `\`    | 0    |  n/a  |
+| 🟢 | `write something then press` + `Ctrl` + `C`    | 0    |  n/a                  |
+| 🟢 | `write something then press` + `Ctrl` + `D`    | 0    |  n/a                  |
+| 🟢 | `write something then press` + `Ctrl` + `\`    | 0    |  n/a                  |
 
 </td></tr> </table
 </div>  
@@ -58,8 +58,8 @@
 | 🔴 | `exit -2000`    | 48	      | `exit` & exits bash                                                  |
 | 🔴 | `exit -2147483649`| 255    | `exit` & exits bash                                                  |
 | 🔴 | `exit 2147483648` | 0      | `exit` & exits bash                                                  |
-| 🔴 | `exit 00000000000000000000` | 0 | `exit` & exits bash                                             |
-| 🔴 | `exit 11111111111111111111` | 2 | `exit` + `bash: exit: 11111111111111111111: numeric argument required` & exits bash |
+| 🔴 | `exit 00000000000000000000`| 0 | `exit` & exits bash                                              |
+| 🔴 | `exit 11111111111111111111`| 2 | `exit` + `bash: exit: 11111111111111111111: numeric argument required` & exits bash |
 | 🟢 | `exit exit`     | 2	      | `exit` + `bash: exit: a: numeric argument required` & exits bash     |
 | 🟢 | `exit a`        | 2	      | `exit` + `bash: exit: a: numeric argument required` & exits bash     |
 | 🟢 | `exit abc`      | 2	      | `exit` + `bash: exit: abc: numeric argument required` & exits bash   |
@@ -119,45 +119,39 @@
 
 | State | Built-In | `echo $?` | Output |
 | :---: | :--- | :--- | :--- |
-| 🔴 | `ECHO`                   | 127	    | `ECHO: command not found`                                                    |
-| 🟢 | `echo`                   | 0       | n/a                                                                        |
-| 🟢 | `echo `                  | 0       | n/a                                                                        |
-| 🟢 | ` echo`                  | 0       | n/a                                                                        |
-| 🟢 | `  echo  `               | 0       | n/a                                                                        |
-| 🟢 | `echo .`                 | 0       | n/a                                                                        |
-| 🔴 | `echo ~`                 | 0       | navigate to home directory                                                 |
-| 🔴 | `echo #`                 | 0       | navigate to home directory                                                 |
-| 🟢 | `echofile`                  | 127     | `cd1: command not found`                                                   |
-| 🟢 | `echo file`           | 0       | `bash: cd: no_file: No such file or directory`                             |
-| 🟢 | `echo no_file`           | 0       | `bash: cd: no_file: No such file or directory`                             |
-| 🟢 | `echo file     teste file   teste`                 | 1       | `bash: cd: 0: No such file or directory`                                   |
-  
+| 🔴 | `ECHO`                               | 127	    | `ECHO: command not found`                                                  |
+| 🔴 | `echO`                               | 127	    | `ECHO: command not found`                                                  |
+| 🔴 | `ECHo`                               | 127	    | `ECHO: command not found`                                                  |
+| 🔴 | `echo`                               | 0       | n/a                                                                        |
+| 🔴 | `echo echo`                          | 0       | n/a                                                                        |
+| 🔴 | `echo `                              | 0       | n/a                                                                        |
+| 🔴 | ` echo`                              | 0       | n/a                                                                        |
+| 🔴 | `  echo  `                           | 0       | n/a                                                                        |
+| 🔴 | `echo .`                             | 0       | n/a                                                                        |
+| 🔴 | `echo ~`                             | 0       | navigate to home directory                                                 |
+| 🔴 | `echo #`                             | 0       | navigate to home directory                                                 |
+| 🔴 | `echofile`                           | 127     | `cd1: command not found`                                                   |
+| 🔴 | `echo file`                          | 0       | `bash: cd: no_file: No such file or directory`                             |
+| 🔴 | `echo no_file`                       | 0       | `bash: cd: no_file: No such file or directory`                             |
+| 🔴 | `echo file test`                     | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo file   test`                   | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo file     test file   test`     | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo "test"`                        | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo test`                          | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo 'test'`                        | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo -n test`                       | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo -nn test`                      | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo -n -n -n test`                 | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo -n -n -n test`                 | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo "-n" test`                     | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo -n"-n" test`                   | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo "-nnnn" test`                  | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo "-n -n -n"-n test`             | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo "-n '-n'" test `               | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo -n file test'                  | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo -n -n -n file test'            | 1       | `bash: cd: 0: No such file or directory`                                   |
 
-exec_test 'echo test tout'
-exec_test 'echo test      tout'
-exec_test 'echo -n test tout'
-exec_test 'echo -n -n -n test tout'
 
-echo
-echo echo
-eCho 
-eChO
-eCHO
-ECHO
-echo rhobebou
-echo stop barking
-echo "bonjour"
-echo bonjour
-echo 'bonjour'
-echo -n bonjour
-echo -nn bonjour
-echo -n -n -n bonjour
-echo -n -n -n bonjour
-echo "-n" bonjour
-echo -n"-n" bonjour
-echo "-nnnn" bonjour
-echo "-n -n -n"-n bonjour
-echo "-n '-n'" bonjour
 echo ~
 echo "~"
 echo '~'
