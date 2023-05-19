@@ -119,125 +119,86 @@
 
 | State | Built-In | `echo $?` | Output |
 | :---: | :--- | :--- | :--- |
-| 🔴 | `ECHO`                               | 127	    | `ECHO: command not found`                                                  |
-| 🔴 | `echO`                               | 127	    | `ECHO: command not found`                                                  |
-| 🔴 | `ECHo`                               | 127	    | `ECHO: command not found`                                                  |
-| 🔴 | `echo`                               | 0       | n/a                                                                        |
-| 🔴 | `echo echo`                          | 0       | n/a                                                                        |
-| 🔴 | `echo `                              | 0       | n/a                                                                        |
-| 🔴 | ` echo`                              | 0       | n/a                                                                        |
-| 🔴 | `  echo  `                           | 0       | n/a                                                                        |
-| 🔴 | `echo .`                             | 0       | n/a                                                                        |
-| 🔴 | `echo ~`                             | 0       | navigate to home directory                                                 |
-| 🔴 | `echo #`                             | 0       | navigate to home directory                                                 |
-| 🔴 | `echofile`                           | 127     | `cd1: command not found`                                                   |
-| 🔴 | `echo file`                          | 0       | `bash: cd: no_file: No such file or directory`                             |
-| 🔴 | `echo no_file`                       | 0       | `bash: cd: no_file: No such file or directory`                             |
-| 🔴 | `echo file test`                     | 1       | `bash: cd: 0: No such file or directory`                                   |
-| 🔴 | `echo file   test`                   | 1       | `bash: cd: 0: No such file or directory`                                   |
-| 🔴 | `echo file     test file   test`     | 1       | `bash: cd: 0: No such file or directory`                                   |
-| 🔴 | `echo "test"`                        | 1       | `bash: cd: 0: No such file or directory`                                   |
-| 🔴 | `echo test`                          | 1       | `bash: cd: 0: No such file or directory`                                   |
-| 🔴 | `echo 'test'`                        | 1       | `bash: cd: 0: No such file or directory`                                   |
-| 🔴 | `echo -n test`                       | 1       | `bash: cd: 0: No such file or directory`                                   |
-| 🔴 | `echo -nn test`                      | 1       | `bash: cd: 0: No such file or directory`                                   |
-| 🔴 | `echo -n -n -n test`                 | 1       | `bash: cd: 0: No such file or directory`                                   |
-| 🔴 | `echo -n -n -n test`                 | 1       | `bash: cd: 0: No such file or directory`                                   |
-| 🔴 | `echo "-n" test`                     | 1       | `bash: cd: 0: No such file or directory`                                   |
-| 🔴 | `echo -n"-n" test`                   | 1       | `bash: cd: 0: No such file or directory`                                   |
-| 🔴 | `echo "-nnnn" test`                  | 1       | `bash: cd: 0: No such file or directory`                                   |
-| 🔴 | `echo "-n -n -n"-n test`             | 1       | `bash: cd: 0: No such file or directory`                                   |
-| 🔴 | `echo "-n '-n'" test `               | 1       | `bash: cd: 0: No such file or directory`                                   |
-| 🔴 | `echo -n file test'                  | 1       | `bash: cd: 0: No such file or directory`                                   |
-| 🔴 | `echo -n -n -n file test'            | 1       | `bash: cd: 0: No such file or directory`                                   |
-
-
-echo ~
-echo "~"
-echo '~'
-echo ~123
-echo 123~
-echo ~/123
-echo ~/123/456
-echo $USER
-echo "$USER"
-echo "'$USER'"
-echo " '$USER' "
-echo text"$USER"
-echo text"'$USER'" ' $USER '
-echo "text"   "$USER"    "$USER"
-echo '              $USER          '
-echo               text "$USER"            "$USER"text
-echo ''''''''''$USER''''''''''
-echo """"""""$USER""""""""
-echo $USER'$USER'text oui oui     oui  oui $USER oui      $USER ''
-echo $USER '' $USER $USER '' $USER '' $USER -n $USER
-echo ' \' ' \'
-echo '\" ' " \"\""
-echo \\\" \\\" \\\" \\\"\\\"\\\" \\\'\\\'\\\'
-echo "$USER""$USER""$USER"
-echo text"$USER"test
-echo '$USER' "$USER" "text \' text"
-echo '$USER'
-echo $USER " "
-echo "$USER""Users/$USER/file""'$USER'"'$USER'
-echo "$USER$USER$USER"
-echo '$USER'"$USER"'$USER'
-echo '"$USER"''$USER'"""$USER"
-echo " $USER  "'$PWD'
-echo " $USER  \$ "'$PWD'
-echo $USER=4
-echo $USER=thallard
-echo $USER
-echo $?
-echo $USER213
-echo $USER$12USER$USER=4$USER12
-echo $USER $123456789USER $USER123456789
-echo $USER $9999USER $8888USER $7777USER
-echo $USER $USER9999 $USER8888 $USER7777
-echo $USER $USER9999 $USER8888 $USER7777 "$USER"
-echo "$USER=12$USER"
-echo "$9USER" "'$USER=12$SOMETHING'"
-echo $PWD/file
-echo "$PWD/file"
-echo "text" "text$USER" ... "$USER"
-echo $PWD
-  
-
-| 🔴 |  `echo bonjour ; |`                  |  n/a  |  n/a  |
-| 🔴 |  `echo bonjour | |`                  |  n/a  |  n/a  |
-| 🔴 |  `echo bonjour |;`                   |  n/a  |  n/a  |
-| 🔴 |  `echo bonjour ; ls`                 |  n/a  |  n/a  |
-| 🔴 |  `echo bonjour > test\ 1`            |  n/a  |  n/a  |
-| 🔴 |  `echo "\s" & echo "\s"`             |  n/a  |  n/a  |
-| 🔴 |  `echo >`                            |  n/a  |  n/a  |
-| 🔴 |  `echo -n -n -nnnn -nnnnm`           |  n/a  |  n/a  |
-| 🔴 |  `echo test > file test1`            |  n/a  |  n/a  |
-| 🔴 |  `echo test > file test1`            |  n/a  |  n/a  |
-| 🔴 |  `echo bonjour >>> test`             |  n/a  |  n/a  |
-| 🔴 |  `echo bonjour > > out`              |  n/a  |  n/a  |
-| 🔴 |  `echo 2 >> out1 > out2`             |  n/a  |  n/a  |
-| 🔴 |  `echo 2 > out1 >> out2`             |  n/a  |  n/a  |
-| 🔴 |  `echo "$HOME"`                      |  n/a  |  n/a  |
-| 🔴 |  `echo '$HOME'`                      |  n/a  |  n/a  |
-| 🔴 |  `echo $HOME`                        |  n/a  |  n/a  |
-| 🔴 |  `echo hudifg d | | hugdfihd`        |  n/a  |  n/a  |
-| 🔴 |  `echo`                              |  n/a  |  n/a  |
-| 🔴 |  `echo simple`                       |  n/a  |  n/a  |
-| 🔴 |  `echo -n simple`                    |  n/a  |  n/a  |
-| 🔴 |  `echo ''`                           |  n/a  |  n/a  |
-| 🔴 |  `echo ""`                           |  n/a  |  n/a  |
-| 🔴 |  `echo "\"`                          |  n/a  |  n/a  |
-| 🔴 |  `echo "\n \n \n"`                   |  n/a  |  n/a  |
-| 🔴 |  `echo "\n \n \\n"`                  |  n/a  |  n/a  |
-| 🔴 |  `echo ;;`                           |  n/a  |  n/a  |
-| 🔴 |  `echo hi";" hihi`                   |  n/a  |  n/a  |
-| 🔴 |  `echo hi " ; " hihi`                |  n/a  |  n/a  |
-| 🔴 |  `echo $?`                           |  n/a  |  n/a  |
-| 🔴 |  `echo |`                            |  n/a  |  n/a  |
-| 🔴 |  `| echo`                            |  n/a  |  n/a  |
-| 🔴 |  `echo > a Hello World!`             |  n/a  |  n/a  |
-| 🔴 |  `> a echo Hello World!`             |  n/a  |  n/a  |
+| 🔴 | `ECHO`                                                               | 127	    | `ECHO: command not found`                                                  |
+| 🔴 | `echO`                                                               | 127	    | `ECHO: command not found`                                                  |
+| 🔴 | `ECHo`                                                               | 127	    | `ECHO: command not found`                                                  |
+| 🔴 | `echo`                                                               | 0       | n/a                                                                        |
+| 🔴 | `echo echo`                                                          | 0       | n/a                                                                        |
+| 🔴 | `echo `                                                              | 0       | n/a                                                                        |
+| 🔴 | ` echo`                                                              | 0       | n/a                                                                        |
+| 🔴 | `  echo  `                                                           | 0       | n/a                                                                        |
+| 🔴 | `echo .`                                                             | 0       | n/a                                                                        |
+| 🔴 | `echo ~`                                                             | 0       | navigate to home directory                                                 |
+| 🔴 | `echo "~"`                                                           | 0       | navigate to home directory                                                 |
+| 🔴 | `echo '~'`                                                           | 0       | navigate to home directory                                                 |
+| 🔴 | `echo ~123`                                                          | 0       | navigate to home directory                                                 |
+| 🔴 | `echo 123~`                                                          | 0       | navigate to home directory                                                 |
+| 🔴 | `echo ~/123`                                                         | 0       | navigate to home directory                                                 |
+| 🔴 | `echo ~/123/456`                                                     | 0       | navigate to home directory                                                 |
+| 🔴 | `echo #`                                                             | 0       | navigate to home directory                                                 |
+| 🔴 | `echofile`                                                           | 127     | `cd1: command not found`                                                   |
+| 🔴 | `echo file`                                                          | 0       | `bash: cd: no_file: No such file or directory`                             |
+| 🔴 | `echo no_file`                                                       | 0       | `bash: cd: no_file: No such file or directory`                             |
+| 🔴 | `echo file test`                                                     | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo file   test`                                                   | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo file     test file   test`                                     | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo "test"`                                                        | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo test`                                                          | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo 'test'`                                                        | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo -n test`                                                       | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo -nn test`                                                      | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo -n -n -n test`                                                 | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo -n -n -n test`                                                 | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo "-n" test`                                                     | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo -n"-n" test`                                                   | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo "-nnnn" test`                                                  | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo "-n -n -n"-n test`                                             | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo "-n '-n'" test `                                               | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo -n file test'                                                  | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo -n -n -n file test'                                            | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo $USER'                                                         | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo "$USER"'                                                       | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo "'$USER'"'                                                     | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo " '$USER' "'                                                   | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo text"$USER"'                                                   | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo text"'$USER'" ' $USER ''                                       | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo "text"   "$USER"    "$USER"'                                   | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo '              $USER          ''                               | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo               text "$USER"            "$USER"text'             | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo ''''''''''$USER'''''''''''                                     | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo """"""""$USER""""""""'                                         | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo $USER'$USER'text oui oui     oui  oui $USER oui      $USER ''' | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo $USER '' $USER $USER '' $USER '' $USER -n $USER'               | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo ' \' ' \''                                                     | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo '\" ' " \"\""'                                                 | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo \\\" \\\" \\\" \\\"\\\"\\\" \\\'\\\'\\\''                      | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo "$USER""$USER""$USER"'                                         | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo text"$USER"test'                                               | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo '$USER' "$USER" "text \' text"'                                | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo '$USER''                                                       | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo $USER " "'                                                     | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo "$USER""Users/$USER/file""'$USER'"'$USER''                     | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo "$USER$USER$USER"'                                             | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo '$USER'"$USER"'$USER''                                         | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo '"$USER"''$USER'"""$USER"'                                     | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo " $USER  "'$PWD''                                              | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo " $USER  \$ "'$PWD''                                           | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo $USER=4'                                                       | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo $USER=thallard'                                                | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo $USER'                                                         | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo $?'                                                            | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo $USER213'                                                      | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo $USER$12USER$USER=4$USER12'                                    | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo $USER $123456789USER $USER123456789'                           | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo $USER $9999USER $8888USER $7777USER'                           | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo $USER $USER9999 $USER8888 $USER7777'                           | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo $USER $USER9999 $USER8888 $USER7777 "$USER"'                   | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo "$USER=12$USER"'                                               | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo "$9USER" "'$USER=12$SOMETHING'"'                               | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo $PWD/file'                                                     | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo "$PWD/file"'                                                   | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo "text" "text$USER" ... "$USER"'                                | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo $PWD'                                                          | 1       | `bash: cd: 0: No such file or directory`                                   |
   
 </td></tr> </table
 </div>
