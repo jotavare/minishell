@@ -7,7 +7,7 @@
 | :---: | :--- |
 | 🟢  | Working        |
 | 🔴  | Not working    |
-| 🔵  | Not mandatory  |
+| 🔵  | Not mandatory (i think?!) |
 
 </td></tr> </table
 </div>
