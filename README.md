@@ -21,10 +21,10 @@
 | :---: | :--- | :--- | :--- |
 | 🟢 | `Ctrl` + `C`                                   | 130  | `^C` + `\n`           |
 | 🟢 | `Ctrl` + `D`                                   | 0    | `exit` & closes bash  |
-| 🟢 | `Ctrl` + `\`                                   | 0    | nothing               |
-| 🟢 | `write something then press` + `Ctrl` + `C`    | 0    |  n/a                  |
-| 🟢 | `write something then press` + `Ctrl` + `D`    | 0    |  n/a                  |
-| 🟢 | `write something then press` + `Ctrl` + `\`    | 0    |  n/a                  |
+| 🟢 | `Ctrl` + `\`                                   | 0    | n/a                   |
+| 🟢 | `write something then press` + `Ctrl` + `C`    | 0    | n/a                   |
+| 🟢 | `write something then press` + `Ctrl` + `D`    | 0    | n/a                   |
+| 🟢 | `write something then press` + `Ctrl` + `\`    | 0    | n/a                   |
 
 </td></tr> </table
 </div>  
@@ -104,10 +104,10 @@
 | 🟢 | `cd ../../...`         | 1	      | bash: cd: ../../...: No such file or directory                             |
 | 🟢 | `cd .../../..`         | 1	      | bash: cd: .../../..: No such file or directory                             |
 | 🟢 | `cd .../../...`        | 1	      | bash: cd: .../../...: No such file or directory                            |
-| 🔵 | `cd \`                 | 1       | new prompt `>`                                                             |
-| 🔵 | `cd -`                 | 0       | change to previous directory                                               |
-| 🔵 | `../../`               | 126     | `bash: ../../: Is a directory`                                             |
-| 🔵 | `$`                    | 127     | `$: command not found`                                                     |
+| 🔵 | `cd \`                 | n/a     | n/a                                                                        |
+| 🔵 | `cd -`                 | n/a     | n/a                                                                        |
+| 🔵 | `../../`               | n/a     | n/a                                                                        |
+| 🔵 | `$`                    | n/a     | n/a                                                                        |
 
 </td></tr> </table
 </div>
