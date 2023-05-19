@@ -78,13 +78,13 @@
 
 | State | Built-In | `echo $?` | Output |
 | :---: | :--- | :--- | :--- |
-| 🔴 | `CD`                   | 127	    | `CD: command not found`                                                    |
+| 🟢 | `CD`                   | 127	    | `CD: command not found`                                                    |
 | 🟢 | `cd`                   | 0       | n/a                                                                        |
 | 🟢 | `cd `                  | 0       | n/a                                                                        |
 | 🟢 | ` cd`                  | 0       | n/a                                                                        |
 | 🟢 | `  cd  `               | 0       | n/a                                                                        |
 | 🟢 | `cd .`                 | 0       | n/a                                                                        |
-| 🔴 | `cd ~`                 | 0       | navigate to home directory                                                 |
+| 🟢 | `cd ~`                 | 0       | navigate to home directory                                                 |
 | 🟢 | `cd no_file`           | 0       | `bash: cd: no_file: No such file or directory`                             |
 | 🟢 | `cd1`                  | 127     | `cd1: command not found`                                                   |
 | 🟢 | `cd 0`                 | 1       | `bash: cd: 0: No such file or directory`                                   |
@@ -97,14 +97,14 @@
 | 🟢 | `cd abc`               | 1	      | `bash: cd: abc: No such file or directory`                                 |
 | 🟢 | `cd a b c`             | 1	      | `bash: cd: too many arguments`                                             |
 | 🟢 | `cd a b c d`           | 1	      | `bash: cd: too many arguments`                                             |
-| 🔴 | `cd /`                 | 0	      | navigate to root `/$`                                                      |
-| 🔴 | `cd //`                | 0	      | navigate to root `//$`                                                     |
+| 🟢 | `cd /`                 | 0	      | navigate to root `/$`                                                      |
 | 🟢 | `cd ../../`            | 0	      | navigate up two directories from the current directory                     |
 | 🟢 | `cd ../../../../../../`| 0	      | navigate up five directories from the current directory                    |
 | 🟢 | `cd ../../...`         | 1	      | bash: cd: ../../...: No such file or directory                             |
 | 🟢 | `cd .../../..`         | 1	      | bash: cd: .../../..: No such file or directory                             |
 | 🟢 | `cd .../../...`        | 1	      | bash: cd: .../../...: No such file or directory                            |
 | 🔵 | `cd \`                 | n/a     | n/a                                                                        |
+| 🔵 | `cd //`                | 0	      | navigate to root `//$`                                                     |
 | 🔵 | `cd -`                 | n/a     | n/a                                                                        |
 | 🔵 | `../../`               | n/a     | n/a                                                                        |
 | 🔵 | `$`                    | n/a     | n/a                                                                        |
