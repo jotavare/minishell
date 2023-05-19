@@ -81,8 +81,8 @@
 | 🟢 | `cd .../../...`        | 1	      | bash: cd: .../../...: No such file or directory                            |
 | 🔵 | `cd \`                 | 1       | new prompt `>`                                                             |
 | 🔵 | `cd -`                 | 0       | change to previous directory                                               |
-| 🔵 | ../../                 | n/a     | n/a                                                                        |
-| 🔵 | $                      | n/a     | n/a                                                                        |
+| 🔵 | `../../`               | 126     | `bash: ../../: Is a directory`                                             |
+| 🔵 | `$`                    | 127     | `$: command not found`                                                     |
   
 </td></tr> </table
 </div>
