@@ -119,18 +119,19 @@
 
 | State | Built-In | `echo $?` | Output |
 | :---: | :--- | :--- | :--- |
-| 🔴 | `ECHO`                                                               | 127	    | `ECHO: command not found`                                                  |
-| 🔴 | `echO`                                                               | 127	    | `ECHO: command not found`                                                  |
-| 🔴 | `ECHo`                                                               | 127	    | `ECHO: command not found`                                                  |
-| 🔴 | `echo`                                                               | 0       | n/a                                                                        |
-| 🔴 | `echo echo`                                                          | 0       | n/a                                                                        |
-| 🔴 | `echo `                                                              | 0       | n/a                                                                        |
-| 🔴 | ` echo`                                                              | 0       | n/a                                                                        |
-| 🔴 | `  echo  `                                                           | 0       | n/a                                                                        |
-| 🔴 | `echo .`                                                             | 0       | n/a                                                                        |
-| 🔴 | `echo ~`                                                             | 0       | navigate to home directory                                                 |
-| 🔴 | `echo "~"`                                                           | 0       | navigate to home directory                                                 |
-| 🔴 | `echo '~'`                                                           | 0       | navigate to home directory                                                 |
+| 🟢 | `ECHO`                                                               | 127	    | `ECHO: command not found`                                                  |
+| 🟢 | `echO`                                                               | 127	    | `ECHO: command not found`                                                  |
+| 🟢 | `ECHo`                                                               | 127	    | `ECHO: command not found`                                                  |
+| 🟢 | `echo`                                                               | 0       | `\n`                                                                       |
+| 🟢 | `echo echo`                                                          | 0       | `echo`                                                                     |
+| 🟢 | `echo `                                                              | 0       | n/a                                                                        |
+| 🟢 | ` echo`                                                              | 0       | n/a                                                                        |
+| 🟢 | `  echo  `                                                           | 0       | n/a                                                                        |
+| 🟢 | `echo .`                                                             | 0       | `.`                                                                        |
+| 🟢 | `echo ~`                                                             | 0       | print home directory                                                       |
+| 🟢 | `echo echo ~`                                                        | 0       | `echo` + print home directory                                              |
+| 🟢 | `echo "~"`                                                           | 0       | `~`                                                                        |
+| 🟢 | `echo '~'`                                                           | 0       | `~`                                                                        |
 | 🔴 | `echo ~123`                                                          | 0       | navigate to home directory                                                 |
 | 🔴 | `echo 123~`                                                          | 0       | navigate to home directory                                                 |
 | 🔴 | `echo ~/123`                                                         | 0       | navigate to home directory                                                 |
