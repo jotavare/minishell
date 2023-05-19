@@ -154,51 +154,51 @@
 | 🔴 | `echo "-nnnn" test`                                                  | 1       | `bash: cd: 0: No such file or directory`                                   |
 | 🔴 | `echo "-n -n -n"-n test`                                             | 1       | `bash: cd: 0: No such file or directory`                                   |
 | 🔴 | `echo "-n '-n'" test `                                               | 1       | `bash: cd: 0: No such file or directory`                                   |
-| 🔴 | `echo -n file test'                                                  | 1       | `bash: cd: 0: No such file or directory`                                   |
-| 🔴 | `echo -n -n -n file test'                                            | 1       | `bash: cd: 0: No such file or directory`                                   |
-| 🔴 | `echo $USER'                                                         | 1       | `bash: cd: 0: No such file or directory`                                   |
-| 🔴 | `echo "$USER"'                                                       | 1       | `bash: cd: 0: No such file or directory`                                   |
-| 🔴 | `echo "'$USER'"'                                                     | 1       | `bash: cd: 0: No such file or directory`                                   |
-| 🔴 | `echo " '$USER' "'                                                   | 1       | `bash: cd: 0: No such file or directory`                                   |
-| 🔴 | `echo text"$USER"'                                                   | 1       | `bash: cd: 0: No such file or directory`                                   |
-| 🔴 | `echo text"'$USER'" ' $USER ''                                       | 1       | `bash: cd: 0: No such file or directory`                                   |
-| 🔴 | `echo "text"   "$USER"    "$USER"'                                   | 1       | `bash: cd: 0: No such file or directory`                                   |
-| 🔴 | `echo '              $USER          ''                               | 1       | `bash: cd: 0: No such file or directory`                                   |
-| 🔴 | `echo               text "$USER"            "$USER"text'             | 1       | `bash: cd: 0: No such file or directory`                                   |
-| 🔴 | `echo ''''''''''$USER'''''''''''                                     | 1       | `bash: cd: 0: No such file or directory`                                   |
-| 🔴 | `echo """"""""$USER""""""""'                                         | 1       | `bash: cd: 0: No such file or directory`                                   |
-| 🔴 | `echo $USER'$USER'text oui oui     oui  oui $USER oui      $USER ''' | 1       | `bash: cd: 0: No such file or directory`                                   |
-| 🔴 | `echo $USER '' $USER $USER '' $USER '' $USER -n $USER'               | 1       | `bash: cd: 0: No such file or directory`                                   |
-| 🔴 | `echo ' \' ' \''                                                     | 1       | `bash: cd: 0: No such file or directory`                                   |
-| 🔴 | `echo '\" ' " \"\""'                                                 | 1       | `bash: cd: 0: No such file or directory`                                   |
-| 🔴 | `echo \\\" \\\" \\\" \\\"\\\"\\\" \\\'\\\'\\\''                      | 1       | `bash: cd: 0: No such file or directory`                                   |
-| 🔴 | `echo "$USER""$USER""$USER"'                                         | 1       | `bash: cd: 0: No such file or directory`                                   |
-| 🔴 | `echo text"$USER"test'                                               | 1       | `bash: cd: 0: No such file or directory`                                   |
-| 🔴 | `echo '$USER' "$USER" "text \' text"'                                | 1       | `bash: cd: 0: No such file or directory`                                   |
-| 🔴 | `echo '$USER''                                                       | 1       | `bash: cd: 0: No such file or directory`                                   |
-| 🔴 | `echo $USER " "'                                                     | 1       | `bash: cd: 0: No such file or directory`                                   |
-| 🔴 | `echo "$USER""Users/$USER/file""'$USER'"'$USER''                     | 1       | `bash: cd: 0: No such file or directory`                                   |
-| 🔴 | `echo "$USER$USER$USER"'                                             | 1       | `bash: cd: 0: No such file or directory`                                   |
-| 🔴 | `echo '$USER'"$USER"'$USER''                                         | 1       | `bash: cd: 0: No such file or directory`                                   |
-| 🔴 | `echo '"$USER"''$USER'"""$USER"'                                     | 1       | `bash: cd: 0: No such file or directory`                                   |
-| 🔴 | `echo " $USER  "'$PWD''                                              | 1       | `bash: cd: 0: No such file or directory`                                   |
-| 🔴 | `echo " $USER  \$ "'$PWD''                                           | 1       | `bash: cd: 0: No such file or directory`                                   |
-| 🔴 | `echo $USER=4'                                                       | 1       | `bash: cd: 0: No such file or directory`                                   |
-| 🔴 | `echo $USER=thallard'                                                | 1       | `bash: cd: 0: No such file or directory`                                   |
-| 🔴 | `echo $USER'                                                         | 1       | `bash: cd: 0: No such file or directory`                                   |
-| 🔴 | `echo $?'                                                            | 1       | `bash: cd: 0: No such file or directory`                                   |
-| 🔴 | `echo $USER213'                                                      | 1       | `bash: cd: 0: No such file or directory`                                   |
-| 🔴 | `echo $USER$12USER$USER=4$USER12'                                    | 1       | `bash: cd: 0: No such file or directory`                                   |
-| 🔴 | `echo $USER $123456789USER $USER123456789'                           | 1       | `bash: cd: 0: No such file or directory`                                   |
-| 🔴 | `echo $USER $9999USER $8888USER $7777USER'                           | 1       | `bash: cd: 0: No such file or directory`                                   |
-| 🔴 | `echo $USER $USER9999 $USER8888 $USER7777'                           | 1       | `bash: cd: 0: No such file or directory`                                   |
-| 🔴 | `echo $USER $USER9999 $USER8888 $USER7777 "$USER"'                   | 1       | `bash: cd: 0: No such file or directory`                                   |
-| 🔴 | `echo "$USER=12$USER"'                                               | 1       | `bash: cd: 0: No such file or directory`                                   |
-| 🔴 | `echo "$9USER" "'$USER=12$SOMETHING'"'                               | 1       | `bash: cd: 0: No such file or directory`                                   |
-| 🔴 | `echo $PWD/file'                                                     | 1       | `bash: cd: 0: No such file or directory`                                   |
-| 🔴 | `echo "$PWD/file"'                                                   | 1       | `bash: cd: 0: No such file or directory`                                   |
-| 🔴 | `echo "text" "text$USER" ... "$USER"'                                | 1       | `bash: cd: 0: No such file or directory`                                   |
-| 🔴 | `echo $PWD'                                                          | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo -n file test`                                                  | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo -n -n -n file test`                                            | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo $USER`                                                         | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo "$USER"`                                                       | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo "'$USER'"`                                                     | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo " '$USER' "`                                                   | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo text"$USER"`                                                   | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo text"'$USER'" ' $USER '`                                       | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo "text"   "$USER"    "$USER"`                                   | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo '              $USER          '`                               | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo               text "$USER"            "$USER"text`             | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo ''''''''''$USER''''''''''`                                     | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo """"""""$USER""""""""`                                         | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo $USER'$USER'text oui oui     oui  oui $USER oui      $USER ''` | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo $USER '' $USER $USER '' $USER '' $USER -n $USER`               | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo ' \' ' \'`                                                     | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo '\" ' " \"\""`                                                 | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo \\\" \\\" \\\" \\\"\\\"\\\" \\\'\\\'\\\'`                      | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo "$USER""$USER""$USER"`                                         | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo text"$USER"test`                                               | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo '$USER' "$USER" "text \' text"`                                | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo '$USER'`                                                       | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo $USER " "`                                                     | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo "$USER""Users/$USER/file""'$USER'"'$USER'`                     | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo "$USER$USER$USER"`                                             | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo '$USER'"$USER"'$USER'`                                         | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo '"$USER"''$USER'"""$USER"`                                     | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo " $USER  "'$PWD'`                                              | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo " $USER  \$ "'$PWD'`                                           | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo $USER=4`                                                       | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo $USER=thallard`                                                | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo $USER`                                                         | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo $?`                                                            | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo $USER213`                                                      | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo $USER$12USER$USER=4$USER12`                                    | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo $USER $123456789USER $USER123456789`                           | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo $USER $9999USER $8888USER $7777USER`                           | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo $USER $USER9999 $USER8888 $USER7777`                           | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo $USER $USER9999 $USER8888 $USER7777 "$USER"`                   | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo "$USER=12$USER"`                                               | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo "$9USER" "'$USER=12$SOMETHING'"`                               | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo $PWD/file`                                                     | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo "$PWD/file`                                                    | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo "text" "text$USER" ... "$USER`                                 | 1       | `bash: cd: 0: No such file or directory`                                   |
+| 🔴 | `echo $PW`                                                           | 1       | `bash: cd: 0: No such file or directory`                                   |
   
 </td></tr> </table
 </div>
