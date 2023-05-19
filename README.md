@@ -5,9 +5,10 @@
 
 | State | Definition |
 | :---: | :--- |
-| 🟢  | Working        |
-| 🔴  | Not working    |
+| 🟢  | Working                   |
+| 🔴  | Not working               |
 | 🔵  | Not mandatory (i think?!) |
+| n/a | Nothing                   |
 
 </td></tr> </table
 </div>
@@ -65,8 +66,8 @@
 | 🟢 | `exit abc`      | 2	      | `exit` + `bash: exit: abc: numeric argument required` & exits bash   |
 | 🔴 | `exit a b c`    | 2	      | `exit` + `bash: exit: a: numeric argument required` & exits bash     |
 | 🟢 | `exit a b c d`  | 2	      | `exit` + `bash: exit: a: numeric argument required` & exits bash     |
-| 🔵 | `exit #`        | n/a	    | n/a                                                                  |
-| 🔵 | `exit *`        | n/a	    | n/a                                                                  |
+| 🔵 | `exit #`        | -	      | -                                                                  |
+| 🔵 | `exit *`        | -	      | -                                                                  |
 
 </td></tr> </table
 </div>
@@ -103,11 +104,11 @@
 | 🟢 | `cd ../../...`         | 1	      | bash: cd: ../../...: No such file or directory                             |
 | 🟢 | `cd .../../..`         | 1	      | bash: cd: .../../..: No such file or directory                             |
 | 🟢 | `cd .../../...`        | 1	      | bash: cd: .../../...: No such file or directory                            |
-| 🔵 | `cd \`                 | n/a     | n/a                                                                        |
-| 🔵 | `cd //`                | n/a	    | n/a                                                                        |
-| 🔵 | `cd -`                 | n/a     | n/a                                                                        |
-| 🔵 | `../../`               | n/a     | n/a                                                                        |
-| 🔵 | `$`                    | n/a     | n/a                                                                        |
+| 🔵 | `cd \`                 | -       | -                                                                          |
+| 🔵 | `cd //`                | -	      | -                                                                          |
+| 🔵 | `cd -`                 | -       | -                                                                          |
+| 🔵 | `../../`               | -       | -                                                                          |
+| 🔵 | `$`                    | -       | -                                                                          |
 
 </td></tr> </table
 </div>
