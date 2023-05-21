@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:57:28 by alexandre         #+#    #+#             */
-/*   Updated: 2023/05/21 18:32:19 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/05/21 20:13:23 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ void	env(t_attr *att)
 		printf("%s\n", att->g_env[i]);
 		i++;
 	}
+	i = 1;
+	while (att->tok_arr[i])
+		printf("%s\n", att->tok_arr[i++]);
 	printf("SIZE: %d\n", att->len_myenv);
 }
-
-

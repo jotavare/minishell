@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:57:28 by alexandre         #+#    #+#             */
-/*   Updated: 2023/05/21 19:45:52 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/05/21 20:05:21 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,10 @@ int	find_index(char **search, char *str)
 
 	i = 0;
 	to_find = add_equal(str);
-	printf("OLA1: %s\n", to_find);
 	while (search[i])
 	{
 		if (!ft_strncmp(search[i], to_find, ft_strlen(to_find)))
 		{
-			printf("OLA2: %s\n", to_find);
 			free(to_find);
 			return (i);
 		}
@@ -109,14 +107,16 @@ void	refresh_rmenv(t_attr *att, int rm_index)
 	i = 0;
 	j = 0;
 	free_g_env(att);
-	att->g_env = malloc(sizeof(char *) * att->len_myenv + 1);
+	att->g_env = malloc(sizeof(char *) * att->len_myenv);
 	if (!att->g_env)
 		return ;
-	while (i < att->len_myenv)
+	while (j < att->len_myenv)
 	{
 		if (i == rm_index)
 			i++;
-		att->g_env[j] = ft_strdup(att->d_env[i]);
+		if (!att->d_env[i])
+			break ;
+		att->g_env[j] = strdup(att->d_env[i]);
 		i++;
 		j++;
 	}
@@ -144,5 +144,5 @@ void	unset(t_attr *att)
 		else
 			i++;
 	}
-	printf("SIZE3: %d\n", att->len_myenv);
+	//printf("SIZE3: %d\n", att->len_myenv);
 }
