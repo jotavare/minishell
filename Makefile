@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: alexfern <alexfern@student.42.fr>          +#+  +:+       +#+         #
+#    By: jotavare <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/12 15:15:58 by alexandre         #+#    #+#              #
-#    Updated: 2023/05/16 21:59:18 by alexfern         ###   ########.fr        #
+#    Updated: 2023/05/21 14:08:16 by jotavare         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,7 @@ NAME = minishell
 SRC =	commands/cd.c \
 		commands/echo.c \
 		commands/env.c \
-		commands/exit.c \
+		commands/ft_exit.c \
 		commands/export.c \
 		commands/pwd.c \
 		commands/unset.c \
@@ -44,7 +44,8 @@ SRC =	commands/cd.c \
 		source/signals.c \
 		utilities/utilities.c \
 
-OBJ = $(SRC:.c=.o)
+OBJSDIR = objects
+OBJ = $(addprefix $(OBJSDIR)/, $(SRC:.c=.o))
 
 # MAKE RULES
 all: $(NAME)

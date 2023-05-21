@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   signals.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexfern <alexfern@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:57:28 by alexandre         #+#    #+#             */
-/*   Updated: 2023/05/16 19:31:52 by alexfern         ###   ########.fr       */
+/*   Updated: 2023/05/19 20:22:40 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,15 @@
     starts a new line with a new prompt.
 */
 
-void handle_interrupt(int signal)
+void	handle_interrupt(int signal)
 {
-    if (signal == SIGINT)
-    {
-        printf("\n");
-        rl_replace_line("", 0);
-        rl_on_new_line();
-        rl_redisplay();
-    }
+	if (signal == SIGINT)
+	{
+		printf("\n");
+		rl_replace_line("", 0);
+		rl_on_new_line();
+		rl_redisplay();
+	}
 }
 
 /*
@@ -34,9 +34,9 @@ void handle_interrupt(int signal)
     Ctrl+C, Ctrl+Z, and Ctrl+"\".
 */
 
-void    set_signals(void)
+void	set_signals(void)
 {
-    signal(SIGINT, handle_interrupt);
-    signal(SIGQUIT, SIG_IGN);
-    signal(SIGTSTP, SIG_IGN);
+	signal(SIGINT, handle_interrupt);
+	signal(SIGQUIT, SIG_IGN);
+	signal(SIGTSTP, SIG_IGN);
 }

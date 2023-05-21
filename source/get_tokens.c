@@ -1,117 +1,109 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lexer.c                                            :+:      :+:    :+:   */
+/*   get_tokens.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alexfern <alexfern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 18:15:45 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/05/16 22:00:34 by alexfern         ###   ########.fr       */
+/*   Updated: 2023/05/19 20:38:47 by alexfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-void    free_tokens(char **tokens, t_attr   t)
+void	free_tokens(char **tokens, t_attr t)
 {
-    int i = 0;
-    while (i < t.nb_tokens)
-        free(tokens[i++]);
+	int	i;
+
+	i = 0;
+	while (i < t.nb_tokens)
+		free(tokens[i++]);
 }
 
-void    init_attributes(t_attr *att)
+int	count_tokens(char *s, t_attr *att)
 {
-    att->nb_tokens = 0;
-    att->index = 0;
-    att->s_arr = NULL;
+	int	len;
+
+	len = ft_strlen(s) - 1;
+	while (len >= 0)
+	{
+		if (s[len] != ' ')
+		{
+			att->nb_tokens++;
+			while (s[len] != ' ')
+				len--;
+		}
+		if (s[len] == ' ')
+			len--;
+	}
+	return (att->nb_tokens);
+	if (!s)
+		return (1);
+	else
+		att->nb_tokens++;
+	while (s[att->index++] && (att->index < len))
+	{
+		if (s[att->index] == ' ')
+			att->nb_tokens++;
+	}
+	return (0);
 }
 
-int     count_tokens(char *s, t_attr *att)
+char	*get_token(char *s)
 {
-    int len;
-    
-    len = ft_strlen(s) - 1;
-    while(len >= 0)
-    {
-        if (s[len] != ' ')
-        {
-            att->nb_tokens++;
-            while (s[len] != ' ')
-                len--;
-        }
-        if (s[len] == ' ')
-            len--;
-    }
-    return(att->nb_tokens);
-    
-    
-    
-    if (!s)
-        return(1);
-    else
-        att->nb_tokens++;
-    while (s[att->index++] && (att->index < len))
-    {
-        if (s[att->index] == ' ')
-            att->nb_tokens++;
-    }
-    return(0);
+	char	*token;
+	int		i;
+	int		j;
+
+	i = 0;
+	j = 0;
+	while (s[j] != ' ' && s[j] != '\0')
+		j++;
+	token = malloc(sizeof(char) * j + 1);
+	if (!token)
+		return (NULL);
+	token[j] = '\0';
+	while (i < j)
+	{
+		token[i] = s[i];
+		i++;
+	}
+	return (token);
 }
 
-char    *get_token(char *s)
+char	**create_array(char *s, t_attr *att)
 {
-    char    *token;
-    int     i;
-    int     j;
+	int	count;
 
-    i = 0;
-    j = 0;
-    while (s[j] != ' ' && s[j] != '\0')
-        j++;
-    token = malloc(sizeof(char) * j + 1);
-    if (!token)
-        return (NULL);
-    token[j] = '\0';
-    while(i < j)
-    {
-        token[i] = s[i];
-        i++;
-    }
-    return (token);
+	att->index = 0;
+	att->tok_arr = malloc((att->nb_tokens + 1) * sizeof(char *));
+	att->tok_arr[att->nb_tokens] = NULL; //valgrind
+	if (!att->tok_arr)
+		return (0);
+	count = 0;
+	while (count < att->nb_tokens)
+	{
+		while (*s == ' ')
+			s++;
+		att->tok_arr[count] = get_token(s);
+		count++;
+		while (*s != ' ' && *s != '\0')
+			s++;
+	}
+	return (att->tok_arr);
 }
 
-char    **create_array(char *s, t_attr *att)
+char	**get_tokens(char *str, t_attr *in_str)
 {
-    int count;
-    
-    att->index = 0;
-    att->s_arr = malloc((att->nb_tokens + 1) * sizeof(char *));
-    att->s_arr[att->nb_tokens] = NULL;//valgrind
-    if (!att->s_arr)
-        return (0);
-    count = 0;
-    while (count < att->nb_tokens)
-    {
-        while (*s == ' ')
-            s++;
-        att->s_arr[count] = get_token(s);
-        count++;
-        while (*s != ' ' && *s != '\0')
-            s++;
-    }
-    return(att->s_arr);
+	//init_attributes(in_str);
+	if (!str)
+		return (NULL);
+	count_tokens(str, in_str);
+	create_array(str, in_str);
+	//ft_print_array(in_str->s_arr, in_str->nb_tokens);
+	return (in_str->tok_arr);
 }
-
-char    **get_tokens(char * str, t_attr *in_str)
-{
-    init_attributes(in_str);
-    count_tokens(str, in_str); 
-    create_array(str, in_str);
-    //ft_print_array(in_str->s_arr, in_str->nb_tokens);
-    return (in_str->s_arr);
-}
-
-
 
 /*This part is only for test purposes*/
 // void	ft_print_array(char **array, int nb);
@@ -119,7 +111,7 @@ char    **get_tokens(char * str, t_attr *in_str)
 // int main(void)
 // {
 //     t_attr attr;
-//     char    *str = "   cd    /source";
+//     char    *str = "echo lol";
 //     int    nb_tok = 1;
 //     init_attributes(&attr);
 //     char **tokens = get_tokens(str, &attr);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexfern <alexfern@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:57:28 by alexandre         #+#    #+#             */
-/*   Updated: 2023/05/16 22:35:13 by alexfern         ###   ########.fr       */
+/*   Updated: 2023/05/21 00:49:23 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,27 +15,33 @@
 /*
     change directory to path given in input string
     > format: "cd <path>"
-    > status: not working
+    > status: working for the most part
 */
 
-void cd(const char *input, t_attr attr)
+void	cd(t_attr *attr)
 {
-    char *current_path;
-    char *destiny_path;
+	char	*current_path;
+	char	*destiny_path;
 
-    (void)input;
-    destiny_path = attr.s_arr[1];
-    if (!destiny_path)
-        destiny_path = "/home/joaoalme"; //IDEA: here we must define a variable in the header file 
-    current_path = getcwd(NULL, 0);
-    if (!current_path)
-        return;
-
-    printf("%s\n", current_path);
-
-    if (chdir(destiny_path)) // Change directory to path given in input
-        printf("Failed to change directory.\n");
-    else
-        printf("Directory changed to: %s\n", getcwd(NULL, 0));
-    free(current_path);
+	if (attr->nb_tokens > 2)
+	{
+		ft_putstr_fd("minishell: cd: too many arguments\n", 1);
+		return ;
+	}
+	destiny_path = attr->tok_arr[1];
+	if (!destiny_path || !ft_strcmp(destiny_path, "~"))
+		destiny_path = getenv("HOME");
+	else if (!ft_strcmp(attr->tok_arr[1], "-"))
+		destiny_path = attr->last_path;
+	current_path = getcwd(NULL, 0);
+	if (!current_path)
+		return ;
+	attr->last_path = ft_strdup(current_path);
+	printf("current path: %s\n", current_path);
+	if (chdir(destiny_path))
+		printf("minishell: cd: %s: No such file or directory\n",
+				attr->tok_arr[1]);
+	else
+		printf("Directory changed to: %s\n", getcwd(NULL, 0));
+	free(current_path);
 }

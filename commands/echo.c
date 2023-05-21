@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cd.c                                               :+:      :+:    :+:   */
+/*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexfern <alexfern@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:57:28 by alexandre         #+#    #+#             */
-/*   Updated: 2023/05/16 22:35:13 by alexfern         ###   ########.fr       */
+/*   Updated: 2023/05/19 20:22:45 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,32 @@
 	> format: "echo <string>"
 	> status: working
 */
-void	echo(const char *input)
+void	echo(t_attr att)
 {
-	if (strncmp(input, "echo ", 5) == 0)
-    {
-		input = input + 5;
-		rl_redisplay();
-		printf("%s\n", input);
+	int	i;
+
+	i = 1;
+	if (att.nb_tokens == 1)
+		ft_putchar_fd('\n', 1);
+	else if (!strcmp(att.tok_arr[0], "echo") && !strcmp(att.tok_arr[1], "-n"))
+	{
+		i = 2;
+		while (i < att.nb_tokens)
+		{
+			ft_putstr_fd(att.tok_arr[i], 1);
+			if (att.tok_arr[i + 1])
+				ft_putchar_fd(' ', 1);
+			i++;
+		}
 	}
-	else if (strcmp(input, "echo") == 0)
-		printf("\n");
+	else if (!strcmp(att.tok_arr[0], "echo"))
+	{
+		while (i < att.nb_tokens)
+		{
+			ft_putstr_fd(att.tok_arr[i], 1);
+			ft_putchar_fd(' ', 1);
+			i++;
+		}
+		ft_putchar_fd('\n', 1);
+	}
 }
