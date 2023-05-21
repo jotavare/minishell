@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:57:28 by alexandre         #+#    #+#             */
-/*   Updated: 2023/05/21 18:40:36 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/05/21 19:45:52 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ char	*add_equal(char *str)
 }
 
 /* 
-Econtra a posicao da string que queremos tirar do nosso array envp 
+	Encontra a posicao da string que queremos tirar do nosso array envp 
 */
 
 int	find_index(char **search, char *str)
@@ -42,10 +42,12 @@ int	find_index(char **search, char *str)
 
 	i = 0;
 	to_find = add_equal(str);
+	printf("OLA1: %s\n", to_find);
 	while (search[i])
 	{
 		if (!ft_strncmp(search[i], to_find, ft_strlen(to_find)))
 		{
+			printf("OLA2: %s\n", to_find);
 			free(to_find);
 			return (i);
 		}
@@ -107,7 +109,7 @@ void	refresh_rmenv(t_attr *att, int rm_index)
 	i = 0;
 	j = 0;
 	free_g_env(att);
-	att->g_env = malloc(sizeof(char *) * att->len_myenv);
+	att->g_env = malloc(sizeof(char *) * att->len_myenv + 1);
 	if (!att->g_env)
 		return ;
 	while (i < att->len_myenv)
@@ -131,15 +133,16 @@ void	unset(t_attr *att)
 	j = 1;
 	while(att->tok_arr[j])
 	{
-		printf("G_EN ->: %s\n", att->g_env[66]);
+		//printf("G_EN ->: %s\n", att->g_env[66]);
 		double_myenv(att);
-		if ((find_index(&att->g_env[i], att->tok_arr[j])) != 0)
+		if ((find_index(&att->g_env[i], att->tok_arr[j])))
 		{
 			refresh_rmenv(att, find_index(&att->g_env[i], att->tok_arr[j]));
-			printf("D_ENV ->: %s\n", att->d_env[66]);
+			//printf("D_ENV ->: %s\n", att->d_env[66]);
 			j++;
 		}
-		i++;	
+		else
+			i++;
 	}
 	printf("SIZE3: %d\n", att->len_myenv);
 }

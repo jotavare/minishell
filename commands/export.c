@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:57:28 by alexandre         #+#    #+#             */
-/*   Updated: 2023/05/21 19:10:50 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/05/21 19:12:59 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,9 @@ void export(t_attr *att)
     }
 }
 
-/* vou escrever aqui pode ser?
-
-
-
+/*
+    sorts the environment variables alphabetically
+    using the bubble sort algorithm
 */
 
 void export_sort(t_attr *att)
