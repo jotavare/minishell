@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:57:28 by alexandre         #+#    #+#             */
-/*   Updated: 2023/05/21 16:40:58 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/05/21 18:40:36 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,12 +75,15 @@ void	double_myenv(t_attr *att)
 	int i = 0;
 
 	att->d_env = malloc(sizeof(char *) * att->len_myenv + 1);
-	while (att->g_env[i])
+	att->len_d_env = att->len_myenv;
+	if (!att->d_env)
+		return ;
+	while (i < att->len_d_env)
 	{
-		att->d_env[i] = att->g_env[i]; 
+		att->d_env[i] = ft_strdup(att->g_env[i]); 
 		i++;
 	}
-	att->d_env[i] = NULL;
+	att->d_env[i] = '\0';
 }
 
 void	free_d_env(t_attr *att)
@@ -104,20 +107,19 @@ void	refresh_rmenv(t_attr *att, int rm_index)
 	i = 0;
 	j = 0;
 	free_g_env(att);
-	while (att->d_env[att->len_myenv])
-		att->len_myenv++;
 	att->g_env = malloc(sizeof(char *) * att->len_myenv);
-	att->len_myenv--;
-	while (j < att->len_myenv)
+	if (!att->g_env)
+		return ;
+	while (i < att->len_myenv)
 	{
 		if (i == rm_index)
 			i++;
-		att->g_env[j] = att->d_env[i];
+		att->g_env[j] = ft_strdup(att->d_env[i]);
 		i++;
 		j++;
 	}
-	att->g_env[j] = '\0';
-	double_myenv(att);
+	att->g_env[j] = 0;
+	att->len_myenv--;
 }
 
 void	unset(t_attr *att)
@@ -127,21 +129,17 @@ void	unset(t_attr *att)
 	
 	i = 0;
 	j = 1;
-	printf("G_EN -> SIZE1: %s\n", att->g_env[66]);
-	double_myenv(att);
-	printf("D_ENV -> SIZE1: %s\n", att->d_env[66]);
 	while(att->tok_arr[j])
 	{
-		printf("SIZE2: %d\n", att->len_myenv);
-		if ((find_index(&att->g_env[i], att->tok_arr[j])) > 0 && att->tok_arr[j])
+		printf("G_EN ->: %s\n", att->g_env[66]);
+		double_myenv(att);
+		if ((find_index(&att->g_env[i], att->tok_arr[j])) != 0)
 		{
 			refresh_rmenv(att, find_index(&att->g_env[i], att->tok_arr[j]));
-			printf("G_EN -> SIZE2: %s\n", att->g_env[66]);
-			printf("Find_index = %d\n", (find_index(&att->g_env[i], att->tok_arr[j])));
+			printf("D_ENV ->: %s\n", att->d_env[66]);
 			j++;
 		}
 		i++;	
 	}
-	printf("G_EN -> SIZE3: %s\n", att->g_env[66]);
 	printf("SIZE3: %d\n", att->len_myenv);
 }

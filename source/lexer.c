@@ -21,7 +21,8 @@
 void command(const char *input, t_attr *att, char **envp)
 {
     char **tok;
-
+    (void) envp;
+    
     if (!att->tok_arr[0])
         return;
     tok = att->tok_arr;
@@ -31,12 +32,12 @@ void command(const char *input, t_attr *att, char **envp)
         pwd();
     else if (ft_strcmp(tok[0], "cd") == 0)
         cd(att);
-    else if (ft_strcmp(tok[0], "export") == 0 && tok[1] == NULL)
-        export(envp, att);
+    else if (ft_strcmp(tok[0], "export") == 0)
+        export(att);
     else if (ft_strcmp(tok[0], "unset") == 0)
         unset(att);
-    else if (ft_strcmp(tok[0], "env") == 0 && tok[1] == NULL)
-        env(envp, att);
+    else if (ft_strcmp(tok[0], "env") == 0)
+        env(att);
     else if (ft_strcmp(tok[0], "exit") == 0)
         return ft_exit(input, *att);
     else if (!input[0])

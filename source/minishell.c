@@ -62,7 +62,7 @@ int	main(int ac, char **av, char **envp)
 		free(attr.tok_arr);
 		free(str);
 	}
-	free_tokens(attr.g_env, attr);
-	free(attr.g_env);
+	//free_tokens(attr.g_env, attr);
+	//free(attr.g_env);
 	return (0);
 }

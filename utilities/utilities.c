@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:51:22 by alexfern          #+#    #+#             */
-/*   Updated: 2023/05/21 15:34:02 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/05/21 18:25:40 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,6 +166,7 @@ void	init_attributes(t_attr *att)
     att->index = 0;
     att->tok_arr = NULL;
 	att->d_env = NULL;
+	att->len_d_env = 0;
     //att->g_env = NULL;
     //att->len_myenv = 0;
 }

@@ -71,6 +71,7 @@ typedef struct s_attr
 	int len_myenv;   // length of my_env
 	char *last_path; // last path
     char   **d_env;
+    int len_d_env;
 }		t_attr;
 
 // source
@@ -88,7 +89,7 @@ int		pwd(void);
 void	cd(t_attr *att);
 void	echo(t_attr att);
 void	ft_exit(const char *input, t_attr att);
-void	env(char **envp, t_attr *my_env);
+void	env(t_attr *att);
 void	unset(t_attr *att);
 
 // utilities
@@ -107,15 +108,9 @@ void	init_attributes(t_attr *att);
 void	init_paths(t_attr *att);
 
 // export
-void	export_count(char **envp, t_attr *att);
-void	export_memory(t_attr *att);
-void	export_copy(char **envp, t_attr *att);
-void	export_sort(t_attr *att);
-void	export_print(t_attr *att);
-void	export(char **envp, t_attr *att);
-
-// env
-void	env(char **envp, t_attr *att);
+void	export(t_attr *att);
+void    export_sort(t_attr *att);
+void    export_print(t_attr *att);
 
 // unset
 char	*add_equal(char *str);
