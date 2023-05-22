@@ -19,8 +19,8 @@
 <tr><th>CTRL</th>
 <tr><td>
 
-| State | Built-In | `echo $?` | Output |
-| :---: | :--- | :--- | :--- |
+| State | Built-In | `echo $?` |
+| :---: | :--- | :--- |
 | 🟢 | `Ctrl` + `C`                                   | 130  |
 | 🟢 | `Ctrl` + `D`                                   | 0    |
 | 🟢 | `Ctrl` + `\`                                   | 0    |
