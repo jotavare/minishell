@@ -37,7 +37,7 @@
 
 | State | Built-In | `echo $?` | Output |
 | :---: | :--- | :--- | :--- |
-| 🔴 | `EXIT`          | 127	    | `EXIT: command not found`                                            |
+| 🟢 | `EXIT`          | 127	    | `EXIT: command not found`                                            |
 | 🟢 | `exit`          | 0        | `exit` & exits bash                                                  |
 | 🟢 | `exit `         | 0        | `exit` & exits bash                                                  |
 | 🟢 | ` exit`         | 0        | `exit` & exits bash                                                  |
