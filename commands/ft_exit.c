@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_exit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:57:28 by alexandre         #+#    #+#             */
-/*   Updated: 2023/05/22 00:59:01 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/05/22 10:24:43 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,13 +47,9 @@ void	ft_exit(const char *input, t_attr attr)
 	return_value = 0;
 	printf("exit\n");
 	if (attr.nb_tokens == 1)
-	{
 		return_value = 0;
-	}
 	else if (attr.nb_tokens == 2)
-	{
 		return_value = exit_two(attr);
-	}
 	else
 	{
 		ft_putstr_fd("minishell: exit: too many arguments\n", 2);

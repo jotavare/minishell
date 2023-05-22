@@ -45,7 +45,7 @@
 | 🟢 | `exit test`     | 2	      | `exit` + `bash: exit: test: numeric argument required` & exits bash  |
 | 🟢 | `exit "test"`   | 2	      | `exit` + `bash: exit: test: numeric argument required` & exits bash  |
 | 🟢 | `"exit test"`   | 127	    | `exit test: command not found`                                       |
-| 🔴 | `"exit"`        | 0	      | `exit` & exits bash                                                  |
+| 🟢 | `"exit"`        | 0	      | `exit` & exits bash                                                  |
 | 🔴 | `exit1`         | 127      | `exit1: command not found`                                           |
 | 🔴 | `exita`         | 127      | `exita: command not found`                                           |
 | 🟢 | `exit 0`        | 0        | `exit` & exits bash                                                  |

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexer.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexfern <alexfern@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lubu <lubu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 18:15:45 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/05/22 01:13:24 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/05/22 10:54:51 by lubu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	command(const char *input, t_attr *att, char **envp)
 		unset(att);
 	else if (ft_strcmp(tok[0], "env") == 0)
 		env(att);
-	else if (ft_strcmp(tok[0], "exit") == 0)
+	else if ((ft_strcmp(tok[0], "exit") == 0) || (ft_strcmp(tok[0], "\"exit\"") == 0))
 		return (ft_exit(input, *att));
 	else if (!input[0])
 		readline("\033[0;32mminishell$\033[0m ");
