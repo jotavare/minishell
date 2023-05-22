@@ -6,7 +6,7 @@
 /*   By: lubu <lubu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:51:22 by alexfern          #+#    #+#             */
-/*   Updated: 2023/05/22 00:07:06 by lubu             ###   ########.fr       */
+/*   Updated: 2023/05/22 01:27:04 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,7 +151,7 @@ void	start_env(char **envp, t_attr *my_env)
 	my_env->len_myenv = 0;
 	while(envp[my_env->len_myenv])
 		my_env->len_myenv++;
-	my_env->g_env = malloc(sizeof(char *) * my_env->len_myenv + 1);
+	my_env->g_env = malloc(sizeof(char *) * my_env->len_myenv + 1); //verificar malloc, tem leaks
 	if (!my_env->g_env)
 		return ;
 	while (i < my_env->len_myenv)
