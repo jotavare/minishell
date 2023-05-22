@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:51:22 by alexfern          #+#    #+#             */
-/*   Updated: 2023/05/22 17:15:00 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/05/22 19:39:32 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,7 +159,7 @@ void	start_env(char **envp, t_attr *my_env)
 		my_env->g_env[i] = ft_strdup(envp[i]);
 		i++;
 	}
-	my_env->g_env[i] = '\0';
+	my_env->g_env[i] = 0;
 }
 
 void	init_attributes(t_attr *att)
