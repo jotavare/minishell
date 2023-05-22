@@ -6,7 +6,7 @@
 | State | Definition |
 | :---: | :--- |
 | 🟢  | Working                   |
-| 🟡  | Didin't test yet          |
+| 🟡  | Didn't test yet           |
 | 🔴  | Not working               |
 | 🔵  | Not mandatory (i think?!) |
 | n/a | Nothing                   |
