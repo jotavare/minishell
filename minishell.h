@@ -6,7 +6,7 @@
 /*   By: alexfern <alexfern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:28:13 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/05/18 17:39:110 by alexfern         ###   ########.fr       */
+/*   Updated: 2023/05/22 00:46:15 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,14 +64,14 @@
 
 typedef struct s_attr
 {
-	int nb_tokens;   // number of tokens
-	int index;       // index of the token
-	char **tok_arr;  // array of tokens
-	char **g_env;    // global environment
-	int len_myenv;   // length of my_env
-	char *last_path; // last path
-    char   **d_env;
-    int len_d_env;
+	int		nb_tokens;// number of tokens
+	int		index;// index of the token
+	int		len_d_env;
+	int		len_myenv;// length of my_env
+	char	**tok_arr;// array of tokens
+	char	**g_env;// global environment
+	char	*last_path;// last path
+	char	**d_env;
 }		t_attr;
 
 // source
@@ -103,14 +103,16 @@ char	*trim_back(const char *input);
 char	*white_sp_rm(const char *str);
 int		ft_strcmp(const char *str1, const char *str2);
 int		flag_counter(char *str, char c);
+int		exit_two(t_attr att);
 char	*dequoter(char *str);
 void	init_attributes(t_attr *att);
 void	init_paths(t_attr *att);
+void	echo_n(t_attr att);
 
 // export
 void	export(t_attr *att);
-void    export_sort(t_attr *att);
-void    export_print(t_attr *att);
+void	export_sort(t_attr *att);
+void	export_print(t_attr *att);
 
 // unset
 char	*add_equal(char *str);

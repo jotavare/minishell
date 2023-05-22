@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:57:28 by alexandre         #+#    #+#             */
-/*   Updated: 2023/05/21 20:05:21 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/05/22 00:41:27 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,15 +72,16 @@ void	free_g_env(t_attr *att)
 
 void	double_myenv(t_attr *att)
 {
-	int i = 0;
+	int	i;
 
+	i = 0;
 	att->d_env = malloc(sizeof(char *) * att->len_myenv + 1);
 	att->len_d_env = att->len_myenv;
 	if (!att->d_env)
 		return ;
 	while (i < att->len_d_env)
 	{
-		att->d_env[i] = ft_strdup(att->g_env[i]); 
+		att->d_env[i] = ft_strdup(att->g_env[i]);
 		i++;
 	}
 	att->d_env[i] = '\0';
@@ -126,12 +127,12 @@ void	refresh_rmenv(t_attr *att, int rm_index)
 
 void	unset(t_attr *att)
 {	
-	int	i; 
+	int	i;
 	int	j;
-	
+
 	i = 0;
 	j = 1;
-	while(att->tok_arr[j])
+	while (att->tok_arr[j])
 	{
 		//printf("G_EN ->: %s\n", att->g_env[66]);
 		double_myenv(att);

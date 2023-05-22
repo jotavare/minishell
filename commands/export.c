@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lubu <lubu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:57:28 by alexandre         #+#    #+#             */
-/*   Updated: 2023/05/21 19:12:59 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/05/22 00:27:52 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@
     main function of the export command
 */
 
-void export(t_attr *att)
+void	export(t_attr *att)
 {
-    if (!att->tok_arr[1])
-    {
-        export_sort(att);
-        export_print(att);
-    }
+	if (!att->tok_arr[1])
+	{
+		export_sort(att);
+		export_print(att);
+	}
 }
 
 /*
@@ -30,38 +30,44 @@ void export(t_attr *att)
     using the bubble sort algorithm
 */
 
-void export_sort(t_attr *att)
+void	export_sort(t_attr *att)
 {
-    int sorted = 0;
-    while (!sorted)
-    {
-        sorted = 1;
-        int i = 0;
-        while (att->g_env[i + 1] != NULL)
-        {
-            if (ft_strcmp(att->g_env[i], att->g_env[i + 1]) > 0)
-            {
-                char *temp = att->g_env[i];
-                att->g_env[i] = att->g_env[i + 1];
-                att->g_env[i + 1] = temp;
-                sorted = 0;
-            }
-            i++;
-        }
-    }
+	int		sorted;
+	int		i;
+	char	*temp;
+
+	sorted = 0;
+	while (!sorted)
+	{
+		sorted = 1;
+		i = 0;
+		while (att->g_env[i + 1] != NULL)
+		{
+			if (ft_strcmp(att->g_env[i], att->g_env[i + 1]) > 0)
+			{
+				temp = att->g_env[i];
+				att->g_env[i] = att->g_env[i + 1];
+				att->g_env[i + 1] = temp;
+				sorted = 0;
+			}
+			i++;
+		}
+	}
 }
 
 /*
     prints the environment in the format required by the subject of the project
 */
 
-void export_print(t_attr *att)
+void	export_print(t_attr *att)
 {
-    int i = 0;
-    while (att->g_env[i])
-    {
-        printf("declare -x %s\n", att->g_env[i]);
-        i++;
-    }
-    printf("SIZE: %d\n", att->len_myenv);
+	int	i;
+
+	i = 0;
+	while (att->g_env[i])
+	{
+		printf("declare -x %s\n", att->g_env[i]);
+		i++;
+	}
+	printf("SIZE: %d\n", att->len_myenv);
 }

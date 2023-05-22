@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:57:28 by alexandre         #+#    #+#             */
-/*   Updated: 2023/05/21 00:49:23 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/05/22 00:16:01 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	cd(t_attr *attr)
 	printf("current path: %s\n", current_path);
 	if (chdir(destiny_path))
 		printf("minishell: cd: %s: No such file or directory\n",
-				attr->tok_arr[1]);
+			attr->tok_arr[1]);
 	else
 		printf("Directory changed to: %s\n", getcwd(NULL, 0));
 	free(current_path);

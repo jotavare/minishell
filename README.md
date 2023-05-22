@@ -52,7 +52,7 @@
 | 🟢 | `exit 1`        | 1        | `exit` & exits bash                                                  |
 | 🟢 | `exit 123`      | 123	    | `exit` & exits bash                                                  |
 | 🟢 | `exit 1234`     | 210      | `exit` & exits bash                                                  |
-| 🟢 | `exit 1 2 3 4`  | 1	      | `exit` + `bash: exit: too many arguments`                            |
+| 🔴 | `exit 1 2 3 4`  | 1	      | `exit` + `bash: exit: too many arguments`                            |
 | 🔴 | `exit +10`      | 10	      | `exit` & exits bash                                                  |
 | 🔴 | `exit -10`      | 246	    | `exit` & exits bash                                                  |
 | 🔴 | `exit +2000`    | 208	    | `exit` & exits bash                                                  |
