@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexfern <alexfern@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:28:13 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/05/22 00:46:15 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/05/22 12:30:48 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,13 +64,13 @@
 
 typedef struct s_attr
 {
-	int		nb_tokens;// number of tokens
-	int		index;// index of the token
+	int		nb_tokens;  // number of tokens
+	int		index;      // index of the token
 	int		len_d_env;
-	int		len_myenv;// length of my_env
-	char	**tok_arr;// array of tokens
-	char	**g_env;// global environment
-	char	*last_path;// last path
+	int		len_myenv;  // length of my_env
+	char	**tok_arr;  // array of tokens
+	char	**g_env;    // global environment
+	char	*last_path; // last path
 	char	**d_env;
 }		t_attr;
 
@@ -108,6 +108,7 @@ char	*dequoter(char *str);
 void	init_attributes(t_attr *att);
 void	init_paths(t_attr *att);
 void	echo_n(t_attr att);
+void	echo_dollar(t_attr att);
 
 // export
 void	export(t_attr *att);

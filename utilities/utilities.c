@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utilities.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lubu <lubu@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:51:22 by alexfern          #+#    #+#             */
-/*   Updated: 2023/05/22 01:27:04 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/05/22 17:15:00 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -176,4 +176,5 @@ void	init_attributes(t_attr *att)
 void	init_paths(t_attr *att)
 {
 	att->last_path = getenv("HOME");
+	att->len_d_env = 0;
 }
