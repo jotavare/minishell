@@ -6,7 +6,7 @@
 /*   By: lubu <lubu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 18:15:45 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/05/22 10:54:51 by lubu             ###   ########.fr       */
+/*   Updated: 2023/05/22 11:11:25 by lubu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,4 +42,6 @@ void	command(const char *input, t_attr *att, char **envp)
 		return (ft_exit(input, *att));
 	else if (!input[0])
 		readline("\033[0;32mminishell$\033[0m ");
+	else
+		printf("%s: command not found\n", tok[0]);
 }
