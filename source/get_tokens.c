@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 18:15:45 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/05/22 19:23:16 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/05/22 21:12:07 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	free_tokens(char **tokens, t_attr t)
 int	count_tokens(char *s, t_attr *att)
 {
 	int	len;
-
+	
 	len = ft_strlen(s) - 1;
 	while (len >= 0)
 	{

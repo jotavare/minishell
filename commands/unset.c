@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:57:28 by alexandre         #+#    #+#             */
-/*   Updated: 2023/05/22 19:39:49 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/05/22 20:46:07 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void	double_myenv(t_attr *att)
 	int	i;
 
 	i = 0;
-	att->d_env = malloc(sizeof(char *) * att->len_myenv + 1); //verificar malloc, tem leaks.
+	att->d_env = malloc(sizeof(char *) * (att->len_myenv + 1));
 	att->len_d_env = att->len_myenv;
 	if (!att->d_env)
 		return ;
