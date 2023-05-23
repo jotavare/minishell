@@ -34,16 +34,17 @@ int	main(int ac, char **av, char **envp)
 			break ;
 		}
 		init_attributes(&attr);
-		add_history(str);
-		attr.tok_arr = get_tokens(str, &attr);
+		if (str)
+		{	
+			add_history(str);
+			attr.tok_arr = get_tokens(str, &attr);
 		
-		command(str, &attr, envp);
-		if (strcmp(str, "exit") == 0)
-			break ;
+			command(&attr);
 
-		free_tokens(attr.tok_arr, attr);
-		free(attr.tok_arr);
-		free(str);
+			free_tokens(attr.tok_arr, attr);
+			free(attr.tok_arr);
+			free(str);
+		}
 	}
 	return (0);
 }

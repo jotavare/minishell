@@ -42,6 +42,7 @@ SRC =	commands/cd.c \
 		source/lexer.c \
 		source/minishell.c \
 		source/signals.c \
+		source/execute.c \
 		utilities/utilities.c \
 
 OBJSDIR = objects

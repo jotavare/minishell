@@ -75,10 +75,11 @@ typedef struct s_attr
 }		t_attr;
 
 // source
-void	command(const char *input, t_attr *att, char **envp);
+void	command(t_attr *att);
 char	**get_tokens(char *str, t_attr *attr);
 void	free_tokens(char **tokens, t_attr t);
 void	ft_print_array(char **array, int nb);
+int     execute(t_attr *att);
 
 // signals
 void	handle_interrupt(int signal);
@@ -88,7 +89,7 @@ void	set_signals(void);
 int		pwd(void);
 void	cd(t_attr *att);
 void	echo(t_attr att);
-void	ft_exit(const char *input, t_attr att);
+void	ft_exit(t_attr att);
 void	env(t_attr *att);
 void	unset(t_attr *att);
 

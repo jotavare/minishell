@@ -40,11 +40,10 @@ int	exit_two(t_attr attr)
 	return (return_value);
 }
 
-void	ft_exit(const char *input, t_attr attr)
+void	ft_exit(t_attr attr)
 {
 	int			return_value;
 
-	(void)input;
 	return_value = 0;
 	printf("exit\n");
 	if (attr.nb_tokens == 1)
