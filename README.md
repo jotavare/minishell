@@ -1,3 +1,4 @@
+
 <div>
 <table>
 <tr><th>COLORS</th>
@@ -14,6 +15,23 @@
 </td></tr> </table
 </div>
 
+<div>
+<table>
+<tr><th>MISSING</th>
+<tr><td>
+
+| State | Definition |
+| :---: | :--- |
+| 🔴  | execve                |
+| 🔴  | pipes                 |
+| 🔴  | "" & ''               |
+| 🔴  | echo $? & exit        |
+| 🔴  | > >> < << (redirects) |
+
+</td></tr> </table
+</div>
+
+  
 <div>
 <table>
 <tr><th>CTRL</th>
