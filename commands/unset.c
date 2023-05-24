@@ -64,7 +64,7 @@ void	free_g_env(t_attr *att)
 	i = 0;
 	while (att->g_env[i])
 	{
-		free(att->g_env[i]);
+		//free(att->g_env[i]);
 		att->g_env[i] = NULL;
 		i++;
 	}
@@ -94,7 +94,7 @@ void	free_d_env(t_attr *att)
 	i = 0;
 	while (att->d_env[i])
 	{
-		free(att->d_env[i]);
+		//free(att->d_env[i]);
 		att->d_env[i] = NULL;
 		i++;
 	}
@@ -137,7 +137,7 @@ void	unset(t_attr *att)
 	{
 		//printf("G_EN ->: %s\n", att->g_env[66]);
 		double_myenv(att);
-		if ((find_index(att->g_env, att->tok_arr[j])))
+		if ((find_index(att->g_env, att->tok_arr[j])) > 0)
 		{
 			refresh_rmenv(att, find_index(att->g_env, att->tok_arr[j]));
 			//printf("D_ENV ->: %s\n", att->d_env[66]);

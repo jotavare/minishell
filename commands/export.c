@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
+/*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:57:28 by alexandre         #+#    #+#             */
-/*   Updated: 2023/05/24 13:39:56 by alexandre        ###   ########.fr       */
+/*   Updated: 2023/05/24 20:33:20 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,28 +28,27 @@ int	check_equal(char *str)
 	return (0);
 }
 
-int	already_exist(t_attr *att, char *add)
+/* int	already_exist(t_attr *att, char *add)
 {
 	int i = 0;
 	int j = 0;
+	char *tmp;
 
-	while (add[j] != '=')
-		j++;
-	j++;
 	while (att->g_env[i])
 	{
-		if (ft_strncmp(att->d_env[i], add_equal(add), j) == 0)
-			return (1);
+		while (att->g_env[i][j] != '=')
+			j++;
+		if ()
 		i++;
 	}
 	return (0);
 }
-
+ */
 void	refresh_addenv(t_attr *att, char *add)
 {
 	int i = 0;
-
-	free_g_env(att);
+	if (att)
+		free_g_env(att);
 	att->g_env = malloc(sizeof(char *) * att->len_myenv + 2);
 	if(!att->g_env)
 		return ;
@@ -60,7 +59,7 @@ void	refresh_addenv(t_attr *att, char *add)
 	}
 	att->g_env[att->len_myenv] = ft_strdup(add);
 	att->len_myenv++;
-	att->g_env[att->len_myenv] = '\0';
+	att->g_env[att->len_myenv] = 0;
 }
 
 /*
@@ -82,15 +81,14 @@ void	export(t_attr *att)
 	{
 		if (check_equal(att->tok_arr[j]) == 1)
 		{
+/* 			if (already_exist(att, att->tok_arr[j]) == 1)
+			{
+				unset(att);
+			}  */
 			double_myenv(att);
 			refresh_addenv(att, att->tok_arr[j]);
 			export_sort(att);
 		}
-		/* if (already_exist(att, att->tok_arr[j]) == 1)
-		{
-			refresh_rmenv(att, find_index(att->g_env, att->tok_arr[j]));
-			refresh_addenv(att, att->tok_arr[j]);
-		} */
 		j++;
 	}
 }

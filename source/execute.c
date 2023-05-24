@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 17:14:25 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/05/23 18:08:24 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/05/24 20:32:46 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,45 +40,82 @@ int	count_paths(char *s)
 	return(count);
 }
 
-int	execute(t_attr *att)
+int  execute(t_attr *att)
 {
-	char	*path_str;
-	char	**all_paths;
-	char	**path_command;
-	//int		ret;
-	pid_t	pid;
-	int		i;
-	int		nb_of_paths;
+    char    *path_str;
+    char    **all_paths;
+    char    **path_command;
+    char    *command;
+    char    curr_path[PATH_MAX];
+    int     ret;
+    pid_t   pid;
+    int     i;
+    int     nb_of_paths;
 
-	i = 0;
-	nb_of_paths = 0;
-	while (att->g_env[i])
-	{
-		if(!ft_strncmp(att->g_env[i], "PATH", 4))
-		{
-			path_str = att->g_env[i];
-			break;
-		}
-		i++;
-	}
-	path_str += 5;
-	nb_of_paths = count_paths(path_str);
-	all_paths = ft_split(path_str, ':');
-	path_command = build_path(all_paths, nb_of_paths, ft_strjoin("/",att->tok_arr[0]));
-	pid = fork ();
-	if (pid == -1)
-		return (0);
-	if (pid == 0)
-	{
-		i = 0;
-		while (i < nb_of_paths)
-		{
-			execve(path_command[i], att->tok_arr, NULL);
-			i++;
-		}
-		printf("Minishell: command not found: %s\n", att->tok_arr[0]);
-	}
-	else
-		wait(NULL);
-	return (0);
+
+    i = 0;
+    nb_of_paths = 0;
+	path_str = 0;
+    command = att->tok_arr[0];
+    if (getcwd(curr_path, PATH_MAX) == NULL)
+        exit(EXIT_FAILURE);
+    while (att->g_env[i])
+    {
+        if(!ft_strncmp(att->g_env[i], "PATH", 4))
+        {
+            path_str = att->g_env[i];
+            break;
+        }
+        i++;
+    }
+    path_str += 5;
+    nb_of_paths = count_paths(path_str);
+    all_paths = ft_split(path_str, ':');
+    path_command = build_path(all_paths, nb_of_paths, ft_strjoin("/",att->tok_arr[0]));
+    pid = fork ();
+    if (pid == -1)
+        return (0);
+    if (pid == 0)
+    {
+        if (command[0] == '/')
+        {
+            if (!access(att->tok_arr[0], X_OK))
+                {
+                        ret = execve(att->tok_arr[0], att->tok_arr, att->g_env);
+                        if (ret != 0)   
+                            perror("execve");
+                }
+        }
+        else
+		
+		
+		 if (command[0] == '.')
+        {
+            command++;
+            if (!access(ft_strjoin(curr_path, command), X_OK))
+            {
+                    ret = execve(ft_strjoin(curr_path, command), att->tok_arr, att->g_env);
+                    if (ret != 0)   
+                        perror("execve");
+            }
+        }
+        else
+        {
+            i = 0;
+            while (i < nb_of_paths)
+            {
+                if (!access(path_command[i], X_OK))
+                {
+                        ret = execve(path_command[i], att->tok_arr, att->g_env);
+                        if (ret != 0)   
+                            perror("execve");
+                }
+                i++;
+            }
+        }
+        printf("Minishell: command not found: %s\n", att->tok_arr[0]);
+    }
+    else
+        wait(NULL);
+    return (0);
 }
