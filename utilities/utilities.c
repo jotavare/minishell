@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utilities.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lubu <lubu@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:51:22 by alexfern          #+#    #+#             */
-/*   Updated: 2023/05/22 01:27:04 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/05/22 20:50:19 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,8 @@ int	ft_strcmp(const char *str1, const char *str2)
 	int	i;
 
 	i = 0;
+	if (!str1[i] || !str2[i])
+		return (0);
 	while (str1[i] || str2[i])
 	{
 		if (str1[i] == str2[i])
@@ -146,12 +148,13 @@ int	flag_counter(char *str, char c)
 
 void	start_env(char **envp, t_attr *my_env)
 {
-	int i = 0;
+	int	i;
 	
+	i = 0;
 	my_env->len_myenv = 0;
 	while(envp[my_env->len_myenv])
 		my_env->len_myenv++;
-	my_env->g_env = malloc(sizeof(char *) * my_env->len_myenv + 1); //verificar malloc, tem leaks
+	my_env->g_env = malloc(sizeof(char *) * (my_env->len_myenv + 1)); //verificar malloc, tem leaks
 	if (!my_env->g_env)
 		return ;
 	while (i < my_env->len_myenv)
@@ -159,7 +162,7 @@ void	start_env(char **envp, t_attr *my_env)
 		my_env->g_env[i] = ft_strdup(envp[i]);
 		i++;
 	}
-	my_env->g_env[i] = '\0';
+	my_env->g_env[i] = 0;
 }
 
 void	init_attributes(t_attr *att)
@@ -176,4 +179,20 @@ void	init_attributes(t_attr *att)
 void	init_paths(t_attr *att)
 {
 	att->last_path = getenv("HOME");
+	att->len_d_env = 0;
+}
+
+int	check_alpha(char *str)
+{
+	int i;
+	
+	i = 0;
+	while (str[i] && str[i] != '=')
+	{
+		if ((str[i] >= 'A' && str[i] <= 'Z') || (str[i] >= 'a' && str[i] <= 'z') 
+			|| (str[i] == '_'))
+			return (1);
+		i++;
+	}
+	return (0);
 }

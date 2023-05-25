@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jotavare <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/12 15:15:58 by alexandre         #+#    #+#              #
-#    Updated: 2023/05/21 14:08:16 by jotavare         ###   ########.fr        #
+#    Updated: 2023/05/25 17:23:19 by lde-sous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,6 +42,8 @@ SRC =	commands/cd.c \
 		source/lexer.c \
 		source/minishell.c \
 		source/signals.c \
+		source/execute.c \
+		source/pipes_test.c \
 		utilities/utilities.c \
 
 OBJSDIR = objects
@@ -64,8 +66,8 @@ clean:
 	$(MAKE)	clean -C ./libft
 
 fclean: clean
-	$(RM) $(NAME) $(OBJ)
-	$(MAKE) fclean -C ./libft 
+	$(RM) $(NAME) $(OBJSDIR)
+	$(MAKE) fclean -C ./libft
 	echo "Everything Deleted..."
 
 re: fclean all

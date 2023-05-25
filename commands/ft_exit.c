@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_exit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lubu <lubu@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:57:28 by alexandre         #+#    #+#             */
-/*   Updated: 2023/05/22 11:03:52 by lubu             ###   ########.fr       */
+/*   Updated: 2023/05/22 11:27:13 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int	exit_two(t_attr attr)
 	int			is_num;
 	const char	*arg;
 
+	i = 0;
 	arg = attr.tok_arr[1];
 	is_num = 1;
 	while (arg[i])
@@ -39,11 +40,10 @@ int	exit_two(t_attr attr)
 	return (return_value);
 }
 
-void	ft_exit(const char *input, t_attr attr)
+void	ft_exit(t_attr attr)
 {
 	int			return_value;
 
-	(void)input;
 	return_value = 0;
 	printf("exit\n");
 	if (attr.nb_tokens == 1)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   unset.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:57:28 by alexandre         #+#    #+#             */
-/*   Updated: 2023/05/22 01:28:51 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/05/25 17:29:02 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,10 +64,11 @@ void	free_g_env(t_attr *att)
 	i = 0;
 	while (att->g_env[i])
 	{
-		free(att->g_env[i]);
+		//free(att->g_env[i]);
 		att->g_env[i] = NULL;
 		i++;
 	}
+	free(att->g_env);
 }
 
 void	double_myenv(t_attr *att)
@@ -75,7 +76,7 @@ void	double_myenv(t_attr *att)
 	int	i;
 
 	i = 0;
-	att->d_env = malloc(sizeof(char *) * att->len_myenv + 1); //verificar malloc, tem leaks.
+	att->d_env = malloc(sizeof(char *) * (att->len_myenv + 1));
 	att->len_d_env = att->len_myenv;
 	if (!att->d_env)
 		return ;
@@ -84,7 +85,7 @@ void	double_myenv(t_attr *att)
 		att->d_env[i] = ft_strdup(att->g_env[i]);
 		i++;
 	}
-	att->d_env[i] = '\0';
+	att->d_env[i] = 0;
 }
 
 void	free_d_env(t_attr *att)
@@ -94,7 +95,7 @@ void	free_d_env(t_attr *att)
 	i = 0;
 	while (att->d_env[i])
 	{
-		free(att->d_env[i]);
+		//free(att->d_env[i]);
 		att->d_env[i] = NULL;
 		i++;
 	}
@@ -108,6 +109,8 @@ void	refresh_rmenv(t_attr *att, int rm_index)
 
 	i = 0;
 	j = 0;
+
+	double_myenv(att);
 	free_g_env(att);
 	att->g_env = malloc(sizeof(char *) * att->len_myenv);
 	if (!att->g_env)
@@ -118,7 +121,7 @@ void	refresh_rmenv(t_attr *att, int rm_index)
 			i++;
 		if (!att->d_env[i])
 			break ;
-		att->g_env[j] = strdup(att->d_env[i]);
+		att->g_env[j] = ft_strdup(att->d_env[i]);
 		i++;
 		j++;
 	}
@@ -127,24 +130,20 @@ void	refresh_rmenv(t_attr *att, int rm_index)
 }
 
 void	unset(t_attr *att)
-{	
-	int	i;
+{
 	int	j;
 
-	i = 0;
 	j = 1;
+	if (!att->g_env[1])
+		return ;
 	while (att->tok_arr[j])
 	{
-		//printf("G_EN ->: %s\n", att->g_env[66]);
 		double_myenv(att);
-		if ((find_index(&att->g_env[i], att->tok_arr[j])))
+		if ((find_index(att->g_env, att->tok_arr[j])))
 		{
-			refresh_rmenv(att, find_index(&att->g_env[i], att->tok_arr[j]));
-			//printf("D_ENV ->: %s\n", att->d_env[66]);
-			j++;
+			refresh_rmenv(att, find_index(att->g_env, att->tok_arr[j]));
+			free_d_env(att);
 		}
-		else
-			i++;
+		j++;
 	}
-	//printf("SIZE3: %d\n", att->len_myenv);
 }

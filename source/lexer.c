@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexer.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lubu <lubu@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 18:15:45 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/05/22 11:11:25 by lubu             ###   ########.fr       */
+/*   Updated: 2023/05/24 18:35:07 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,10 @@
     feedback or return values accordingly.
 */
 
-void	command(const char *input, t_attr *att, char **envp)
+void	command(t_attr *att)
 {
 	char	**tok;
 
-	(void)envp;
 	if (!att->tok_arr[0])
 		return ;
 	tok = att->tok_arr;
@@ -39,9 +38,8 @@ void	command(const char *input, t_attr *att, char **envp)
 	else if (ft_strcmp(tok[0], "env") == 0)
 		env(att);
 	else if ((ft_strcmp(tok[0], "exit") == 0) || (ft_strcmp(tok[0], "\"exit\"") == 0))
-		return (ft_exit(input, *att));
-	else if (!input[0])
-		readline("\033[0;32mminishell$\033[0m ");
+		return (ft_exit(*att));
 	else
-		printf("%s: command not found\n", tok[0]);
+		execute(att);
+	return;
 }

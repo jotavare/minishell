@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/07 13:59:19 by lde-sous          #+#    #+#              #
-#    Updated: 2023/02/15 17:04:45 by lde-sous         ###   ########.fr        #
+#    Updated: 2023/05/25 15:27:02 by lde-sous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -80,7 +80,9 @@ BONUS = ft_lstnew.c \
 all: $(NAME)
 
 $(NAME): $(OBJ)
+	@echo "Compiling libft objects..."
 	@ar rcs $(NAME) $(OBJ)
+	@echo "Done!"
 
 bonus: $(OBJ) $(BONUS_OBJ)
 	@ar rcs $(NAME) $(OBJ) $(BONUS_OBJ)
@@ -95,5 +97,7 @@ fclean: clean
 	@$(RM) $(NAME)
 
 re: fclean all
+
+.SILENT:
 
 .PHONY: all clean fclean re
