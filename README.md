@@ -22,6 +22,7 @@
 	<a href="#license">License</a>
 </p>
 
+nm -g ./minishell | grep " U "
 valgrind --leak-check=full --gen-suppressions=all --log-file=memcheck.log ./minishell 
 
 <div>
