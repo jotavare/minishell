@@ -6,7 +6,7 @@
 #    By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/12 15:15:58 by alexandre         #+#    #+#              #
-#    Updated: 2023/05/25 15:25:10 by lde-sous         ###   ########.fr        #
+#    Updated: 2023/05/25 16:27:20 by lde-sous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,6 +43,7 @@ SRC =	commands/cd.c \
 		source/minishell.c \
 		source/signals.c \
 		source/execute.c \
+		source/pipes_test.c \
 		utilities/utilities.c \
 
 OBJSDIR = objects

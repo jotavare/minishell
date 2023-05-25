@@ -6,13 +6,13 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 15:38:30 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/05/25 16:22:47 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/05/25 16:27:17 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./minishell.h"
 
-int	main(int ac, char **av)
+int	piprectise(int ac, char **av)
 {
 	int	fd[2]; //create file descriptors variables
 	int	pid1;  //create first pid to child1

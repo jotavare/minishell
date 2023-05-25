@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:28:13 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/05/22 12:30:48 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/05/25 16:27:16 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,5 +121,8 @@ int     check_alpha(char *str);
 void	start_env(char **envp, t_attr *my_env);
 void	init_attributes(t_attr *att);
 void	init_paths(t_attr *att);
+
+// pipes
+int	piprectise(int ac, char **av);
 
 #endif
