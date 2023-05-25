@@ -22,6 +22,8 @@
 	<a href="#license">License</a>
 </p>
 
+valgrind --leak-check=full --gen-suppressions=all --log-file=memcheck.log ./minishell 
+
 <div>
 <table>
 <tr><th>COLORS</th>
