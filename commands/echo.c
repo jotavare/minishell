@@ -14,25 +14,6 @@
 
 /*
 	prints the string after echo command to the terminal
-	with the -n option = no new line at the end of the string
-*/
-
-void	echo_n(t_attr att)
-{
-	int	i;
-
-	i = 2;
-	while (i < att.nb_tokens)
-	{
-		ft_putstr_fd(att.tok_arr[i], 1);
-		if (att.tok_arr[i + 1])
-			ft_putchar_fd(' ', 1);
-		i++;
-	}
-}
-
-/*
-	prints the string after echo command to the terminal
 	with a new line at the end of the string
 */
 
@@ -64,4 +45,23 @@ void echo(t_attr att)
         }
         ft_putchar_fd('\n', 1);
     }
+}
+
+/*
+	prints the string after echo command to the terminal
+	with the -n option = no new line at the end of the string
+*/
+
+void	echo_n(t_attr att)
+{
+	int	i;
+
+	i = 2;
+	while (i < att.nb_tokens)
+	{
+		ft_putstr_fd(att.tok_arr[i], 1);
+		if (att.tok_arr[i + 1])
+			ft_putchar_fd(' ', 1);
+		i++;
+	}
 }

@@ -28,27 +28,12 @@ int	check_equal(char *str)
 	return (0);
 }
 
-/* int	already_exist(t_attr *att, char *add)
-{
-	int i = 0;
-	int j = 0;
-	char *tmp;
-
-	while (att->g_env[i])
-	{
-		while (att->g_env[i][j] != '=')
-			j++;
-		if ()
-		i++;
-	}
-	return (0);
-}
- */
 void	refresh_addenv(t_attr *att, char *add)
 {
 	int i = 0;
-	if (att)
-		free_g_env(att);
+
+	double_myenv(att);
+	free_g_env(att);
 	att->g_env = malloc(sizeof(char *) * att->len_myenv + 2);
 	if(!att->g_env)
 		return ;
@@ -66,6 +51,25 @@ void	refresh_addenv(t_attr *att, char *add)
     main function of the export command
 */
 
+int	check_the_arr(t_attr *att, char *str)
+{
+	int i;
+	int j;
+
+	i = 0;
+	j = 0;
+	while (str[j] != '=')
+		j++;
+	j--;
+	while (att->g_env[i])
+	{
+		if (!ft_strncmp(att->g_env[i], str, j))
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
 void	export(t_attr *att)
 {
 	int j;
@@ -79,16 +83,20 @@ void	export(t_attr *att)
 	}
 	while (att->tok_arr[j])
 	{
-		if (check_equal(att->tok_arr[j]) == 1)
+		double_myenv(att);
+		if (!check_alpha(att->tok_arr[j]))
+			printf("bash: export: '%s': not a valid identifier\n", att->tok_arr[j]);
+		else if (check_equal(att->tok_arr[j]) && check_the_arr(att, att->tok_arr[j]))
 		{
-/* 			if (already_exist(att, att->tok_arr[j]) == 1)
-			{
-				unset(att);
-			}  */
-			double_myenv(att);
+			refresh_rmenv(att, find_index(att->g_env, att->tok_arr[j]));
+			refresh_addenv(att, att->tok_arr[j]);
+		}
+		else if (check_equal(att->tok_arr[j]))
+		{
 			refresh_addenv(att, att->tok_arr[j]);
 			export_sort(att);
 		}
+		free_d_env(att);
 		j++;
 	}
 }

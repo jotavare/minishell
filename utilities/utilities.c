@@ -181,3 +181,18 @@ void	init_paths(t_attr *att)
 	att->last_path = getenv("HOME");
 	att->len_d_env = 0;
 }
+
+int	check_alpha(char *str)
+{
+	int i;
+	
+	i = 0;
+	while (str[i] && str[i] != '=')
+	{
+		if ((str[i] >= 'A' && str[i] <= 'Z') || (str[i] >= 'a' && str[i] <= 'z') 
+			|| (str[i] == '_'))
+			return (1);
+		i++;
+	}
+	return (0);
+}

@@ -13,9 +13,7 @@
 #include "../minishell.h"
 
 /*
-    change directory to path given in input string
-    > format: "cd <path>"
-    > status: working for the most part
+    change directory to path given an argument
 */
 
 void	cd(t_attr *attr)

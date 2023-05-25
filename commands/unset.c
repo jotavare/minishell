@@ -68,6 +68,7 @@ void	free_g_env(t_attr *att)
 		att->g_env[i] = NULL;
 		i++;
 	}
+	free(att->g_env);
 }
 
 void	double_myenv(t_attr *att)
@@ -108,6 +109,8 @@ void	refresh_rmenv(t_attr *att, int rm_index)
 
 	i = 0;
 	j = 0;
+
+	double_myenv(att);
 	free_g_env(att);
 	att->g_env = malloc(sizeof(char *) * att->len_myenv);
 	if (!att->g_env)
@@ -135,15 +138,12 @@ void	unset(t_attr *att)
 		return ;
 	while (att->tok_arr[j])
 	{
-		//printf("G_EN ->: %s\n", att->g_env[66]);
 		double_myenv(att);
-		if ((find_index(att->g_env, att->tok_arr[j])) > 0)
+		if ((find_index(att->g_env, att->tok_arr[j])))
 		{
 			refresh_rmenv(att, find_index(att->g_env, att->tok_arr[j]));
-			//printf("D_ENV ->: %s\n", att->d_env[66]);
+			free_d_env(att);
 		}
 		j++;
-		//else if (find_index(&att->g_env[i], att->tok_arr[j]) == 0)
 	}
-	//printf("SIZE3: %d\n", att->len_myenv);
 }

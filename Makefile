@@ -65,8 +65,8 @@ clean:
 	$(MAKE)	clean -C ./libft
 
 fclean: clean
-	$(RM) $(NAME) $(OBJ)
-	$(MAKE) fclean -C ./libft 
+	$(RM) $(NAME) $(OBJSDIR)
+	$(MAKE) fclean -C ./libft
 	echo "Everything Deleted..."
 
 re: fclean all
