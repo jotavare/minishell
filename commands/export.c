@@ -6,7 +6,7 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:57:28 by alexandre         #+#    #+#             */
-/*   Updated: 2023/05/24 20:33:20 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/05/25 17:28:43 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,19 +54,24 @@ void	refresh_addenv(t_attr *att, char *add)
 int	check_the_arr(t_attr *att, char *str)
 {
 	int i;
-	int j;
-
+	char	*to_find;
+	int j = 0;
+	
 	i = 0;
-	j = 0;
 	while (str[j] != '=')
 		j++;
-	j--;
+	j++;
+	to_find = add_equal(str);
 	while (att->g_env[i])
 	{
-		if (!ft_strncmp(att->g_env[i], str, j))
-			return (1);
+		if (!ft_strncmp(att->g_env[i], to_find, j))
+		{
+			free(to_find);
+			return (i);
+		}
 		i++;
 	}
+	free(to_find);
 	return (0);
 }
 
@@ -86,15 +91,11 @@ void	export(t_attr *att)
 		double_myenv(att);
 		if (!check_alpha(att->tok_arr[j]))
 			printf("bash: export: '%s': not a valid identifier\n", att->tok_arr[j]);
-		else if (check_equal(att->tok_arr[j]) && check_the_arr(att, att->tok_arr[j]))
+		else if (check_equal(att->tok_arr[j]) || check_the_arr(att, att->tok_arr[j]))
 		{
-			refresh_rmenv(att, find_index(att->g_env, att->tok_arr[j]));
+			if(check_the_arr(att, att->tok_arr[j]))
+				refresh_rmenv(att, check_the_arr(att, att->tok_arr[j]));
 			refresh_addenv(att, att->tok_arr[j]);
-		}
-		else if (check_equal(att->tok_arr[j]))
-		{
-			refresh_addenv(att, att->tok_arr[j]);
-			export_sort(att);
 		}
 		free_d_env(att);
 		j++;

@@ -6,14 +6,16 @@
 /*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 15:38:30 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/05/25 16:27:17 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/05/25 17:31:00 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./minishell.h"
+#include "../minishell.h"
 
 int	piprectise(int ac, char **av)
 {
+	(void)ac;
+	(void)av;
 	int	fd[2]; //create file descriptors variables
 	int	pid1;  //create first pid to child1
 	int	pid2;  //create second pid to child2
