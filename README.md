@@ -44,7 +44,7 @@
 | :--- |
 | `valgrind` |
 | `-leak-check=full` |
-| `--show-leak-kinds=all |
+| `--show-leak-kinds=all` |
 | `--track-origins=yes` |
 | `--verbose` |
 | `--gen-suppressions=all` |
