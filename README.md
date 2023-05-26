@@ -33,7 +33,7 @@
 | :--- |
 | `echo $?`                                                                                 |
 | `-fsanitize=address`                                                                      |
-| `-lreadline`                   								                                            |
+| `-lreadline`																																							|
 | `nm -g ./minishell \| grep " U "`                                                         |
 | `valgrind --leak-check=full --gen-suppressions=all --log-file=memcheck.log ./minishell`   |
 
@@ -111,10 +111,9 @@
 </div>
 
 # EXPORT
-	
 <div>
 <table>
-<tr><th></th><th></th><th></th>
+<tr><th></th>
 <tr><td>
 
 | State | Built-In |
@@ -129,11 +128,6 @@
 | 🟡 | `export a=42` + `export a=24`|
 | 🟡 | `export b=42`                |
 | 🟡 | `export a = 42`              |
-
-</td><td>
-
-| State | Built-In |
-| :---: | :--- |
 | 🟡 | `export a=" 42 "`            |
 | 🟡 | `export a=' 42 '`            |
 | 🟡 | `export a = 42`              |
@@ -145,30 +139,27 @@
 | 🟡 | `export =a=42` 							|
 | 🟡 | `export a==42` 							|
 | 🟡 | `export "a=42"` 							|
-
-</td><td>
-
-| State | Built-In |
-| :---: | :--- |
 | 🟡 | `export a="42"` 							|
 | 🟡 | `export _=42` 								|
 | 🟡 | `export 42=42`								|
 | 🟡 | `export a b = 42`						|
 | 🟡 | `export a= b= 42`						|
+| 🟡 | `export a=42 % b=42 % c=42`	|
 | 🟡 | `export a=42 b=42 c=42`			|
 | 🟡 | `export A=a B=b C=c D=d E=e` |
 | 🟡 | `export F=f G=g H=h I=i J=j` |
 | 🟡 | `export K=k L=l M=m N=n O=o` |
-| 🟡 | `export P=p Q =q R=r` 				|
+| 🟡 | `export P=p Q=q R=r S=s T=t` |
+| 🟡 | `export U=u V=v W=w X=x Y=y` |
+| 🟡 | `export Z=z` |
 
 </td></tr> </table
 </div>  
 
-# EXIT	
-	
-<div align="center">
+# EXIT
+<div>
 <table>
-<tr><th></th><th></th><th></th>
+<tr><th>
 <tr><td>
 
 | State | Built-In |
@@ -183,11 +174,6 @@
 | 🟢 | `exit "test"`   |
 | 🟢 | `"exit test"`   |
 | 🟢 | `"exit"`        |
-
-</td><td>
-
-| State | Built-In |
-| :---: | :--- |
 | 🔴 | `exit1`         |
 | 🔴 | `exita`         |
 | 🟢 | `exit 0`        |
@@ -199,12 +185,6 @@
 | 🔴 | `exit -10`      |
 | 🔴 | `exit +2000`    |
 | 🔴 | `exit -2000`    |
-
-	
-</td><td>
-
-| State | Built-In |
-| :---: | :--- |
 | 🔴 | `exit -2147483649` |
 | 🔴 | `exit 2147483648` |
 | 🔴 | `exit 00000000000000000000` |
@@ -220,10 +200,7 @@
 </td></tr></table>
 </div>
 
-<!---
-CD TABLE
--->  
-  
+# CD  
 <div>
 <table>
 <tr><th>CD</th>
@@ -265,10 +242,7 @@ CD TABLE
 </td></tr> </table
 </div>
 
-<!---
-ECHO TABLE
--->  
-  
+# ECHO  
 <div>
 <table>
 <tr><th>ECHO</th>
