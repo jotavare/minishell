@@ -39,7 +39,17 @@
 | `-fsanitize=address` |
 | `-lreadline` |
 | `nm -g ./minishell \| grep " U "` |
-| `valgrind --leak-check=full --gen-suppressions=all --log-file=leak.log` |
+
+| Valgrind |
+| :--- |
+| `valgrind` |
+| `-leak-check=full` |
+| `--show-leak-kinds=all |
+| `--track-origins=yes` |
+| `--verbose` |
+| `--gen-suppressions=all` |
+| `--suppressions=valgrind_readline_leaks_ignore.txt` |
+| `--log-file=memleaks.log` |
 
 # BLANK
 | State | Definition |
