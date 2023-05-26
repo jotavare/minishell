@@ -22,16 +22,14 @@
 	<a href="#echo">Echo</a>
 </p>
 
-> For quicker debugging, make a rule to compile and run the program
-	
-| Commands | Description |
-| :--- | :--- |
-| `make -n` | See if the compilations uses -Wall -Wextra -Werror |
-| `echo $?` | Return values |
-| `-fsanitize=address` | Detects memory errors at runtime |
-| `-lreadline` | Necessary for readline function |
-| `nm -g ./minishell \| grep " U "` | List undefined symbols |
-| `valgrind --leak-check=full --gen-suppressions=all --log-file=memcheck.log ./minishell` | Detailed memory leaks and reduce noise output. |
+| Commands |
+| :---: |
+| `make -n` |
+| `echo $?` |
+| `-fsanitize=address` |
+| `-lreadline` |
+| `nm -g ./minishell \| grep " U "` |
+| `valgrind --leak-check=full --gen-suppressions=all --log-file=memcheck.log ./minishell` |
 
 | State | Definition |
 | :---: | :--- |
