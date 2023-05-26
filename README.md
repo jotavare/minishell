@@ -44,8 +44,8 @@
 # BLANK
 | State | Definition |
 | :---: | :--- |
-| 🔵 | <empty> |
-| 🔵 | <spaces> or <tabs> |
+| 🔵 | \<empty> |
+| 🔵 | \<spaces> or \<tabs> |
 | 🔵 | `../../` |
 | 🔵 | `$` |
 
