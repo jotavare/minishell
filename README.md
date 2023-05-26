@@ -39,6 +39,8 @@
 | `-fsanitize=address` |
 | `-lreadline` |
 | `nm -g ./minishell \| grep " U "` |
+| `norminette` |
+| `cc -g -Wall -Wextra -Werror` |
 
 | Valgrind Flags |
 | :--- |
