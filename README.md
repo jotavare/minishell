@@ -281,7 +281,7 @@
 | 🟡 | `echo $PW`                                                           |
 
 # Utilities
-# Return Values ($?)
+## Return Values ($?)
 
 * All Linux commands return an error code between 0 and 255.
 * The value 0 represents the value true (command success).
