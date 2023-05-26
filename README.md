@@ -31,7 +31,12 @@
 | 🔴 | Not working |
 | 🔵 | Not mandatory (i think?!) |
 | -  | Nothing |
-	
+
+<div>
+<table>
+<tr><th></th><th></th></tr>
+<tr><td>
+
 | Important Information |
 | :--- |
 | `make -n` |
@@ -42,6 +47,8 @@
 | `norminette` |
 | `cc -g -Wall -Wextra -Werror` |
 
+</td><td>
+
 | Valgrind Flags |
 | :--- |
 | `-leak-check=full` |
@@ -51,6 +58,10 @@
 | `--gen-suppressions=all` |
 | `--suppressions=valgrind_readline_leaks_ignore.txt` |
 | `--log-file=memleaks.log` |
+
+</td></tr>
+</table>
+</div>
 
 # BLANK
 | State | Definition |
