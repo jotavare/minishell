@@ -82,7 +82,7 @@ CTRL TABLE
 | 🟡 | `write something then press` + `Ctrl` + `\`    |
 | 🟡 | `sleep 5` + `Ctrl` + `C`    		                |
 | 🟡 | `sleep 5` + `Ctrl` + `D`   										|
-| 🟡 | `sleep 5` `Ctrl` + `\`   											|
+| 🟡 | `sleep 5` + `Ctrl` + `\`   										|
 
 </td></tr> </table
 </div>
