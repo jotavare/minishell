@@ -167,7 +167,32 @@ EXPORT TABLE
 <!---
 EXIT TABLE
 -->  
-  
+# $?
+
+* All Linux commands return an error code between 0 and 255.
+* The value 0 represents the value true (command success).
+* Values greater than 0 represent false (command failure).
+* The error code of the last command used is contained in the variable $?
+
+<div>
+<table>
+<tr><th>EXIT</th>
+<tr><td>
+
+| $? | Description |
+| :---: | :--- |
+| 1 	| standard for general errors, such as a division by zero |
+| 2 	| improper use of built-in commands, per Bash documentation |
+| 126 	| the command called cannot be executed, rights problem or command not executable |
+| 127 	| command not found, possible problem with $PATH or typing error |
+| 128 	| invalid command argument |
+| 128+n | 128 + signal number |
+| 130 	| finished with Ctrl-C (130 = 128 + 2) |
+| 255 	| exit code out of bounds eg exit -1 |
+
+</td></tr> </table
+</div>
+	
 <div>
 <table>
 <tr><th>EXIT</th>
