@@ -365,25 +365,25 @@
 | `$PATH`	| Path to executables | 	
 | `cat`		| Send the file to stdout | 	
 
-### CHMOD Callbacks and Rights
+### CHMOD
 | Rights | Number |
 | :--- | :--- |
-| `r` (read)	| 4 |
-| `w` (write)	| 2 |
-| `x` (execute)	| 1 |
+| `r` (read)	| `4` |
+| `w` (write)	| `2` |
+| `x` (execute)	| `1` |
 	
 | Rights | Total | Calculation |
 | :--- | :--- | :--- |
-| `---`				|	0			|	0+0+0			|
-| `r--`				|	4			|	4+0+0			|
-| `-w-`				|	2			|	0+2+0			|
-| `--x`				|	1			|	0+0+1			|
-| `rw-`				|	6			|	4+2+0			|
-| `-wx`				|	3			|	0 + 2 + 1		|
-| `x-ray`			|	5			|	4+0+1			|
-| `rwx`				|	7			|	4+2+1			|
+| `---`   |	`0` | `0+0+0` |
+| `r--`   |	`4` | `4+0+0` |
+| `-w-`   |	`2` | `0+2+0` |
+| `--x`   |	`1` | `0+0+1` |
+| `rw-`   |	`6` | `4+2+0` |
+| `-wx`   |	`3` | `0+2+1` |
+| `x-ray` |	`5` | `4+0+1` |
+| `rwx`   |	`7` | `4+2+1` |
 
-### MAX/MIN Values
+### MAX/MIN
 | Data Types | Qualifiers | Size (in byte) | Range |
 | :--- | :--- | :--- | :--- |
 | `char`	| `char` or `signed char`				| `1` |	`-128` to `127` |
