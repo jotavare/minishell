@@ -69,19 +69,34 @@
 | State | Commands |
 | :---: | :--- |
 | 🟡 | `/bin/echo` |
+| 🟡 | `/bin/grep` |
 | 🟡 | `/bin/ls` |
+| 🟡 | `/bin/ls -la` |
 | 🟡 | `/bin/cat` |
+| 🟡 | `/bin/pwd` |
+| 🟡 | `/bin/cd` |
+| 🟡 | `/bin/export` |
+| 🟡 | `/bin/env` |
+| 🟡 | `/bin/exit` |
+| 🟡 | `/bin/echo` |
 
 # PWD
 | State | Commands |
 | :---: | :--- |
 | 🟡 | `pwd` |
 | 🟡 | `pwd a` |
-| 🟡 | `pwd a b c d`                 |
+| 🟡 | `pwd a b c d` |
 
-# EXPORT
+# EXPORT AND ENV
 | State | Built-In |
 | :---: | :--- |
+| 🟡 | `ENV`                        |
+| 🟡 | `eNv`                        |
+| 🟡 | `env`                        |
+| 🟡 | `UNSET`                      |
+| 🟡 | `uNsEt`                      |
+| 🟡 | `unset`                      |
+| 🟡 | `unset [variable]`           |
 | 🟡 | `EXPORT`                     |
 | 🟡 | `eXpOrT`                     |
 | 🟡 | `export`                     |
@@ -89,7 +104,7 @@
 | 🟡 | `export `                    |
 | 🟡 | `  export  `                 |
 | 🟡 | `export a=42`                |
-| 🟡 | `export a=42` + `export a=24`|
+| 🟡 | `export a=24`		    |
 | 🟡 | `export b=42`                |
 | 🟡 | `export a = 42`              |
 | 🟡 | `export a=" 42 "`            |
