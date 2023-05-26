@@ -169,6 +169,13 @@
 | 🟢 | `"exit"`        |
 | 🔴 | `exit1`         |
 | 🔴 | `exita`         |
+| 🟢 | `exit exit`     |
+| 🟢 | `exit a`        |
+| 🟢 | `exit abc`      |
+| 🔴 | `exit a b c`    |
+| 🟢 | `exit a b c d`  |
+| 🔵 | `exit #`        |
+| 🔵 | `exit *`        |
 | 🟢 | `exit 0`        |
 | 🟢 | `exit 1`        |
 | 🟢 | `exit 123`      |
@@ -193,13 +200,7 @@
 | 🔴 | `exit '42\t\f\r '`|                                                           
 | 🔴 | `exit '42     a'` |                                                            
 | 🔴 | `exit '42\t\t\ta'`| 
-| 🟢 | `exit exit`     |
-| 🟢 | `exit a`        |
-| 🟢 | `exit abc`      |
-| 🔴 | `exit a b c`    |
-| 🟢 | `exit a b c d`  |
-| 🔵 | `exit #`        |
-| 🔵 | `exit *`        |
+
 
 # CD  
 | State | Built-In |
