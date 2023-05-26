@@ -24,14 +24,14 @@
 
 > For quicker debugging, make a rule to compile and run the program
 	
-| Important Information |
-| :--- |
-| make -n | See if the compilations uses -Wall -Wextra -Werror |
+| Commands | Description |
+| :--- | :--- |
+| `make -n` | See if the compilations uses -Wall -Wextra -Werror |
 | `echo $?` | Return values |
-| `-fsanitize=address` | 
-| `-lreadline` |
-| `nm -g ./minishell \| grep " U "` |
-| `valgrind --leak-check=full --gen-suppressions=all --log-file=memcheck.log ./minishell` |
+| `-fsanitize=address` | Detects memory errors at runtime |
+| `-lreadline` | Necessary for readline function |
+| `nm -g ./minishell \| grep " U "` | List undefined symbols |
+| `valgrind --leak-check=full --gen-suppressions=all --log-file=memcheck.log ./minishell` | Saved memory detailed memory leaks and reduce noise output. |
 
 | State | Definition |
 | :---: | :--- |
@@ -44,10 +44,10 @@
 # BLANK
 | State | Definition |
 | :---: | :--- |
-| 🔵 | \<empty> |
-| 🔵 | \<spaces> or \<tabs> |
-| 🔵 | `../../` |
-| 🔵 | `$` |
+| 🟡 | `<empty>` |
+| 🟡 | `<spaces>` or `<tabs>` |
+| 🟡 | `../../` |
+| 🟡 | `$` |
 
 # SIGNALS
 | State | Commands |
