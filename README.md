@@ -1,6 +1,14 @@
+<!---
+BANNER
+-->
+
 <p align="center">
   <img src="https://github.com/jotavare/jotavare/blob/main/42/banner/new/42_minishell_banner_new.png">
 </p>
+
+<!---
+BADGES
+-->
 
 <p align="center">
 	<img src="https://img.shields.io/badge/status-finished-success?color=%2312bab9&style=flat-square"/>
@@ -11,6 +19,10 @@
 	<a href='https://www.linkedin.com/in/joaoptoliveira' target="_blank"><img alt='Linkedin' src='https://img.shields.io/badge/LinkedIn-100000?style=flat-square&logo=Linkedin&logoColor=white&labelColor=0A66C2&color=0A66C2'/></a>
 	<a href='https://profile.intra.42.fr/users/jotavare' target="_blank"><img alt='42' src='https://img.shields.io/badge/Porto-100000?style=flat-square&logo=42&logoColor=white&labelColor=000000&color=000000'/></a>
 </p>
+
+<!---
+INDEX
+-->
 
 <p align="center">
 	<a href="#about">About</a> •
@@ -26,12 +38,16 @@
 IMPORTANT
 -->
 
+# IMPORTANT
+
 <div>
 <table>
 <tr><th>IMPORTANT</th>
 <tr><td>
 
-| For quicker debugging, make a rule to compile and run the program |
+* For quicker debugging, make a rule to compile and run the program
+	
+| Commands |
 | :--- |
 | `echo $?`                                                                                 |
 | `-fsanitize=address`                                                                      |
@@ -46,6 +62,8 @@ IMPORTANT
 COLORS TABLE
 -->
 
+# COLORS
+	
 <div>
 <table>
 <tr><th>COLORS MEANING</th>
@@ -61,12 +79,13 @@ COLORS TABLE
 
 </td></tr> </table
 </div>
-	
 
 <!---
 CTRL TABLE
 -->
 
+# CTRL
+	
 <div>
 <table>
 <tr><th>CTRL</th>
