@@ -129,7 +129,7 @@ EXPORT TABLE
   
 <div>
 <table>
-<tr><th>EXPORT</th>
+<tr><th>ENVIRONMENT</th>
 <tr><td>
 
 | State | Built-In |
@@ -141,6 +141,9 @@ EXPORT TABLE
 | 🟡 | `export `                                   	|
 | 🟡 | `  export  `                                   	|
 | 🟡 | `export a=42`                                |
+| 🟡 | `export a = 42`                                |
+| 🟡 | `export a=" 42 "`                                |
+| 🟡 | `export a=' 42 '`                                |
 | 🟡 | `export a = 42`                              |
 | 🟡 | `export b=42`                                |
 | 🟡 | `export a=42` + `export a=24`                |
@@ -155,6 +158,8 @@ EXPORT TABLE
 | 🟡 | `export a="42"` 															|
 | 🟡 | `export _=42` 															  |
 | 🟡 | `export 42=42` 															|
+| 🟡 | `export a= b= 42` 															|
+| 🟡 | `export a=42 b=42 c=42`                                |
 
 </td></tr> </table
 </div>  
@@ -286,6 +291,8 @@ ECHO TABLE
 | 🟡 | `echo file test`                                                     |
 | 🟡 | `echo file   test`                                                   |
 | 🟡 | `echo file     test file   test`                                     |
+| 🟡 | echo a"b"c																														|
+| 🟡 | echo "a'b'c																													|
 | 🟡 | `echo "test"`                                                        |
 | 🟡 | `echo test`                                                          |
 | 🟡 | `echo 'test'`                                                        |
