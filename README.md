@@ -118,14 +118,13 @@
 | 🟡 | `export 42=42`		    |
 | 🟡 | `export a b = 42`	    |
 | 🟡 | `export a= b= 42`	    |
-| 🟡 | `export a=42 % b=42 % c=42`  |
+| 🟡 | `export a=42 % b=42 @ c=42`  |
 | 🟡 | `export a=42 b=42 c=42`	    |
 | 🟡 | `export A=a B=b C=c D=d E=e` |
 | 🟡 | `export F=f G=g H=h I=i J=j` |
 | 🟡 | `export K=k L=l M=m N=n O=o` |
 | 🟡 | `export P=p Q=q R=r S=s T=t` |
-| 🟡 | `export U=u V=v W=w X=x Y=y` |
-| 🟡 | `export Z=z` 		    |
+| 🟡 | `export U=u V=v W=w X=x Y=y Z=z` |
 
 # EXIT
 | State | Built-In |
