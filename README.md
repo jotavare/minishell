@@ -22,16 +22,33 @@
 	<a href="#license">License</a>
 </p>
 
-</br> tip: make a rule on makefile that compiles and runs the program
-</br> nm -g ./minishell | grep " U "
-</br> valgrind --leak-check=full --gen-suppressions=all --log-file=memcheck.log ./minishell
-</br> echo $?
-</br> -lreadline
-</br> -fsanitize=address
+<!---
+IMPORTANT
+-->
 
 <div>
 <table>
-<tr><th>COLORS</th>
+<tr><th>IMPORTANT</th>
+<tr><td>
+
+| For quicker debugging, make a rule to compile and run the program |
+| :--- |
+| `echo $?`                                                                                 |
+| `-fsanitize=address`                                                                      |
+| `-lreadline`                   								                                            |
+| `nm -g ./minishell \| grep " U "`                                                         |
+| `valgrind --leak-check=full --gen-suppressions=all --log-file=memcheck.log ./minishell`   |
+
+</td></tr> </table
+</div>
+
+<!---
+COLORS TABLE
+-->
+
+<div>
+<table>
+<tr><th>COLORS MEANING</th>
 <tr><td>
 
 | State | Definition |
@@ -40,10 +57,15 @@
 | 🟡  | Didn't test yet           |
 | 🔴  | Not working               |
 | 🔵  | Not mandatory (i think?!) |
-| n/a | Nothing                   |
+| -   | Nothing                   |
 
 </td></tr> </table
 </div>
+	
+
+<!---
+CTRL TABLE
+-->
 
 <div>
 <table>
@@ -64,7 +86,12 @@
 
 </td></tr> </table
 </div>
-	
+
+
+<!---
+PATH TABLE
+-->  
+
 <div>
 <table>
 <tr><th>PATH</th>
@@ -78,7 +105,12 @@
 
 </td></tr> </table
 </div>
-	
+
+
+<!---
+PWD TABLE
+-->  
+
 <div>
 <table>
 <tr><th>PWD</th>
@@ -92,7 +124,11 @@
 
 </td></tr> </table
 </div>
-	
+
+<!---
+EXPORT TABLE
+-->  
+  
 <div>
 <table>
 <tr><th>EXPORT</th>
@@ -125,6 +161,10 @@
 </td></tr> </table
 </div>  
 
+<!---
+EXIT TABLE
+-->  
+  
 <div>
 <table>
 <tr><th>EXIT</th>
@@ -167,6 +207,11 @@
 
 </td></tr> </table
 </div>
+
+
+<!---
+CD TABLE
+-->  
   
 <div>
 <table>
@@ -209,6 +254,11 @@
 </td></tr> </table
 </div>
 
+
+<!---
+ECHO TABLE
+-->  
+  
 <div>
 <table>
 <tr><th>ECHO</th>
