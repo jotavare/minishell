@@ -13,15 +13,15 @@
 </p>
 
 <p align="center">
-	<a href="#ctrl">blank</a> •
-	<a href="#path">signals</a> •
-	<a href="#pwd">path</a> •
-	<a href="#export">pwd</a> •
-	<a href="#exit">export</a> •
-	<a href="#cd">exit</a> •
-	<a href="#echo">cd</a> •
+	<a href="#blank">blank</a> •
+	<a href="#signals">signals</a> •
+	<a href="#path">path</a> •
+	<a href="#pwd">pwd</a> •
+	<a href="#export">export</a> •
+	<a href="#exit">exit</a> •
+	<a href="#cd">cd</a> •
 	<a href="#echo">echo</a> •
-	<a href="#echo">utilities</a>
+	<a href="#utilities">utilities</a>
 </p>
 
 <div>
