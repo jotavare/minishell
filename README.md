@@ -67,7 +67,7 @@
 <tr><th>EXIT</th>
 <tr><td>
 
-| State | Built-In | `echo $?` |
+| State | Built-In |
 | :---: | :--- | :--- |
 | 🟢 | `EXIT`          |
 | 🟢 | `exit`          |
@@ -109,7 +109,7 @@
 <tr><th>CD</th>
 <tr><td>
 
-| State | Built-In | `echo $?` |
+| State | Built-In |
 | :---: | :--- | :--- |
 | 🟢 | `CD`                   |
 | 🟢 | `cd`                   |
@@ -150,7 +150,7 @@
 <tr><th>ECHO</th>
 <tr><td>
 
-| State | Built-In | `echo $?` |
+| State | Built-In |
 | :---: | :--- | :--- |
 | 🟢 | `ECHO`                                                               |
 | 🟢 | `echO`                                                               |
