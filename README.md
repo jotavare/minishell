@@ -24,9 +24,10 @@
 
 > For quicker debugging, make a rule to compile and run the program
 	
-| Commands |
+| Important Information |
 | :--- |
-| `echo $?` |
+| make -n | See if the compilations uses -Wall -Wextra -Werror |
+| `echo $?` | Return values |
 | `-fsanitize=address` | 
 | `-lreadline` |
 | `nm -g ./minishell \| grep " U "` |
@@ -39,6 +40,9 @@
 | 🔴 | Not working |
 | 🔵 | Not mandatory (i think?!) |
 | -  | Nothing |
+
+empty
+spaces or tabs
 
 # CTRL
 | State | Commands |
