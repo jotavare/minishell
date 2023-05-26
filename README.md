@@ -24,11 +24,14 @@
 	<a href="#utilities">utilities</a>
 </p>
 
-<div>
-<table>
-<tr><th></th><th></th></tr>
-<tr><td>
-
+| State | Definition |
+| :---: | :--- |
+| 🟢 | Working |
+| 🟡 | Didn't test yet |
+| 🔴 | Not working |
+| 🔵 | Not mandatory (i think?!) |
+| -  | Nothing |
+	
 | Commands |
 | :--- |
 | `make -n` |
@@ -37,19 +40,6 @@
 | `-lreadline` |
 | `nm -g ./minishell \| grep " U "` |
 | `valgrind --leak-check=full --gen-suppressions=all --log-file=leak.log` |
-
-</td><td>
-	
-| State | Definition |
-| :---: | :--- |
-| 🟢 | Working |
-| 🟡 | Didn't test yet |
-| 🔴 | Not working |
-| 🔵 | Not mandatory (i think?!) |
-| -  | Nothing |
-
-</td></tr> </table>
-</div>
 
 # BLANK
 | State | Definition |
