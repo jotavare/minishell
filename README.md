@@ -37,7 +37,8 @@
 | `nm -g ./minishell \| grep " U "`                                                         |
 | `valgrind --leak-check=full --gen-suppressions=all --log-file=memcheck.log ./minishell`   |
 
-</td></tr> </table
+</td></tr>
+</table>
 </div>
 
 <div>
@@ -53,11 +54,11 @@
 | 🔵  | Not mandatory (i think?!) |
 | -   | Nothing                   |
 
-</td></tr> </table
+</td></tr>
+</table>
 </div>
 
 # CTRL
-	
 <div>
 <table>
 <tr><th></th>
@@ -75,11 +76,11 @@
 | 🟡 | `sleep 5` + `Ctrl` + `D`   										|
 | 🟡 | `sleep 5` + `Ctrl` + `\`   										|
 
-</td></tr> </table
+</td></tr>
+</table>
 </div>
 	
 # PATH
-
 <div>
 <table>
 <tr><th></th>
@@ -91,11 +92,11 @@
 | 🟡 | `/bin/ls`                                   |
 | 🟡 | `/bin/cat`                                  |
 
-</td></tr> </table
+</td></tr>
+</table>
 </div>
 
 # PWD
-	
 <div>
 <table>
 <tr><th>PWD</th>
@@ -154,8 +155,9 @@
 | 🟡 | `export U=u V=v W=w X=x Y=y` |
 | 🟡 | `export Z=z` |
 
-</td></tr> </table
-</div>  
+</td></tr>
+</table>
+</div> 
 
 # EXIT
 <div>
@@ -198,7 +200,8 @@
 | 🔵 | `exit #`        |
 | 🔵 | `exit *`        |
 	
-</td></tr></table>
+</td></tr>
+</table>
 </div>
 
 # CD  
@@ -240,7 +243,8 @@
 | 🔵 | `../../`               |
 | 🔵 | `$`                    |
 
-</td></tr> </table
+</td></tr>
+</table>
 </div>
 
 # ECHO  
@@ -335,7 +339,8 @@
 | 🟡 | `echo "text" "text$USER" ... "$USER`                                 |
 | 🟡 | `echo $PW`                                                           |
   
-</td></tr> </table
+</td></tr>
+</table>
 </div>
 
 # $?
@@ -361,8 +366,9 @@
 | 130 	| Finished with Ctrl-C (130 = 128 + 2). |
 | 255 	| Exit code out of bounds eg exit -1. |
 
-</td></tr> </table
-</div>	
+</td></tr>
+</table>
+</div>
 
 # Utilities
 ## Command Reminders
