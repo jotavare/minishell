@@ -22,7 +22,7 @@
 	<a href="#echo">Echo</a>
 </p>
 
-* For quicker debugging, make a rule to compile and run the program
+> For quicker debugging, make a rule to compile and run the program
 	
 | Commands |
 | :--- |
