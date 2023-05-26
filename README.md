@@ -153,32 +153,34 @@ EXPORT TABLE
 
 | State | Built-In |
 | :---: | :--- |
-| 🟡 | `EXPORT`                                			|
-| 🟡 | `eXpOrT`                                			|
-| 🟡 | `export`                                			|
-| 🟡 | ` export`                                   	|
-| 🟡 | `export `                                   	|
-| 🟡 | `  export  `                                   	|
-| 🟡 | `export a=42`                                |
-| 🟡 | `export a = 42`                                |
-| 🟡 | `export a=" 42 "`                                |
-| 🟡 | `export a=' 42 '`                                |
-| 🟡 | `export a = 42`                              |
-| 🟡 | `export b=42`                                |
-| 🟡 | `export a=42` + `export a=24`                |
-| 🟡 | `export a` 																	|
-| 🟡 | `export =` 																	|
-| 🟡 | `export ==`																	|
-| 🟡 | `export a=` 																	|
-| 🟡 | `export a=42=` 															|
-| 🟡 | `export =a=42` 															|
-| 🟡 | `export a==42` 															|
-| 🟡 | `export "a=42"` 															|
-| 🟡 | `export a="42"` 															|
-| 🟡 | `export _=42` 															  |
-| 🟡 | `export 42=42` 															|
-| 🟡 | `export a= b= 42` 															|
-| 🟡 | `export a=42 b=42 c=42`                                |
+| 🟡 | `EXPORT`                                																		|
+| 🟡 | `eXpOrT`                                																		|
+| 🟡 | `export`                                																		|
+| 🟡 | ` export`                                   																|
+| 🟡 | `export `                                   																|
+| 🟡 | `  export  `                                   														|
+| 🟡 | `export a=42`                                															|
+| 🟡 | `export a = 42`                                														|
+| 🟡 | `export a=" 42 "`                                													|
+| 🟡 | `export a=' 42 '`                                													|
+| 🟡 | `export a = 42`                              															|
+| 🟡 | `export b=42`                                															|
+| 🟡 | `export a=42` + `export a=24`                															|
+| 🟡 | `export a` 																																|
+| 🟡 | `export =` 																																|
+| 🟡 | `export ==`																																|
+| 🟡 | `export a=` 																																|
+| 🟡 | `export a=42=` 																														|
+| 🟡 | `export =a=42` 																														|
+| 🟡 | `export a==42` 																														|
+| 🟡 | `export "a=42"` 																														|
+| 🟡 | `export a="42"` 																														|
+| 🟡 | `export _=42` 															  															|
+| 🟡 | `export 42=42` 																														|
+| 🟡 | `export a b = 42` 																													|
+| 🟡 | `export a= b= 42` 																													|
+| 🟡 | `export a=42 b=42 c=42`                                										|
+| 🟡 | `export A=a B=b C=c D=d E=e F=f G=g H=h I=i J=j K=k L=l M=m N=n O=o P=p Q =q R=r` |
 
 </td></tr> </table
 </div>  
