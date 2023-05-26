@@ -152,6 +152,7 @@
 | 🟡 | `export K=k L=l M=m N=n O=o` |
 | 🟡 | `export P=p Q=q R=r S=s T=t` |
 | 🟡 | `export U=u V=v W=w X=x Y=y Z=z` |
+| 🟡 | `export _=a; echo $_a` |
 
 # EXIT
 | State | Built-In |
