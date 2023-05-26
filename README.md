@@ -155,7 +155,7 @@
 	
 <div>
 <table>
-<tr><th></th><th>EXIT</th><th></th>
+<tr><th></th><th></th><th></th>
 <tr><td>
 
 | State | Built-In |
