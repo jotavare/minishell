@@ -31,7 +31,7 @@
 | `-fsanitize=address` | Detects memory errors at runtime |
 | `-lreadline` | Necessary for readline function |
 | `nm -g ./minishell \| grep " U "` | List undefined symbols |
-| `valgrind --leak-check=full --gen-suppressions=all --log-file=memcheck.log ./minishell` | Saved memory detailed memory leaks and reduce noise output. |
+| `valgrind --leak-check=full --gen-suppressions=all --log-file=memcheck.log ./minishell` | Detailed memory leaks and reduce noise output. |
 
 | State | Definition |
 | :---: | :--- |
