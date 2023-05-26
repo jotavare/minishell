@@ -42,7 +42,7 @@
 
 <div>
 <table>
-<tr><th>COLORS MEANING</th>
+<tr><th></th>
 <tr><td>
 
 | State | Definition |
@@ -60,7 +60,7 @@
 	
 <div>
 <table>
-<tr><th>CTRL</th>
+<tr><th></th>
 <tr><td>
 
 | State | Built-In |
@@ -82,7 +82,7 @@
 
 <div>
 <table>
-<tr><th>PATH</th>
+<tr><th></th>
 <tr><td>
 
 | State | Built-In |
@@ -107,7 +107,8 @@
 | 🟡 | `pwd a`                                    |
 | 🟡 | `pwd a b c d`                              |
 
-</td></tr> </table
+</td></tr>
+</table>
 </div>
 
 # EXPORT
