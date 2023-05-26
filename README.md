@@ -58,7 +58,7 @@
 | 🟡 | `write something then press` + `Ctrl` + `C`    |
 | 🟡 | `write something then press` + `Ctrl` + `D`    |
 | 🟡 | `write something then press` + `Ctrl` + `\`    |
-| 🟡 | `sleep 5` + `Ctrl` + `C`    										|
+| 🟡 | `sleep 5` + `Ctrl` + `C`    		                |
 | 🟡 | `sleep 5` + `Ctrl` + `D`   										|
 | 🟡 | `sleep 5` `Ctrl` + `\`   											|
 
@@ -86,9 +86,9 @@
 
 | State | Built-In |
 | :---: | :--- |
-| 🟡 | `pwd`                                 |
-| 🟡 | `pwd a`                                   |
-| 🟡 | `pwd a b c d`                                  |
+| 🟡 | `pwd`                                      |
+| 🟡 | `pwd a`                                    |
+| 🟡 | `pwd a b c d`                              |
 
 </td></tr> </table
 </div>
@@ -100,10 +100,14 @@
 
 | State | Built-In |
 | :---: | :--- |
+| 🟡 | `EXPORT`                                			|
+| 🟡 | `eXpOrT`                                			|
 | 🟡 | `export`                                			|
 | 🟡 | ` export`                                   	|
+| 🟡 | `export `                                   	|
+| 🟡 | ` export `                                   	|
 | 🟡 | `export a=42`                                |
-| 🟡 | `export a = 42`                                |
+| 🟡 | `export a = 42`                              |
 | 🟡 | `export b=42`                                |
 | 🟡 | `export a=42` + `export a=24`                |
 | 🟡 | `export a` 																	|
@@ -129,6 +133,7 @@
 | State | Built-In |
 | :---: | :--- |
 | 🟢 | `EXIT`          |
+| 🟢 | `eXiT`          |
 | 🟢 | `exit`          |
 | 🟢 | `exit `         |
 | 🟢 | ` exit`         |
