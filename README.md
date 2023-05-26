@@ -127,6 +127,12 @@
 | 🟡 | `export a=' 42 '`            |
 | 🟡 | `export a = 42`              |
 | 🟡 | `export a` 		    |
+| 🟡 | `export A=''           	    |                                         
+| 🟡 | `export A='"'                |                                   
+| 🟡 | `export A='\'                |                                
+| 🟡 | `export A='$'`               |                                 
+| 🟡 | `export A='\t'`              |                                    
+| 🟡 | `export A='''` 		    | 
 | 🟡 | `export =` 		    |
 | 🟡 | `export ==`		    |
 | 🟡 | `export a=` 		    |
