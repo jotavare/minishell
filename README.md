@@ -93,10 +93,17 @@
 | 🟡 | `ENV`                        |
 | 🟡 | `eNv`                        |
 | 🟡 | `env`                        |
+| 🟡 | ` env`                       |
+| 🟡 | `env `                       |
+| 🟡 | `  env  `                    |
 | 🟡 | `UNSET`                      |
 | 🟡 | `uNsEt`                      |
 | 🟡 | `unset`                      |
+| 🟡 | ` unset`                     |
+| 🟡 | `unset `                     |
+| 🟡 | `  unset  `                  |
 | 🟡 | `unset [variable]`           |
+| 🟡 | `unset [variable] [variable]`|
 | 🟡 | `EXPORT`                     |
 | 🟡 | `eXpOrT`                     |
 | 🟡 | `export`                     |
