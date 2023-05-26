@@ -283,7 +283,7 @@
 | 🟡 | `echo $PW`                                                           |
 
 # Utilities
-## Return Values ($?)
+### Return Values ($?)
 
 * All Linux commands return an error code between 0 and 255.
 * The value 0 represents the value true (command success).
@@ -301,7 +301,7 @@
 | 130 	| Finished with Ctrl-C (130 = 128 + 2). |
 | 255 	| Exit code out of bounds eg exit -1. |
 
-## Command Reminders
+### Command Reminders
 | Command | Description |
 | :--- | :--- |
 | `yes`		| Writes yes in an infinite loop (yes teste) |
@@ -324,7 +324,7 @@
 | `$PATH`	| Path to executables | 	
 | `cat`		| Send the file to stdout | 	
 
-## CHMOD Callbacks and Rights
+### CHMOD Callbacks and Rights
 | Rights | Number |
 | :--- | :--- |
 | `r` (read)	| 4 |
@@ -342,7 +342,7 @@
 | `x-ray`			|	5			|	4+0+1			|
 | `rwx`				|	7			|	4+2+1			|
 
-## MAX/MIN Values
+### MAX/MIN Values
 | Data Types | Qualifiers | Size (in byte) | Range |
 | :--- | :--- | :--- | :--- |
 | `char`	| `char` or `signed char`				| `1` |	`-128` to `127` |
