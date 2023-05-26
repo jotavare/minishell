@@ -87,7 +87,7 @@
 | 🟡 | `pwd a` |
 | 🟡 | `pwd a b c d` |
 
-# EXPORT AND ENV
+# EXPORT, ENV AND UNSET
 | State | Built-In |
 | :---: | :--- |
 | 🟡 | `ENV`                        |
