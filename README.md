@@ -103,9 +103,9 @@
 | 🟡 | `EXPORT`                                			|
 | 🟡 | `eXpOrT`                                			|
 | 🟡 | `export`                                			|
-| 🟡 | ` export`                                   	|
-| 🟡 | `export `                                   	|
-| 🟡 | ` export `                                   	|
+| 🟡 | `  export`                                   	|
+| 🟡 | `export  `                                   	|
+| 🟡 | `  export  `                                   	|
 | 🟡 | `export a=42`                                |
 | 🟡 | `export a = 42`                              |
 | 🟡 | `export b=42`                                |
