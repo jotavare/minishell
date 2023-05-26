@@ -41,31 +41,31 @@
 | -  | Nothing |
 
 # CTRL
-| State | Built-In |
+| State | Commands |
 | :---: | :--- |
-| 🟡 | `Ctrl` + `C`                                   |
-| 🟡 | `Ctrl` + `D`                                   |
-| 🟡 | `Ctrl` + `\`                                   |
-| 🟡 | `write something then press` + `Ctrl` + `C`    |
-| 🟡 | `write something then press` + `Ctrl` + `D`    |
-| 🟡 | `write something then press` + `Ctrl` + `\`    |
-| 🟡 | `sleep 5` + `Ctrl` + `C`    		                |
-| 🟡 | `sleep 5` + `Ctrl` + `D`   										|
-| 🟡 | `sleep 5` + `Ctrl` + `\`   										|
+| 🟡 | `Ctrl` + `C` |
+| 🟡 | `Ctrl` + `D` |
+| 🟡 | `Ctrl` + `\` |
+| 🟡 | `write something then press` + `Ctrl` + `C` |
+| 🟡 | `write something then press` + `Ctrl` + `D` |
+| 🟡 | `write something then press` + `Ctrl` + `\` |
+| 🟡 | `sleep 5` + `Ctrl` + `C` |
+| 🟡 | `sleep 5` + `Ctrl` + `D` |
+| 🟡 | `sleep 5` + `Ctrl` + `\` |
 	
 # PATH
-| State | Built-In |
+| State | Commands |
 | :---: | :--- |
-| 🟡 | `/bin/echo`                                 |
-| 🟡 | `/bin/ls`                                   |
-| 🟡 | `/bin/cat`                                  |
+| 🟡 | `/bin/echo` |
+| 🟡 | `/bin/ls` |
+| 🟡 | `/bin/cat` |
 
 # PWD
-| State | Built-In |
+| State | Commands |
 | :---: | :--- |
-| 🟡 | `pwd`                                      |
-| 🟡 | `pwd a`                                    |
-| 🟡 | `pwd a b c d`                              |
+| 🟡 | `pwd` |
+| 🟡 | `pwd a` |
+| 🟡 | `pwd a b c d`                 |
 
 # EXPORT
 | State | Built-In |
@@ -202,8 +202,8 @@
 | 🟡 | `echo file test`                                                     |
 | 🟡 | `echo file   test`                                                   |
 | 🟡 | `echo file     test file   test`                                     |
-| 🟡 | echo a"b"c																														|
-| 🟡 | echo "a'b'c																													|
+| 🟡 | `echo a"b"c`								|
+| 🟡 | `echo "a'b'c`								|
 | 🟡 | `echo "test"`                                                        |
 | 🟡 | `echo test`                                                          |
 | 🟡 | `echo 'test'`                                                        |
@@ -323,99 +323,17 @@
 | `rwx`				|	7			|	4+2+1			|
 
 ## MAX/MIN Values
-|	Data Types	|	Qualifiers	| Size (in byte)	| Range |
+| Data Types | Qualifiers | Size (in byte) | Range |
 | :--- | :--- | :--- | :--- |
-|	`char`							| `char` or `signed char`										| `1`							|	`-128` to `127` |
-|	`char`							| `unsigned char`														| `1`							|	`0` to `255` 		|
-|	`int`								| `int` or `signed int`											| `4`							|	`-2147483648` to `2147483647`	|
-|	`int`								| `unsigned int`														| `4`							|	`0` to `4294967295`	|
-|	`int`								| `short int` or `short signed int`					| `2`							|	`-32768` to `32767`	|
-|	`int`								| `unsigned short int`											| `2`							|	`0` to `65535`	|
-|	`int`								| `long int` or `signed long int`						| `4`							|	`-2147483648` to `2147483647`	|
-|	`int`								| `unsigned long int`												| `4`							|	`0` to `4294967295`	|
-|	`float`							| `float`																		| `4`							|	`1.1754e-38` to `3.4028e+38`	|
-|	`float`							| `double`																	| `8`							|	`2.2250e-308` to `1.7976e+308`	|
-|	`float`							| `long double`															| `10`						|	`3.4E-4932` to `3.4E+4932`	|
+| `char`							| `char` or `signed char`										| `1`							|	`-128` to `127` |
+| `char`							| `unsigned char`														| `1`							|	`0` to `255` 		|
+| `int`								| `int` or `signed int`											| `4`							|	`-2147483648` to `2147483647`	|
+| `int`								| `unsigned int`														| `4`							|	`0` to `4294967295`	|
+| `int`								| `short int` or `short signed int`					| `2`							|	`-32768` to `32767`	|
+| `int`								| `unsigned short int`											| `2`							|	`0` to `65535`	|
+| `int`								| `long int` or `signed long int`						| `4`							|	`-2147483648` to `2147483647`	|
+| `int`								| `unsigned long int`												| `4`							|	`0` to `4294967295`	|
+| `float`							| `float`																		| `4`							|	`1.1754e-38` to `3.4028e+38`	|
+| `float` | `double`																	| `8`							|	`2.2250e-308` to `1.7976e+308`	|
+| `float` | `long double`															| `10`						|	`3.4E-4932` to `3.4E+4932`	|
 	
-echo bonjour ; |
- echo bonjour | |
- |
- echo bonjour |;
- echo bonjour ; ls
- echo bonjour > test\ 1
- cd $HOME/Documents
- echo "\s" & echo "\s"
- echo >
- echo -n -n -nnnn -nnnnm
- cat /dev/random | head -n 1 | cat -e
- unset var1 # with undefined var1
- export "" et unset ""
- echo test > file test1
- $
- not_cmd bonjour > salut
- env puis export puis env # vars aren't sorted
- cat Makefile | grep pr | head -n 5 | cd test (mybin) # check status code
- cat Makefile | grep pr | head -n 5 | cat test (bin) # check status code
- cat Makefile | grep pr | head -n 5 | hello (NA) # check status code
- echo bonjour >>> test
- echo bonjour > > out
- echo 2 >> out1 > out2
- echo 2 > out1 >> out2
- cat < test # with non-existent test
- export var; export var=test
- echo bonjour > $test # with test not defined
- file_name_in_current_dir
- cd ../../../../../.. ; pwd
- echo "bip | bip ; coyotte > < " "
- cat | cat | cat | ls # check outputs order
- $bla # with bla not defined
- export var ="cat Makefile | grep >"
- export "test=ici"=coucou
- c$var Makefile # with var=at
- $LESS$VAR
- not_cmd
- sleep 5 | exit
- echo bonjour > $test w/ t
- "exit retour a la ligne"
- minishell # binary not in path without "./" before
- cat diufosgid # check exit code
- exit # should return the last exit code value
- ;
- echo coucou | ;
- echo "$HOME"
- echo '$HOME'
- export ; env # display is different for both commands
- echo $HOME
- > log echo coucou
- echo hudifg d | | hugdfihd
- echo
- echo simple
- echo -n simple
- echo ''
- echo ""
- echo "\"
- echo "\n \n \n"
- echo "\n \n \\n"
- echo ;;
- echo hi";" hihi
- echo hi " ; " hihi
- pwd a
- pwd a b c d
- export LOL=lala ROR=rara
- unset LOL ROR
- export "HI= hi"
- export "HI =hi"
- echo $?
- l^Ds
- echo |
- | echo
- sort | ls # check output order
- cat < >
- cat < <
- cat > >
- > a ls > b < Makefile
- echo > a Hello World!
- > a echo Hello World!
- cat < Makefile | grep gcc > output
- exit 0 | exit 1
- exit 1 | exit 0
