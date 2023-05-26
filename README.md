@@ -13,13 +13,13 @@
 </p>
 
 <p align="center">
-	<a href="#about">About</a> •
-	<a href="#how-to-use">How to use</a> •
-	<a href="#mandatory">Mandatory</a> •
-	<a href="#bonus">Bonus</a> •
-	<a href="#disclaimer">Disclaimer</a> •
-	<a href="#testers">Testers</a> •
-	<a href="#license">License</a>
+	<a href="#ctrl">CTRL</a> •
+	<a href="#path">PATH</a> •
+	<a href="#pwd">PWD</a> •
+	<a href="#export">Export</a> •
+	<a href="#exit">Exit</a> •
+	<a href="#cd">CD</a> •
+	<a href="#echo">Echo</a>
 </p>
 
 <div>
@@ -110,11 +110,11 @@
 </td></tr> </table
 </div>
 
-# ENVIRONMENT
+# EXPORT
 	
 <div>
 <table>
-<tr><th>ENVIRONMENT</th>
+<tr><th>EXPORT</th>
 <tr><td>
 
 | State | Built-In |
@@ -150,32 +150,6 @@
 
 </td></tr> </table
 </div>  
-
-# $?
-
-* All Linux commands return an error code between 0 and 255.
-* The value 0 represents the value true (command success).
-* Values greater than 0 represent false (command failure).
-* The error code of the last command used is contained in the variable $?
-
-<div>
-<table>
-<tr><th>RETURN VALUES</th>
-<tr><td>
-
-| $? | Description |
-| :--- | :--- |
-| 1 		| Standard for general errors, such as a division by zero. |
-| 2 		| Improper use of built-in commands, per Bash documentation. |
-| 126 	| The command called cannot be executed, rights problem or command not executable. |
-| 127 	| Command not found, possible problem with $PATH or typing error. |
-| 128 	| Invalid command argument. |
-| 128+n | 128 + signal number. |
-| 130 	| Finished with Ctrl-C (130 = 128 + 2). |
-| 255 	| Exit code out of bounds eg exit -1. |
-
-</td></tr> </table
-</div>
 
 # EXIT	
 	
@@ -365,7 +339,32 @@ ECHO TABLE
 </td></tr> </table
 </div>
 
-	
+# $?
+
+* All Linux commands return an error code between 0 and 255.
+* The value 0 represents the value true (command success).
+* Values greater than 0 represent false (command failure).
+* The error code of the last command used is contained in the variable $?
+
+<div>
+<table>
+<tr><th>RETURN VALUES</th>
+<tr><td>
+
+| $? | Description |
+| :--- | :--- |
+| 1 		| Standard for general errors, such as a division by zero. |
+| 2 		| Improper use of built-in commands, per Bash documentation. |
+| 126 	| The command called cannot be executed, rights problem or command not executable. |
+| 127 	| Command not found, possible problem with $PATH or typing error. |
+| 128 	| Invalid command argument. |
+| 128+n | 128 + signal number. |
+| 130 	| Finished with Ctrl-C (130 = 128 + 2). |
+| 255 	| Exit code out of bounds eg exit -1. |
+
+</td></tr> </table
+</div>	
+
 echo bonjour ; |
  echo bonjour | |
  |
