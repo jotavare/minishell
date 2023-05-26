@@ -86,8 +86,7 @@ CTRL TABLE
 
 </td></tr> </table
 </div>
-
-
+	
 <!---
 PATH TABLE
 -->  
@@ -105,7 +104,6 @@ PATH TABLE
 
 </td></tr> </table
 </div>
-
 
 <!---
 PWD TABLE
@@ -208,7 +206,6 @@ EXIT TABLE
 </td></tr> </table
 </div>
 
-
 <!---
 CD TABLE
 -->  
@@ -253,7 +250,6 @@ CD TABLE
 
 </td></tr> </table
 </div>
-
 
 <!---
 ECHO TABLE
@@ -381,8 +377,6 @@ echo bonjour ; |
  echo bonjour > $test # with test not defined
  file_name_in_current_dir
  cd ../../../../../.. ; pwd
- ctrl-C . 130 sur bin(ex : sleep 10)&line vide
- ctrl-\ .131 sur bin
  echo "bip | bip ; coyotte > < " "
  cat | cat | cat | ls # check outputs order
  $bla # with bla not defined
@@ -390,7 +384,6 @@ echo bonjour ; |
  export "test=ici"=coucou
  c$var Makefile # with var=at
  $LESS$VAR
- /bin/echo bonjour
  not_cmd
  sleep 5 | exit
  echo bonjour > $test w/ t
