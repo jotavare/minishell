@@ -22,6 +22,11 @@
 	<a href="#echo">Echo</a>
 </p>
 
+<div>
+<table>
+<tr><th></th><th></th></tr>
+<tr><td>
+
 | Commands |
 | :--- |
 | `make -n` |
@@ -29,8 +34,10 @@
 | `-fsanitize=address` |
 | `-lreadline` |
 | `nm -g ./minishell \| grep " U "` |
-| `valgrind --leak-check=full --gen-suppressions=all --log-file=memcheck.log ./minishell` |
+| `valgrind --leak-check=full --gen-suppressions=all --log-file=leak.log` |
 
+</td><td>
+	
 | State | Definition |
 | :---: | :--- |
 | 🟢 | Working |
@@ -38,6 +45,9 @@
 | 🔴 | Not working |
 | 🔵 | Not mandatory (i think?!) |
 | -  | Nothing |
+
+</td></tr> </table>
+</div>
 
 # BLANK
 | State | Definition |
