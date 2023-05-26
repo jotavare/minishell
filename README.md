@@ -1,14 +1,6 @@
-<!---
-BANNER
--->
-
 <p align="center">
   <img src="https://github.com/jotavare/jotavare/blob/main/42/banner/new/42_minishell_banner_new.png">
 </p>
-
-<!---
-BADGES
--->
 
 <p align="center">
 	<img src="https://img.shields.io/badge/status-finished-success?color=%2312bab9&style=flat-square"/>
@@ -20,10 +12,6 @@ BADGES
 	<a href='https://profile.intra.42.fr/users/jotavare' target="_blank"><img alt='42' src='https://img.shields.io/badge/Porto-100000?style=flat-square&logo=42&logoColor=white&labelColor=000000&color=000000'/></a>
 </p>
 
-<!---
-INDEX
--->
-
 <p align="center">
 	<a href="#about">About</a> •
 	<a href="#how-to-use">How to use</a> •
@@ -33,10 +21,6 @@ INDEX
 	<a href="#testers">Testers</a> •
 	<a href="#license">License</a>
 </p>
-
-<!---
-IMPORTANT
--->
 
 # IMPORTANT
 
@@ -58,10 +42,6 @@ IMPORTANT
 </td></tr> </table
 </div>
 
-<!---
-COLORS TABLE
--->
-
 # COLORS
 	
 <div>
@@ -79,10 +59,6 @@ COLORS TABLE
 
 </td></tr> </table
 </div>
-
-<!---
-CTRL TABLE
--->
 
 # CTRL
 	
@@ -106,9 +82,7 @@ CTRL TABLE
 </td></tr> </table
 </div>
 	
-<!---
-PATH TABLE
--->  
+# PATH
 
 <div>
 <table>
@@ -124,10 +98,8 @@ PATH TABLE
 </td></tr> </table
 </div>
 
-<!---
-PWD TABLE
--->  
-
+# PWD
+	
 <div>
 <table>
 <tr><th>PWD</th>
@@ -142,10 +114,8 @@ PWD TABLE
 </td></tr> </table
 </div>
 
-<!---
-EXPORT TABLE
--->  
-  
+# ENVIRONMENT
+	
 <div>
 <table>
 <tr><th>ENVIRONMENT</th>
@@ -185,9 +155,6 @@ EXPORT TABLE
 </td></tr> </table
 </div>  
 
-<!---
-EXIT TABLE
--->  
 # $?
 
 * All Linux commands return an error code between 0 and 255.
@@ -197,13 +164,13 @@ EXIT TABLE
 
 <div>
 <table>
-<tr><th>EXIT</th>
+<tr><th>RETURN VALUES</th>
 <tr><td>
 
 | $? | Description |
 | :---: | :--- |
-| 1 	| standard for general errors, such as a division by zero |
-| 2 	| improper use of built-in commands, per Bash documentation |
+| 1 		| standard for general errors, such as a division by zero |
+| 2 		| improper use of built-in commands, per Bash documentation |
 | 126 	| the command called cannot be executed, rights problem or command not executable |
 | 127 	| command not found, possible problem with $PATH or typing error |
 | 128 	| invalid command argument |
@@ -213,6 +180,8 @@ EXIT TABLE
 
 </td></tr> </table
 </div>
+
+# EXIT	
 	
 <div>
 <table>
