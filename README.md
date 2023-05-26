@@ -32,7 +32,7 @@
 | 🔵 | Not mandatory (i think?!) |
 | -  | Nothing |
 	
-| Commands |
+| Important Information |
 | :--- |
 | `make -n` |
 | `echo $?` |
