@@ -17,7 +17,7 @@
 	<a href="#signals">signals</a> •
 	<a href="#path">path</a> •
 	<a href="#pwd">pwd</a> •
-	<a href="#export">export</a> •
+	<a href="#export-env-and-unset">export, env and unset</a> •
 	<a href="#exit">exit</a> •
 	<a href="#cd">cd</a> •
 	<a href="#echo">echo</a> •
