@@ -52,12 +52,15 @@
 
 | State | Built-In |
 | :---: | :--- |
-| 🟢 | `Ctrl` + `C`                                   |
-| 🟢 | `Ctrl` + `D`                                   |
-| 🟢 | `Ctrl` + `\`                                   |
-| 🟢 | `write something then press` + `Ctrl` + `C`    |
-| 🟢 | `write something then press` + `Ctrl` + `D`    |
-| 🟢 | `write something then press` + `Ctrl` + `\`    |
+| 🟡 | `Ctrl` + `C`                                   |
+| 🟡 | `Ctrl` + `D`                                   |
+| 🟡 | `Ctrl` + `\`                                   |
+| 🟡 | `write something then press` + `Ctrl` + `C`    |
+| 🟡 | `write something then press` + `Ctrl` + `D`    |
+| 🟡 | `write something then press` + `Ctrl` + `\`    |
+| 🟡 | `sleep 5` + `Ctrl` + `C`    										|
+| 🟡 | `sleep 5` + `Ctrl` + `D`   										|
+| 🟡 | `sleep 5` `Ctrl` + `\`   											|
 
 </td></tr> </table
 </div>
@@ -69,9 +72,51 @@
 
 | State | Built-In |
 | :---: | :--- |
-| 🟢 | /bin/echo                                 |
-| 🟢 | /bin/ls                                   |
-| 🟢 | /bin/cat                                  |
+| 🟡 | `/bin/echo`                                 |
+| 🟡 | `/bin/ls`                                   |
+| 🟡 | `/bin/cat`                                  |
+
+</td></tr> </table
+</div>
+	
+<div>
+<table>
+<tr><th>PWD</th>
+<tr><td>
+
+| State | Built-In |
+| :---: | :--- |
+| 🟡 | `pwd`                                 |
+| 🟡 | `pwd a`                                   |
+| 🟡 | `pwd a b c d`                                  |
+
+</td></tr> </table
+</div>
+	
+<div>
+<table>
+<tr><th>EXPORT</th>
+<tr><td>
+
+| State | Built-In |
+| :---: | :--- |
+| 🟡 | `export`                                			|
+| 🟡 | ` export`                                   	|
+| 🟡 | `export a=42`                                |
+| 🟡 | `export a = 42`                                |
+| 🟡 | `export b=42`                                |
+| 🟡 | `export a=42` + `export a=24`                |
+| 🟡 | `export a` 																	|
+| 🟡 | `export =` 																	|
+| 🟡 | `export ==`																	|
+| 🟡 | `export a=` 																	|
+| 🟡 | `export a=42=` 															|
+| 🟡 | `export =a=42` 															|
+| 🟡 | `export a==42` 															|
+| 🟡 | `export "a=42"` 															|
+| 🟡 | `export a="42"` 															|
+| 🟡 | `export _=42` 															  |
+| 🟡 | `export 42=42` 															|
 
 </td></tr> </table
 </div>  
@@ -298,8 +343,6 @@ echo bonjour ; |
  minishell # binary not in path without "./" before
  cat diufosgid # check exit code
  exit # should return the last exit code value
- exit -10
- exit +10
  ;
  echo coucou | ;
  echo "$HOME"
@@ -319,19 +362,12 @@ echo bonjour ; |
  echo ;;
  echo hi";" hihi
  echo hi " ; " hihi
- cd
- cd .
- cd ~
- cd /
- cd no_file
- cd a b c d
  pwd a
  pwd a b c d
  export LOL=lala ROR=rara
  unset LOL ROR
  export "HI= hi"
  export "HI =hi"
- /bin/ls
  echo $?
  l^Ds
  echo |
