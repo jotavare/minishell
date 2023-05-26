@@ -23,7 +23,7 @@
 </p>
 
 | Commands |
-| :---: |
+| :--- |
 | `make -n` |
 | `echo $?` |
 | `-fsanitize=address` |
