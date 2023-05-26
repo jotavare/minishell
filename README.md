@@ -22,48 +22,25 @@
 	<a href="#echo">Echo</a>
 </p>
 
-<div>
-<table>
-<tr><th>IMPORTANT COMMANDS</th>
-<tr><td>
-
 * For quicker debugging, make a rule to compile and run the program
 	
 | Commands |
 | :--- |
-| `echo $?`                                                                                 |
-| `-fsanitize=address`                                                                      |
-| `-lreadline`																																							|
-| `nm -g ./minishell \| grep " U "`                                                         |
-| `valgrind --leak-check=full --gen-suppressions=all --log-file=memcheck.log ./minishell`   |
-
-</td></tr>
-</table>
-</div>
-
-<div>
-<table>
-<tr><th></th>
-<tr><td>
+| `echo $?` |
+| `-fsanitize=address` | 
+| `-lreadline` |
+| `nm -g ./minishell \| grep " U "` |
+| `valgrind --leak-check=full --gen-suppressions=all --log-file=memcheck.log ./minishell` |
 
 | State | Definition |
 | :---: | :--- |
-| 🟢  | Working                   |
-| 🟡  | Didn't test yet           |
-| 🔴  | Not working               |
-| 🔵  | Not mandatory (i think?!) |
-| -   | Nothing                   |
-
-</td></tr>
-</table>
-</div>
+| 🟢 | Working |
+| 🟡 | Didn't test yet |
+| 🔴 | Not working |
+| 🔵 | Not mandatory (i think?!) |
+| -  | Nothing |
 
 # CTRL
-<div>
-<table>
-<tr><th></th>
-<tr><td>
-
 | State | Built-In |
 | :---: | :--- |
 | 🟡 | `Ctrl` + `C`                                   |
@@ -75,49 +52,22 @@
 | 🟡 | `sleep 5` + `Ctrl` + `C`    		                |
 | 🟡 | `sleep 5` + `Ctrl` + `D`   										|
 | 🟡 | `sleep 5` + `Ctrl` + `\`   										|
-
-</td></tr>
-</table>
-</div>
 	
 # PATH
-<div>
-<table>
-<tr><th></th>
-<tr><td>
-
 | State | Built-In |
 | :---: | :--- |
 | 🟡 | `/bin/echo`                                 |
 | 🟡 | `/bin/ls`                                   |
 | 🟡 | `/bin/cat`                                  |
 
-</td></tr>
-</table>
-</div>
-
 # PWD
-<div>
-<table>
-<tr><th>PWD</th>
-<tr><td>
-
 | State | Built-In |
 | :---: | :--- |
 | 🟡 | `pwd`                                      |
 | 🟡 | `pwd a`                                    |
 | 🟡 | `pwd a b c d`                              |
 
-</td></tr>
-</table>
-</div>
-
 # EXPORT
-<div>
-<table>
-<tr><th></th>
-<tr><td>
-
 | State | Built-In |
 | :---: | :--- |
 | 🟡 | `EXPORT`                    	|
@@ -155,16 +105,7 @@
 | 🟡 | `export U=u V=v W=w X=x Y=y` |
 | 🟡 | `export Z=z` |
 
-</td></tr>
-</table>
-</div> 
-
 # EXIT
-<div>
-<table>
-<tr><th>
-<tr><td>
-
 | State | Built-In |
 | :---: | :--- |
 | 🟢 | `EXIT`          |
@@ -199,17 +140,8 @@
 | 🟢 | `exit a b c d`  |
 | 🔵 | `exit #`        |
 | 🔵 | `exit *`        |
-	
-</td></tr>
-</table>
-</div>
 
 # CD  
-<div>
-<table>
-<tr><th>CD</th>
-<tr><td>
-
 | State | Built-In |
 | :---: | :--- |
 | 🟢 | `CD`                   |
@@ -243,16 +175,7 @@
 | 🔵 | `../../`               |
 | 🔵 | `$`                    |
 
-</td></tr>
-</table>
-</div>
-
 # ECHO  
-<div>
-<table>
-<tr><th>ECHO</th>
-<tr><td>
-
 | State | Built-In |
 | :---: | :--- |
 | 🟢 | `ECHO`                                                               |
@@ -338,10 +261,6 @@
 | 🟡 | `echo "$PWD/file`                                                    |
 | 🟡 | `echo "text" "text$USER" ... "$USER`                                 |
 | 🟡 | `echo $PW`                                                           |
-  
-</td></tr>
-</table>
-</div>
 
 # $?
 
@@ -349,11 +268,6 @@
 * The value 0 represents the value true (command success).
 * Values greater than 0 represent false (command failure).
 * The error code of the last command used is contained in the variable $?
-
-<div>
-<table>
-<tr><th>RETURN VALUES</th>
-<tr><td>
 
 | $? | Description |
 | :--- | :--- |
@@ -366,13 +280,8 @@
 | 130 	| Finished with Ctrl-C (130 = 128 + 2). |
 | 255 	| Exit code out of bounds eg exit -1. |
 
-</td></tr>
-</table>
-</div>
-
 # Utilities
 ## Command Reminders
-
 | Command	|	Description	|
 | :--- | :--- |
 | `yes`						| 	Writes yes in an infinite loop (yes teste) |
@@ -395,24 +304,23 @@
 | `$PATH`					| 	Path to executables | 	
 | `cat`						| 	Send the file to stdout | 	
 
-## CHMOD callbacks and rights
-
+## CHMOD Callbacks and Rights
 | Rights	|	Number	|
 | :--- | :--- |
 | `r` (read)		| 4	|
 | `w` (write)		|	2	|
 | `x` (execute)	|	1	|
 	
-| Rights	|	Total	|	Calculation	|
-| :--- | :--- |	:--- |
-| `---`				|	0	|	0+0+0			|
-| `r--`				|	4	|	4+0+0			|
-| `-w-`				|	2	|	0+2+0			|
-| `--x`				|	1	|	0+0+1			|
-| `rw-`				|	6	|	4+2+0			|
-| `-wx`				|	3	|	0 + 2 + 1	|
-| `x-ray`			|	5	|	4+0+1			|
-| `rwx`				|	7	|	4+2+1			|
+| Rights | Total | Calculation |
+| :--- | :--- | :--- |
+| `---`				|	0			|	0+0+0			|
+| `r--`				|	4			|	4+0+0			|
+| `-w-`				|	2			|	0+2+0			|
+| `--x`				|	1			|	0+0+1			|
+| `rw-`				|	6			|	4+2+0			|
+| `-wx`				|	3			|	0 + 2 + 1	|
+| `x-ray`			|	5			|	4+0+1			|
+| `rwx`				|	7			|	4+2+1			|
 
 ## MAX/MIN Values
 |	Data Types	|	Qualifiers	| Size (in byte)	| Range |
