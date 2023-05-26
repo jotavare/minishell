@@ -155,7 +155,7 @@
 	
 <div>
 <table>
-<tr><th>EXIT</th>
+<tr><th>INTRO</th><th>MISC</th></tr>
 <tr><td>
 
 | State | Built-In |
@@ -173,6 +173,9 @@
 | 🔴 | `exit1`         |
 | 🔴 | `exita`         |
 | 🟢 | `exit 0`        |
+
+</td><td>
+
 | 🟢 | `exit 1`        |
 | 🟢 | `exit 123`      |
 | 🟢 | `exit 1234`     |
@@ -193,7 +196,7 @@
 | 🔵 | `exit #`        |
 | 🔵 | `exit *`        |
 
-</td></tr> </table
+</td></tr> </table>
 </div>
 
 <!---
