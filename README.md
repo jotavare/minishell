@@ -155,7 +155,7 @@
 	
 <div>
 <table>
-<tr><th>INTRO</th><th>MISC</th></tr>
+<tr><th>INTRO</th><th>MISC</th></tr><th>MISC</th></tr>
 <tr><td>
 
 | State | Built-In |
@@ -170,22 +170,28 @@
 | 🟢 | `exit "test"`   |
 | 🟢 | `"exit test"`   |
 | 🟢 | `"exit"`        |
+
+
+</td><td>
+
+| State | Built-In |
+| :---: | :--- |
 | 🔴 | `exit1`         |
 | 🔴 | `exita`         |
 | 🟢 | `exit 0`        |
 | 🟢 | `exit 1`        |
 | 🟢 | `exit 123`      |
 | 🟢 | `exit 1234`     |
-
-</td><td>
-
-| State | Built-In |
-| :---: | :--- |
 | 🔴 | `exit 1 2 3 4`  |
 | 🔴 | `exit +10`      |
 | 🔴 | `exit -10`      |
 | 🔴 | `exit +2000`    |
 | 🔴 | `exit -2000`    |
+
+	
+</td><td>
+
+| State | Built-In |
 | 🔴 | `exit -2147483649` |
 | 🔴 | `exit 2147483648` |
 | 🔴 | `exit 00000000000000000000` |
@@ -197,7 +203,7 @@
 | 🟢 | `exit a b c d`  |
 | 🔵 | `exit #`        |
 | 🔵 | `exit *`        |
-
+	
 </td></tr> </table>
 </div>
 
