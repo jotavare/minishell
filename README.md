@@ -49,7 +49,7 @@
 | 🔵 | `../../` |
 | 🔵 | `$` |
 
-# CTRL
+# SIGNALS
 | State | Commands |
 | :---: | :--- |
 | 🟡 | `Ctrl` + `C` |
@@ -58,6 +58,9 @@
 | 🟡 | `write something then press` + `Ctrl` + `C` |
 | 🟡 | `write something then press` + `Ctrl` + `D` |
 | 🟡 | `write something then press` + `Ctrl` + `\` |
+| 🟡 | `cat` + `Ctrl` + `C` |
+| 🟡 | `cat` + `Ctrl` + `D` |
+| 🟡 | `cat` + `Ctrl` + `\` |
 | 🟡 | `sleep 5` + `Ctrl` + `C` |
 | 🟡 | `sleep 5` + `Ctrl` + `D` |
 | 🟡 | `sleep 5` + `Ctrl` + `\` |
