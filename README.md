@@ -22,11 +22,9 @@
 	<a href="#license">License</a>
 </p>
 
-# IMPORTANT
-
 <div>
 <table>
-<tr><th>IMPORTANT</th>
+<tr><th>IMPORTANT COMMANDS</th>
 <tr><td>
 
 * For quicker debugging, make a rule to compile and run the program
@@ -42,8 +40,6 @@
 </td></tr> </table
 </div>
 
-# COLORS
-	
 <div>
 <table>
 <tr><th>COLORS MEANING</th>
@@ -168,15 +164,15 @@
 <tr><td>
 
 | $? | Description |
-| :---: | :--- |
-| 1 		| standard for general errors, such as a division by zero |
-| 2 		| improper use of built-in commands, per Bash documentation |
-| 126 	| the command called cannot be executed, rights problem or command not executable |
-| 127 	| command not found, possible problem with $PATH or typing error |
-| 128 	| invalid command argument |
-| 128+n | 128 + signal number |
-| 130 	| finished with Ctrl-C (130 = 128 + 2) |
-| 255 	| exit code out of bounds eg exit -1 |
+| :--- | :--- |
+| 1 		| Standard for general errors, such as a division by zero. |
+| 2 		| Improper use of built-in commands, per Bash documentation. |
+| 126 	| The command called cannot be executed, rights problem or command not executable. |
+| 127 	| Command not found, possible problem with $PATH or typing error. |
+| 128 	| Invalid command argument. |
+| 128+n | 128 + signal number. |
+| 130 	| Finished with Ctrl-C (130 = 128 + 2). |
+| 255 	| Exit code out of bounds eg exit -1. |
 
 </td></tr> </table
 </div>
