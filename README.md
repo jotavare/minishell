@@ -365,6 +365,58 @@ ECHO TABLE
 </td></tr> </table
 </div>	
 
+# UTILITIES
+> Command reminders
+| Command	|	Description	|
+| :--- | :--- |
+| yes						| 	writes yes in an infinite loop 	yes cuckoo (written infinite cuckoo) |
+| ln						| 	bind a file or directory |
+| chmod					| 	change file permissions 	chmod 777 (4+2+1 = all permissions worldwide) chmod 000 (no permissions for anyone) |
+| CD						| 	change directory 	cd - (moves to the last visited directory) cd (Go directly to the user's directory) cd / Takes you to the root of the disk |
+| clear					| 	clear the screen |	
+| Diff					|  	compare files line by line  	diff test.sh Makefile |
+| cmp						| 	write first line of difference between 2 files 	cmp test.sh Makefile |
+| pc						| 	copying files | 	
+| rm						| 	delete file |	
+| rm -rf				| 	delete the directory recursively | 	
+| ls -l					| 	show the contents of the directory | 	
+| exit					| 	exit current process | 	
+| grep					| 	search for strings in files 	grep "printf" file |
+| mkdir					| 	create a directory | 	
+| rmdir					| 	delete a directory | 	
+| more					| 	displays a file page by page as in a man | 	
+| mv						| 	move or rename | 	
+| $PATH					| 	path to executables | 	
+| cat						| 	send the file to stdout | 	
+
+> chmod callbacks and rights
+| Right 			|	Figure	|
+| :--- | :--- |
+| r (read)		| 4	|
+| w (write)		|	2	|
+| x (execute)	|	1	|
+	
+| Rights	|	Figure	|	Calculation	|
+| :--- | :--- |	:--- |
+| ---				|	0	|	0+0+0			|
+| r--				|	4	|	4+0+0			|
+| -w-				|	2	|	0+2+0			|
+| --x				|	1	|	0+0+1			|
+| rw-				|	6	|	4+2+0			|
+| -wx				|	3	|	0 + 2 + 1	|
+| x-ray			|	5	|	4+0+1			|
+| rwx				|	7	|	4+2+1			|
+
+MAX/MIN value reminders
+kind 	max value 	min value
+int 	2147483647 	-2147483648 
+unsigned int 	4294967295 	
+long 	2147483647 	-2147483648
+unsigned long 	4294967295 	
+long long 	9223372036854775807 	-9223372036854775808
+unsigned long long 	18446744073709551615 	
+	
+	
 echo bonjour ; |
  echo bonjour | |
  |
