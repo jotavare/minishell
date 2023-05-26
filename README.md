@@ -41,8 +41,13 @@
 | 🔵 | Not mandatory (i think?!) |
 | -  | Nothing |
 
-empty
-spaces or tabs
+# BLANK
+| State | Definition |
+| :---: | :--- |
+| 🔵 | <empty> |
+| 🔵 | <spaces> or <tabs> |
+| 🔵 | `../../` |
+| 🔵 | `$` |
 
 # CTRL
 | State | Commands |
@@ -74,9 +79,9 @@ spaces or tabs
 # EXPORT
 | State | Built-In |
 | :---: | :--- |
-| 🟡 | `EXPORT`                    	|
-| 🟡 | `eXpOrT`                    	|
-| 🟡 | `export`                    	|
+| 🟡 | `EXPORT`                     |
+| 🟡 | `eXpOrT`                     |
+| 🟡 | `export`                     |
 | 🟡 | ` export`                    |
 | 🟡 | `export `                    |
 | 🟡 | `  export  `                 |
@@ -87,27 +92,27 @@ spaces or tabs
 | 🟡 | `export a=" 42 "`            |
 | 🟡 | `export a=' 42 '`            |
 | 🟡 | `export a = 42`              |
-| 🟡 | `export a` 									|
-| 🟡 | `export =` 									|
-| 🟡 | `export ==`									|
-| 🟡 | `export a=` 									|
-| 🟡 | `export a=42=` 							|
-| 🟡 | `export =a=42` 							|
-| 🟡 | `export a==42` 							|
-| 🟡 | `export "a=42"` 							|
-| 🟡 | `export a="42"` 							|
-| 🟡 | `export _=42` 								|
-| 🟡 | `export 42=42`								|
-| 🟡 | `export a b = 42`						|
-| 🟡 | `export a= b= 42`						|
-| 🟡 | `export a=42 % b=42 % c=42`	|
-| 🟡 | `export a=42 b=42 c=42`			|
+| 🟡 | `export a` 		    |
+| 🟡 | `export =` 		    |
+| 🟡 | `export ==`		    |
+| 🟡 | `export a=` 		    |
+| 🟡 | `export a=42=` 		    |
+| 🟡 | `export =a=42` 		    |
+| 🟡 | `export a==42` 		    |
+| 🟡 | `export "a=42"` 		    |
+| 🟡 | `export a="42"` 		    |
+| 🟡 | `export _=42` 		    |
+| 🟡 | `export 42=42`		    |
+| 🟡 | `export a b = 42`	    |
+| 🟡 | `export a= b= 42`	    |
+| 🟡 | `export a=42 % b=42 % c=42`  |
+| 🟡 | `export a=42 b=42 c=42`	    |
 | 🟡 | `export A=a B=b C=c D=d E=e` |
 | 🟡 | `export F=f G=g H=h I=i J=j` |
 | 🟡 | `export K=k L=l M=m N=n O=o` |
 | 🟡 | `export P=p Q=q R=r S=s T=t` |
 | 🟡 | `export U=u V=v W=w X=x Y=y` |
-| 🟡 | `export Z=z` |
+| 🟡 | `export Z=z` 		    |
 
 # EXIT
 | State | Built-In |
@@ -176,8 +181,6 @@ spaces or tabs
 | 🔵 | `cd \`                 |
 | 🔵 | `cd //`                |
 | 🔵 | `cd -`                 |
-| 🔵 | `../../`               |
-| 🔵 | `$`                    |
 
 # ECHO  
 | State | Built-In |
@@ -206,8 +209,8 @@ spaces or tabs
 | 🟡 | `echo file test`                                                     |
 | 🟡 | `echo file   test`                                                   |
 | 🟡 | `echo file     test file   test`                                     |
-| 🟡 | `echo a"b"c`								|
-| 🟡 | `echo "a'b'c`								|
+| 🟡 | `echo a"b"c`							    |
+| 🟡 | `echo "a'b'c`							    |
 | 🟡 | `echo "test"`                                                        |
 | 🟡 | `echo test`                                                          |
 | 🟡 | `echo 'test'`                                                        |
@@ -266,7 +269,8 @@ spaces or tabs
 | 🟡 | `echo "text" "text$USER" ... "$USER`                                 |
 | 🟡 | `echo $PW`                                                           |
 
-# $?
+# Utilities
+# Return Values ($?)
 
 * All Linux commands return an error code between 0 and 255.
 * The value 0 represents the value true (command success).
@@ -275,8 +279,8 @@ spaces or tabs
 
 | $? | Description |
 | :--- | :--- |
-| 1 		| Standard for general errors, such as a division by zero. |
-| 2 		| Improper use of built-in commands, per Bash documentation. |
+| 1 	| Standard for general errors, such as a division by zero. |
+| 2 	| Improper use of built-in commands, per Bash documentation. |
 | 126 	| The command called cannot be executed, rights problem or command not executable. |
 | 127 	| Command not found, possible problem with $PATH or typing error. |
 | 128 	| Invalid command argument. |
@@ -284,36 +288,35 @@ spaces or tabs
 | 130 	| Finished with Ctrl-C (130 = 128 + 2). |
 | 255 	| Exit code out of bounds eg exit -1. |
 
-# Utilities
 ## Command Reminders
-| Command	|	Description	|
+| Command | Description |
 | :--- | :--- |
-| `yes`						| 	Writes yes in an infinite loop (yes teste) |
-| `ln`						| 	Bind a file or directory |
-| `chmod`					| 	Change file permissions `chmod 777` (4+2+1 = all permissions) `chmod 000` (no permissions) |
-| `CD`						| 	Change directory `cd -` (last visited directory) `cd` (user directory) `cd /` (root) |
-| `clear`					| 	Clear the screen |	
-| `Diff`					|  	Compare files line by line |
-| `cmp`						| 	Write first line of difference between 2 files |
-| `pc`						| 	Copying files | 	
-| `rm`						| 	Delete file |	
-| `rm -rf`				| 	Delete the directory recursively | 	
-| `ls -l`					| 	Show the contents of the directory | 	
-| `exit`					| 	Exit current process | 	
-| `grep`					| 	Search for strings in files `grep "printf" file` |
-| `mkdir`					| 	Create a directory | 	
-| `rmdir`					| 	Delete a directory | 	
-| `more`					| 	Displays a file page by page as in a man | 	
-| `mv`						| 	Move or rename | 	
-| `$PATH`					| 	Path to executables | 	
-| `cat`						| 	Send the file to stdout | 	
+| `yes`		| Writes yes in an infinite loop (yes teste) |
+| `ln`		| Bind a file or directory |
+| `chmod`	| Change file permissions `chmod 777` (4+2+1 = all permissions) `chmod 000` (no permissions) |
+| `CD`		| Change directory `cd -` (last visited directory) `cd` (user directory) `cd /` (root) |
+| `clear`	| Clear the screen |	
+| `Diff`	| Compare files line by line |
+| `cmp`		| Write first line of difference between 2 files |
+| `pc`		| Copying files | 	
+| `rm`		| Delete file |	
+| `rm -rf`	| Delete the directory recursively | 	
+| `ls -l`	| Show the contents of the directory | 	
+| `exit`	| Exit current process | 	
+| `grep`	| Search for strings in files `grep "printf" file` |
+| `mkdir`	| Create a directory | 	
+| `rmdir`	| Delete a directory | 	
+| `more`	| Displays a file page by page as in a man | 	
+| `mv`		| Move or rename | 	
+| `$PATH`	| Path to executables | 	
+| `cat`		| Send the file to stdout | 	
 
 ## CHMOD Callbacks and Rights
-| Rights	|	Number	|
+| Rights | Number |
 | :--- | :--- |
-| `r` (read)		| 4	|
-| `w` (write)		|	2	|
-| `x` (execute)	|	1	|
+| `r` (read)	| 4 |
+| `w` (write)	| 2 |
+| `x` (execute)	| 1 |
 	
 | Rights | Total | Calculation |
 | :--- | :--- | :--- |
@@ -322,22 +325,21 @@ spaces or tabs
 | `-w-`				|	2			|	0+2+0			|
 | `--x`				|	1			|	0+0+1			|
 | `rw-`				|	6			|	4+2+0			|
-| `-wx`				|	3			|	0 + 2 + 1	|
+| `-wx`				|	3			|	0 + 2 + 1		|
 | `x-ray`			|	5			|	4+0+1			|
 | `rwx`				|	7			|	4+2+1			|
 
 ## MAX/MIN Values
 | Data Types | Qualifiers | Size (in byte) | Range |
 | :--- | :--- | :--- | :--- |
-| `char`							| `char` or `signed char`										| `1`							|	`-128` to `127` |
-| `char`							| `unsigned char`														| `1`							|	`0` to `255` 		|
-| `int`								| `int` or `signed int`											| `4`							|	`-2147483648` to `2147483647`	|
-| `int`								| `unsigned int`														| `4`							|	`0` to `4294967295`	|
-| `int`								| `short int` or `short signed int`					| `2`							|	`-32768` to `32767`	|
-| `int`								| `unsigned short int`											| `2`							|	`0` to `65535`	|
-| `int`								| `long int` or `signed long int`						| `4`							|	`-2147483648` to `2147483647`	|
-| `int`								| `unsigned long int`												| `4`							|	`0` to `4294967295`	|
-| `float`							| `float`																		| `4`							|	`1.1754e-38` to `3.4028e+38`	|
-| `float` | `double`																	| `8`							|	`2.2250e-308` to `1.7976e+308`	|
-| `float` | `long double`															| `10`						|	`3.4E-4932` to `3.4E+4932`	|
-	
+| `char`	| `char` or `signed char`				| `1` |	`-128` to `127` |
+| `char`	| `unsigned char`					| `1` |	`0` to `255` |
+| `int`		| `int` or `signed int`					| `4` |	`-2147483648` to `2147483647` |
+| `int`		| `unsigned int`					| `4` |	`0` to `4294967295` |
+| `int`		| `short int` or `short signed int`			| `2` |	`-32768` to `32767` |
+| `int`		| `unsigned short int`					| `2` |	`0` to `65535` |
+| `int`		| `long int` or `signed long int`			| `4` |	`-2147483648` to `2147483647` |
+| `int`		| `unsigned long int`					| `4` |	`0` to `4294967295` |
+| `float`	| `float`						| `4` |	`1.1754e-38` to `3.4028e+38` |
+| `float`	| `double`						| `8` |	`2.2250e-308` to `1.7976e+308` |
+| `float`	| `long double`						| `10`|	`3.4E-4932` to `3.4E+4932` |
