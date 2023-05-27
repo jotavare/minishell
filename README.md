@@ -25,21 +25,12 @@
 </p>
 
 ## Before Evaluation
-
 - [ ] Check norminette for any errors.
 - [ ] No segmentation fault, bus error, double free, ...
 - [ ] Must compile with -Wall, -Wextra and -Werror.
 - [ ] Makefile must contain $(NAME), all, clean, fclean.
 - [ ] If theres bonus, there must be a bonus rule on Makefile and bonus files must have _bonus.c(.h).
 - [ ] Check for forbidden functions in your code.
-
-| State | Definition |
-| :---: | :--- |
-| 🟢 | Working |
-| 🟡 | Didn't test yet |
-| 🔴 | Not working |
-| 🔵 | Not mandatory (i think?!) |
-| -  | Nothing |
 
 <div>
 <table>
@@ -72,7 +63,17 @@
 </table>
 </div>
 
-# BLANK
+# COMMAND TESTS
+
+| State | Definition |
+| :---: | :--- |
+| 🟢 | Working |
+| 🟡 | Didn't test yet |
+| 🔴 | Not working |
+| 🔵 | Not mandatory (i think?!) |
+| -  | Nothing |
+
+## BLANK
 | State | Definition |
 | :---: | :--- |
 | 🟡 | `<empty>` |
@@ -80,7 +81,7 @@
 | 🟡 | `../../` |
 | 🟡 | `$` |
 
-# SIGNALS
+## SIGNALS
 | State | Commands |
 | :---: | :--- |
 | 🟡 | `Ctrl` + `C` |
