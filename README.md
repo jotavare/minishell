@@ -26,12 +26,12 @@
 
 ## Before Evaluation
 
-- [x] Check norminette for any errors
-- [x] No segmentation fault, bus error, double free, ...
-- [x] Must compile with -Wall, -Wextra and -Werror
-- [x] Makefile must contain $(NAME), all, clean, fclean
-- [x] If theres bonus, there must be a bonus rule and bonus files must have _bonus.c(.h)
-- [x] You can use Libft functions and check for forbidden functions in your code
+- [ ] Check norminette for any errors.
+- [ ] No segmentation fault, bus error, double free, ...
+- [ ] Must compile with -Wall, -Wextra and -Werror.
+- [ ] Makefile must contain $(NAME), all, clean, fclean.
+- [ ] If theres bonus, there must be a bonus rule on Makefile and bonus files must have _bonus.c(.h).
+- [ ] Check for forbidden functions in your code.
 
 | State | Definition |
 | :---: | :--- |
@@ -46,7 +46,7 @@
 <tr><th></th><th></th></tr>
 <tr><td>
 
-| Important Information |
+| Important |
 | :--- |
 | `make -n` |
 | `echo $?` |
