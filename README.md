@@ -140,12 +140,12 @@
 | 🟡 | `export a=' 42 '`            |
 | 🟡 | `export a = 42`              |
 | 🟡 | `export a` 		    |
-| 🟡 | `export A=''`           	    |                                         
-| 🟡 | `export A='"'`               |                                   
-| 🟡 | `export A='\'`               |                                
-| 🟡 | `export A='$'`               |                                 
-| 🟡 | `export A='\t'`              |                                    
-| 🟡 | `export A='''` 		    | 
+| 🟡 | `export a=''`           	    |                                         
+| 🟡 | `export a='"'`               |                                   
+| 🟡 | `export a='\'`               |                                
+| 🟡 | `export a='$'`               |                                 
+| 🟡 | `export a='\t'`              |                                    
+| 🟡 | `export a='''` 		    | 
 | 🟡 | `export =` 		    |
 | 🟡 | `export ==`		    |
 | 🟡 | `export a=` 		    |
