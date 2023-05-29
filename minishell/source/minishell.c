@@ -12,6 +12,14 @@
 
 #include "../minishell.h"
 
+/*
+void	final_free(t_attr *att)
+{
+	free(attr.last_path);
+	free_g_env(&attr);
+	free_exp_env(&attr);
+}
+*/
 int	main(int ac, char **av, char **envp)
 {
 	(void)ac;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
+/*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:28:13 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/05/27 15:51:39 by alexandre        ###   ########.fr       */
+/*   Updated: 2023/05/29 17:26:24 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@
 # define YELLOW_BOLD "\033[1;33m"
 # define CYAN_BOLD "\033[1;36m"
 # define RESET "\033[0m"
+# define BLUE_BOLD "\033[1;34m"
 
 // structures
 typedef struct s_attr
@@ -59,6 +60,7 @@ typedef struct s_attr
 	int		len_exp_env;//27 maio
 	char	**d_exp_env;//27 maio
 	int		len_d_exp_env;//27 maio
+	int last_return_value;  
 }		t_attr;
 
 typedef struct	s_exec
@@ -134,7 +136,7 @@ void	init_attributes(t_attr *att);//27maio alterado
 void	init_paths(t_attr *att);
 void	free_arr(char **arr);
 void	reinit_attributes(t_attr *att);
-
+char    *expand_variable(const char *env_var, char **g_env);
 
 // pipes
 //int	pipework(t_attr *att);

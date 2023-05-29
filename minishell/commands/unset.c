@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   unset.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
+/*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:57:28 by alexandre         #+#    #+#             */
-/*   Updated: 2023/05/27 17:05:24 by alexandre        ###   ########.fr       */
+/*   Updated: 2023/05/29 18:13:06 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,18 @@ int	find_index(char **search, char *str)
 {
 	//char	*to_find;
 	int		i;
+	int 	j;
 
 	i = 0;
+	j = 0;
 	//to_find = add_equal(str);
+	while (str[j] && str[j] != '=')
+		j++;
+	if (str[j] == '=')
+		j++;
 	while (search[i])
 	{
-		if (!ft_strncmp(search[i], str, ft_strlen(str)))
+		if (!ft_strncmp(search[i], str, j))
 		{
 			//free(to_find);
 			return (i);
@@ -68,6 +74,7 @@ void	free_g_env(t_attr *att)
 		free(att->g_env[i]);
 		i++;
 	}
+	free(att->d_env[i]);
 	free(att->g_env);
 }
 
@@ -81,6 +88,7 @@ void	free_d_env(t_attr *att)
 		free(att->d_env[i]);
 		i++;
 	}
+	free(att->d_env[i]);
 	free(att->d_env);
 }
 
@@ -94,6 +102,7 @@ void	free_exp_env(t_attr *att)
 		free(att->exp_env[i]);
 		i++;
 	}
+	free(att->exp_env[i]);
 	free(att->exp_env);
 }
 
@@ -216,7 +225,7 @@ void	unset(t_attr *att)
 		if ((find_index(att->g_env, att->tok_arr[j])))
 			refresh_rmenv(att, check_the_arr(att->g_env, att->tok_arr[j]));
 		if ((find_index(att->exp_env, att->tok_arr[j])))
-			refresh_rmexp_env(att, check_the_arr(att->exp_env, att->tok_arr[j]));
+			refresh_rmexp_env(att, find_index(att->exp_env, att->tok_arr[j]));
 		j++;
 	}
 }

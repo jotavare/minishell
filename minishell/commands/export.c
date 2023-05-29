@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
+/*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:57:28 by alexandre         #+#    #+#             */
-/*   Updated: 2023/05/27 17:16:16 by alexandre        ###   ########.fr       */
+/*   Updated: 2023/05/29 18:15:45 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,10 @@ void	refresh_add_exp(t_attr *att, char *add)
 	att->exp_env[att->len_exp_env] = ft_strdup(add);
 	att->len_exp_env++;
 	att->exp_env[att->len_exp_env] = 0;
+	
+	// temp = malloc(sizeof(char *) * (att->len_exp_env));
+	// temp = att->exp_env;
+	// temp[att->len_exp_env] = 0;
 	free_d_exp_env(att);
 }
 

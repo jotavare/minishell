@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lubu <lubu@student.42.fr>                  +#+  +:+       +#+         #
+#    By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/12 15:15:58 by alexandre         #+#    #+#              #
-#    Updated: 2023/05/27 10:37:26 by lubu             ###   ########.fr        #
+#    Updated: 2023/05/29 17:55:38 by lde-sous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,6 +39,7 @@ SRC =	commands/cd.c \
 		commands/export.c \
 		commands/pwd.c \
 		commands/unset.c \
+		commands/expander.c \
 		source/get_tokens.c \
 		source/lexer.c \
 		source/minishell.c \
@@ -62,6 +63,7 @@ sani: $(OBJ)
 	$(MAKE) -C ./libft
 	$(CSANI) $(CFLAGS) $(OBJ) $(LIBFT) $(RLFLAG) -o $(NAME)
 	echo "Compiled with fsanitizer"
+	./$(NAME)
 
 $(OBJSDIR)/%.o: %.c
 	mkdir -p $(@D)
