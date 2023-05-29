@@ -6,12 +6,13 @@
 #    By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/12 15:15:58 by alexandre         #+#    #+#              #
-#    Updated: 2023/05/25 17:23:19 by lde-sous         ###   ########.fr        #
+#    Updated: 2023/05/29 17:55:38 by lde-sous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # BASIC
 CC = cc -g
+CSANI = cc -fsanitize=address
 CFLAGS = -Wall -Wextra -Werror
 RLFLAG = -lreadline
 RM = rm -rf
@@ -38,6 +39,7 @@ SRC =	commands/cd.c \
 		commands/export.c \
 		commands/pwd.c \
 		commands/unset.c \
+		commands/expander.c \
 		source/get_tokens.c \
 		source/lexer.c \
 		source/minishell.c \
@@ -57,6 +59,12 @@ $(NAME): $(OBJ)
 	$(CC) $(CFLAGS) $(OBJ) $(LIBFT) $(RLFLAG) -o $(NAME)
 	echo "Everything Done!"
 
+sani: $(OBJ)
+	$(MAKE) -C ./libft
+	$(CSANI) $(CFLAGS) $(OBJ) $(LIBFT) $(RLFLAG) -o $(NAME)
+	echo "Compiled with fsanitizer"
+	./$(NAME)
+
 $(OBJSDIR)/%.o: %.c
 	mkdir -p $(@D)
 	$(CC) $(CFLAGS) -c $< -o $@
@@ -66,7 +74,7 @@ clean:
 	$(MAKE)	clean -C ./libft
 
 fclean: clean
-	$(RM) $(NAME) $(OBJSDIR)
+	$(RM) $(NAME) $(SANI) $(OBJSDIR)
 	$(MAKE) fclean -C ./libft
 	echo "Everything Deleted..."
 

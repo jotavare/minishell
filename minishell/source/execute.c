@@ -25,6 +25,7 @@ char	**build_path(char **all_paths, int nb, char *command)
 		paths_comm[i] = ft_strjoin(all_paths[i], command);
 		i++;
 	}
+	free (command);
 	return (paths_comm);
 }
 
@@ -62,8 +63,7 @@ char	*get_str_paths(t_attr *att, char *path_str)
 int		exec_commands(t_exec *args, t_attr *att)
 {
 	args->i = 0;
-	args->path_command = build_path(args->all_paths, args->nb_of_paths,
-			ft_strjoin("/", att->tok_arr[0]));
+	args->path_command = build_path(args->all_paths, args->nb_of_paths, ft_strjoin("/", att->tok_arr[0]));
 	while (args->i < args->nb_of_paths)
 	{
 		if (!access(args->path_command[args->i], X_OK))
@@ -127,13 +127,6 @@ int	execute(t_attr *att)
 	t_exec	args;
 
 	start_args(&args, att);
-
-    if (!ft_strcmp(args.command, "minishell"))
-    {
-        printf("minishell: command not found: %s\n", att->tok_arr[0]);
-        return (0);
-    }
-
 	args.pid = fork();
 	if (args.pid == -1)
 		return (-1);
@@ -145,10 +138,13 @@ int	execute(t_attr *att)
 			exec_binaries(&args, att);
 		else
 			exec_commands(&args, att);
+		printf("minishell: command not found: %s\n", att->tok_arr[0]);
 		exit(0);
 	}
 	else
 		wait(NULL);
+	free_arr (args.all_paths);
+	free (args.all_paths);
 	return (0);
 }
 

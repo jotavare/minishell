@@ -24,11 +24,13 @@ static int	ft_stringcounter(const char *s, char c)
 		if (s[i] != c)
 		{
 			nstrings++;
-			while (s[i] != c)
+			while (i > 0 && s[i] != c)
 				i--;
 		}
 		if (s[i] == c)
 			i--;
+		if (i == 0)
+			break;
 	}
 	return (nstrings);
 }

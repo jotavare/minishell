@@ -1,12 +1,12 @@
-/* ************************************************************************** */
+	/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   utilities.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:51:22 by alexfern          #+#    #+#             */
-/*   Updated: 2023/05/22 20:50:19 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/05/29 17:39:34 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,23 +146,42 @@ int	flag_counter(char *str, char c)
 	return (arranged); //nao esquecer de dar free!!!
 } */
 
-void	start_env(char **envp, t_attr *my_env)
+void	start_env(char **envp, t_attr *att)
 {
 	int	i;
 	
 	i = 0;
-	my_env->len_myenv = 0;
-	while(envp[my_env->len_myenv])
-		my_env->len_myenv++;
-	my_env->g_env = malloc(sizeof(char *) * (my_env->len_myenv + 1)); //verificar malloc, tem leaks
-	if (!my_env->g_env)
+	att->len_g_env = 0;
+	while(envp[att->len_g_env])
+		att->len_g_env++;
+	att->g_env = malloc(sizeof(char *) * (att->len_g_env + 2)); //verificar malloc, tem leaks
+	if (!att->g_env)
 		return ;
-	while (i < my_env->len_myenv)
+	while (i < att->len_g_env)
 	{
-		my_env->g_env[i] = ft_strdup(envp[i]);
+		att->g_env[i] = ft_strdup(envp[i]);
 		i++;
 	}
-	my_env->g_env[i] = 0;
+	att->g_env[i] = 0;
+}
+
+void	start_exp(char **envp, t_attr *att)
+{
+	int j = 0;
+
+
+	att->len_exp_env = 0;
+	while(envp[att->len_exp_env])
+		att->len_exp_env++;
+	att->exp_env = malloc(sizeof(char *) * (att->len_g_env + 1));
+	if (!att->exp_env)
+		return ;
+	while (j < att->len_exp_env)
+	{
+		att->exp_env[j] = ft_strdup(envp[j]);
+		j++;
+	}
+	att->exp_env[j] = 0;
 }
 
 void	init_attributes(t_attr *att)
@@ -172,14 +191,20 @@ void	init_attributes(t_attr *att)
     att->tok_arr = NULL;
 	att->d_env = NULL;
 	att->len_d_env = 0;
-    //att->g_env = NULL;
-    //att->len_myenv = 0;
+	att->d_exp_env = NULL;
+	att->len_d_exp_env = 0;
+}
+
+void	reinit_attributes(t_attr *att)
+{
+    att->nb_tokens = 0;
+    att->index = 0;
+    att->tok_arr = NULL;
 }
 
 void	init_paths(t_attr *att)
 {
 	att->last_path = getenv("HOME");
-	att->len_d_env = 0;
 }
 
 int	check_alpha(char *str)
@@ -187,12 +212,24 @@ int	check_alpha(char *str)
 	int i;
 	
 	i = 0;
+	if (str[i] == '=')
+		return (0);
 	while (str[i] && str[i] != '=')
 	{
-		if ((str[i] >= 'A' && str[i] <= 'Z') || (str[i] >= 'a' && str[i] <= 'z') 
-			|| (str[i] == '_'))
-			return (1);
+		if (!((str[i] >= 'A' && str[i] <= 'Z') || (str[i] >= 'a' && str[i] <= 'z')//27maio '('')'
+			|| (str[i] == '_')))
+			return (0);
 		i++;
 	}
-	return (0);
+	return (1);
+}
+
+void	free_arr(char **arr)
+{
+	int i = 0;
+
+	while (arr[i])
+	{
+		free (arr[i++]);
+	}
 }

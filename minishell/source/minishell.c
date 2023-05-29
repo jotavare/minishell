@@ -12,6 +12,14 @@
 
 #include "../minishell.h"
 
+/*
+void	final_free(t_attr *att)
+{
+	free(attr.last_path);
+	free_g_env(&attr);
+	free_exp_env(&attr);
+}
+*/
 int	main(int ac, char **av, char **envp)
 {
 	(void)ac;
@@ -24,16 +32,16 @@ int	main(int ac, char **av, char **envp)
 	init_paths(&attr);
 	init_attributes(&attr);
 	start_env(envp, &attr);
+	start_exp(envp, &attr);
 	while (1)
 	{
-		double_myenv(&attr);
 		str = readline("\033[0;31mminihell$\033[0m ");
 		if (str == NULL)
 		{
 			rl_clear_history();
 			break ;
 		}
-		init_attributes(&attr);
+		reinit_attributes(&attr);
 		if (str)
 		{	
 			add_history(str);
@@ -41,10 +49,13 @@ int	main(int ac, char **av, char **envp)
 		
 			command(&attr);
 
-			free_tokens(attr.tok_arr, attr);
+			free_tokens(attr.tok_arr, &attr);
 			free(attr.tok_arr);
 			free(str);
 		}
 	}
+	free(attr.last_path);
+	free_g_env(&attr);
+	free_exp_env(&attr);
 	return (0);
 }

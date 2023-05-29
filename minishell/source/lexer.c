@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexer.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: lubu <lubu@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 18:15:45 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/05/24 18:35:07 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/05/27 09:37:31 by lubu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,9 @@ void	command(t_attr *att)
 	else if (ft_strcmp(tok[0], "env") == 0)
 		env(att);
 	else if ((ft_strcmp(tok[0], "exit") == 0) || (ft_strcmp(tok[0], "\"exit\"") == 0))
-		return (ft_exit(*att));
+		return (ft_exit(att));
+	//if (ft_strcmp(tok[1], "|") == 0)
+	//	pipework(att);
 	else
 		execute(att);
 	return;

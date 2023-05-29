@@ -40,16 +40,18 @@ int	exit_two(t_attr attr)
 	return (return_value);
 }
 
-void	ft_exit(t_attr attr)
+void	ft_exit(t_attr *attr)
 {
 	int			return_value;
 
+	free_g_env(attr);
+	free_exp_env(attr);
 	return_value = 0;
 	printf("exit\n");
-	if (attr.nb_tokens == 1)
+	if (attr->nb_tokens == 1)
 		return_value = 0;
-	else if (attr.nb_tokens == 2)
-		return_value = exit_two(attr);
+	else if (attr->nb_tokens == 2)
+		return_value = exit_two(*attr);
 	else
 	{
 		ft_putstr_fd("minishell: exit: too many arguments\n", 2);

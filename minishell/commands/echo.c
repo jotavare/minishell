@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:57:28 by alexandre         #+#    #+#             */
-/*   Updated: 2023/05/22 19:02:59 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/05/29 17:26:57 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,34 +17,30 @@
 	with a new line at the end of the string
 */
 
-void echo(t_attr att)
+void	echo(t_attr att)
 {
-    int i;
+	int	i;
 
-    i = 1;
-    if (att.nb_tokens == 1)
-        ft_putchar_fd('\n', 1);
-    else if (!strcmp(att.tok_arr[0], "echo") && !strcmp(att.tok_arr[1], "-n"))
-    {
-        echo_n(att);
-    }
-    else if (!strcmp(att.tok_arr[0], "echo") && strcmp(att.tok_arr[1], "$") == 0)
-    {
-        char *env_var = getenv(att.tok_arr[2]); // this is not the correct way to do it
-        if (env_var != NULL)
-            ft_putstr_fd(env_var, 1);
-        ft_putchar_fd('\n', 1);
-    }
-    else if (!strcmp(att.tok_arr[0], "echo"))
-    {
-        while (i < att.nb_tokens)
-        {
-            ft_putstr_fd(att.tok_arr[i], 1);
-            ft_putchar_fd(' ', 1);
-            i++;
-        }
-        ft_putchar_fd('\n', 1);
-    }
+
+	i = 1;
+	if (att.nb_tokens == 1)
+		printf("\n");
+	else
+	{
+		while (i < att.nb_tokens)
+		{
+			if (ft_strnstr(att.tok_arr[i], "-n", ft_strlen(att.tok_arr[i])))
+				echo_n(att);
+			else if (ft_strnstr(att.tok_arr[i], "$?",ft_strlen(att.tok_arr[i])))
+                printf("%d", att.last_return_value);
+			else if (ft_strnstr(att.tok_arr[i], "$",ft_strlen(att.tok_arr[i])))
+				printf("%s ", expand_variable(att.tok_arr[i], att.g_env));
+			else
+				printf("%s ", att.tok_arr[i]);
+			i++;
+		}
+		printf("\n");
+	}
 }
 
 /*
