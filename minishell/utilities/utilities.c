@@ -154,7 +154,7 @@ void	start_env(char **envp, t_attr *att)
 	att->len_g_env = 0;
 	while(envp[att->len_g_env])
 		att->len_g_env++;
-	att->g_env = malloc(sizeof(char *) * (att->len_g_env + 1)); //verificar malloc, tem leaks
+	att->g_env = malloc(sizeof(char *) * (att->len_g_env + 2)); //verificar malloc, tem leaks
 	if (!att->g_env)
 		return ;
 	while (i < att->len_g_env)

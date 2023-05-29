@@ -34,7 +34,7 @@ void	refresh_addenv(t_attr *att, char *add)
 
 	double_myenv(att);
 	free_g_env(att);
-	att->g_env = malloc(sizeof(char *) * att->len_g_env + 2);
+	att->g_env = malloc(sizeof(char *) * (att->len_g_env + 3));
 	if(!att->g_env)
 		return ;
 	while (i < att->len_g_env)
@@ -54,7 +54,7 @@ void	refresh_add_exp(t_attr *att, char *add)
 
 	double_exp_env(att);
 	free_exp_env(att);
-	att->exp_env = malloc(sizeof(char *) * att->len_exp_env + 2);
+	att->exp_env = malloc(sizeof(char *) * (att->len_exp_env + 3));
 	if(!att->exp_env)
 		return ;
 	while (i < att->len_exp_env)

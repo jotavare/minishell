@@ -74,7 +74,7 @@ void	free_g_env(t_attr *att)
 		free(att->g_env[i]);
 		i++;
 	}
-	free(att->d_env[i]);
+	//free(att->d_env[i]);
 	free(att->g_env);
 }
 
@@ -124,7 +124,7 @@ void	double_myenv(t_attr *att)
 	int	i;
 
 	i = 0;
-	att->d_env = malloc(sizeof(char *) * (att->len_g_env ));
+	att->d_env = malloc(sizeof(char *) * (att->len_g_env + 1));
 	att->len_d_env = att->len_g_env;
 	if (!att->d_env)
 		return ;
@@ -136,21 +136,21 @@ void	double_myenv(t_attr *att)
 	att->d_env[i] = 0;//27 maio
 }
 
-void	double_exp_env(t_attr *att)
+void	double_exp_env(t_attr *att) //27 maio
 {
-	int i;//27 maio
+	int i;
 
-	i = 0;//27 maio
-	att->d_exp_env = malloc(sizeof(char *) * (att->len_exp_env));//27 maio
-	att->len_d_exp_env = att->len_exp_env;//27 maio
-	if (!att->d_exp_env)//27 maio
-		return ;//27 maio
-	while (i < att->len_d_exp_env)//27 maio
-	{//27 maio
-		att->d_exp_env[i] = ft_strdup(att->exp_env[i]);//27 maio
-		i++;//27 maio
-	}//27 maio
-	att->d_exp_env[i] = 0;//27 maio
+	i = 0;
+	att->d_exp_env = malloc(sizeof(char *) * (att->len_exp_env + 1));
+	att->len_d_exp_env = att->len_exp_env;
+	if (!att->d_exp_env)
+		return ;
+	while (i < att->len_d_exp_env)
+	{
+		att->d_exp_env[i] = ft_strdup(att->exp_env[i]);
+		i++;
+	}
+	att->d_exp_env[i] = 0;
 }
 
 void	refresh_rmenv(t_attr *att, int rm_index)
