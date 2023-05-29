@@ -44,7 +44,6 @@ void	ft_exit(t_attr *attr)
 {
 	int			return_value;
 
-	//free(attr->last_path);
 	free_g_env(attr);
 	free_exp_env(attr);
 	return_value = 0;

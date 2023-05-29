@@ -62,7 +62,7 @@ char	*get_token(char *s)
 	j = 0;
 	while (s[j] != ' ' && s[j] != '\0')
 		j++;
-	token = malloc(sizeof(char) * j + 1);
+	token = malloc(sizeof(char) * (j + 1));
 	if (!token)
 		return (NULL);
 	token[j] = '\0';

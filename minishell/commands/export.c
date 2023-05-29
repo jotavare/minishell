@@ -193,15 +193,16 @@ void	add_quotes(char *s)
 {
 	int		i;
 	int 	j;
-	//int		len;
+	int	flag;
 
-	// len	= ft_strlen(s);
 	i = 0;
 	j = 0;
+	flag = 1;
 	while (s[i])
 	{
-		if (s[i] == '=' )
+		if (s[i] == '=' && flag)
 		{
+			flag = 0;
 			ft_putchar_fd(s[i], 1);
 			ft_putchar_fd('"', 1);
 		}
