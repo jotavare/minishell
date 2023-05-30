@@ -77,7 +77,7 @@
 | State | Definition |
 | :---: | :--- |
 | 🟡 | `<empty>` |
-| 🟡 | `<spaces>` or `<tabs>` |
+| 🟡 | `<spaces>` or `<tabs>` (copy from a .txt) |
 | 🟡 | `../../` |
 | 🟡 | `$` |
 
