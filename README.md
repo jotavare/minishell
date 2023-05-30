@@ -294,7 +294,6 @@
 | 🟡 | `echo -n test`                                                       |
 | 🟡 | `echo -nn test`                                                      |
 | 🟡 | `echo -n -n -n test`                                                 |
-| 🟡 | `echo -n -n -n test`                                                 |
 | 🟡 | `echo "-n" test`                                                     |
 | 🟡 | `echo -n"-n" test`                                                   |
 | 🟡 | `echo "-nnnn" test`                                                  |
