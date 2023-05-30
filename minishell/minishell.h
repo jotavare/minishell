@@ -60,7 +60,7 @@ typedef struct s_attr
 	int		len_exp_env;//27 maio
 	char	**d_exp_env;//27 maio
 	int		len_d_exp_env;//27 maio
-	int last_return_value;  
+	int		last_return_value;  //delete
 }		t_attr;
 
 typedef struct	s_exec
@@ -141,7 +141,12 @@ void	free_arr(char **arr);
 void	reinit_attributes(t_attr *att);
 char    *expand_variable(const char *env_var, char **g_env);
 
+// expander
+char	**expand_tokens(char** tokens, t_attr *att);
+char	*custom_getenv(const char* variable_name, t_attr *att);
+char	*ft_strcpy(char* destination, const char* source);
+
 // pipes
 //int	pipework(t_attr *att);
-
+char	*prompt(t_attr *att);
 #endif

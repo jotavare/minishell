@@ -32,14 +32,14 @@ BOLD			:= \033[1;1m
 
 # MINISHELL
 NAME = minishell
-SRC =	commands/cd.c \
-		commands/echo.c \
-		commands/env.c \
-		commands/ft_exit.c \
-		commands/export.c \
-		commands/pwd.c \
-		commands/unset.c \
-		commands/expander.c \
+SRC =	source/commands/cd.c \
+		source/commands/echo.c \
+		source/commands/env.c \
+		source/commands/ft_exit.c \
+		source/commands/export.c \
+		source/commands/pwd.c \
+		source/commands/unset.c \
+		source/expander.c \
 		source/get_tokens.c \
 		source/lexer.c \
 		source/minishell.c \

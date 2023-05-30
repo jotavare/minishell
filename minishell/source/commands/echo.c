@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include "../../minishell.h"
 
 /*
 	prints the string after echo command to the terminal
@@ -33,8 +33,6 @@ void	echo(t_attr att)
 				echo_n(att);
 			else if (ft_strnstr(att.tok_arr[i], "$?",ft_strlen(att.tok_arr[i])))
                 printf("%d", att.last_return_value);
-			else if (ft_strnstr(att.tok_arr[i], "$",ft_strlen(att.tok_arr[i])))
-				printf("%s ", expand_variable(att.tok_arr[i], att.g_env));
 			else
 				printf("%s ", att.tok_arr[i]);
 			i++;

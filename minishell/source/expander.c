@@ -1,32 +1,80 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   expander.c                                         :+:      :+:    :+:   */
+/*   get_tokens.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/12 15:57:28 by alexandre         #+#    #+#             */
-/*   Updated: 2023/05/29 17:34:42 by lde-sous         ###   ########.fr       */
+/*   Created: 2023/05/15 18:15:45 by lde-sous          #+#    #+#             */
+/*   Updated: 2023/05/22 21:12:07 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-/*
-char    *expand_variable(const char *env_var)
+char **expand_tokens(char** tokens, t_attr *att)
 {
-    while(*env_var != '$')
-        env_var++;
-    char *exp_env_var = getenv(env_var + 1);
-    return (exp_env_var);
+    int i = 0;
+    while (tokens[i] != NULL)
+	{
+        if (tokens[i][0] == '$' && tokens[i][1] != '\0')
+		{
+            char *variable_name = tokens[i] + 1; // Skip the '$' sign
+				
+            char *value = custom_getenv(variable_name, att);
+            if (value != NULL)
+			{
+                size_t expanded_length = ft_strlen(value);
+                char* expanded_token = malloc((expanded_length + 1) * sizeof(char));
+                ft_strcpy(expanded_token, value);
+                free(tokens[i]);
+                tokens[i] = expanded_token;
+            }
+        }
+        i++;
+    }
+    return tokens;
 }
-*/
+
+char    *custom_getenv(const char* variable_name, t_attr *att)
+{
+    if (att->g_env == NULL)
+        return NULL;
+
+    int i = 0;
+    while (att->g_env[i] != NULL)
+    {
+        char* entry = att->g_env[i];
+        char* delimiter = ft_strchr(entry, '=');
+        if (delimiter != NULL)
+        {
+            size_t variable_length = delimiter - entry;
+            if (ft_strncmp(entry, variable_name, variable_length) == 0 && variable_name[variable_length] == '\0')
+                return delimiter + 1; // Return the value after the '=' sign
+        }
+        i++;
+    }
+
+    return NULL; // Variable not found
+}
+
+
+char *ft_strcpy(char* destination, const char* source)
+{
+    char* start = destination;
+
+    while (*source != '\0')
+    {
+        *destination = *source;
+        destination++;
+        source++;
+    }
+
+    *destination = '\0';  // Append null character at the end
+    return start;
+}
 
 /*
-    expands the environment variable after finding the '$' character
-    returns the expanded environment variable afte the '=' character
-*/
-
 char    *expand_variable(const char *env_var, char **g_env)
 {
     // Find the '$' character
@@ -61,6 +109,7 @@ char    *expand_variable(const char *env_var, char **g_env)
         exp_env_var = "";
     return(exp_env_var);
 }
+*/
 
 /*
 bool verify_quotes(const char *str)

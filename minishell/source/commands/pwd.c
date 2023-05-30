@@ -1,29 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   env.c                                              :+:      :+:    :+:   */
+/*   pwd.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/12 15:57:28 by alexandre         #+#    #+#             */
-/*   Updated: 2023/05/21 20:13:23 by jotavare         ###   ########.fr       */
+/*   Created: 2023/05/16 16:51:22 by alexfern          #+#    #+#             */
+/*   Updated: 2023/05/22 12:25:19 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include "../../minishell.h"
 
-void	env(t_attr *att)
+/*
+    prints the current working directory to the terminal
+	'getcwd(pwd, PATH_MAX)' copy the entire path to pwd
+	use 'getcwd(pwd, 0)' to allocate memory automatically
+*/
+
+int	pwd(void)
 {
-	int	i;
+	char	pwd[PATH_MAX];
 
-	i = 0;
-	while (i < att->len_g_env)
-	{
-		printf("%s\n", att->g_env[i]);
-		i++;
-	}
-	i = 1;
-	while (att->tok_arr[i])
-		printf("%s\n", att->tok_arr[i++]);
-	printf("SIZE: %d\n", att->len_g_env);
+	if (getcwd(pwd, PATH_MAX) == NULL)
+		return (EXIT_FAILURE);
+	printf("%s\n", pwd);
+	return (EXIT_SUCCESS);
+
+	// if (getcwd(pwd, 0) == NULL)
+	// 	return (EXIT_FAILURE);
 }

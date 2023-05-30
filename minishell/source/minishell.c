@@ -31,6 +31,20 @@ void	init_params(int ac, char **av, t_attr *attr, char **envp)
 	init_paths(attr);
 }
 
+char *prompt(t_attr *att)
+{
+	char *str;
+	char *user = custom_getenv("USER", att);
+	char *pwd = custom_getenv("PWD", att);
+	if (pwd != NULL && user != NULL)
+	{
+		printf("┏━"GREEN_BOLD" %s@:" GREEN_BOLD, user);
+		printf(CYAN_BOLD "%s\n" CYAN_BOLD, pwd);
+	}
+	str = readline(RESET"┗━"RED_BOLD" minihell$"RED_BOLD" "RESET"");
+	return (str);
+}
+
 int	main(int ac, char **av, char **envp)
 {
 	t_attr attr;
@@ -41,11 +55,11 @@ int	main(int ac, char **av, char **envp)
 	init_params(ac, av, &attr, envp);
 	while (1)
 	{
-		str = readline("\033[0;31mminihell$\033[0m ");
+		str = prompt(&attr);
 		if (str == NULL)
 		{
 			rl_clear_history();
-		//	break ;
+			break ;
 		}
 		reinit_attributes(&attr);
 		if (str)
