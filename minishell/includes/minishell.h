@@ -22,6 +22,7 @@ void	command(t_attr *att);
 int		execute(t_attr *att);
 char	**get_tokens(char *str, t_attr *attr);
 void	ft_print_array(char **array, int nb);
+void	create_array(char *s, t_attr *att);
 
 // execute
 int		execute(t_attr *att);
@@ -103,6 +104,7 @@ void	free_exp_env(t_attr *att);
 void	free_d_exp_env(t_attr *att);
 void	free_tokens(char **tokens, t_attr *t);
 void	free_arr(char **arr);
+void	exit_free(t_attr *attr);
 
 // pipes
 // int	pipework(t_attr *att);

@@ -57,6 +57,7 @@ void	ft_exit(t_attr *attr)
 		ft_putstr_fd("minishell: exit: too many arguments\n", 2);
 		return_value = 1;
 	}
+	exit_free(attr);
 	printf("Exiting minishell with code %d\n", return_value);
 	exit(return_value);
 }

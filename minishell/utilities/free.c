@@ -28,8 +28,11 @@ void	free_tokens(char **tokens, t_attr *t)
 	int	i;
 
 	i = 0;
-	while (i < t->nb_tokens)
+	while (i <= t->nb_tokens)
+	{
+		printf("token deleted: %d / %d\n", i, t->nb_tokens);
 		free(tokens[i++]);
+	}
 }
 
 void	free_g_env(t_attr *att)
@@ -87,11 +90,9 @@ void	free_d_exp_env(t_attr *att)
 	free(att->d_exp_env);
 }
 
-/*
-void	final_free(t_attr *att)
+
+void	exit_free(t_attr *attr)
 {
-	free(attr.last_path);
-	free_g_env(&attr);
-	free_exp_env(&attr);
+	free_tokens(attr->tok_arr, attr);
+	free(attr->tok_arr);
 }
-*/

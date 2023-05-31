@@ -69,12 +69,11 @@ char	*get_token(char *s, t_attr *att)
 		token[0] = s[j];
 		token[1] = 0;
 		att->nb_pipes++;
-		//return (token);
 	}
 	return (token);
 }
 
-char	**create_array(char *s, t_attr *att)
+void	create_array(char *s, t_attr *att)
 {
 	int	count;
 
@@ -82,7 +81,7 @@ char	**create_array(char *s, t_attr *att)
 	att->tok_arr = malloc((att->nb_tokens + 1) * sizeof(char *));
 	att->tok_arr[att->nb_tokens] = NULL; //valgrind
 	if (!att->tok_arr)
-		return (0);
+		return ;
 	count = 0;
 	while (count < att->nb_tokens)
 	{
@@ -92,7 +91,7 @@ char	**create_array(char *s, t_attr *att)
 		s += ft_strlen(att->tok_arr[count]);
 		count++;
 	}
-	return (att->tok_arr);
+	//return (att->tok_arr);
 }
 
 char	**get_tokens(char *str, t_attr *att)
