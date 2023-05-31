@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:51:22 by alexfern          #+#    #+#             */
-/*   Updated: 2023/05/22 12:25:19 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/05/31 03:03:25 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ int	pwd(void)
 		return (EXIT_FAILURE);
 	printf("%s\n", pwd);
 	return (EXIT_SUCCESS);
-
 	// if (getcwd(pwd, 0) == NULL)
 	// 	return (EXIT_FAILURE);
 }

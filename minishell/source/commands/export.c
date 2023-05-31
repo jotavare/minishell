@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:57:28 by alexandre         #+#    #+#             */
-/*   Updated: 2023/05/29 18:15:45 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/05/31 03:03:21 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	check_equal(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i])
@@ -30,12 +30,13 @@ int	check_equal(char *str)
 
 void	refresh_addenv(t_attr *att, char *add)
 {
-	int i = 0;
+	int	i;
 
+	i = 0;
 	double_myenv(att);
 	free_g_env(att);
 	att->g_env = malloc(sizeof(char *) * (att->len_g_env + 3));
-	if(!att->g_env)
+	if (!att->g_env)
 		return ;
 	while (i < att->len_g_env)
 	{
@@ -50,12 +51,13 @@ void	refresh_addenv(t_attr *att, char *add)
 
 void	refresh_add_exp(t_attr *att, char *add)
 {
-	int i = 0;
+	int	i;
 
+	i = 0;
 	double_exp_env(att);
 	free_exp_env(att);
 	att->exp_env = malloc(sizeof(char *) * (att->len_exp_env + 3));
-	if(!att->exp_env)
+	if (!att->exp_env)
 		return ;
 	while (i < att->len_exp_env)
 	{
@@ -65,7 +67,6 @@ void	refresh_add_exp(t_attr *att, char *add)
 	att->exp_env[att->len_exp_env] = ft_strdup(add);
 	att->len_exp_env++;
 	att->exp_env[att->len_exp_env] = 0;
-	
 	// temp = malloc(sizeof(char *) * (att->len_exp_env));
 	// temp = att->exp_env;
 	// temp[att->len_exp_env] = 0;
@@ -78,10 +79,11 @@ void	refresh_add_exp(t_attr *att, char *add)
 
 int	check_the_arr(char **search, char *str)
 {
-	int i;
+	int		i;
 	char	*to_find;
-	int j = 0;
-	
+	int		j;
+
+	j = 0;
 	i = 0;
 	if (check_equal(str))
 	{
@@ -89,7 +91,7 @@ int	check_the_arr(char **search, char *str)
 			j++;
 		to_find = str;
 		while (search[i])
-		{ 
+		{
 			if (!ft_strncmp(search[i], to_find, j))
 			{
 				return (i);
@@ -98,13 +100,13 @@ int	check_the_arr(char **search, char *str)
 		}
 	}
 	else
-	{				
+	{
 		while (str[j])
 			j++;
 		j++;
 		to_find = add_equal(str);
 		while (search[i])
-		{ 
+		{
 			if (!ft_strncmp(search[i], to_find, j))
 			{
 				free(to_find);
@@ -119,7 +121,7 @@ int	check_the_arr(char **search, char *str)
 
 void	export(t_attr *att)
 {
-	int j;
+	int	j;
 
 	j = 1;
 	if (!att->tok_arr[1])
@@ -132,7 +134,8 @@ void	export(t_attr *att)
 	{
 		if (!check_alpha(att->tok_arr[j]))
 		{
-			printf("bash: export: '%s': not a valid identifier\n", att->tok_arr[j]);//check
+			printf("bash: export: '%s': not a valid identifier\n",
+					att->tok_arr[j]); //check
 			j++;
 		}
 		else if (check_equal(att->tok_arr[j]))
@@ -140,7 +143,8 @@ void	export(t_attr *att)
 			if (check_the_arr(att->g_env, att->tok_arr[j]))
 				refresh_rmenv(att, check_the_arr(att->g_env, att->tok_arr[j]));
 			if (check_the_arr(att->exp_env, att->tok_arr[j]))
-				refresh_rmexp_env(att, check_the_arr(att->exp_env, att->tok_arr[j]));
+				refresh_rmexp_env(att, check_the_arr(att->exp_env,
+							att->tok_arr[j]));
 			refresh_addenv(att, att->tok_arr[j]);
 			refresh_add_exp(att, att->tok_arr[j]);
 			j++;
@@ -148,7 +152,8 @@ void	export(t_attr *att)
 		else if (!check_equal(att->tok_arr[j]))
 		{
 			if (check_the_arr(att->exp_env, att->tok_arr[j]))
-				refresh_rmexp_env(att, check_the_arr(att->exp_env, att->tok_arr[j]));
+				refresh_rmexp_env(att, check_the_arr(att->exp_env,
+							att->tok_arr[j]));
 			refresh_add_exp(att, att->tok_arr[j]);
 			j++;
 		}
@@ -191,8 +196,8 @@ void	export_sort(t_attr att)
 
 void	add_quotes(char *s)
 {
-	int		i;
-	int 	j;
+	int	i;
+	int	j;
 	int	flag;
 
 	i = 0;
@@ -216,7 +221,7 @@ void	add_quotes(char *s)
 
 void	export_print(t_attr att)
 {
-	int		i;
+	int i;
 
 	i = 0;
 	while (att.exp_env[i])

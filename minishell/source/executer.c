@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   execute.c                                          :+:      :+:    :+:   */
+/*   executer.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 17:14:25 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/05/31 02:14:54 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/05/31 03:02:32 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ char	**build_path(char **all_paths, int nb, char *command)
 		paths_comm[i] = ft_strjoin(all_paths[i], command);
 		i++;
 	}
-	free (command);
+	free(command);
 	return (paths_comm);
 }
 
@@ -60,10 +60,11 @@ char	*get_str_paths(t_attr *att, char *path_str)
 	return (NULL);
 }
 
-int		exec_commands(t_exec *args, t_attr *att)
+int	exec_commands(t_exec *args, t_attr *att)
 {
 	args->i = 0;
-	args->path_command = build_path(args->all_paths, args->nb_of_paths, ft_strjoin("/", att->tok_arr[0]));
+	args->path_command = build_path(args->all_paths, args->nb_of_paths,
+			ft_strjoin("/", att->tok_arr[0]));
 	while (args->i < args->nb_of_paths)
 	{
 		if (!access(args->path_command[args->i], X_OK))
@@ -73,7 +74,7 @@ int		exec_commands(t_exec *args, t_attr *att)
 			if (args->ret != 0)
 			{
 				perror("execve");
-				return(-1);
+				return (-1);
 			}
 		}
 		args->i++;
@@ -81,35 +82,36 @@ int		exec_commands(t_exec *args, t_attr *att)
 	return (0);
 }
 
-int		exec_binaries(t_exec *args, t_attr *att)
+int	exec_binaries(t_exec *args, t_attr *att)
 {
 	getcwd(args->curr_path, PATH_MAX);
 	args->command++;
 	if (!access(ft_strjoin(args->curr_path, args->command), X_OK))
 	{
 		args->ret = execve(ft_strjoin(args->curr_path, args->command),
-				att->tok_arr, att->g_env);
+							att->tok_arr,
+							att->g_env);
 		if (args->ret != 0)
 		{
 			perror("execve");
-			return(-1);
+			return (-1);
 		}
 	}
-	return(0);
+	return (0);
 }
 
-int		exec_absolute_path(t_exec *args, t_attr *att)
+int	exec_absolute_path(t_exec *args, t_attr *att)
 {
 	if (!access(att->tok_arr[0], X_OK))
-			{
-				args->ret = execve(att->tok_arr[0], att->tok_arr, att->g_env);
-				if (args->ret != 0)
-				{
-					perror("execve");
-					return(-1);
-				}
-			}
-	return(0);
+	{
+		args->ret = execve(att->tok_arr[0], att->tok_arr, att->g_env);
+		if (args->ret != 0)
+		{
+			perror("execve");
+			return (-1);
+		}
+	}
+	return (0);
 }
 
 int	execute(t_attr *att)
@@ -133,8 +135,8 @@ int	execute(t_attr *att)
 	}
 	else
 		wait(NULL);
-	free_arr (args.all_paths);
-	free (args.all_paths);
+	free_arr(args.all_paths);
+	free(args.all_paths);
 	return (0);
 }
 

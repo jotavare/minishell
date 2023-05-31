@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:28:13 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/05/31 02:19:20 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/05/31 03:04:01 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,18 @@
 // source
 char	*prompt(t_attr *att);
 void	command(t_attr *att);
-int     execute(t_attr *att);
+int		execute(t_attr *att);
 char	**get_tokens(char *str, t_attr *attr);
 void	ft_print_array(char **array, int nb);
 
 // execute
-int execute(t_attr *att);
-int exec_commands(t_exec *args, t_attr *att);
-int exec_binaries(t_exec *args, t_attr *att);
-int exec_absolute_path(t_exec *args, t_attr *att);
-char    **build_path(char **all_paths, int nb, char *command);
-char    *get_str_paths(t_attr *att, char *path_str);
-int count_paths(char *s);
+int		execute(t_attr *att);
+int		exec_commands(t_exec *args, t_attr *att);
+int		exec_binaries(t_exec *args, t_attr *att);
+int		exec_absolute_path(t_exec *args, t_attr *att);
+char	**build_path(char **all_paths, int nb, char *command);
+char	*get_str_paths(t_attr *att, char *path_str);
+int		count_paths(char *s);
 
 // init
 void	init_params(int ac, char **av, t_attr *attr, char **envp);
@@ -51,7 +51,7 @@ int		pwd(void);
 void	cd(t_attr *att);
 void	env(t_attr *att);
 
-// exit 
+// exit
 void	ft_exit(t_attr *att);
 int		exit_two(t_attr att);
 
@@ -85,16 +85,16 @@ char	*dequoter(char *str);
 char	*trim_back(const char *input);
 char	*white_sp_rm(const char *str);
 char	*dequoter(char *str);
-char	*ft_strcpy(char* destination, const char* source);
+char	*ft_strcpy(char *destination, const char *source);
 int		ft_strcmp(const char *str1, const char *str2);
 int		flag_counter(char *str, char c);
 int		ft_strcmp(const char *str1, const char *str2);
 int		flag_counter(char *str, char c);
-int     check_alpha(char *str);
+int		check_alpha(char *str);
 
 // expander
-char	**expand_tokens(char** tokens, t_attr *att);
-char	*custom_getenv(const char* variable_name, t_attr *att);
+char	**expand_tokens(char **tokens, t_attr *att);
+char	*custom_getenv(const char *variable_name, t_attr *att);
 
 // free
 void	free_g_env(t_attr *att);

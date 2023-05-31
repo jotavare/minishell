@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
+/*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:57:28 by alexandre         #+#    #+#             */
-/*   Updated: 2023/05/30 22:16:28 by alexandre        ###   ########.fr       */
+/*   Updated: 2023/05/31 03:02:55 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
- 
+
 /*
     change directory to path given an argument
 */
@@ -24,10 +24,10 @@ char	*search_var_in_g_env(t_attr *att, char *s)
 
 	i = 0;
 	s_size = (int)ft_strlen(s);
- 	while (ft_strncmp(att->g_env[i], s, s_size))
+	while (ft_strncmp(att->g_env[i], s, s_size))
 		i++;
 	path = att->g_env[i];
-	path +=  s_size + 1;
+	path += s_size + 1;
 	return (path);
 }
 
@@ -78,9 +78,6 @@ void	cd(t_attr *att)
 	free(str_pwd);
 	free(current_path);
 }
-
-
-
 
 /* void	cd(t_attr *att)
 {

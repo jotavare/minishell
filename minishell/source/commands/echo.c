@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:57:28 by alexandre         #+#    #+#             */
-/*   Updated: 2023/05/29 17:26:57 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/05/31 03:02:59 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void	echo(t_attr att)
 {
 	int	i;
 
-
 	i = 1;
 	if (att.nb_tokens == 1)
 		printf("\n");
@@ -31,8 +30,9 @@ void	echo(t_attr att)
 		{
 			if (ft_strnstr(att.tok_arr[i], "-n", ft_strlen(att.tok_arr[i])))
 				echo_n(att);
-			else if (ft_strnstr(att.tok_arr[i], "$?",ft_strlen(att.tok_arr[i])))
-                printf("%d", att.last_return_value);
+			else if (ft_strnstr(att.tok_arr[i], "$?",
+						ft_strlen(att.tok_arr[i])))
+				printf("%d", att.last_return_value);
 			else
 				printf("%s ", att.tok_arr[i]);
 			i++;
@@ -48,7 +48,7 @@ void	echo(t_attr att)
 
 void	echo_n(t_attr att)
 {
-	int	i;
+	int i;
 
 	i = 2;
 	while (i < att.nb_tokens)
