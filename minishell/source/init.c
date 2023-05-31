@@ -32,6 +32,10 @@ void	init_attributes(t_attr *att)
 	att->d_exp_env = NULL;
 	att->len_d_exp_env = 0;
 	att->nb_pipes = 0;
+	att->dirdoc.single_right = 0;
+	att->dirdoc.double_right = 0;
+	att->dirdoc.single_left = 0;
+	att->dirdoc.double_left = 0;
 }
 
 void	init_paths(t_attr *att)
@@ -46,4 +50,8 @@ void	reinit_attributes(t_attr *att)
 	att->tok_arr = NULL;
 	att->nb_pipes = 0;
 	att->last_path = search_var_in_g_env(att, "OLDPWD");
+	att->dirdoc.single_right = 0;
+	att->dirdoc.double_right = 0;
+	att->dirdoc.single_left = 0;
+	att->dirdoc.double_left = 0;
 }

@@ -6,7 +6,7 @@
 /*   By: alexfern <alexfern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 18:15:45 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/05/31 18:20:54 by alexfern         ###   ########.fr       */
+/*   Updated: 2023/05/31 20:56:12 by alexfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	command(t_attr *att)
 	else if (ft_strcmp(tok[0], "env") == 0)
 		env(att);
 	else if ((ft_strcmp(tok[0], "exit") == 0) || (ft_strcmp(tok[0],
-					"\"exit\"") == 0))
+				"\"exit\"") == 0))
 		return (ft_exit(att));
 	else
 		execute(att);

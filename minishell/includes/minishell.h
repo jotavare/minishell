@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alexfern <alexfern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:28:13 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/05/31 03:04:01 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/05/31 21:14:09 by alexfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ void	refresh_addenv(t_attr *att, char *add);
 void	refresh_add_exp(t_attr *att, char *add);
 char	*search_var_in_g_env(t_attr *att, char *s);
 int		check_the_arr(char **search, char *str);
+int     check_equal(char *str);
 
 // utilities
 char	*trim_back(const char *input);
@@ -108,5 +109,9 @@ void	exit_free(t_attr *attr);
 
 // pipes
 // int	pipework(t_attr *att);
+
+
+//Redirects && Heredocs
+void count_dirdoc(t_attr *att);
 
 #endif

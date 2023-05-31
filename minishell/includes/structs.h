@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alexfern <alexfern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:28:13 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/05/31 03:03:54 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/05/31 20:51:53 by alexfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,14 @@
 # define STRUCTS_H
 
 # include "macros.h"
+
+typedef struct s_dirdoc
+{
+	int single_right;	// count: >
+	int double_right;	// count: >>
+	int	single_left;	// count: <
+	int	double_left;	// count: <<
+}		t_dirdoc;
 
 typedef struct s_attr
 {
@@ -30,6 +38,7 @@ typedef struct s_attr
 	int len_exp_env;       //27 maio
 	char **d_exp_env;      //27 maio
 	int len_d_exp_env;     //27 maio
+	t_dirdoc dirdoc;	   //struct para count redirection / heredocs
 }			t_attr;
 
 typedef struct s_exec

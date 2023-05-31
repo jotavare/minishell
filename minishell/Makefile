@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jotavare <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: alexfern <alexfern@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/12 15:15:58 by alexandre         #+#    #+#              #
-#    Updated: 2023/05/31 02:27:51 by jotavare         ###   ########.fr        #
+#    Updated: 2023/05/31 20:42:26 by alexfern         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,8 +49,10 @@ SRC =	source/commands/cd.c \
 		source/signals.c \
 		source/start.c \
 		source/tokens.c \
+		source/heredocs.c \
 		utilities/free.c \
 		utilities/utilities.c \
+		utilities/utilities_heredocs.c \
 
 OBJSDIR = objects
 OBJ = $(addprefix $(OBJSDIR)/, $(SRC:.c=.o))
