@@ -134,6 +134,7 @@
 | 🟡 | `  unset  `                  |
 | 🟡 | `unset [variable]`           |
 | 🟡 | `unset [variable] [variable]`|
+| 🟡 | `unset [all variables]`      |
 | 🟡 | `EXPORT`                     |
 | 🟡 | `eXpOrT`                     |
 | 🟡 | `export`                     |
