@@ -1,29 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   env.c                                              :+:      :+:    :+:   */
+/*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/12 15:57:28 by alexandre         #+#    #+#             */
-/*   Updated: 2023/05/21 20:13:23 by jotavare         ###   ########.fr       */
+/*   Created: 2023/05/15 18:15:45 by lde-sous          #+#    #+#             */
+/*   Updated: 2023/05/31 02:24:52 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include "../includes/minishell.h"
 
-void	env(t_attr *att)
+void	free_arr(char **arr)
+{
+	int i = 0;
+
+	while (arr[i])
+	{
+		free (arr[i++]);
+	}
+}
+
+void	free_tokens(char **tokens, t_attr *t)
 {
 	int	i;
 
 	i = 0;
-	while (i < att->len_g_env)
-	{
-		printf("%s\n", att->g_env[i]);
-		i++;
-	}
-	i = 1;
-	while (att->tok_arr[i])
-		printf("%s\n", att->tok_arr[i++]);
-	printf("SIZE: %d\n", att->len_g_env);
+	while (i < t->nb_tokens)
+		free(tokens[i++]);
 }
+
+/*
+void	final_free(t_attr *att)
+{
+	free(attr.last_path);
+	free_g_env(&attr);
+	free_exp_env(&attr);
+}
+*/

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include "../includes/minishell.h"
 
 /*
     removes the spaces at the end of the string and
@@ -73,6 +73,13 @@ char	*white_sp_rm(const char *str)
 	return (output);
 }
 
+/*
+	compares two strings and returns 1 if the first
+	string is bigger than the second string, -1 if
+	the second string is bigger than the first string
+	and 0 if the strings are equal.
+*/
+
 int	ft_strcmp(const char *str1, const char *str2)
 {
 	int	i;
@@ -92,6 +99,33 @@ int	ft_strcmp(const char *str1, const char *str2)
 	return (0);
 }
 
+/*
+	counts the number of characters in a string and
+	returns the number of characters in the string and
+	append the null character at the end of the string.
+*/
+
+char *ft_strcpy(char* destination, const char* source)
+{
+    char* start = destination;
+
+    while (*source != '\0')
+    {
+        *destination = *source;
+        destination++;
+        source++;
+    }
+
+    *destination = '\0';
+    return start;
+}
+
+/*
+	counts the number of times a character appears
+	in a string and returns the number of times the
+	character appears in the string.
+*/
+
 int	flag_counter(char *str, char c)
 {
 	int	i;
@@ -107,6 +141,31 @@ int	flag_counter(char *str, char c)
 	}
 	return (result);
 }
+
+/*
+	if the string is a valid variable name
+	(no spaces, no numbers, no special characters).
+*/
+
+int	check_alpha(char *str)
+{
+	int i;
+	
+	i = 0;
+	if (str[i] == '=')
+		return (0);
+	while (str[i] && str[i] != '=')
+	{
+		if (!((str[i] >= 'A' && str[i] <= 'Z') || (str[i] >= 'a' && str[i] <= 'z')//27maio '('')'
+			|| (str[i] == '_')))
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+
+
 
 /* char	*dequoter(char *str)
 {
@@ -145,94 +204,3 @@ int	flag_counter(char *str, char c)
 	printf("%s\n", arranged);
 	return (arranged); //nao esquecer de dar free!!!
 } */
-
-void	start_env(char **envp, t_attr *att)
-{
-	int	i;
-	
-	i = 0;
-	att->len_g_env = 0;
-	while(envp[att->len_g_env])
-		att->len_g_env++;
-	att->g_env = malloc(sizeof(char *) * (att->len_g_env + 2)); //verificar malloc, tem leaks
-	if (!att->g_env)
-		return ;
-	while (i < att->len_g_env)
-	{
-		att->g_env[i] = ft_strdup(envp[i]);
-		i++;
-	}
-	att->g_env[i] = 0;
-}
-
-void	start_exp(char **envp, t_attr *att)
-{
-	int j = 0;
-
-
-	att->len_exp_env = 0;
-	while(envp[att->len_exp_env])
-		att->len_exp_env++;
-	att->exp_env = malloc(sizeof(char *) * (att->len_g_env + 1));
-	if (!att->exp_env)
-		return ;
-	while (j < att->len_exp_env)
-	{
-		att->exp_env[j] = ft_strdup(envp[j]);
-		j++;
-	}
-	att->exp_env[j] = 0;
-}
-
-void	init_attributes(t_attr *att)
-{
-    att->nb_tokens = 0;
-    att->index = 0;
-    att->tok_arr = NULL;
-	att->d_env = NULL;
-	att->len_d_env = 0;
-	att->d_exp_env = NULL;
-	att->len_d_exp_env = 0;
-	att->nb_pipes = 0;
-}
-
-void	reinit_attributes(t_attr *att)
-{
-    att->nb_tokens = 0;
-    att->index = 0;
-    att->tok_arr = NULL;
-	att->nb_pipes = 0;
-	att->last_path = search_var_in_g_env(att, "OLDPWD");
-}
-
-void	init_paths(t_attr *att)
-{
-	att->last_path = search_var_in_g_env(att, "HOME");
-}
-
-int	check_alpha(char *str)
-{
-	int i;
-	
-	i = 0;
-	if (str[i] == '=')
-		return (0);
-	while (str[i] && str[i] != '=')
-	{
-		if (!((str[i] >= 'A' && str[i] <= 'Z') || (str[i] >= 'a' && str[i] <= 'z')//27maio '('')'
-			|| (str[i] == '_')))
-			return (0);
-		i++;
-	}
-	return (1);
-}
-
-void	free_arr(char **arr)
-{
-	int i = 0;
-
-	while (arr[i])
-	{
-		free (arr[i++]);
-	}
-}

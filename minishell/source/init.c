@@ -12,37 +12,39 @@
 
 #include "../includes/minishell.h"
 
-int	main(int ac, char **av, char **envp)
+void	init_params(int ac, char **av, t_attr *attr, char **envp)
 {
-	t_attr attr;
-	char *str;
+	(void)ac;
+	(void)av;
 
-	rl_clear_history();
-	set_signals();
-	init_params(ac, av, &attr, envp);
-	while (1)
-	{
-		str = prompt(&attr);
-		if (str == NULL)
-		{
-			rl_clear_history();
-			break ;
-		}
-		reinit_attributes(&attr);
-		if (str)
-		{	
-			add_history(str);
-			attr.tok_arr = get_tokens(str, &attr);
-		
-			command(&attr);
+	init_attributes(attr);
+	start_env(envp, attr);
+	start_exp(envp, attr);
+	init_paths(attr);
+}
 
-			free_tokens(attr.tok_arr, &attr);
-			free(attr.tok_arr);
-			free(str);
-		}
-	}
-	free(attr.last_path);
-	free_g_env(&attr);
-	free_exp_env(&attr);
-	return (0);
+void	init_attributes(t_attr *att)
+{
+    att->nb_tokens = 0;
+    att->index = 0;
+    att->tok_arr = NULL;
+	att->d_env = NULL;
+	att->len_d_env = 0;
+	att->d_exp_env = NULL;
+	att->len_d_exp_env = 0;
+	att->nb_pipes = 0;
+}
+
+void	init_paths(t_attr *att)
+{
+	att->last_path = search_var_in_g_env(att, "HOME");
+}
+
+void	reinit_attributes(t_attr *att)
+{
+    att->nb_tokens = 0;
+    att->index = 0;
+    att->tok_arr = NULL;
+	att->nb_pipes = 0;
+	att->last_path = search_var_in_g_env(att, "OLDPWD");
 }

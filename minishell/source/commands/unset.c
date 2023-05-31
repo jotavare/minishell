@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../minishell.h"
+#include "../../includes/minishell.h"
 
 /* Adiciona um "=" no fim da nossa string para poder
 encontrar a variavel precisa na envp */

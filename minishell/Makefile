@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+         #
+#    By: jotavare <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/12 15:15:58 by alexandre         #+#    #+#              #
-#    Updated: 2023/05/29 17:55:38 by lde-sous         ###   ########.fr        #
+#    Updated: 2023/05/31 02:27:51 by jotavare         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,17 +35,21 @@ NAME = minishell
 SRC =	source/commands/cd.c \
 		source/commands/echo.c \
 		source/commands/env.c \
-		source/commands/ft_exit.c \
+		source/commands/exit.c \
 		source/commands/export.c \
 		source/commands/pwd.c \
 		source/commands/unset.c \
+		source/executer.c \
 		source/expander.c \
-		source/get_tokens.c \
+		source/init.c \
 		source/lexer.c \
 		source/minishell.c \
-		source/signals.c \
-		source/execute.c \
 		source/pipes_test.c \
+		source/prompt.c \
+		source/signals.c \
+		source/start.c \
+		source/tokens.c \
+		utilities/free.c \
 		utilities/utilities.c \
 
 OBJSDIR = objects

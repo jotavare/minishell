@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../minishell.h"
+#include "../../includes/minishell.h"
  
 /*
     change directory to path given an argument
@@ -61,16 +61,16 @@ void	cd(t_attr *att)
 	current_path = getcwd(NULL, 0);
 	if (!current_path)
 		return ;
-	str_pwd = ft_strjoin("OLDPWD=", current_path);
-	cd_rm_add_path(att, "OLDPWD", str_pwd);
-	free(str_pwd);
-	att->last_path = search_var_in_g_env(att, "OLDPWD");
 	if (chdir(destiny_path))
 	{
 		printf("minishell: cd: %s: No such file or directory\n",
 				att->tok_arr[1]);
 		att->last_return_value = 1;
 	}
+	str_pwd = ft_strjoin("OLDPWD=", current_path);
+	cd_rm_add_path(att, "OLDPWD", str_pwd);
+	free(str_pwd);
+	att->last_path = search_var_in_g_env(att, "OLDPWD");
 	free(current_path);
 	current_path = getcwd(NULL, 0);
 	str_pwd = ft_strjoin("PWD=", current_path);

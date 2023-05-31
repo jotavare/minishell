@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   execute.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 17:14:25 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/05/24 20:32:46 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/05/31 02:14:54 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include "../includes/minishell.h"
 
 char	**build_path(char **all_paths, int nb, char *command)
 {
@@ -110,16 +110,6 @@ int		exec_absolute_path(t_exec *args, t_attr *att)
 				}
 			}
 	return(0);
-}
-
-void	start_args(t_exec *args, t_attr *att)
-{
-	args->i = 0;
-	args->command = att->tok_arr[0];
-	args->path_srt = get_str_paths(att, args->path_srt);
-	args->path_srt += 5;
-	args->nb_of_paths = count_paths(args->path_srt);
-	args->all_paths = ft_split(args->path_srt, ':');
 }
 
 int	execute(t_attr *att)

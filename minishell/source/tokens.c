@@ -3,23 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get_tokens.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
+/*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 18:15:45 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/05/30 21:00:04 by alexandre        ###   ########.fr       */
+/*   Updated: 2023/05/31 01:28:44 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
-
-void	free_tokens(char **tokens, t_attr *t)
-{
-	int	i;
-
-	i = 0;
-	while (i < t->nb_tokens)
-		free(tokens[i++]);
-}
+#include "../includes/minishell.h"
 
 int	count_tokens(char *s, t_attr *att)
 {
