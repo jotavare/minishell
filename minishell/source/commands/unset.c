@@ -6,14 +6,17 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:57:28 by alexandre         #+#    #+#             */
-/*   Updated: 2023/05/31 03:03:29 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/05/31 03:19:29 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-/* Adiciona um "=" no fim da nossa string para poder
-encontrar a variavel precisa na envp */
+/*
+	finds a "=" in the end of our string so we can
+	find the exact variable in envp.
+*/
+
 char	*add_equal(char *str)
 {
 	char	*p_equal;
@@ -32,7 +35,8 @@ char	*add_equal(char *str)
 }
 
 /* 
-	Encontra a posicao da string que queremos tirar do nosso array envp 
+	finds the string position we want toremove from
+	our envp array.
 */
 
 int	find_index(char **search, char *str)
@@ -62,62 +66,9 @@ int	find_index(char **search, char *str)
 	//this function is called because we know 100% str exists, make it more safe
 }
 
-/* Free da envp para fazer refresh dela 
-na proxima funcao e realocar a memoria */
-void	free_g_env(t_attr *att)
-{
-	int	i;
-
-	i = 0;
-	while (att->g_env[i])
-	{
-		free(att->g_env[i]);
-		i++;
-	}
-	//free(att->d_env[i]);
-	free(att->g_env);
-}
-
-void	free_d_env(t_attr *att)
-{
-	int	i;
-
-	i = 0;
-	while (att->d_env[i])
-	{
-		free(att->d_env[i]);
-		i++;
-	}
-	free(att->d_env[i]);
-	free(att->d_env);
-}
-
-void	free_exp_env(t_attr *att)
-{
-	int	i;
-
-	i = 0;
-	while (att->exp_env[i])
-	{
-		free(att->exp_env[i]);
-		i++;
-	}
-	free(att->exp_env[i]);
-	free(att->exp_env);
-}
-
-void	free_d_exp_env(t_attr *att)
-{
-	int	i;
-
-	i = 0;
-	while (att->d_exp_env[i])
-	{
-		free(att->d_exp_env[i]);
-		i++;
-	}
-	free(att->d_exp_env);
-}
+/* 
+	free envp and reallocate it
+*/
 
 void	double_myenv(t_attr *att)
 {
@@ -135,7 +86,7 @@ void	double_myenv(t_attr *att)
 	}
 	att->d_env[i] = 0; //27 maio
 }
-
+	
 void	double_exp_env(t_attr *att) //27 maio
 {
 	int i;
@@ -206,7 +157,9 @@ void	refresh_rmexp_env(t_attr *att, int rm_index)
 	free_d_exp_env(att);
 }
 
-/* Remove variable from g_env and from d_env */
+/* 
+	removes the variable from g_env and from d_env
+*/
 
 void	unset(t_attr *att)
 {
