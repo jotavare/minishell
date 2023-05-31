@@ -64,64 +64,62 @@
 </div>
 
 # COMMAND TESTS
-
-| State | Definition |
-| :---: | :--- |
-| 🟢 | Working |
-| 🟡 | Didn't test yet |
-| 🔴 | Not working |
+|    | Definition                |
+| :- | :------------------------ |
+| 🟢 | Working                   |
+| 🟡 | Didn't test yet           |
+| 🔴 | Not working               |
 | 🔵 | Not mandatory (i think?!) |
-| -  | Nothing |
 
 ## BLANK
-| State | Definition |
-| :---: | :--- |
-| 🟡 | `<empty>` |
-| 🟡 | `<spaces>` or `<tabs>` (copy from a .txt) |
-| 🟡 | `../../` |
-| 🟡 | `$` |
+|    | Commands   |
+| :- | :--------- |
+| 🟡 | `<empty>`  |
+| 🟡 | `<spaces>` |
+| 🟡 | `../../`   |
+| 🟡 | `$`        |
 
 ## SIGNALS
-| State | Commands |
-| :---: | :--- |
-| 🟡 | `Ctrl` + `C` |
-| 🟡 | `Ctrl` + `D` |
-| 🟡 | `Ctrl` + `\` |
+|    | Commands                                    |
+| :- | :------------------------------------------ |
+| 🟡 | `Ctrl` + `C`                                |
+| 🟡 | `Ctrl` + `D`                                |
+| 🟡 | `Ctrl` + `\`                                |
 | 🟡 | `write something then press` + `Ctrl` + `C` |
 | 🟡 | `write something then press` + `Ctrl` + `D` |
 | 🟡 | `write something then press` + `Ctrl` + `\` |
-| 🟡 | `cat` + `Ctrl` + `C` |
-| 🟡 | `cat` + `Ctrl` + `D` |
-| 🟡 | `cat` + `Ctrl` + `\` |
-| 🟡 | `sleep 5` + `Ctrl` + `C` |
-| 🟡 | `sleep 5` + `Ctrl` + `D` |
-| 🟡 | `sleep 5` + `Ctrl` + `\` |
+| 🟡 | `cat` + `Ctrl` + `C`                        |
+| 🟡 | `cat` + `Ctrl` + `D`                        |
+| 🟡 | `cat` + `Ctrl` + `\`                        |
+| 🟡 | `sleep 5` + `Ctrl` + `C`                    |
+| 🟡 | `sleep 5` + `Ctrl` + `D`                    |
+| 🟡 | `sleep 5` + `Ctrl` + `\`                    |
 	
 # PATH
-| State | Commands |
-| :---: | :--- |
-| 🟡 | `/bin/echo` |
-| 🟡 | `/bin/grep` |
-| 🟡 | `/bin/ls` |
-| 🟡 | `/bin/ls -la` |
-| 🟡 | `/bin/cat` |
-| 🟡 | `/bin/pwd` |
-| 🟡 | `/bin/cd` |
-| 🟡 | `/bin/export` |
-| 🟡 | `/bin/env` |
-| 🟡 | `/bin/exit` |
-| 🟡 | `/bin/echo` |
+|    | Commands           |
+| :- | :----------------- |
+| 🟡 | `/bin/echo`        |
+| 🟡 | `/bin/grep`        |
+| 🟡 | `/bin/ls`          |
+| 🟡 | `/bin/ls -la`      |
+| 🟡 | `/bin/cat`         |
+| 🟡 | `/bin/pwd`         |
+| 🟡 | `/bin/cd`          |
+| 🟡 | `/bin/export`      |
+| 🟡 | `/bin/env`         |
+| 🟡 | `/bin/exit`        |
+| 🟡 | `/bin/echo`        |
 
 # PWD
-| State | Commands |
-| :---: | :--- |
-| 🟡 | `pwd` |
-| 🟡 | `pwd a` |
+|    | Commands      |
+| :- | :------------ |
+| 🟡 | `pwd`         |
+| 🟡 | `pwd a`       |
 | 🟡 | `pwd a b c d` |
 
 # EXPORT, ENV AND UNSET
-| State | Built-In |
-| :---: | :--- |
+|    | Commands                     |
+| :- | :--------------------------- |
 | 🟡 | `ENV`                        |
 | 🟡 | `eNv`                        |
 | 🟡 | `env`                        |
@@ -178,58 +176,58 @@
 | 🟡 | `export _=a; echo $_a` |
 
 # EXIT
-| State | Built-In |
-| :---: | :--- |
-| 🟢 | `EXIT`          |
-| 🟢 | `eXiT`          |
-| 🟢 | `exit`          |
-| 🟢 | `exit `         |
-| 🟢 | ` exit`         |
-| 🟢 | `  exit  `      |
-| 🟢 | `exit test`     |
-| 🟢 | `exit "test"`   |
-| 🟢 | `"exit test"`   |
-| 🟢 | `"exit"`        |
-| 🔴 | `exit1`         |
-| 🔴 | `exita`         |
-| 🟢 | `exit exit`     |
-| 🟢 | `exit a`        |
-| 🟢 | `exit abc`      |
-| 🔴 | `exit a b c`    |
-| 🟢 | `exit a b c d`  |
-| 🔵 | `exit #`        |
-| 🔵 | `exit *`        |
-| 🟢 | `exit 0`        |
-| 🟢 | `exit 1`        |
-| 🟢 | `exit 123`      |
-| 🟢 | `exit 1234`     |
-| 🔴 | `exit 1 2 3 4`  |
-| 🔴 | `exit +10`      |
-| 🔴 | `exit -10`      |
-| 🔴 | `exit +2000`    |
-| 🔴 | `exit -2000`    |
-| 🔴 | `exit +-2000`   |
-| 🔴 | `exit -+2000`   |
-| 🔴 | `exit ++2000`   |
-| 🔴 | `exit --2000`   |
-| 🔴 | `exit -2147483649` |
-| 🔴 | `exit 2147483648`|
+|    | Commands                    |
+| :- | :-------------------------- |
+| 🟢 | `EXIT`                      |
+| 🟢 | `eXiT`                      |
+| 🟢 | `exit`                      |
+| 🟢 | `exit `                     |
+| 🟢 | ` exit`                     |
+| 🟢 | `  exit  `                  |
+| 🟢 | `exit test`                 |
+| 🟢 | `exit "test"`               |
+| 🟢 | `"exit test"`               |
+| 🟢 | `"exit"`                    |
+| 🔴 | `exit1`                     |
+| 🔴 | `exita`                     |
+| 🟢 | `exit exit`                 |
+| 🟢 | `exit a`                    |
+| 🟢 | `exit abc`                  |
+| 🔴 | `exit a b c`                |
+| 🟢 | `exit a b c d`              |
+| 🔵 | `exit #`                    |
+| 🔵 | `exit *`                    |
+| 🟢 | `exit 0`                    |
+| 🟢 | `exit 1`                    |
+| 🟢 | `exit 123`                  |
+| 🟢 | `exit 1234`                 |
+| 🔴 | `exit 1 2 3 4`              |
+| 🔴 | `exit +10`                  |
+| 🔴 | `exit -10`                  |
+| 🔴 | `exit +2000`                |
+| 🔴 | `exit -2000`                |
+| 🔴 | `exit +-2000`               |
+| 🔴 | `exit -+2000`               |
+| 🔴 | `exit ++2000`               |
+| 🔴 | `exit --2000`               |
+| 🔴 | `exit -2147483649`          |
+| 🔴 | `exit 2147483648`           |
 | 🔴 | `exit 00000000000000000000` |
 | 🔴 | `exit 11111111111111111111` |
-| 🔴 | `exit ' 42'`      |                                                                
-| 🔴 | `exit '\t42'`     |                                                                
-| 🔴 | `exit '\t\f\r 42'`|                                                           
-| 🔴 | `exit '42 '`      |                                                                 
-| 🔴 | `exit '42\t'`     |                                                                
-| 🔴 | `exit '42\r'`     |                                                                
-| 🔴 | `exit '42\t\f\r '`|                                                           
-| 🔴 | `exit '42     a'` |                                                            
-| 🔴 | `exit '42\t\t\ta'`| 
+| 🔴 | `exit ' 42'`                |                                                                
+| 🔴 | `exit '\t42'`               |                                                                
+| 🔴 | `exit '\t\f\r 42'`          |                                                           
+| 🔴 | `exit '42 '`                |                                                                 
+| 🔴 | `exit '42\t'`               |                                                                
+| 🔴 | `exit '42\r'`               |                                                                
+| 🔴 | `exit '42\t\f\r '`          |                                                           
+| 🔴 | `exit '42     a'`           |                                                            
+| 🔴 | `exit '42\t\t\ta'`          | 
 
 
 # CD  
-| State | Built-In |
-| :---: | :--- |
+|    | Commands               |
+| :- | :--------------------- |
 | 🟢 | `CD`                   |
 | 🟢 | `cd`                   |
 | 🟢 | `cd `                  |
@@ -260,8 +258,8 @@
 | 🔵 | `cd -`                 |
 
 # ECHO  
-| State | Built-In |
-| :---: | :--- |
+|    | Commands                                                             |
+| :- | :------------------------------------------------------------------- |
 | 🟢 | `ECHO`                                                               |
 | 🟢 | `echO`                                                               |
 | 🟢 | `ECHo`                                                               |
