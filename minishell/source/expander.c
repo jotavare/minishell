@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 18:15:45 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/05/31 02:57:35 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/05/31 03:22:32 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ char	**expand_tokens(char **tokens, t_attr *att)
 	{
 		if (tokens[i][0] == '$' && tokens[i][1] != '\0')
 		{
-			char *variable_name = tokens[i] + 1; // Skip the '$' sign
+			char *variable_name = tokens[i] + 1;
 			value = custom_getenv(variable_name, att);
 			if (value != NULL)
 			{
