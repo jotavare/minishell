@@ -22,7 +22,7 @@ int	count_tokens(char *s, t_attr *att)
 		if (s[len] != ' ' && s[len] != '|')
 		{
 			att->nb_tokens++;
-			while (len >= 0 && (s[len] != ' ' && s[len] != '|'))
+			while (len > 0 && (s[len] != ' ' && s[len] != '|'))
 				len--;
 		}
 		if (s[len] == ' ')
@@ -32,6 +32,8 @@ int	count_tokens(char *s, t_attr *att)
 			len--;
 			att->nb_tokens++;
 		}
+		else
+			len--;
 	}
 	return (att->nb_tokens);
 }
@@ -99,7 +101,7 @@ char	**get_tokens(char *str, t_attr *att)
 		return (NULL);
 	count_tokens(str, att);
 	create_array(str, att);
-	expand_tokens(att->tok_arr, att);
+	//expand_tokens(att->tok_arr, att);
 	//ft_print_array(in_str->s_arr, in_str->nb_tokens);
 	//printf("p_nbr= %d\n", att->nb_pipes);
 	return (att->tok_arr);
@@ -107,13 +109,13 @@ char	**get_tokens(char *str, t_attr *att)
 
 /*++++++ This part is only for test purposes +++++ */
 //void	ft_print_array(char **array, int nb);
-
-/* int main(void)
+/* 
+int main(void)
 {
     t_attr attr;
 	attr.nb_tokens = 0;
 	attr.nb_pipes = 0;
-    char    *str = "ola o alexandre e ||o joao";
+    char    *str = "  ola o alexandre e ||o joao";
     int    nb_tok = 1;
     //init_attributes(&attr);
     char **tokens = get_tokens(str, &attr);
@@ -138,4 +140,5 @@ void	ft_print_array(char **array, int nb)
         	printf("%d - %s\n", i, array[i]);
         }
 	}
-} */
+}
+ */
