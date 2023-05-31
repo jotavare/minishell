@@ -29,10 +29,7 @@ void	free_tokens(char **tokens, t_attr *t)
 
 	i = 0;
 	while (i <= t->nb_tokens)
-	{
-		printf("token deleted: %d / %d\n", i, t->nb_tokens);
 		free(tokens[i++]);
-	}
 }
 
 void	free_g_env(t_attr *att)

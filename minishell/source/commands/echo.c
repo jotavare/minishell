@@ -16,6 +16,7 @@
 	prints the string after echo command to the terminal
 	with a new line at the end of the string
 */
+extern int	g_last_return_value;
 
 void	echo(t_attr att)
 {
@@ -32,7 +33,7 @@ void	echo(t_attr att)
 				echo_n(att);
 			else if (ft_strnstr(att.tok_arr[i], "$?",
 						ft_strlen(att.tok_arr[i])))
-				printf("%d", att.last_return_value);
+				printf("%d", g_last_return_value);
 			else
 				printf("%s ", att.tok_arr[i]);
 			i++;
@@ -47,6 +48,20 @@ void	echo(t_attr att)
 */
 
 void	echo_n(t_attr att)
+{
+	int i;
+
+	i = 2;
+	while (i < att.nb_tokens)
+	{
+		ft_putstr_fd(att.tok_arr[i], 1);
+		if (att.tok_arr[i + 1])
+			ft_putchar_fd(' ', 1);
+		i++;
+	}
+}
+
+void	echo_doll_ques(t_attr att)
 {
 	int i;
 

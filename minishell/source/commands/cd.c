@@ -15,6 +15,7 @@
 /*
     change directory to path given an argument
 */
+extern int	g_last_return_value;
 
 char	*search_var_in_g_env(t_attr *att, char *s)
 {
@@ -50,7 +51,7 @@ void	cd(t_attr *att)
 	if (att->nb_tokens > 2)
 	{
 		ft_putstr_fd("minishell: cd: too many arguments\n", 1);
-		att->last_return_value = 1;
+		g_last_return_value = 1;
 		return ;
 	}
 	destiny_path = att->tok_arr[1];
@@ -65,7 +66,7 @@ void	cd(t_attr *att)
 	{
 		printf("minishell: cd: %s: No such file or directory\n",
 				att->tok_arr[1]);
-		att->last_return_value = 1;
+		g_last_return_value = 1;
 	}
 	str_pwd = ft_strjoin("OLDPWD=", current_path);
 	cd_rm_add_path(att, "OLDPWD", str_pwd);

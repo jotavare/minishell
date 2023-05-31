@@ -12,9 +12,10 @@
 
 #include "../../includes/minishell.h"
 
+extern int	g_last_return_value;
+
 int	exit_two(t_attr attr)
 {
-	int			return_value;
 	int			i;
 	int			is_num;
 	const char	*arg;
@@ -31,33 +32,31 @@ int	exit_two(t_attr attr)
 		}
 	}
 	if (is_num)
-		return_value = ft_atoi(arg);
+		g_last_return_value = ft_atoi(arg);
 	else
 	{
 		printf("minishell: exit: %s: numeric argument required\n", arg);
-		return_value = 2;
+		g_last_return_value = 2;
 	}
-	return (return_value);
+	return (g_last_return_value);
 }
 
 void	ft_exit(t_attr *attr)
 {
-	int	return_value;
-
 	free_g_env(attr);
 	free_exp_env(attr);
-	return_value = 0;
+	g_last_return_value = 0;
 	printf("exit\n");
 	if (attr->nb_tokens == 1)
-		return_value = 0;
+		g_last_return_value = 0;
 	else if (attr->nb_tokens == 2)
-		return_value = exit_two(*attr);
+		g_last_return_value = exit_two(*attr);
 	else
 	{
 		ft_putstr_fd("minishell: exit: too many arguments\n", 2);
-		return_value = 1;
+		g_last_return_value = 1;
 	}
 	exit_free(attr);
-	printf("Exiting minishell with code %d\n", return_value);
-	exit(return_value);
+	printf("Exiting minishell with code %d\n", g_last_return_value);
+	exit(g_last_return_value);
 }

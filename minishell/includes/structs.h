@@ -30,7 +30,6 @@ typedef struct s_attr
 	int len_exp_env;       //27 maio
 	char **d_exp_env;      //27 maio
 	int len_d_exp_env;     //27 maio
-	int last_return_value; //exit variable, needs to be global
 }			t_attr;
 
 typedef struct s_exec
