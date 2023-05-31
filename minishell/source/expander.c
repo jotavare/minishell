@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 18:15:45 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/05/31 02:23:12 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/05/31 02:57:35 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,28 +18,32 @@
     variable named after the token.
 */
 
-char **expand_tokens(char** tokens, t_attr *att)
+char	**expand_tokens(char **tokens, t_attr *att)
 {
-    int i = 0;
-    while (tokens[i] != NULL)
+	int		i;
+	char	*value;
+	size_t	expanded_length;
+	char	*expanded_token;
+
+	i = 0;
+	while (tokens[i] != NULL)
 	{
-        if (tokens[i][0] == '$' && tokens[i][1] != '\0')
+		if (tokens[i][0] == '$' && tokens[i][1] != '\0')
 		{
-            char *variable_name = tokens[i] + 1; // Skip the '$' sign
-				
-            char *value = custom_getenv(variable_name, att);
-            if (value != NULL)
+			char *variable_name = tokens[i] + 1; // Skip the '$' sign
+			value = custom_getenv(variable_name, att);
+			if (value != NULL)
 			{
-                size_t expanded_length = ft_strlen(value);
-                char* expanded_token = malloc((expanded_length + 1) * sizeof(char));
-                ft_strcpy(expanded_token, value);
-                free(tokens[i]);
-                tokens[i] = expanded_token;
-            }
-        }
-        i++;
-    }
-    return tokens;
+				expanded_length = ft_strlen(value);
+				expanded_token = malloc((expanded_length + 1) * sizeof(char));
+				ft_strcpy(expanded_token, value);
+				free(tokens[i]);
+				tokens[i] = expanded_token;
+			}
+		}
+		i++;
+	}
+	return (tokens);
 }
 
 /*
@@ -48,26 +52,28 @@ char **expand_tokens(char** tokens, t_attr *att)
     named "variable_name" and if not found, returns NULL.
 */
 
-char    *custom_getenv(const char* variable_name, t_attr *att)
+char	*custom_getenv(const char *variable_name, t_attr *att)
 {
-    if (att->g_env == NULL)
-        return NULL;
+	int		i;
+	char	*entry;
+	char	*delimiter;
+	size_t	variable_length;
 
-    int i = 0;
-    while (att->g_env[i] != NULL)
-    {
-        char* entry = att->g_env[i];
-        char* delimiter = ft_strchr(entry, '=');
-        if (delimiter != NULL)
-        {
-            size_t variable_length = delimiter - entry;
-            if (ft_strncmp(entry, variable_name, variable_length) == 0 && variable_name[variable_length] == '\0')
-                return delimiter + 1;
-        }
-        i++;
-    }
-
-    return NULL;
+	if (att->g_env == NULL)
+		return (NULL);
+	i = 0;
+	while (att->g_env[i] != NULL)
+	{
+		entry = att->g_env[i];
+		delimiter = ft_strchr(entry, '=');
+		if (delimiter != NULL)
+		{
+			variable_length = delimiter - entry;
+			if (ft_strncmp(entry, variable_name, variable_length) == 0
+				&& variable_name[variable_length] == '\0')
+				return (delimiter + 1);
+		}
+		i++;
+	}
+	return (NULL);
 }
-
-

@@ -16,7 +16,6 @@ void	init_params(int ac, char **av, t_attr *attr, char **envp)
 {
 	(void)ac;
 	(void)av;
-
 	init_attributes(attr);
 	start_env(envp, attr);
 	start_exp(envp, attr);
@@ -25,9 +24,9 @@ void	init_params(int ac, char **av, t_attr *attr, char **envp)
 
 void	init_attributes(t_attr *att)
 {
-    att->nb_tokens = 0;
-    att->index = 0;
-    att->tok_arr = NULL;
+	att->nb_tokens = 0;
+	att->index = 0;
+	att->tok_arr = NULL;
 	att->d_env = NULL;
 	att->len_d_env = 0;
 	att->d_exp_env = NULL;
@@ -42,9 +41,9 @@ void	init_paths(t_attr *att)
 
 void	reinit_attributes(t_attr *att)
 {
-    att->nb_tokens = 0;
-    att->index = 0;
-    att->tok_arr = NULL;
+	att->nb_tokens = 0;
+	att->index = 0;
+	att->tok_arr = NULL;
 	att->nb_pipes = 0;
 	att->last_path = search_var_in_g_env(att, "OLDPWD");
 }

@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 15:38:30 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/05/31 01:28:14 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/05/31 02:57:02 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,16 @@
     and print a custom prompt.
 */
 
-char *prompt(t_attr *att)
+char	*prompt(t_attr *att)
 {
 	char *str;
 	char *user = custom_getenv("USER", att);
 	char *pwd = custom_getenv("PWD", att);
 	if (pwd != NULL && user != NULL)
 	{
-		printf("┏━"GREEN_BOLD" %s@:" GREEN_BOLD, user);
+		printf("┏━" GREEN_BOLD " %s@:" GREEN_BOLD, user);
 		printf(CYAN_BOLD "%s\n" CYAN_BOLD, pwd);
 	}
-	str = readline(RESET"┗━"RED_BOLD" minihell$"RED_BOLD" "RESET"");
+	str = readline(RESET "┗━" RED_BOLD " minihell$" RED_BOLD " " RESET "");
 	return (str);
 }

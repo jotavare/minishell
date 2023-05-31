@@ -1,12 +1,12 @@
-	/* ************************************************************************** */
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   utilities.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:51:22 by alexfern          #+#    #+#             */
-/*   Updated: 2023/05/29 17:39:34 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/05/31 02:55:49 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,19 +105,19 @@ int	ft_strcmp(const char *str1, const char *str2)
 	append the null character at the end of the string.
 */
 
-char *ft_strcpy(char* destination, const char* source)
+char	*ft_strcpy(char *destination, const char *source)
 {
-    char* start = destination;
+	char	*start;
 
-    while (*source != '\0')
-    {
-        *destination = *source;
-        destination++;
-        source++;
-    }
-
-    *destination = '\0';
-    return start;
+	start = destination;
+	while (*source != '\0')
+	{
+		*destination = *source;
+		destination++;
+		source++;
+	}
+	*destination = '\0';
+	return (start);
 }
 
 /*
@@ -149,23 +149,21 @@ int	flag_counter(char *str, char c)
 
 int	check_alpha(char *str)
 {
-	int i;
-	
+	int	i;
+
 	i = 0;
 	if (str[i] == '=')
 		return (0);
 	while (str[i] && str[i] != '=')
 	{
-		if (!((str[i] >= 'A' && str[i] <= 'Z') || (str[i] >= 'a' && str[i] <= 'z')//27maio '('')'
-			|| (str[i] == '_')))
+		if (!((str[i] >= 'A' && str[i] <= 'Z') || (str[i] >= 'a'
+					&& str[i] <= 'z') //27maio '('')'
+				|| (str[i] == '_')))
 			return (0);
 		i++;
 	}
 	return (1);
 }
-
-
-
 
 /* char	*dequoter(char *str)
 {

@@ -30,10 +30,10 @@ int	main(int ac, char **av, char **envp)
 		}
 		reinit_attributes(&attr);
 		if (str)
-		{	
+		{
 			add_history(str);
 			attr.tok_arr = get_tokens(str, &attr);
-		
+
 			command(&attr);
 
 			free_tokens(attr.tok_arr, &attr);
