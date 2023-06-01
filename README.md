@@ -32,7 +32,7 @@
 - [ ] If theres bonus, there must be a bonus rule on Makefile and bonus files must have _bonus.c(.h).
 - [ ] Check for forbidden functions in your code.
 
-| Important | |
+| Important Commands | Description |
 | :--- | :--- |
 | `make -n` | Shows all the compilation information, without compiling. |
 | `echo $?` | Return values. |
@@ -42,7 +42,7 @@
 | `norminette` | |
 | `cc -g -Wall -Wextra -Werror` | |
 
-| Valgrind Flags | |
+| Valgrind Flags | Description |
 | :--- | :--- |
 | `-leak-check=full` | |
 | `--show-leak-kinds=all` | |
