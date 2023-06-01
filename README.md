@@ -37,15 +37,15 @@
 <tr><th></th><th></th></tr>
 <tr><td>
 
-| Important |
-| :--- |
-| `make -n` |
-| `echo $?` |
-| `-fsanitize=address` |
-| `-lreadline` |
-| `nm -g ./minishell \| grep " U "` |
-| `norminette` |
-| `cc -g -Wall -Wextra -Werror` |
+| Important | |
+| :--- | |
+| `make -n` | Shows all the compilation information, without compiling. |
+| `echo $?` | Return values. |
+| `-fsanitize=address` | |
+| `-lreadline` | |
+| `nm -g ./minishell \| grep " U "` | |
+| `norminette` | |
+| `cc -g -Wall -Wextra -Werror` | |
 
 </td><td>
 
