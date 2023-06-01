@@ -42,15 +42,15 @@
 | `norminette` | |
 | `cc -g -Wall -Wextra -Werror` | |
 
-| Valgrind Flags | Description |
-| :--- | :--- |
-| `-leak-check=full` | |
-| `--show-leak-kinds=all` | |
-| `--track-origins=yes` | |
-| `--verbose` | |
-| `--gen-suppressions=all` | |
-| `--suppressions=valgrind_readline_leaks_ignore.txt` | |
-| `--log-file=memleaks.log` | |
+| Valgrind Flags                                      | Description                                      |
+| :-------------------------------------------------- | :----------------------------------------------- |
+| `-leak-check=full`                                  | Detailed checking for memory leaks.              |
+| `--show-leak-kinds=all`                             | Display all types of memory leaks.               |
+| `--track-origins=yes`                               | Tracks the origins of uninitialized values.      |
+| `--verbose`                                         | Increases the level of verbosity.                |
+| `--gen-suppressions=all`                            | Ignore specific known issues or false positives. |
+| `--suppressions=valgrind_readline_leaks_ignore.txt` | Specifies the path to a suppression file.        |
+| `--log-file=memleaks.log`                           | Sets the name of the file.                       |
 
 # COMMAND TESTS
 |    | Definition                  |
