@@ -50,7 +50,7 @@ int	pipework(t_attr *att)
 				close(1);
 				dup2(fd[1], STDOUT_FILENO); //dups the WRITE end to the to the next pipe READ end
 				close(fd[0]);
-				write()
+
 				n++;
 			}
 			pid2 = fork(); //open a fork to the pid[nb]
@@ -63,7 +63,7 @@ int	pipework(t_attr *att)
 				close(0);
 				dup2(fd[0], STDIN_FILENO); //dups the WRITE end to the to the next pipe READ end
 				close(fd[1]);
-				read
+
 			}
 			else
 			{
