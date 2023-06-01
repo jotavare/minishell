@@ -32,11 +32,6 @@
 - [ ] If theres bonus, there must be a bonus rule on Makefile and bonus files must have _bonus.c(.h).
 - [ ] Check for forbidden functions in your code.
 
-<div>
-<table>
-<tr><th></th><th></th></tr>
-<tr><td>
-
 | Important | |
 | :--- | |
 | `make -n` | Shows all the compilation information, without compiling. |
@@ -47,17 +42,15 @@
 | `norminette` | |
 | `cc -g -Wall -Wextra -Werror` | |
 
-</td><td>
-
-| Valgrind Flags |
-| :--- |
-| `-leak-check=full` |
-| `--show-leak-kinds=all` |
-| `--track-origins=yes` |
-| `--verbose` |
-| `--gen-suppressions=all` |
-| `--suppressions=valgrind_readline_leaks_ignore.txt` |
-| `--log-file=memleaks.log` |
+| Valgrind Flags | |
+| :--- | |
+| `-leak-check=full` | |
+| `--show-leak-kinds=all` | |
+| `--track-origins=yes` | |
+| `--verbose` | |
+| `--gen-suppressions=all` | |
+| `--suppressions=valgrind_readline_leaks_ignore.txt` | |
+| `--log-file=memleaks.log` | |
 
 </td></tr>
 </table>
