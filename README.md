@@ -64,58 +64,59 @@
 </div>
 
 # COMMAND TESTS
-|    | Definition                |
-| :- | :------------------------ |
-| 🟢 | Working                   |
-| 🟡 | Didn't test yet           |
-| 🔴 | Not working               |
-| 🔵 | Not mandatory (i think?!) |
+|    | Definition                  |
+| :- | :-------------------------- |
+| 🟢 | Working.                    |
+| 🟡 | Didn't test yet.            |
+| 🟣 | Leaks or segmenation fault. |
+| ⚪ | Weird behavior.             |
+| 🔴 | Not working.                |
+| 🔵 | Not mandatory (i think?!).  |
 
 ## BLANK
 |    | Commands   |
 | :- | :--------- |
-| 🟡 | `<empty>`  |
-| 🟡 | `<spaces>` |
-| 🟡 | `../../`   |
-| 🟡 | `$`        |
+| 🟢 | `<empty>`  |
+| 🟢 | `<spaces>` |
+| 🟣 | `../../`   |
+| 🟢 | `$`        |
 
 ## SIGNALS
 |    | Commands                                    |
 | :- | :------------------------------------------ |
-| 🟡 | `Ctrl` + `C`                                |
-| 🟡 | `Ctrl` + `D`                                |
-| 🟡 | `Ctrl` + `\`                                |
-| 🟡 | `write something then press` + `Ctrl` + `C` |
-| 🟡 | `write something then press` + `Ctrl` + `D` |
-| 🟡 | `write something then press` + `Ctrl` + `\` |
-| 🟡 | `cat` + `Ctrl` + `C`                        |
-| 🟡 | `cat` + `Ctrl` + `D`                        |
-| 🟡 | `cat` + `Ctrl` + `\`                        |
-| 🟡 | `sleep 5` + `Ctrl` + `C`                    |
-| 🟡 | `sleep 5` + `Ctrl` + `D`                    |
-| 🟡 | `sleep 5` + `Ctrl` + `\`                    |
+| 🟢 | `Ctrl` + `C`                                |
+| 🟣 | `Ctrl` + `D`                                |
+| 🟢 | `Ctrl` + `\`                                |
+| 🟢 | `write something then press` + `Ctrl` + `C` |
+| 🟢 | `write something then press` + `Ctrl` + `D` |
+| 🟢 | `write something then press` + `Ctrl` + `\` |
+| ⚪ | `cat` + `Ctrl` + `C`                        |
+| 🟢 | `cat` + `Ctrl` + `D`                        |
+| ⚪ | `cat` + `Ctrl` + `\`                        |
+| ⚪ | `sleep 5` + `Ctrl` + `C`                    |
+| 🟢 | `sleep 5` + `Ctrl` + `D`                    |
+| ⚪ | `sleep 5` + `Ctrl` + `\`                    |
 	
 # PATH
 |    | Commands           |
 | :- | :----------------- |
-| 🟡 | `/bin/echo`        |
-| 🟡 | `/bin/grep`        |
-| 🟡 | `/bin/ls`          |
-| 🟡 | `/bin/ls -la`      |
-| 🟡 | `/bin/cat`         |
-| 🟡 | `/bin/pwd`         |
-| 🟡 | `/bin/cd`          |
-| 🟡 | `/bin/export`      |
-| 🟡 | `/bin/env`         |
-| 🟡 | `/bin/exit`        |
-| 🟡 | `/bin/echo`        |
+| 🟢 | `/bin/echo`        |
+| 🟢 | `/bin/grep`        |
+| 🟢 | `/bin/ls`          |
+| 🟢 | `/bin/ls -la`      |
+| 🟢 | `/bin/cat`         |
+| 🟢 | `/bin/pwd`         |
+| 🟢 | `/bin/cd`          |
+| 🟢 | `/bin/export`      |
+| 🟢 | `/bin/env`         |
+| 🟢 | `/bin/exit`        |
 
 # PWD
 |    | Commands      |
 | :- | :------------ |
-| 🟡 | `pwd`         |
-| 🟡 | `pwd a`       |
-| 🟡 | `pwd a b c d` |
+| 🟢 | `pwd`         |
+| 🟢 | `pwd a`       |
+| 🟢 | `pwd a b c d` |
 
 # EXPORT, ENV AND UNSET
 |    | Commands                     |
