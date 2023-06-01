@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+         #
+#    By: jotavare <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/12 15:15:58 by alexandre         #+#    #+#              #
-#    Updated: 2023/05/29 17:55:38 by lde-sous         ###   ########.fr        #
+#    Updated: 2023/06/01 17:28:35 by jotavare         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,21 +32,27 @@ BOLD			:= \033[1;1m
 
 # MINISHELL
 NAME = minishell
-SRC =	commands/cd.c \
-		commands/echo.c \
-		commands/env.c \
-		commands/ft_exit.c \
-		commands/export.c \
-		commands/pwd.c \
-		commands/unset.c \
-		commands/expander.c \
-		source/get_tokens.c \
+SRC =	source/commands/cd.c \
+		source/commands/echo.c \
+		source/commands/env.c \
+		source/commands/exit.c \
+		source/commands/export.c \
+		source/commands/pwd.c \
+		source/commands/unset.c \
+		source/executer.c \
+		source/expander.c \
+		source/init.c \
 		source/lexer.c \
 		source/minishell.c \
+		source/pipes.c \
+		source/prompt.c \
 		source/signals.c \
-		source/execute.c \
-		source/pipes_test.c \
+		source/start.c \
+		source/tokens.c \
+		source/heredocs.c \
+		utilities/free.c \
 		utilities/utilities.c \
+		utilities/utilities_heredocs.c \
 
 OBJSDIR = objects
 OBJ = $(addprefix $(OBJSDIR)/, $(SRC:.c=.o))

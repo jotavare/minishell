@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   lexer.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lubu <lubu@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: alexfern <alexfern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 18:15:45 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/05/27 09:37:31 by lubu             ###   ########.fr       */
+/*   Updated: 2023/05/31 20:56:12 by alexfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include "../includes/minishell.h"
 
 /*
     The command function handles basic command recognition
@@ -24,6 +24,11 @@ void	command(t_attr *att)
 
 	if (!att->tok_arr[0])
 		return ;
+	if (valid_dirdoc(att))
+	{
+		heredocs(att);
+		return ;
+	}
 	tok = att->tok_arr;
 	if (!ft_strcmp(att->tok_arr[0], "echo"))
 		echo(*att);
@@ -37,11 +42,10 @@ void	command(t_attr *att)
 		unset(att);
 	else if (ft_strcmp(tok[0], "env") == 0)
 		env(att);
-	else if ((ft_strcmp(tok[0], "exit") == 0) || (ft_strcmp(tok[0], "\"exit\"") == 0))
+	else if ((ft_strcmp(tok[0], "exit") == 0) || (ft_strcmp(tok[0],
+				"\"exit\"") == 0))
 		return (ft_exit(att));
-	//if (ft_strcmp(tok[1], "|") == 0)
-	//	pipework(att);
 	else
 		execute(att);
-	return;
+	return ;
 }

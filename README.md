@@ -64,64 +64,63 @@
 </div>
 
 # COMMAND TESTS
-
-| State | Definition |
-| :---: | :--- |
-| 🟢 | Working |
-| 🟡 | Didn't test yet |
-| 🔴 | Not working |
-| 🔵 | Not mandatory (i think?!) |
-| -  | Nothing |
+|    | Definition                  |
+| :- | :-------------------------- |
+| 🟢 | Working.                    |
+| 🟡 | Didn't test yet.            |
+| 🟣 | Leaks or segmenation fault. |
+| ⚪ | Weird behavior.             |
+| 🔴 | Not working.                |
+| 🔵 | Not mandatory (i think?!).  |
 
 ## BLANK
-| State | Definition |
-| :---: | :--- |
-| 🟡 | `<empty>` |
-| 🟡 | `<spaces>` or `<tabs>` |
-| 🟡 | `../../` |
-| 🟡 | `$` |
+|    | Commands   |
+| :- | :--------- |
+| 🟢 | `<empty>`  |
+| 🟢 | `<spaces>` |
+| 🟣 | `../../`   |
+| 🟢 | `$`        |
 
 ## SIGNALS
-| State | Commands |
-| :---: | :--- |
-| 🟡 | `Ctrl` + `C` |
-| 🟡 | `Ctrl` + `D` |
-| 🟡 | `Ctrl` + `\` |
-| 🟡 | `write something then press` + `Ctrl` + `C` |
-| 🟡 | `write something then press` + `Ctrl` + `D` |
-| 🟡 | `write something then press` + `Ctrl` + `\` |
-| 🟡 | `cat` + `Ctrl` + `C` |
-| 🟡 | `cat` + `Ctrl` + `D` |
-| 🟡 | `cat` + `Ctrl` + `\` |
-| 🟡 | `sleep 5` + `Ctrl` + `C` |
-| 🟡 | `sleep 5` + `Ctrl` + `D` |
-| 🟡 | `sleep 5` + `Ctrl` + `\` |
+|    | Commands                                    |
+| :- | :------------------------------------------ |
+| 🟢 | `Ctrl` + `C`                                |
+| 🟢 | `Ctrl` + `D`                                |
+| 🟢 | `Ctrl` + `\`                                |
+| 🟢 | `write something then press` + `Ctrl` + `C` |
+| 🟢 | `write something then press` + `Ctrl` + `D` |
+| 🟢 | `write something then press` + `Ctrl` + `\` |
+| ⚪ | `cat` + `Ctrl` + `C`                        |
+| 🟢 | `cat` + `Ctrl` + `D`                        |
+| ⚪ | `cat` + `Ctrl` + `\`                        |
+| ⚪ | `sleep 5` + `Ctrl` + `C`                    |
+| 🟢 | `sleep 5` + `Ctrl` + `D`                    |
+| ⚪ | `sleep 5` + `Ctrl` + `\`                    |
 	
 # PATH
-| State | Commands |
-| :---: | :--- |
-| 🟡 | `/bin/echo` |
-| 🟡 | `/bin/grep` |
-| 🟡 | `/bin/ls` |
-| 🟡 | `/bin/ls -la` |
-| 🟡 | `/bin/cat` |
-| 🟡 | `/bin/pwd` |
-| 🟡 | `/bin/cd` |
-| 🟡 | `/bin/export` |
-| 🟡 | `/bin/env` |
-| 🟡 | `/bin/exit` |
-| 🟡 | `/bin/echo` |
+|    | Commands           |
+| :- | :----------------- |
+| 🟢 | `/bin/echo`        |
+| 🟢 | `/bin/grep`        |
+| 🟢 | `/bin/ls`          |
+| 🟢 | `/bin/ls -la`      |
+| 🟢 | `/bin/cat`         |
+| 🟢 | `/bin/pwd`         |
+| 🟢 | `/bin/cd`          |
+| 🟢 | `/bin/export`      |
+| 🟢 | `/bin/env`         |
+| 🟢 | `/bin/exit`        |
 
 # PWD
-| State | Commands |
-| :---: | :--- |
-| 🟡 | `pwd` |
-| 🟡 | `pwd a` |
-| 🟡 | `pwd a b c d` |
+|    | Commands      |
+| :- | :------------ |
+| 🟢 | `pwd`         |
+| 🟢 | `pwd a`       |
+| 🟢 | `pwd a b c d` |
 
 # EXPORT, ENV AND UNSET
-| State | Built-In |
-| :---: | :--- |
+|    | Commands                     |
+| :- | :--------------------------- |
 | 🟡 | `ENV`                        |
 | 🟡 | `eNv`                        |
 | 🟡 | `env`                        |
@@ -136,6 +135,7 @@
 | 🟡 | `  unset  `                  |
 | 🟡 | `unset [variable]`           |
 | 🟡 | `unset [variable] [variable]`|
+| 🟡 | `unset [all variables]`      |
 | 🟡 | `EXPORT`                     |
 | 🟡 | `eXpOrT`                     |
 | 🟡 | `export`                     |
@@ -178,58 +178,58 @@
 | 🟡 | `export _=a; echo $_a` |
 
 # EXIT
-| State | Built-In |
-| :---: | :--- |
-| 🟢 | `EXIT`          |
-| 🟢 | `eXiT`          |
-| 🟢 | `exit`          |
-| 🟢 | `exit `         |
-| 🟢 | ` exit`         |
-| 🟢 | `  exit  `      |
-| 🟢 | `exit test`     |
-| 🟢 | `exit "test"`   |
-| 🟢 | `"exit test"`   |
-| 🟢 | `"exit"`        |
-| 🔴 | `exit1`         |
-| 🔴 | `exita`         |
-| 🟢 | `exit exit`     |
-| 🟢 | `exit a`        |
-| 🟢 | `exit abc`      |
-| 🔴 | `exit a b c`    |
-| 🟢 | `exit a b c d`  |
-| 🔵 | `exit #`        |
-| 🔵 | `exit *`        |
-| 🟢 | `exit 0`        |
-| 🟢 | `exit 1`        |
-| 🟢 | `exit 123`      |
-| 🟢 | `exit 1234`     |
-| 🔴 | `exit 1 2 3 4`  |
-| 🔴 | `exit +10`      |
-| 🔴 | `exit -10`      |
-| 🔴 | `exit +2000`    |
-| 🔴 | `exit -2000`    |
-| 🔴 | `exit +-2000`   |
-| 🔴 | `exit -+2000`   |
-| 🔴 | `exit ++2000`   |
-| 🔴 | `exit --2000`   |
-| 🔴 | `exit -2147483649` |
-| 🔴 | `exit 2147483648`|
+|    | Commands                    |
+| :- | :-------------------------- |
+| 🟢 | `EXIT`                      |
+| 🟢 | `eXiT`                      |
+| 🟢 | `exit`                      |
+| 🟢 | `exit `                     |
+| 🟢 | ` exit`                     |
+| 🟢 | `  exit  `                  |
+| 🟢 | `exit test`                 |
+| 🟢 | `exit "test"`               |
+| 🟢 | `"exit test"`               |
+| 🟢 | `"exit"`                    |
+| 🔴 | `exit1`                     |
+| 🔴 | `exita`                     |
+| 🟢 | `exit exit`                 |
+| 🟢 | `exit a`                    |
+| 🟢 | `exit abc`                  |
+| 🔴 | `exit a b c`                |
+| 🟢 | `exit a b c d`              |
+| 🔵 | `exit #`                    |
+| 🔵 | `exit *`                    |
+| 🟢 | `exit 0`                    |
+| 🟢 | `exit 1`                    |
+| 🟢 | `exit 123`                  |
+| 🟢 | `exit 1234`                 |
+| 🔴 | `exit 1 2 3 4`              |
+| 🔴 | `exit +10`                  |
+| 🔴 | `exit -10`                  |
+| 🔴 | `exit +2000`                |
+| 🔴 | `exit -2000`                |
+| 🔴 | `exit +-2000`               |
+| 🔴 | `exit -+2000`               |
+| 🔴 | `exit ++2000`               |
+| 🔴 | `exit --2000`               |
+| 🔴 | `exit -2147483649`          |
+| 🔴 | `exit 2147483648`           |
 | 🔴 | `exit 00000000000000000000` |
 | 🔴 | `exit 11111111111111111111` |
-| 🔴 | `exit ' 42'`      |                                                                
-| 🔴 | `exit '\t42'`     |                                                                
-| 🔴 | `exit '\t\f\r 42'`|                                                           
-| 🔴 | `exit '42 '`      |                                                                 
-| 🔴 | `exit '42\t'`     |                                                                
-| 🔴 | `exit '42\r'`     |                                                                
-| 🔴 | `exit '42\t\f\r '`|                                                           
-| 🔴 | `exit '42     a'` |                                                            
-| 🔴 | `exit '42\t\t\ta'`| 
+| 🔴 | `exit ' 42'`                |                                                                
+| 🔴 | `exit '\t42'`               |                                                                
+| 🔴 | `exit '\t\f\r 42'`          |                                                           
+| 🔴 | `exit '42 '`                |                                                                 
+| 🔴 | `exit '42\t'`               |                                                                
+| 🔴 | `exit '42\r'`               |                                                                
+| 🔴 | `exit '42\t\f\r '`          |                                                           
+| 🔴 | `exit '42     a'`           |                                                            
+| 🔴 | `exit '42\t\t\ta'`          | 
 
 
 # CD  
-| State | Built-In |
-| :---: | :--- |
+|    | Commands               |
+| :- | :--------------------- |
 | 🟢 | `CD`                   |
 | 🟢 | `cd`                   |
 | 🟢 | `cd `                  |
@@ -260,8 +260,8 @@
 | 🔵 | `cd -`                 |
 
 # ECHO  
-| State | Built-In |
-| :---: | :--- |
+|    | Commands                                                             |
+| :- | :------------------------------------------------------------------- |
 | 🟢 | `ECHO`                                                               |
 | 🟢 | `echO`                                                               |
 | 🟢 | `ECHo`                                                               |
@@ -293,7 +293,6 @@
 | 🟡 | `echo 'test'`                                                        |
 | 🟡 | `echo -n test`                                                       |
 | 🟡 | `echo -nn test`                                                      |
-| 🟡 | `echo -n -n -n test`                                                 |
 | 🟡 | `echo -n -n -n test`                                                 |
 | 🟡 | `echo "-n" test`                                                     |
 | 🟡 | `echo -n"-n" test`                                                   |
@@ -349,74 +348,74 @@
 # Utilities
 ### Return Values ($?)
 
-* All Linux commands return an error code between 0 and 255.
+* All Linux commands return an error code between `0` and `255`.
 * The value 0 represents the value true (command success).
 * Values greater than 0 represent false (command failure).
-* The error code of the last command used is contained in the variable $?
+* The error code of the last command used is contained in the variable `$?`.
 
-| $? | Description |
-| :--- | :--- |
-| 1 	| Standard for general errors, such as a division by zero. |
-| 2 	| Improper use of built-in commands, per Bash documentation. |
-| 126 	| The command called cannot be executed, rights problem or command not executable. |
-| 127 	| Command not found, possible problem with $PATH or typing error. |
-| 128 	| Invalid command argument. |
-| 128+n | 128 + signal number. |
-| 130 	| Finished with Ctrl-C (130 = 128 + 2). |
-| 255 	| Exit code out of bounds eg exit -1. |
+| $?      | Description                                                                      |
+| :------ | :------------------------------------------------------------------------------- |
+| `1`     | Standard for general errors, such as a division by zero.                         |
+| `2`     | Improper use of built-in commands, per Bash documentation.                       |
+| `126`   | The command called cannot be executed, rights problem or command not executable. |
+| `127`   | Command not found, possible problem with $PATH or typing error.                  |
+| `128`   | Invalid command argument.                                                        |
+| `128+n` | 128 + signal number.                                                             |
+| `130`   | Finished with `Ctrl` + `C` (130 = 128 + 2).                                      |
+| `255`   | Exit code out of bounds, eg.: `exit -1`.                                         |
 
 ### Command Reminders
-| Command | Description |
-| :--- | :--- |
-| `yes`		| Writes yes in an infinite loop (yes teste) |
-| `ln`		| Bind a file or directory |
-| `chmod`	| Change file permissions `chmod 777` (4+2+1 = all permissions) `chmod 000` (no permissions) |
-| `CD`		| Change directory `cd -` (last visited directory) `cd` (user directory) `cd /` (root) |
-| `clear`	| Clear the screen |	
-| `Diff`	| Compare files line by line |
-| `cmp`		| Write first line of difference between 2 files |
-| `pc`		| Copying files | 	
-| `rm`		| Delete file |	
-| `rm -rf`	| Delete the directory recursively | 	
-| `ls -l`	| Show the contents of the directory | 	
-| `exit`	| Exit current process | 	
-| `grep`	| Search for strings in files `grep "printf" file` |
-| `mkdir`	| Create a directory | 	
-| `rmdir`	| Delete a directory | 	
-| `more`	| Displays a file page by page as in a man | 	
-| `mv`		| Move or rename | 	
-| `$PATH`	| Path to executables | 	
-| `cat`		| Send the file to stdout | 	
+| Command       | Description                                                                                 |
+| :------------ | :------------------------------------------------------------------------------------------ |
+| `yes`		| Writes in an infinite loop `yes teste`.                                                     |
+| `ln`		| Bind a file or directory.                                                                   |
+| `chmod`	| Change file permissions `chmod 777` (4+2+1 = all permissions) `chmod 000` (no permissions). |
+| `CD`		| Change directory `cd -` (last visited directory) `cd` (user directory) `cd /` (root).       |
+| `clear`	| Clear the screen.                                                                           |	
+| `Diff`	| Compare files line by line.                                                                 |
+| `cmp`		| Write first line of difference between 2 files.                                             |
+| `pc`		| Copying files.                                                                              |
+| `rm`		| Delete file.                                                                                |
+| `rm -rf`	| Delete the directory recursively.                                                           |
+| `ls -l`	| Show the contents of the directory.                                                         |
+| `exit`	| Exit current process.                                                                       |
+| `grep`	| Search for strings in files `grep "printf" file`.                                           |
+| `mkdir`	| Create a directory.                                                                         |
+| `rmdir`	| Delete a directory.                                                                         |
+| `more`	| Displays a file page by page as in a man.                                                   |
+| `mv`		| Move or rename.                                                                             |
+| `$PATH`	| Path to executables.                                                                        |
+| `cat`		| Send the file to stdout.                                                                    |
 
 ### CHMOD
-| Rights | Number |
-| :--- | :--- |
-| `r` (read)	| `4` |
-| `w` (write)	| `2` |
-| `x` (execute)	| `1` |
+| Rights        | Number |
+| :------------ | :----- |
+| `r` (read)	| `4`    |
+| `w` (write)	| `2`    |
+| `x` (execute)	| `1`    |
 	
-| Rights | Total | Calculation |
-| :--- | :--- | :--- |
-| `---`   |	`0` | `0+0+0` |
-| `r--`   |	`4` | `4+0+0` |
-| `-w-`   |	`2` | `0+2+0` |
-| `--x`   |	`1` | `0+0+1` |
-| `rw-`   |	`6` | `4+2+0` |
-| `-wx`   |	`3` | `0+2+1` |
-| `x-ray` |	`5` | `4+0+1` |
-| `rwx`   |	`7` | `4+2+1` |
+| Rights  | Calculation | Total |
+| :------ | :---------- | :---- |
+| `---`   | `0+0+0`     | `0`   |
+| `r--`   | `4+0+0`     | `4`   |
+| `-w-`   | `0+2+0`     | `2`   |
+| `--x`   | `0+0+1`     | `1`   |
+| `rw-`   | `4+2+0`     | `6`   |
+| `-wx`   | `0+2+1`     | `3`   |
+| `x-ray` | `4+0+1`     | `5`   |
+| `rwx`   | `4+2+1`     | `7`   |
 
 ### MAX/MIN
-| Data Types | Qualifiers | Size (in byte) | Range |
-| :--- | :--- | :--- | :--- |
-| `char`	| `char` or `signed char`				| `1` |	`-128` to `127` |
-| `char`	| `unsigned char`					| `1` |	`0` to `255` |
-| `int`		| `int` or `signed int`					| `4` |	`-2147483648` to `2147483647` |
-| `int`		| `unsigned int`					| `4` |	`0` to `4294967295` |
-| `int`		| `short int` or `short signed int`			| `2` |	`-32768` to `32767` |
-| `int`		| `unsigned short int`					| `2` |	`0` to `65535` |
-| `int`		| `long int` or `signed long int`			| `4` |	`-2147483648` to `2147483647` |
-| `int`		| `unsigned long int`					| `4` |	`0` to `4294967295` |
-| `float`	| `float`						| `4` |	`1.1754e-38` to `3.4028e+38` |
-| `float`	| `double`						| `8` |	`2.2250e-308` to `1.7976e+308` |
-| `float`	| `long double`						| `10`|	`3.4E-4932` to `3.4E+4932` |
+| Data Types    | Qualifiers                                            | Size (in byte) | Range                          |
+| :------------ | :---------------------------------------------------- | :------------- | :----------------------------- |
+| `char`	| `char` or `signed char`				| `1`            | `-128` to `127`                |
+| `char`	| `unsigned char`					| `1`            | `0` to `255`                   |
+| `int`		| `int` or `signed int`					| `4`            | `-2147483648` to `2147483647`  |
+| `int`		| `unsigned int`					| `4`            | `0` to `4294967295`            |
+| `int`		| `short int` or `short signed int`			| `2`            | `-32768` to `32767`            |
+| `int`		| `unsigned short int`					| `2`            | `0` to `65535`                 |
+| `int`		| `long int` or `signed long int`			| `4`            | `-2147483648` to `2147483647`  |
+| `int`		| `unsigned long int`					| `4`            | `0` to `4294967295`            |
+| `float`	| `float`						| `4`            | `1.1754e-38` to `3.4028e+38`   |
+| `float`	| `double`						| `8`            | `2.2250e-308` to `1.7976e+308` |
+| `float`	| `long double`						| `10`           | `3.4E-4932` to `3.4E+4932`     |
