@@ -33,7 +33,7 @@
 - [ ] Check for forbidden functions in your code.
 
 | Important | |
-| :--- | |
+| :--- | :--- |
 | `make -n` | Shows all the compilation information, without compiling. |
 | `echo $?` | Return values. |
 | `-fsanitize=address` | |
@@ -43,7 +43,7 @@
 | `cc -g -Wall -Wextra -Werror` | |
 
 | Valgrind Flags | |
-| :--- | |
+| :--- | :--- |
 | `-leak-check=full` | |
 | `--show-leak-kinds=all` | |
 | `--track-origins=yes` | |
@@ -51,10 +51,6 @@
 | `--gen-suppressions=all` | |
 | `--suppressions=valgrind_readline_leaks_ignore.txt` | |
 | `--log-file=memleaks.log` | |
-
-</td></tr>
-</table>
-</div>
 
 # COMMAND TESTS
 |    | Definition                  |
