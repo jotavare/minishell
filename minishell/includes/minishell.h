@@ -108,8 +108,7 @@ void	free_arr(char **arr);
 void	exit_free(t_attr *attr);
 
 // pipes
-// int	pipework(t_attr *att);
-
+int	pipework(t_attr *att);
 
 //Redirects && Heredocs
 void count_dirdoc(t_attr *att);

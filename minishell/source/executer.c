@@ -130,7 +130,7 @@ int	execute(t_attr *att)
 			exec_binaries(&args, att);
 		else
 			exec_commands(&args, att);
-		printf("minishell: command not found: %s\n", att->tok_arr[0]);
+		printf("%s: command not found \n", att->tok_arr[0]);
 		exit(0);
 	}
 	else

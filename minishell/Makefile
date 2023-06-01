@@ -44,7 +44,7 @@ SRC =	source/commands/cd.c \
 		source/init.c \
 		source/lexer.c \
 		source/minishell.c \
-		source/pipes_test.c \
+		source/pipes.c \
 		source/prompt.c \
 		source/signals.c \
 		source/start.c \

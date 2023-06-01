@@ -26,39 +26,57 @@
  */
 int	pipework(t_attr *att)
 {
-	int	dyn_pid; // create dynamic PID
+	int	pid1; // create pid1
+	int	pid2; // create pid2
 	int	fd[2]; // create file descriptors main pipe
-	int	nextfd[2]; // create file descriptors pipe[i]
-	int	i;
+	int	nb;
 	int	n;
 	
-	i = 1;
+	if (att->nb_pipes < 1)
+		return (1);
+	nb = 0;
 	n = 0;
-	dyn_pid = 0;
-	while (i <= att->nb_pipes)
+	while (nb < att->nb_pipes)
 	{
-		if (att->nb_pipes < 1)
-			return (1);
-		if (pipe(fd) == -1 && pipe(nextfd) == -1) //verify the state of fd and nextfd
+		if (pipe(fd) < 0) //verify the state of fd and nextfd
 			return (1);
 		if (ft_strcmp(att->tok_arr[n], "|") != 0)
 		{
-			dyn_pid = fork(); //open a fork to the first pid
-			if (dyn_pid < 0)
+			pid1 = fork(); //open a fork to the pid[nb]
+			if (pid1 == -1)
 				return (1); //verify if it has not given an error
-			if (dyn_pid == 0)
+			if (pid1 == 0)
 			{
-				dup2(fd[1], nextfd[0]); //dups the write end to the to the next pipe read
-				command(att);
-				close(fd[1]);
+				close(1);
+				dup2(fd[1], STDOUT_FILENO); //dups the WRITE end to the to the next pipe READ end
 				close(fd[0]);
+				write()
+				n++;
 			}
-			close(fd[0]); //close READ end of pipe
-			close(fd[1]); //close WRITE end of pipe
-			waitpid(dyn_pid, NULL, 0); // wait for child1 to finish
+			pid2 = fork(); //open a fork to the pid[nb]
+			if (pid2 < 0)
+				return (1); //verify if it has not given an error
+			if (pid2 == 0)
+			{
+				if (ft_strcmp(att->tok_arr[n], "|") == 0)
+					n++;
+				close(0);
+				dup2(fd[0], STDIN_FILENO); //dups the WRITE end to the to the next pipe READ end
+				close(fd[1]);
+				read
+			}
+			else
+			{
+				close(fd[1]); //close WRITE end of pipe
+				close(fd[0]); //close READ end of pipe
+				waitpid(pid1, NULL, 0);
+				waitpid(pid2, NULL, 0);
+			}
+			n++;
 		}
-		i++;
-		n++;
+		else
+			n++;
+		nb++;
 	}
 	return (0);
 }

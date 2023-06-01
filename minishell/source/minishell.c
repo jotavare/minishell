@@ -38,8 +38,10 @@ int	main(int ac, char **av, char **envp)
 			attr.tok_arr = get_tokens(str, &attr);
 			
 			count_dirdoc(&attr);	//teste
-
-			command(&attr);
+			if (attr.nb_pipes < 1)
+				command(&attr);
+			else
+				pipework(&attr); // testing
 
 			free_tokens(attr.tok_arr, &attr);
 			free(attr.tok_arr);
