@@ -37,18 +37,16 @@ int	main(int ac, char **av, char **envp)
 			add_history(str);
 			attr.tok_arr = get_tokens(str, &attr);
 			
-			count_dirdoc(&attr);	//teste
+			//count_dirdoc(&attr);	//teste
 			if (attr.nb_pipes < 1)
 				command(&attr);
 			else
 				pipework(&attr); // testing
-
 			free_tokens(attr.tok_arr, &attr);
 			free(attr.tok_arr);
 			free(str);
 		}
 	}
-	free(attr.last_path);
 	free_g_env(&attr);
 	free_exp_env(&attr);
 	return (0);

@@ -24,6 +24,11 @@ void	command(t_attr *att)
 
 	if (!att->tok_arr[0])
 		return ;
+	if (valid_dirdoc(att))
+	{
+		heredocs(att);
+		return ;
+	}
 	tok = att->tok_arr;
 	if (!ft_strcmp(att->tok_arr[0], "echo"))
 		echo(*att);

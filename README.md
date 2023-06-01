@@ -85,7 +85,7 @@
 |    | Commands                                    |
 | :- | :------------------------------------------ |
 | 🟢 | `Ctrl` + `C`                                |
-| 🟣 | `Ctrl` + `D`                                |
+| 🟢 | `Ctrl` + `D`                                |
 | 🟢 | `Ctrl` + `\`                                |
 | 🟢 | `write something then press` + `Ctrl` + `C` |
 | 🟢 | `write something then press` + `Ctrl` + `D` |

@@ -100,7 +100,7 @@ char	**get_tokens(char *str, t_attr *att)
 		return (NULL);
 	count_tokens(str, att);
 	create_array(str, att);
-	//expand_tokens(att->tok_arr, att);
+	expand_tokens(att->tok_arr, att);
 	//ft_print_array(in_str->s_arr, in_str->nb_tokens);
 	//printf("p_nbr= %d\n", att->nb_pipes);
 	return (att->tok_arr);

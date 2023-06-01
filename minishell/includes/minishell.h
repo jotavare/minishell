@@ -111,6 +111,8 @@ void	exit_free(t_attr *attr);
 int	pipework(t_attr *att);
 
 //Redirects && Heredocs
-void count_dirdoc(t_attr *att);
+void    count_dirdoc(t_attr *att);
+void    heredocs(t_attr *att);
+int     valid_dirdoc(t_attr *att);
 
 #endif

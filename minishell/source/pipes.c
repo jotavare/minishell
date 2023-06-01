@@ -16,13 +16,14 @@
 	- pegar no que nos chega como string
 		- iterar a string a procura de '|'s - ✅
 			- atribuir a uma variavel o numero de '|'s existentes ✅
-	- verificar o resto dos tokens com o lexer ❓
-		- criar pids e forks com o numero de '|'s ✅
-		- verificar se sao comandos validos ✅
+	- verificar o resto dos tokens com o lexer ❌
+		- criar pids e forks com o numero de '|'s ❌
+		- verificar se sao comandos validos ❌
 			- verificar se os '|'s e os comandos validos estao em numero correcto ❌
 	- atribuir cada token ao respectivo fork / child process ❌
-	- executar os tokens/comandos
+	- executar os tokens/comandos ❌
 	- fechar os fd[] ❓
+	ESTA TUDO MAL
  */
 int	pipework(t_attr *att)
 {
@@ -47,10 +48,13 @@ int	pipework(t_attr *att)
 				return (1); //verify if it has not given an error
 			if (pid1 == 0)
 			{
-				close(1);
-				dup2(fd[1], STDOUT_FILENO); //dups the WRITE end to the to the next pipe READ end
 				close(fd[0]);
-
+				int	x;
+				printf("foda-se: ");
+				scanf("%d", &x);
+				//dup2(fd[1], STDOUT_FILENO); //dups the WRITE end to the to the next pipe READ end
+				write(fd[1], &x, sizeof(int));
+				close(fd[1]);
 				n++;
 			}
 			pid2 = fork(); //open a fork to the pid[nb]
@@ -58,11 +62,13 @@ int	pipework(t_attr *att)
 				return (1); //verify if it has not given an error
 			if (pid2 == 0)
 			{
-				if (ft_strcmp(att->tok_arr[n], "|") == 0)
-					n++;
-				close(0);
-				dup2(fd[0], STDIN_FILENO); //dups the WRITE end to the to the next pipe READ end
 				close(fd[1]);
+				int	y;
+				//if (ft_strcmp(att->tok_arr[n], "|") == 0)
+				//	n++;
+				read(fd[0], &y, sizeof(int));
+				//dup2(fd[0], STDIN_FILENO); //dups the WRITE end to the to the next pipe READ end
+				close(fd[0]);
 
 			}
 			else

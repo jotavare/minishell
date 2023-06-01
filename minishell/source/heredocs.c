@@ -12,7 +12,18 @@
 
 #include "../includes/minishell.h"
 
-/* void    ft_heredocs(t_attr *att)
+int valid_dirdoc(t_attr *att)
 {
-    
-} */
+    if (!ft_strcmp(att->tok_arr[0], ">") || !ft_strcmp(att->tok_arr[0], "<"))
+        return (1);
+    else if (!ft_strcmp(att->tok_arr[0], ">>") || !ft_strcmp(att->tok_arr[0], "<<"))
+        return (1);
+    return (0);
+} 
+
+void    heredocs(t_attr *att)
+{
+    if (valid_dirdoc(att))
+        printf("bash: syntax error near unexpected token 'newline'\n");
+    return ;
+}
