@@ -34,13 +34,13 @@
 
 | Important Commands | Description |
 | :--- | :--- |
-| `make -n` | Shows all the compilation information, without compiling. |
-| `echo $?` | Return values. |
-| `-fsanitize=address` | |
-| `-lreadline` | |
-| `nm -g ./minishell \| grep " U "` | |
-| `norminette` | |
-| `cc -g -Wall -Wextra -Werror` | |
+| `make -n`                         | Display the compilation information without actually compiling the code.       |
+| `echo $?`                         | Display the exit status of the last executed command.                          |
+| `nm -g ./minishell \| grep " U "` | `nm` Display the symbols. `-g` Global symbols. `grep " U "` Undefined symbols. |
+| `norminette`                      | Checks the code for compliance with the coding style and guidelines.           |
+| `cc -g -Wall -Wextra -Werror`     | |
+| `-fsanitize=address`              | |
+| `-lreadline`                      | Link against the readline library.                                             |
 
 | Valgrind Flags                                      | Description                                      |
 | :-------------------------------------------------- | :----------------------------------------------- |
