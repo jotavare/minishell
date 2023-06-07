@@ -41,6 +41,8 @@
 | `cc -g -Wall -Wextra -Werror`     | |
 | `-fsanitize=address`              | |
 | `-lreadline`                      | Link against the readline library.                                             |
+| `ps -e` or `ps -A`                | See all processes currently running on your computer.                          |
+| `ps -a`                           | While tweaking your functions, see if you're creating any dead children.       |
 
 | Valgrind Flags                                      | Description                                      |
 | :-------------------------------------------------- | :----------------------------------------------- |
