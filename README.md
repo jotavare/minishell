@@ -262,6 +262,7 @@
 | 🟢 | `echo .`                                                             |
 | 🟢 | `echo ~`                                                             |
 | 🟢 | `echo echo ~`                                                        |
+| 🟡 | `"echo test"`                                                        |
 | 🟡 | `echo "~"`                                                           |
 | 🟡 | `echo '~'`                                                           |
 | 🟡 | `echo ~123`                                                          |
