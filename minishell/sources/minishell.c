@@ -40,7 +40,7 @@ int	main(int ac, char **av, char **envp)
 			while (attr.commands_arr[i])
 			{
 				attr.tok_arr = get_tokens(attr.commands_arr[i], &attr);
-				//ft_print_array(attr.tok_arr);
+				print_t_attr(&attr);
 				command(&attr);
 				free_tokens(attr.tok_arr, &attr);
 				free(attr.tok_arr);

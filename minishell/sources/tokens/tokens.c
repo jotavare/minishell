@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   token.c                                            :+:      :+:    :+:   */
+/*   tokens.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 18:15:45 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/08 01:19:08 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/08 02:59:49 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,15 +44,24 @@ char	**get_tokens(char *str, t_attr *att)
 	return (att->beforet);
 }
 
-void	ft_print_array(char **array)
+void	print_t_attr(t_attr *attr)
 {
-	int	i;
-
+    printf("\n====== DEBUGGING INFO ======\n");
+	printf("\n");
+	printf("  "YELLOW_BOLD"[TOKENS]:\n"RESET);
+    int i = 0;
+    while (attr->tok_arr[i]) {
+        printf("     %i: %s\n", i, attr->tok_arr[i]);
+        i++;
+    }
 	i = 0;
-	while (array[i])
-	{
-		printf("%s\n", array[i]);
-		i++;
-	}
-	printf("end of array\n");
+	printf("  "YELLOW_BOLD"[ARRAY]:\n"RESET);
+    while (attr->commands_arr[i]) {
+        printf("     %i: %s\n", i, attr->commands_arr[i]);
+        i++;
+    }
+    printf("  "YELLOW_BOLD"[Nº TOKENS]"RESET": %d\n", attr->nb_tokenst);
+    printf("  "YELLOW_BOLD"[LEN d_env]"RESET": %d\n", attr->len_d_env);
+    printf("  "YELLOW_BOLD"[LEN g_env]"RESET": %d\n", attr->len_g_env);
+    printf("\n====== DEBUGGING INFO ======\n\n");
 }
