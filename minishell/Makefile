@@ -6,7 +6,7 @@
 #    By: jotavare <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/12 15:15:58 by alexandre         #+#    #+#              #
-#    Updated: 2023/06/08 01:32:47 by jotavare         ###   ########.fr        #
+#    Updated: 2023/06/08 03:14:02 by jotavare         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,14 +45,15 @@ SRC =	sources/minishell.c \
     	sources/executer/pipes.c \
     	sources/parser/expander.c \
     	sources/parser/lexer.c \
+		sources/sanitize/signals.c \
+    	sources/sanitize/free.c \
     	sources/tokens/count_tokens.c \
     	sources/tokens/get_tokens.c \
     	sources/tokens/tokens.c \
     	sources/initialize/init.c \
     	sources/initialize/start.c \
+		sources/utilities/debugg.c \
     	sources/utilities/prompt.c \
-    	sources/sanitize/signals.c \
-    	sources/sanitize/free.c \
     	sources/utilities/utilities.c \
 
 OBJSDIR = objects

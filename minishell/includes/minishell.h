@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:28:13 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/08 02:42:32 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/08 03:15:15 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,6 @@ int		valid_dirdoc(t_attr *att);
 // tokens
 char	**get_tokens(char *str, t_attr *att);
 void	create_array(char *s, t_attr *att);
-void	print_t_attr(t_attr *attr);
 
 // count_tokens
 int		count_tokens(char *s, t_attr *att);
@@ -130,5 +129,8 @@ char	*process_token_two(char *s, t_attr *att);
 char	*process_token_three(char *s, t_attr *att);
 char	*process_multi_quote(char *s, t_attr *att);
 char	*process_default(char *s, t_attr *att);
+
+// debugging
+void	print_t_attr(t_attr *att);
 
 #endif
