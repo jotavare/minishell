@@ -39,7 +39,7 @@ int		check_next_step(t_attr *att, int i)
 	if (att->commands_arr[i + 1] && is_symbol(att->commands_arr[i + 1]))
 	{
 		if (!ft_strcmp(att->commands_arr[i + 1], "|"))
-			att->write_to_pipe = 1;
+			att->write_to_pipe = 1;cd
 	}
 	if (i > 1 && is_symbol(att->commands_arr[i - 1]))
 	{
@@ -82,10 +82,10 @@ int	main(int ac, char **av, char **envp)
 		if (str)
 		{
 			add_history(str);
-			//pipe(attr.pipefd);
+			pipe(attr.pipefd);
 			attr.commands_arr = get_tokens2(str, &attr);
 			//init_pipes(&attr);
-			//ft_print_array(attr.commands_arr);
+			//ft_print_array(attr.cosmmands_arr);
 			while (attr.commands_arr[i])
 			{
 				if (is_symbol(attr.commands_arr[i]))
