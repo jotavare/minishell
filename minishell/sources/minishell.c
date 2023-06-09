@@ -39,7 +39,7 @@ int		check_next_step(t_attr *att, int i)
 	if (att->commands_arr[i + 1] && is_symbol(att->commands_arr[i + 1]))
 	{
 		if (!ft_strcmp(att->commands_arr[i + 1], "|"))
-			att->write_to_pipe = 1;cd
+			att->write_to_pipe = 1;
 	}
 	if (i > 1 && is_symbol(att->commands_arr[i - 1]))
 	{
