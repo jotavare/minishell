@@ -6,7 +6,7 @@
 #    By: jotavare <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/12 15:15:58 by alexandre         #+#    #+#              #
-#    Updated: 2023/06/08 03:14:02 by jotavare         ###   ########.fr        #
+#    Updated: 2023/06/09 18:40:49 by jotavare         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,6 +55,7 @@ SRC =	sources/minishell.c \
 		sources/utilities/debugg.c \
     	sources/utilities/prompt.c \
     	sources/utilities/utilities.c \
+		sources/tokens/get_tokens2.c \
 
 OBJSDIR = objects
 OBJ = $(addprefix $(OBJSDIR)/, $(SRC:.c=.o))
@@ -87,6 +88,9 @@ fclean: clean
 	echo "Everything Deleted..."
 
 re: fclean all
+
+run: re
+	./$(NAME)
 	
 .SILENT:
 

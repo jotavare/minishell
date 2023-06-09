@@ -29,7 +29,7 @@ void	free_tokens(char **tokens, t_attr *t)
 	int	i;
 
 	i = 0;
-	while (i <= t->nb_tokenst)
+	while (i <= t->nb_tokens)
 		free(tokens[i++]);
 }
 

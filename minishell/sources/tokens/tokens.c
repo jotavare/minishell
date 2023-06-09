@@ -17,12 +17,12 @@ void	create_array(char *s, t_attr *att)
 	int	count;
 
 	att->index = 0;
-	att->beforet = malloc((att->nb_tokenst + 1) * sizeof(char *));
-	att->beforet[att->nb_tokenst] = NULL;
+	att->beforet = malloc((att->nb_tokens + 1) * sizeof(char *));
+	att->beforet[att->nb_tokens] = NULL;
 	if (!att->beforet)
 		return ;
 	count = 0;
-	while (count < att->nb_tokenst)
+	while (count < att->nb_tokens)
 	{
 		while (*s == ' ')
 			s++;
@@ -41,3 +41,4 @@ char	**get_tokens(char *str, t_attr *att)
 	//expand_tokens(att->tok_arr, att);
 	return (att->beforet);
 }
+

@@ -6,11 +6,14 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 17:14:25 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/08 01:35:30 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/09 19:48:54 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
+
+# define READ_END 0 
+# define WRITE_END 1
 
 char	**build_path(char **all_paths, int nb, char *command)
 {
@@ -117,7 +120,54 @@ int	exec_absolute_path(t_exec *args, t_attr *att)
 	return (0);
 }
 
-int	execute(t_attr *att)
+void    pipe_out(int fd[2])
+{
+    dup2(fd[1], 1);
+    close(fd[0]);
+    close(fd[1]);
+}
+
+void    pipe_in(int fd[2])
+{
+    dup2(fd[0], 0);
+    close(fd[0]);
+    close(fd[1]);
+}
+
+void	execute_core(t_attr *att, t_exec *args)
+{
+	if (args->command[0] == '/')
+			exec_absolute_path(args, att);
+		else if (args->command[0] == '.')
+			exec_binaries(args, att);
+		else
+			exec_commands(args, att);
+		printf("%s: command not found \n", att->tok_arr[0]);
+		exit(0);
+} 
+
+int		execute(t_attr *att)
+{
+	t_exec	args;
+	//int		pipefd[2];
+
+	start_args(&args, att);
+	args.pid = fork();
+	if (args.pid == -1)
+		return (-1);
+	if (args.pid == 0)
+	{
+		execute_core(att, &args);
+	}
+	else
+		wait(NULL);
+	free_arr(args.all_paths);
+	//free(args.all_paths);
+	return (0);
+}
+
+// n - 1
+int		execute_write_p(t_attr *att)
 {
 	t_exec	args;
 
@@ -127,21 +177,40 @@ int	execute(t_attr *att)
 		return (-1);
 	if (args.pid == 0)
 	{
-		if (args.command[0] == '/')
-			exec_absolute_path(&args, att);
-		else if (args.command[0] == '.')
-			exec_binaries(&args, att);
-		else
-			exec_commands(&args, att);
-		printf("%s: command not found \n", att->tok_arr[0]);
-		exit(0);
+		pipe_out(att->pipefd);		
+		execute_core(att, &args);
 	}
 	else
 		wait(NULL);
 	free_arr(args.all_paths);
-	//free(args.all_paths);
+	// close(att->pipefd[0]);
+	close(att->pipefd[WRITE_END]);
+	att->write_to_pipe = 0;
 	return (0);
 }
+
+int		execute_read_p(t_attr *att)
+{
+	t_exec	args;
+
+	start_args(&args, att);
+	args.pid = fork();
+	if (args.pid == -1)
+		return (-1);
+	if (args.pid == 0)
+	{
+		pipe_in(att->pipefd);
+		execute_core(att, &args);
+	}
+	else
+		wait(NULL);
+	free_arr(args.all_paths);
+	// close(att->pipefd[READ_END]);
+	// close(att->pipefd[1]);
+	att->read_from_pipe = 0;
+	return (0);
+}
+
 
 /* int	execute(t_attr *att)
 {

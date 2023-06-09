@@ -48,9 +48,9 @@ void	ft_exit(t_attr *attr)
 	free_arr(attr->commands_arr);
 	g_last_return_value = 0;
 	printf("exit\n");
-	if (attr->nb_tokenst == 1)
+	if (attr->nb_tokens == 1)
 		g_last_return_value = 0;
-	else if (attr->nb_tokenst == 2)
+	else if (attr->nb_tokens == 2)
 		g_last_return_value = exit_two(*attr);
 	else
 	{

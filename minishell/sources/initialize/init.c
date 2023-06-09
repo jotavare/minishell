@@ -24,7 +24,7 @@ void	init_params(int ac, char **av, t_attr *attr, char **envp)
 
 void	init_attributes(t_attr *att)
 {
-	att->nb_tokenst = 0;
+	att->nb_tokens = 0;
 	att->index = 0;
 	att->tok_arr = NULL;
 	att->d_env = NULL;
@@ -33,6 +33,11 @@ void	init_attributes(t_attr *att)
 	att->len_d_exp_env = 0;
 	att->commands_arr = NULL;
 	att->tok_arr_i = 0;
+	att->pars_data.nb_tokenst = 0; //get_tokens2
+	att->pars_data.pars_arr = NULL; //get_tokens2
+	att->write_to_pipe = 0;
+	att->read_from_pipe = 0;
+	pipe(att->pipefd);
 }
 
 void	init_paths(t_attr *att)
@@ -58,9 +63,10 @@ int	count_commands(char *s)
 
 void	reinit_attributes(t_attr *att)
 {
-	att->nb_tokenst = 0;
+	att->nb_tokens = 0;
 	att->index = 0;
 	att->tok_arr = NULL;
 	att->tok_arr_i = 0;
 	att->last_path = search_var_in_g_env(att, "OLDPWD");
+	att->pars_data.nb_tokenst = 0; //get_tokens2
 }

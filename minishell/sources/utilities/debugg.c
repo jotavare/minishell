@@ -28,9 +28,22 @@ void	print_t_attr(t_attr *att)
         printf("     %i: %s\n", i, att->commands_arr[i]);
         i++;
     }
-    printf("  "YELLOW_BOLD"[Nº TOKENS]:"RESET" %d\n", att->nb_tokenst);
+    printf("  "YELLOW_BOLD"[Nº TOKENS]:"RESET" %d\n", att->nb_tokens);
     printf("  "YELLOW_BOLD"[LEN d_env]:"RESET" %d\n", att->len_d_env);
     printf("  "YELLOW_BOLD"[LEN g_env]:"RESET" %d\n", att->len_g_env);
     printf("  "YELLOW_BOLD"[LAST PATH]:"RESET" %s\n", att->last_path);
     printf(YELLOW_BOLD"\n====== DEBUGGING INFO ======\n\n"RESET);
+}
+
+void	ft_print_array(char **array)
+{
+	int		i;
+
+	i = 0;
+	while (array[i])
+	{
+		printf ("%d - %s\n", i, array[i]);
+		i++;
+	}
+	printf("end of array\n\n");
 }

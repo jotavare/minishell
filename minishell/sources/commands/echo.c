@@ -24,11 +24,11 @@ void	echo(t_attr att)
 	int	i;
 
 	i = 1;
-	if (att.nb_tokenst == 1)
+	if (att.nb_tokens == 1)
 		printf("\n");
 	else
 	{
-		while (i < att.nb_tokenst)
+		while (i < att.nb_tokens)
 		{
 			if (ft_strnstr(att.tok_arr[i], "-n", ft_strlen(att.tok_arr[i])))
 				echo_n(att);
@@ -53,7 +53,7 @@ void	echo_n(t_attr att)
 	int	i;
 
 	i = 2;
-	while (i < att.nb_tokenst)
+	while (i < att.nb_tokens)
 	{
 		ft_putstr_fd(att.tok_arr[i], 1);
 		if (att.tok_arr[i + 1])
@@ -67,7 +67,7 @@ void	echo_doll_ques(t_attr att)
 	int i;
 
 	i = 2;
-	while (i < att.nb_tokenst)
+	while (i < att.nb_tokens)
 	{
 		ft_putstr_fd(att.tok_arr[i], 1);
 		if (att.tok_arr[i + 1])

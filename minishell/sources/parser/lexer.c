@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 18:15:45 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/08 01:35:14 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/09 18:09:16 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,9 @@
 
 void	command(t_attr *att)
 {
-	//char	**tok;
+	
 	if (!att->tok_arr[0])
 		return ;
-	//tok = att->tok_arr;
 	if (!ft_strcmp(att->tok_arr[0], "echo"))
 		echo(*att);
 	else if (ft_strcmp(att->tok_arr[0], "pwd") == 0)
@@ -40,6 +39,13 @@ void	command(t_attr *att)
 			|| (ft_strcmp(att->tok_arr[0], "\"exit\"") == 0))
 		return (ft_exit(att));
 	else
-		execute(att);
+	{
+		if(att->write_to_pipe)
+			execute_write_p(att);
+		else if(att->read_from_pipe)
+			execute_read_p(att);
+		else
+			execute(att);
+	}
 	return ;
 }

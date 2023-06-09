@@ -55,7 +55,7 @@ void	cd(t_attr *att)
 	char	*destiny_path;
 	char	*str_pwd;
 
-	if (att->nb_tokenst > 2)
+	if (att->nb_tokens > 2)
 	{
 		ft_putstr_fd("minishell: cd: too many arguments\n", 1);
 		g_last_return_value = 1;

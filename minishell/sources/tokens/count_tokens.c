@@ -16,6 +16,7 @@ int	count_tokens(char *s, t_attr *att)
 {
 	int	len;
 
+	att->nb_tokens = 0;
 	len = ft_strlen(s) - 1;
 	while (len >= 0)
 	{
@@ -33,7 +34,7 @@ int	count_tokens(char *s, t_attr *att)
 		else
 			len--;
 	}
-	return (att->nb_tokenst);
+	return (att->nb_tokens);
 }
 
 int	check_single_quotes(char *s, int len, t_attr *att)
@@ -43,7 +44,7 @@ int	check_single_quotes(char *s, int len, t_attr *att)
 	{
 		len--;
 	}
-	att->nb_tokenst++;
+	att->nb_tokens++;
 	len--;
 	return (len);
 }
@@ -55,14 +56,14 @@ int	check_double_quotes(char *s, int len, t_attr *att)
 	{
 		len--;
 	}
-	att->nb_tokenst++;
+	att->nb_tokens++;
 	len--;
 	return (len);
 }
 
 int	check_non_space_char(char *s, int len, t_attr *att)
 {
-	att->nb_tokenst++;
+	att->nb_tokens++;
 	while (len >= 0 && s[len] != ' ')
 	{
 		len--;
@@ -72,7 +73,7 @@ int	check_non_space_char(char *s, int len, t_attr *att)
 
 int	check_special_char(char *s, int len, t_attr *att)
 {
-	att->nb_tokenst++;
+	att->nb_tokens++;
 	while (len >= 0 && (s[len] != ' ' && s[len] != '|' && s[len] != '<'
 			&& s[len] != '>'))
 	{
