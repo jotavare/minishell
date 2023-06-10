@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 18:15:45 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/09 19:05:40 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/10 15:03:25 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,7 @@ char	*get_token2(char *s, t_attr *att)
 			return (NULL);
 		token[0] = s[j];
 		token[1] = 0;
+		att->number_of_redir++;
 	}
 	else if (s[j] == '>' && s[j + 1] == '>' )
 	{

@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 17:14:25 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/10 00:54:07 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/10 16:38:56 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,10 +157,9 @@ void	execute_core(t_attr *att, t_exec *args)
 	exit(0);
 } 
 
-int		execute(t_attr *att)
+int		execute(t_attr *att, int index)
 {
 	t_exec	args;
-	//int		pipefd[2];
 
 	start_args(&args, att);
 	args.pid = fork();
@@ -168,60 +167,16 @@ int		execute(t_attr *att)
 		return (-1);
 	if (args.pid == 0)
 	{
+		if (att->number_of_redir > 0 && att->redir)
+			redir_append(att, index);
 		execute_core(att, &args);
 	}
 	else
 		waitpid(-1, NULL, 0);
+	att->redir = 0;
 	free_arr(args.all_paths);
-	//free(args.all_paths);
 	return (0);
 }
-
-// int		execute_write_p(t_attr *att, int index)
-// {
-// 	t_exec	args;
-	
-// 	// printf("[w]Command index: %d\n", index);
-// 	start_args(&args, att);
-// 	args.pid = fork();
-// 	if (args.pid == -1)
-// 		return (-1);
-// 	if (args.pid == 0)
-// 	{
-// 		pipe_out(att->pipesfd[index]);		
-// 		execute_core(att, &args);
-// 	}
-// 	else
-// 		waitpid(-1, NULL, 0);
-// 	free_arr(args.all_paths);
-// 	printf("Closing pipe[%d][WRITE]\n", index);
-// 	close(att->pipesfd[index][WRITE_END]);
-// 	// att->write_to_pipe = 0;
-// 	return (0);
-// }
-
-// int		execute_read_p(t_attr *att, int index)
-// {
-// 	t_exec	args;
-
-// 	// printf("[r]Command index: %d\n", index);
-// 	start_args(&args, att);
-// 	args.pid = fork();
-// 	if (args.pid == -1)
-// 		return (-1);
-// 	if (args.pid == 0)
-// 	{
-// 		pipe_in(att->pipesfd[index - 1]);
-// 		execute_core(att, &args);
-// 	}
-// 	else
-// 		waitpid(-1, NULL, 0);
-// 	free_arr(args.all_paths);
-// 	printf("Closing pipe[%d][READ]\n", index - 1);
-// 	close(att->pipesfd[index - 1][READ_END]);
-// 	// att->read_from_pipe = 0;
-// 	return (0);
-// }
 
 int		execute_pipeline(t_attr *att, int index)
 {

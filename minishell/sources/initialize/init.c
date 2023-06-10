@@ -37,6 +37,10 @@ void	init_attributes(t_attr *att)
 	att->pars_data.pars_arr = NULL; //get_tokens2
 	att->write_to_pipe = 0;
 	att->read_from_pipe = 0;
+	att->number_of_pipes = 0;
+	att->number_of_redir = 0;
+	att->redir_fd = 0;
+	att->redir = 0;
 	// pipe(att->pipefd);
 }
 

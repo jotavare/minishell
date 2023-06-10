@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:28:13 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/09 23:56:48 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/10 15:17:05 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@
 
 # define PATH_MAX 4096
 
+// pipes
 # define READ_END 0 
 # define WRITE_END 1
 
