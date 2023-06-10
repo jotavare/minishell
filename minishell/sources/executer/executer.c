@@ -6,14 +6,11 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 17:14:25 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/09 19:48:54 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/10 00:54:07 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
-
-# define READ_END 0 
-# define WRITE_END 1
 
 char	**build_path(char **all_paths, int nb, char *command)
 {
@@ -120,30 +117,44 @@ int	exec_absolute_path(t_exec *args, t_attr *att)
 	return (0);
 }
 
-void    pipe_out(int fd[2])
+void    pipe_out(t_attr *att, int index)
 {
-    dup2(fd[1], 1);
-    close(fd[0]);
-    close(fd[1]);
+	if (index >= att->number_of_pipes)
+		return ;
+    if (dup2(att->pipesfd[index][WRITE_END], STDOUT_FILENO) < 0)
+		perror("dup2 :[WRITE_END] ");
+    // close(pipes[0]);
+    // close(pipes[1]);
 }
 
-void    pipe_in(int fd[2])
+void    pipe_in(t_attr *att, int index)
 {
-    dup2(fd[0], 0);
-    close(fd[0]);
-    close(fd[1]);
+	if (index < 1)
+		return ;
+    if (dup2(att->pipesfd[index - 1][READ_END], STDIN_FILENO) < 0)
+		perror("dup2 [READ_END]: ");
+    // close(pipes[0]);
+    // close(pipes[1]);
+}
+
+void	close_pipeline(t_attr *att, int index)
+{
+	if (index > 0)
+		close(att->pipesfd[index - 1][READ_END]);
+	if (index < att->number_of_pipes)
+		close(att->pipesfd[index][WRITE_END]);
 }
 
 void	execute_core(t_attr *att, t_exec *args)
 {
 	if (args->command[0] == '/')
-			exec_absolute_path(args, att);
-		else if (args->command[0] == '.')
-			exec_binaries(args, att);
-		else
-			exec_commands(args, att);
-		printf("%s: command not found \n", att->tok_arr[0]);
-		exit(0);
+		exec_absolute_path(args, att);
+	else if (args->command[0] == '.')
+		exec_binaries(args, att);
+	else
+		exec_commands(args, att);
+	printf("%s: command not found \n", att->tok_arr[0]);
+	exit(0);
 } 
 
 int		execute(t_attr *att)
@@ -160,84 +171,73 @@ int		execute(t_attr *att)
 		execute_core(att, &args);
 	}
 	else
-		wait(NULL);
+		waitpid(-1, NULL, 0);
 	free_arr(args.all_paths);
 	//free(args.all_paths);
 	return (0);
 }
 
-// n - 1
-int		execute_write_p(t_attr *att)
+// int		execute_write_p(t_attr *att, int index)
+// {
+// 	t_exec	args;
+	
+// 	// printf("[w]Command index: %d\n", index);
+// 	start_args(&args, att);
+// 	args.pid = fork();
+// 	if (args.pid == -1)
+// 		return (-1);
+// 	if (args.pid == 0)
+// 	{
+// 		pipe_out(att->pipesfd[index]);		
+// 		execute_core(att, &args);
+// 	}
+// 	else
+// 		waitpid(-1, NULL, 0);
+// 	free_arr(args.all_paths);
+// 	printf("Closing pipe[%d][WRITE]\n", index);
+// 	close(att->pipesfd[index][WRITE_END]);
+// 	// att->write_to_pipe = 0;
+// 	return (0);
+// }
+
+// int		execute_read_p(t_attr *att, int index)
+// {
+// 	t_exec	args;
+
+// 	// printf("[r]Command index: %d\n", index);
+// 	start_args(&args, att);
+// 	args.pid = fork();
+// 	if (args.pid == -1)
+// 		return (-1);
+// 	if (args.pid == 0)
+// 	{
+// 		pipe_in(att->pipesfd[index - 1]);
+// 		execute_core(att, &args);
+// 	}
+// 	else
+// 		waitpid(-1, NULL, 0);
+// 	free_arr(args.all_paths);
+// 	printf("Closing pipe[%d][READ]\n", index - 1);
+// 	close(att->pipesfd[index - 1][READ_END]);
+// 	// att->read_from_pipe = 0;
+// 	return (0);
+// }
+
+int		execute_pipeline(t_attr *att, int index)
 {
 	t_exec	args;
-
+	
 	start_args(&args, att);
 	args.pid = fork();
 	if (args.pid == -1)
 		return (-1);
 	if (args.pid == 0)
 	{
-		pipe_out(att->pipefd);		
+		pipe_in(att, index);
+		pipe_out(att, index);
 		execute_core(att, &args);
 	}
-	else
-		wait(NULL);
 	free_arr(args.all_paths);
-	// close(att->pipefd[0]);
-	close(att->pipefd[WRITE_END]);
-	att->write_to_pipe = 0;
+	close_pipeline(att, index);
 	return (0);
 }
-
-int		execute_read_p(t_attr *att)
-{
-	t_exec	args;
-
-	start_args(&args, att);
-	args.pid = fork();
-	if (args.pid == -1)
-		return (-1);
-	if (args.pid == 0)
-	{
-		pipe_in(att->pipefd);
-		execute_core(att, &args);
-	}
-	else
-		wait(NULL);
-	free_arr(args.all_paths);
-	// close(att->pipefd[READ_END]);
-	// close(att->pipefd[1]);
-	att->read_from_pipe = 0;
-	return (0);
-}
-
-
-/* int	execute(t_attr *att)
-{
-	t_exec	args;
-
-	start_args(&args, att);
-	int	flag = 0;
-	args.pid = fork();
-	if (args.pid == -1)
-		return (-1);
-	if (args.pid == 0)
-	{
-		if (args.command[0] == '/')
-			exec_absolute_path(&args, att);
-		else if (args.command[0] == '.')
-			exec_binaries(&args, att);
-        else if (!ft_strcmp(args.command, "minishell"))
-        {
-            printf("Minishell: command not found: %s\n", att->tok_arr[0]);
-			flag = 1;
-        }
-		else
-			exec_commands(&args, att);
-		if (flag == 0)
-			printf("Minishell: command not found: %s\n", att->tok_arr[0]);
-	}
-	else
-		wait(NULL);
-	return (0);
-} */

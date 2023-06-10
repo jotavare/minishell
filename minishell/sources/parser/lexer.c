@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 18:15:45 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/09 18:09:16 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/10 01:19:31 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
     feedback or return values accordingly.
 */
 
-void	command(t_attr *att)
+void	command(t_attr *att, int index)
 {
 	
 	if (!att->tok_arr[0])
@@ -40,12 +40,13 @@ void	command(t_attr *att)
 		return (ft_exit(att));
 	else
 	{
-		if(att->write_to_pipe)
-			execute_write_p(att);
-		else if(att->read_from_pipe)
-			execute_read_p(att);
-		else
+		if (att->number_of_pipes == 0)
+		{
 			execute(att);
+			printf("execute\n");
+		}
+		else
+			execute_pipeline(att, index);			
 	}
 	return ;
 }

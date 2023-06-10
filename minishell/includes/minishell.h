@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:28:13 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/09 19:04:22 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/10 00:49:42 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 // source
 char	*prompt(t_attr *att);
-void	command(t_attr *att);
+void	command(t_attr *att, int index);
 int		execute(t_attr *att);
 
 // execute
@@ -29,8 +29,9 @@ int		exec_absolute_path(t_exec *args, t_attr *att);
 char	**build_path(char **all_paths, int nb, char *command);
 char	*get_str_paths(t_attr *att, char *path_str);
 int		count_paths(char *s);
-int		execute_write_p(t_attr *att);
-int		execute_read_p(t_attr *att);
+int		execute_write_p(t_attr *att, int index);
+int		execute_read_p(t_attr *att, int index);
+int		execute_pipeline(t_attr *att, int index);
 
 // init
 void	init_params(int ac, char **av, t_attr *attr, char **envp);

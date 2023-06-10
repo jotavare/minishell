@@ -49,22 +49,38 @@ int		check_next_step(t_attr *att, int i)
 	return (0);
 }  
 
-/* void	init_pipes(t_attr *att)
+void	init_pipes(t_attr *att)
 {
 	int	i;
 	
-	i = 0;
-	while (i < att->number_of_pipes)
+	att->pipesfd = ft_calloc(att->number_of_pipes + 1, sizeof(int *));
+	if (!att->pipesfd)
+		return ;
+	i = -1;
+	while (++i < att->number_of_pipes)
 	{
-		pipe(att->pipefd[i]);
+		att->pipesfd[i] = malloc(2 * sizeof(int));
+		pipe(att->pipesfd[i]);
 	}
-} */
+}
+
+//
+void ft_delete_matrix (void *matrix)
+{
+	int i;
+
+	i = -1;
+	while (((char **)matrix)[++i])
+		free(((char **)matrix)[i]);
+	free(matrix);
+}
 
 int	main(int ac, char **av, char **envp)
 {
 	t_attr attr;
 	char *str;
 	int i;
+	int k = 0;
 
 	rl_clear_history();
 	set_signals();
@@ -82,23 +98,30 @@ int	main(int ac, char **av, char **envp)
 		if (str)
 		{
 			add_history(str);
-			pipe(attr.pipefd);
+			// pipe(attr.pipefd);
 			attr.commands_arr = get_tokens2(str, &attr);
-			//init_pipes(&attr);
+
+			init_pipes(&attr);
 			//ft_print_array(attr.cosmmands_arr);
+			k = 0;
 			while (attr.commands_arr[i])
 			{
 				if (is_symbol(attr.commands_arr[i]))
 					i++;
 				check_next_step(&attr, i);
 				attr.tok_arr = get_tokens(attr.commands_arr[i], &attr);
-				//ft_print_array(attr.tok_arr);
+				// ft_print_array(attr.tok_arr);
 				// print_t_attr(&attr);
-				command(&attr);
+				command(&attr, k);
 				free_tokens(attr.tok_arr, &attr);
 				free(attr.tok_arr);
 				i++;
+				k++;
 			}
+			while (waitpid(-1, NULL, 0) > 0)
+				continue;
+			attr.number_of_pipes = 0;
+			ft_delete_matrix(attr.pipesfd);
 			free_arr(attr.commands_arr);
 			free(str);
 		}

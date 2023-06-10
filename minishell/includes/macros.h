@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:28:13 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/05/31 03:04:08 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/09 23:56:48 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,8 @@
 # define BLUE_BOLD "\033[1;34m"
 
 # define PATH_MAX 4096
+
+# define READ_END 0 
+# define WRITE_END 1
 
 #endif

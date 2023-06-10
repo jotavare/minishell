@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:28:13 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/09 19:50:39 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/09 23:51:44 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,8 @@ typedef struct s_attr
 	int		write_to_pipe;
 	int		read_from_pipe;
 	int		number_of_pipes;
-	int		pipefd[2];
+	int		**pipesfd;
+	// int		pipefd[2];
 }			t_attr;
 
 typedef struct s_exec
