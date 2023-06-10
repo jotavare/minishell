@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexfern <alexfern@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:28:13 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/05/31 21:14:09 by alexfern         ###   ########.fr       */
+/*   Updated: 2023/06/10 15:28:24 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,24 +18,24 @@
 
 // source
 char	*prompt(t_attr *att);
-void	command(t_attr *att);
-int		execute(t_attr *att);
-char	**get_tokens(char *str, t_attr *attr);
-void	ft_print_array(char **array, int nb);
-void	create_array(char *s, t_attr *att);
+void	command(t_attr *att, int index);
 
 // execute
-int		execute(t_attr *att);
+int		execute(t_attr *att, int index);
 int		exec_commands(t_exec *args, t_attr *att);
 int		exec_binaries(t_exec *args, t_attr *att);
 int		exec_absolute_path(t_exec *args, t_attr *att);
 char	**build_path(char **all_paths, int nb, char *command);
 char	*get_str_paths(t_attr *att, char *path_str);
 int		count_paths(char *s);
+int		execute_write_p(t_attr *att, int index);
+int		execute_read_p(t_attr *att, int index);
+int		execute_pipeline(t_attr *att, int index);
+void	redir_append(t_attr *att, int index);
 
 // init
 void	init_params(int ac, char **av, t_attr *attr, char **envp);
-void	init_attributes(t_attr *att); //27 maio alterado
+void	init_attributes(t_attr *att);
 void	init_paths(t_attr *att);
 void	reinit_attributes(t_attr *att);
 
@@ -78,7 +78,7 @@ void	refresh_addenv(t_attr *att, char *add);
 void	refresh_add_exp(t_attr *att, char *add);
 char	*search_var_in_g_env(t_attr *att, char *s);
 int		check_the_arr(char **search, char *str);
-int     check_equal(char *str);
+int		check_equal(char *str);
 
 // utilities
 char	*trim_back(const char *input);
@@ -108,11 +108,34 @@ void	free_arr(char **arr);
 void	exit_free(t_attr *attr);
 
 // pipes
-int	pipework(t_attr *att);
+int		pipework(t_attr *att);
 
-//Redirects && Heredocs
-void    count_dirdoc(t_attr *att);
-void    heredocs(t_attr *att);
-int     valid_dirdoc(t_attr *att);
+// redirects and heredocs
+void	count_dirdoc(t_attr *att);
+void	heredocs(t_attr *att);
+int		valid_dirdoc(t_attr *att);
+
+// tokens
+char	**get_tokens(char *str, t_attr *att);
+char	**get_tokens2(char *str, t_attr *att);
+void	create_array(char *s, t_attr *att);
+
+// count_tokens
+int		count_tokens(char *s, t_attr *att);
+int		check_single_quotes(char *s, int len, t_attr *att);
+int		check_double_quotes(char *s, int len, t_attr *att);
+int		check_non_space_char(char *s, int len, t_attr *att);
+int		check_special_char(char *s, int len, t_attr *att);
+
+// get_tokens
+char	*get_token(char *s, t_attr *att);
+char	*process_token_two(char *s, t_attr *att);
+char	*process_token_three(char *s, t_attr *att);
+char	*process_multi_quote(char *s, t_attr *att);
+char	*process_default(char *s, t_attr *att);
+
+// debugging
+void	print_t_attr(t_attr *att);
+void	ft_print_array(char **array);
 
 #endif

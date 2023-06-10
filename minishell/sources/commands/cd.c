@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:57:28 by alexandre         #+#    #+#             */
-/*   Updated: 2023/05/31 03:02:55 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/08 01:36:02 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 /*
     change directory to path given an argument
 */
+
 extern int	g_last_return_value;
 
 char	*search_var_in_g_env(t_attr *att, char *s)
@@ -25,11 +26,17 @@ char	*search_var_in_g_env(t_attr *att, char *s)
 
 	i = 0;
 	s_size = (int)ft_strlen(s);
-	while (ft_strncmp(att->g_env[i], s, s_size))
+	while (att->g_env[i] != NULL)
+	{
+		if (!ft_strncmp(att->g_env[i], s, s_size))
+		{
+			path = att->g_env[i];
+			path += s_size + 1;
+			return (path);
+		}
 		i++;
-	path = att->g_env[i];
-	path += s_size + 1;
-	return (path);
+	}
+	return (NULL);
 }
 
 void	cd_rm_add_path(t_attr *att, char *to_remove, char *s)

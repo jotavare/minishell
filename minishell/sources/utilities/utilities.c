@@ -6,11 +6,11 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:51:22 by alexfern          #+#    #+#             */
-/*   Updated: 2023/05/31 02:55:49 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/08 01:27:43 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
+#include "../../includes/minishell.h"
 
 /*
     removes the spaces at the end of the string and

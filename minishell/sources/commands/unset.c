@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:57:28 by alexandre         #+#    #+#             */
-/*   Updated: 2023/05/31 03:19:29 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/08 01:35:47 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void	double_myenv(t_attr *att)
 	}
 	att->d_env[i] = 0; //27 maio
 }
-	
+
 void	double_exp_env(t_attr *att) //27 maio
 {
 	int i;

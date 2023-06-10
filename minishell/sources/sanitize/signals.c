@@ -6,11 +6,11 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:57:28 by alexandre         #+#    #+#             */
-/*   Updated: 2023/05/19 20:22:40 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/08 01:45:17 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
+#include "../../includes/minishell.h"
 
 /*
     handle_interrupt is a signal handler for Ctrl+C
@@ -30,7 +30,7 @@ void	handle_interrupt(int signal)
 }
 
 /*
-    Set up signal handlers for:
+    set up signal handlers for:
     Ctrl+C, Ctrl+Z, and Ctrl+"\".
 */
 

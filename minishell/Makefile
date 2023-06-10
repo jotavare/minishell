@@ -6,7 +6,7 @@
 #    By: jotavare <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/12 15:15:58 by alexandre         #+#    #+#              #
-#    Updated: 2023/06/01 17:28:35 by jotavare         ###   ########.fr        #
+#    Updated: 2023/06/10 14:55:33 by jotavare         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,27 +32,28 @@ BOLD			:= \033[1;1m
 
 # MINISHELL
 NAME = minishell
-SRC =	source/commands/cd.c \
-		source/commands/echo.c \
-		source/commands/env.c \
-		source/commands/exit.c \
-		source/commands/export.c \
-		source/commands/pwd.c \
-		source/commands/unset.c \
-		source/executer.c \
-		source/expander.c \
-		source/init.c \
-		source/lexer.c \
-		source/minishell.c \
-		source/pipes.c \
-		source/prompt.c \
-		source/signals.c \
-		source/start.c \
-		source/tokens.c \
-		source/heredocs.c \
-		utilities/free.c \
-		utilities/utilities.c \
-		utilities/utilities_heredocs.c \
+SRC =	sources/minishell.c \
+    	sources/commands/cd.c \
+    	sources/commands/echo.c \
+    	sources/commands/env.c \
+    	sources/commands/exit.c \
+    	sources/commands/export.c \
+    	sources/commands/pwd.c \
+    	sources/commands/unset.c \
+    	sources/executer/executer.c \
+    	sources/parser/expander.c \
+    	sources/parser/lexer.c \
+		sources/sanitize/signals.c \
+    	sources/sanitize/free.c \
+    	sources/tokens/count_tokens.c \
+    	sources/tokens/get_tokens.c \
+    	sources/tokens/tokens.c \
+    	sources/initialize/init.c \
+    	sources/initialize/start.c \
+		sources/utilities/debugg.c \
+    	sources/utilities/prompt.c \
+    	sources/utilities/utilities.c \
+		sources/tokens/get_tokens2.c \
 
 OBJSDIR = objects
 OBJ = $(addprefix $(OBJSDIR)/, $(SRC:.c=.o))
@@ -65,7 +66,7 @@ $(NAME): $(OBJ)
 	$(CC) $(CFLAGS) $(OBJ) $(LIBFT) $(RLFLAG) -o $(NAME)
 	echo "Everything Done!"
 
-sani: $(OBJ)
+sani: re $(OBJ)
 	$(MAKE) -C ./libft
 	$(CSANI) $(CFLAGS) $(OBJ) $(LIBFT) $(RLFLAG) -o $(NAME)
 	echo "Compiled with fsanitizer"
@@ -85,6 +86,9 @@ fclean: clean
 	echo "Everything Deleted..."
 
 re: fclean all
+
+run: re
+	./$(NAME)
 	
 .SILENT:
 

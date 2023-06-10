@@ -6,11 +6,11 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 18:15:45 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/05/31 03:15:51 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/08 01:35:05 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
+#include "../../includes/minishell.h"
 
 void	free_arr(char **arr)
 {
@@ -21,6 +21,7 @@ void	free_arr(char **arr)
 	{
 		free(arr[i++]);
 	}
+	free(arr);
 }
 
 void	free_tokens(char **tokens, t_attr *t)
@@ -86,7 +87,6 @@ void	free_d_exp_env(t_attr *att)
 	}
 	free(att->d_exp_env);
 }
-
 
 void	exit_free(t_attr *attr)
 {

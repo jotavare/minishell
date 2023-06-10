@@ -6,11 +6,11 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 18:15:45 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/01 17:32:31 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/08 01:35:11 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
+#include "../../includes/minishell.h"
 
 /*
     expands the tokens that start with a '$' sign and 
@@ -24,13 +24,14 @@ char	**expand_tokens(char **tokens, t_attr *att)
 	char	*value;
 	size_t	expanded_length;
 	char	*expanded_token;
+	char	*variable_name;
 
 	i = 0;
 	while (tokens[i] != NULL)
 	{
 		if (tokens[i][0] == '$' && tokens[i][1] != '\0')
 		{
-			char *variable_name = tokens[i] + 1;
+			variable_name = tokens[i] + 1;
 			value = custom_getenv(variable_name, att);
 			if (value != NULL)
 			{

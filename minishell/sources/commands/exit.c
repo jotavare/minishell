@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:57:28 by alexandre         #+#    #+#             */
-/*   Updated: 2023/05/31 03:03:17 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/07 19:09:24 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ void	ft_exit(t_attr *attr)
 {
 	free_g_env(attr);
 	free_exp_env(attr);
+	free_arr(attr->commands_arr);
 	g_last_return_value = 0;
 	printf("exit\n");
 	if (attr->nb_tokens == 1)

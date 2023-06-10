@@ -32,36 +32,27 @@
 - [ ] If theres bonus, there must be a bonus rule on Makefile and bonus files must have _bonus.c(.h).
 - [ ] Check for forbidden functions in your code.
 
-<div>
-<table>
-<tr><th></th><th></th></tr>
-<tr><td>
+| Important Commands | Description |
+| :--- | :--- |
+| `make -n`                         | Display the compilation information without actually compiling the code.       |
+| `echo $?`                         | Display the exit status of the last executed command.                          |
+| `nm -g ./minishell \| grep " U "` | `nm` Display the symbols. `-g` Global symbols. `grep " U "` Undefined symbols. |
+| `norminette`                      | Checks the code for compliance with the coding style and guidelines.           |
+| `cc -g -Wall -Wextra -Werror`     | |
+| `-fsanitize=address`              | |
+| `-lreadline`                      | Link against the readline library.                                             |
+| `ps -e` or `ps -A`                | See all processes currently running on your computer.                          |
+| `ps -a`                           | While tweaking your functions, see if you're creating any dead children.       |
 
-| Important |
-| :--- |
-| `make -n` |
-| `echo $?` |
-| `-fsanitize=address` |
-| `-lreadline` |
-| `nm -g ./minishell \| grep " U "` |
-| `norminette` |
-| `cc -g -Wall -Wextra -Werror` |
-
-</td><td>
-
-| Valgrind Flags |
-| :--- |
-| `-leak-check=full` |
-| `--show-leak-kinds=all` |
-| `--track-origins=yes` |
-| `--verbose` |
-| `--gen-suppressions=all` |
-| `--suppressions=valgrind_readline_leaks_ignore.txt` |
-| `--log-file=memleaks.log` |
-
-</td></tr>
-</table>
-</div>
+| Valgrind Flags                                      | Description                                      |
+| :-------------------------------------------------- | :----------------------------------------------- |
+| `-leak-check=full`                                  | Detailed checking for memory leaks.              |
+| `--show-leak-kinds=all`                             | Display all types of memory leaks.               |
+| `--track-origins=yes`                               | Tracks the origins of uninitialized values.      |
+| `--verbose`                                         | Increases the level of verbosity.                |
+| `--gen-suppressions=all`                            | Ignore specific known issues or false positives. |
+| `--suppressions=valgrind_readline_leaks_ignore.txt` | Specifies the path to a suppression file.        |
+| `--log-file=memleaks.log`                           | Sets the name of the file.                       |
 
 # COMMAND TESTS
 |    | Definition                  |
@@ -273,6 +264,7 @@
 | 🟢 | `echo .`                                                             |
 | 🟢 | `echo ~`                                                             |
 | 🟢 | `echo echo ~`                                                        |
+| 🟡 | `"echo test"`                                                        |
 | 🟡 | `echo "~"`                                                           |
 | 🟡 | `echo '~'`                                                           |
 | 🟡 | `echo ~123`                                                          |
