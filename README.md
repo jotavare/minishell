@@ -135,16 +135,16 @@ leaks.
 * Values greater than 0 represent false (command failure).
 * The error code of the last command used is contained in the variable `$?`.
 
-| `$?`    | Description                                                                      |
-| :------ | :------------------------------------------------------------------------------- |
-| `1`     | Standard for general errors, such as a division by zero.                         |
-| `2`     | Improper use of built-in commands, per Bash documentation.                       |
-| `126`   | The command called cannot be executed, rights problem or command not executable. |
-| `127`   | Command not found, possible problem with $PATH or typing error.                  |
-| `128`   | Invalid command argument.                                                        |
-| `128+n` | 128 + signal number.                                                             |
-| `130`   | Finished with `Ctrl` + `C` (130 = 128 + 2).                                      |
-| `255`   | Exit code out of bounds, eg.: `exit -1`.                                         |
+| Return value | Description                                                                      |
+| :----------- | :------------------------------------------------------------------------------- |
+| `1`          | Standard for general errors, such as a division by zero.                         |
+| `2`          | Improper use of built-in commands, per Bash documentation.                       |
+| `126`        | The command called cannot be executed, rights problem or command not executable. |
+| `127`        | Command not found, possible problem with $PATH or typing error.                  |
+| `128`        | Invalid command argument.                                                        |
+| `128+n`      | 128 + signal number.                                                             |
+| `130`        | Finished with `Ctrl` + `C` (130 = 128 + 2).                                      |
+| `255`        | Exit code out of bounds, eg.: `exit -1`.                                         |
 
 #### COMMAND EXAMPLES
 | Command       | Description                                                                                 |
