@@ -25,7 +25,7 @@
 </p>
 
 ## ABOUT
-The Minishell project from school 42 is a C-based endeavor that focuses on developing a complete shell program. It encompasses process management, signal handling, and command execution, providing a deep understanding of system programming and command-line interfaces. The project sets a strong foundation for tackling complex system-level challenges, advancing in software development and working in group.
+The Minishell project at school 42 is an educational endeavor centered around creating a comprehensive shell program using the C programming language. It involves various aspects such as process management, signal handling, and executing commands, which contribute to a solid understanding of system programming and command-line interfaces. This project serves as a strong basis for tackling intricate system-level problems, progressing in software development, and collaborating effectively in a team environment.
 
 For further information about shell behaviour, you can consult the <a href="https://www.gnu.org/savannah-checkouts/gnu/bash/manual/">GNU Bash manual</a>.
 
