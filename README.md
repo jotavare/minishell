@@ -112,15 +112,6 @@ make
 - [ ] Wildcards `*` should work for the current working directory.
 
 ## BEFORE EVALUATION
-- [ ] Check norminette for any errors.
-- [ ] No segmentation fault, bus error, double free, ...
-> "The readline() function can cause memory leaks. It's not necessary to fix them. But that doesn’t mean your own code, yes the code you wrote, can have memory
-leaks."
-- [ ] Must compile with `-Wall -Wextra -Werror` and `-fsanitize=adress` flags.
-- [ ] Makefile must contain `$(NAME)`, `all`, `clean` and `fclean`.
-- [ ] If theres bonus, there must be a `make bonus` rule on Makefile and files must have `_bonus.[c/h]`.
-- [ ] Check for forbidden functions.
-
 | Commands                          | Description                                                                    |
 | :-------------------------------- | :----------------------------------------------------------------------------- |
 | `make -n`                         | Display the compilation information without compiling the code.                |
@@ -142,6 +133,15 @@ leaks."
 | `--gen-suppressions=all`                            | Ignore specific known issues or false positives. |
 | `--suppressions=valgrind_readline_leaks_ignore.txt` | Specifies the path to a suppression file.        |
 | `--log-file=memleaks.log`                           | Sets the name of the file.                       |
+
+- [ ] Check norminette for any errors.
+- [ ] No segmentation fault, bus error, double free, ...
+> "The readline() function can cause memory leaks. It's not necessary to fix them. But that doesn’t mean your own code, yes the code you wrote, can have memory
+leaks."
+- [ ] Must compile with `-Wall -Wextra -Werror` and `-fsanitize=adress` flags.
+- [ ] Makefile must contain `$(NAME)`, `all`, `clean` and `fclean`.
+- [ ] If theres bonus, there must be a `make bonus` rule on Makefile and files must have `_bonus.[c/h]`.
+- [ ] Check for forbidden functions.
 
 ## UTILITIES
 #### RETURN VALUES
