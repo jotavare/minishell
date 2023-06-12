@@ -212,6 +212,17 @@ leaks.
 | `float`	| `long double`						| `10`           | `3.4E-4932` to `3.4E+4932`     |
 
 ## EXAMPLES
+
+<p align="center">
+	<a href="#blank">Blank</a> •
+	<a href="#signals">Signals</a> •
+	<a href="#path">Path</a> •
+	<a href="#export,-env-and-unset">Export, env and unset</a> •
+	<a href="#exit">Exit</a> •
+	<a href="#cd">CD</a> •
+	<a href="#echo">Echo</a>
+</p>
+
 |    | Definition                  |
 | :- | :-------------------------- |
 | 🟢 | Working.                    |
@@ -373,7 +384,6 @@ leaks.
 | 🔴 | `exit '42\t\f\r '`          |                                                           
 | 🔴 | `exit '42     a'`           |                                                            
 | 🔴 | `exit '42\t\t\ta'`          | 
-
 
 #### CD  
 |    | Commands               |
