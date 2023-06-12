@@ -31,6 +31,33 @@ For further information about shell behaviour, you can consult the <a href="http
 
 <a href="https://github.com/jotavare/minishell/blob/master/subject/en_subject_minishell.pdf">Click here</a> for the subject of this project.
 
+#### COMPILING AND EXECUTION
+#### 1º - Clone the repository
+```git
+git clone git@github.com:jotavare/minishell.git
+```
+
+#### 2º - Enter the project folder and run `make`
+```bash
+cd minishell/minishell
+make
+```
+
+#### 3º - Run minihell
+```c
+./minishell
+```
+
+#### MAKEFILE RULES
+
+`make` or `make all` - Compile minishell files.
+
+`make clean` - Delete all .o (object files) files.
+
+`make fclean` - Delete all .o (object files) and .a (executable) files.
+
+`make re` - Use rules `fclean` + `all`.
+
 ## MANDATORY
 #### MAIN
 - [ ] Display a prompt when waiting for a new command.
