@@ -104,8 +104,8 @@ make
 - [ ] `env` with no options
 
 ## BONUS
-- [ ] && and || with parenthesis for priorities.
-- [ ] Wildcards * should work for the current working directory.
+- [ ] `&&` and `||` with parenthesis for priorities.
+- [ ] Wildcards `*` should work for the current working directory.
 
 ## BEFORE EVALUATION
 - [ ] Check norminette for any errors.
