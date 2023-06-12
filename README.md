@@ -25,9 +25,9 @@
 </p>
 
 ## ABOUT
-The Minishell project at School 42 is an educational endeavor centered around creating a comprehensive shell program using the C programming language. It involves various aspects such as process management, signal handling, and executing commands, which contribute to a solid understanding of system programming and command-line interfaces. This project serves as a strong basis for tackling intricate system-level problems, progressing in software development, and collaborating effectively in a team environment.
+The Minishell project at School 42 is an educational endeavour centred around creating a comprehensive shell program using the C programming language. It involves various aspects such as process management, signal handling, and executing commands, which contribute to a solid understanding of system programming and command-line interfaces. This project serves as a strong basis for tackling intricate system-level problems, progressing in software development, and collaborating effectively in a team environment.
 
-For further information about shell behavior, you can consult the <a href="https://www.gnu.org/savannah-checkouts/gnu/bash/manual/">GNU Bash manual</a>.
+For further information about shell behaviour, you can consult the <a href="https://www.gnu.org/savannah-checkouts/gnu/bash/manual/">GNU Bash manual</a>.
 
 <a href="https://github.com/jotavare/minishell/blob/master/subject/en_subject_minishell.pdf">Click here</a> for the subject of this project.
 
@@ -122,7 +122,7 @@ make
 | `-fsanitize=address`              | Enables runtime memory error detection.                                        |
 | `-lreadline`                      | Link against the readline library.                                             |
 | `ps -e` or `ps -A`                | See all processes currently running on your computer.                          |
-| `ps -a`                           | Check if it is creating any dead child processes.                              |
+| `ps -a`                           | Check if it creates any dead child processes.                                  |
 
 | Valgrind Flags                                      | Description                                      |
 | :-------------------------------------------------- | :----------------------------------------------- |
@@ -136,11 +136,11 @@ make
 
 - [ ] Check norminette for any errors.
 - [ ] No segmentation fault, bus error, double free, ...
-> "The readline() function can cause memory leaks. It's not necessary to fix them. But that doesn’t mean your own code, yes the code you wrote, can have memory
+> "The readline() function can cause memory leaks. It's not necessary to fix them. But that doesn’t mean your own code, which you wrote, can have memory
 leaks."
 - [ ] Must compile with `-Wall -Wextra -Werror` and `-fsanitize=adress` flags.
 - [ ] Makefile must contain `$(NAME)`, `all`, `clean` and `fclean`.
-- [ ] If there's bonus, there must be a `make bonus` rule on Makefile and files must have `_bonus.[c/h]`.
+- [ ] If there's a bonus, there must be a `make bonus` rule on Makefile and files must have `_bonus.[c/h]`.
 - [ ] Check for forbidden functions.
 
 ## UTILITIES
@@ -155,7 +155,7 @@ leaks."
 | :----------- | :------------------------------------------------------------------------------- |
 | `1`          | Standard for general errors, such as a division by zero.                         |
 | `2`          | Improper use of built-in commands, per Bash documentation.                       |
-| `126`        | The command called cannot be executed, rights problem or command not executable. |
+| `126`        | The command called cannot be executed, rights problem or is not executable.      |
 | `127`        | Command not found, possible problem with `$PATH` or typing error.                |
 | `128`        | Invalid command argument.                                                        |
 | `128+n`      | 128 + signal number.                                                             |
@@ -171,7 +171,7 @@ leaks."
 | `CD`		| Change directory `cd -` (last visited directory) `cd` (user directory) `cd /` (root).       |
 | `clear`	| Clear the screen.                                                                           |	
 | `Diff`	| Compare files line by line.                                                                 |
-| `cmp`		| Write the first line of difference between 2 files.                                             |
+| `cmp`		| Write the first line of difference between 2 files.                                         |
 | `pc`		| Copying files.                                                                              |
 | `rm`		| Delete file.                                                                                |
 | `rm -rf`	| Delete the directory recursively.                                                           |
@@ -234,7 +234,7 @@ leaks."
 | 🟢 | Working.                    |
 | 🟡 | Didn't test yet.            |
 | 🟣 | Leaks or segmentation fault.|
-| ⚪ | Weird behavior.             |
+| ⚪ | Weird behaviour.             |
 | 🔴 | Not working.                |
 | 🔵 | Not mandatory (I think?!).  |
 
@@ -514,8 +514,8 @@ leaks."
 At 42 School, it is expected that almost every project is written in accordance with the Norm, which is the coding standard of the school.
 
 ```
-- No for, do...while, switch, case, goto, ternary operators and variable length arrays are allowed
-- Each function must be maximum of 25 lines, not counting the function's curly brackets
+- No for, do...while, switch, case, goto, ternary operators and variable-length arrays are allowed
+- Each function must be a maximum of 25 lines, not counting the function's curly brackets
 - Each line must be at most 80 columns wide, comments included
 - A function can take 4 named parameters maximum
 - No assigns and declarations in the same line (unless static)
