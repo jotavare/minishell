@@ -25,9 +25,9 @@
 </p>
 
 ## ABOUT
-The Minishell project at school 42 is an educational endeavor centered around creating a comprehensive shell program using the C programming language. It involves various aspects such as process management, signal handling, and executing commands, which contribute to a solid understanding of system programming and command-line interfaces. This project serves as a strong basis for tackling intricate system-level problems, progressing in software development, and collaborating effectively in a team environment.
+The Minishell project at School 42 is an educational endeavor centered around creating a comprehensive shell program using the C programming language. It involves various aspects such as process management, signal handling, and executing commands, which contribute to a solid understanding of system programming and command-line interfaces. This project serves as a strong basis for tackling intricate system-level problems, progressing in software development, and collaborating effectively in a team environment.
 
-For further information about shell behaviour, you can consult the <a href="https://www.gnu.org/savannah-checkouts/gnu/bash/manual/">GNU Bash manual</a>.
+For further information about shell behavior, you can consult the <a href="https://www.gnu.org/savannah-checkouts/gnu/bash/manual/">GNU Bash manual</a>.
 
 <a href="https://github.com/jotavare/minishell/blob/master/subject/en_subject_minishell.pdf">Click here</a> for the subject of this project.
 
@@ -44,7 +44,7 @@ cd minishell/minishell
 make
 ```
 
-#### 3º - Run minihell
+#### 3º - Run minishell
 ```c
 ./minishell
 ```
@@ -71,12 +71,12 @@ make
 - [ ] Display a **prompt** when waiting for a new command.
 - [ ] Have a working **history**.
 - [ ] Search and launch the right executable (based on the **PATH** variable or using a **relative** or an **absolute path**).
-- [ ] Not use more than one **global variable**. Think about it. You will have to explain its purpose.
+- [ ] Do not use more than one **global variable**. Think about it. You will have to explain its purpose.
 - [ ] Not interpret unclosed quotes or special characters which are not required by the subject `\` or `;`.
 - [ ] Handle `’` (single quote).
-> Should prevent the shell from interpreting the meta-characters in the quoted sequence.
+> This should prevent the shell from interpreting the meta-characters in the quoted sequence.
 - [ ] Handle `"` (double quote).
-> Should prevent the shell from interpreting the meta-characters in the quoted sequence except for `$`.
+> This should prevent the shell from interpreting the meta-characters in the quoted sequence except for `$`.
 
 #### REDIRECTIONS
 - [ ] `>` should redirect output.
@@ -122,7 +122,7 @@ make
 | `-fsanitize=address`              | Enables runtime memory error detection.                                        |
 | `-lreadline`                      | Link against the readline library.                                             |
 | `ps -e` or `ps -A`                | See all processes currently running on your computer.                          |
-| `ps -a`                           | Check if its creating any dead child processes.                                |
+| `ps -a`                           | Check if it is creating any dead child processes.                              |
 
 | Valgrind Flags                                      | Description                                      |
 | :-------------------------------------------------- | :----------------------------------------------- |
@@ -140,7 +140,7 @@ make
 leaks."
 - [ ] Must compile with `-Wall -Wextra -Werror` and `-fsanitize=adress` flags.
 - [ ] Makefile must contain `$(NAME)`, `all`, `clean` and `fclean`.
-- [ ] If theres bonus, there must be a `make bonus` rule on Makefile and files must have `_bonus.[c/h]`.
+- [ ] If there's bonus, there must be a `make bonus` rule on Makefile and files must have `_bonus.[c/h]`.
 - [ ] Check for forbidden functions.
 
 ## UTILITIES
@@ -171,7 +171,7 @@ leaks."
 | `CD`		| Change directory `cd -` (last visited directory) `cd` (user directory) `cd /` (root).       |
 | `clear`	| Clear the screen.                                                                           |	
 | `Diff`	| Compare files line by line.                                                                 |
-| `cmp`		| Write first line of difference between 2 files.                                             |
+| `cmp`		| Write the first line of difference between 2 files.                                             |
 | `pc`		| Copying files.                                                                              |
 | `rm`		| Delete file.                                                                                |
 | `rm -rf`	| Delete the directory recursively.                                                           |
@@ -233,10 +233,10 @@ leaks."
 | :- | :-------------------------- |
 | 🟢 | Working.                    |
 | 🟡 | Didn't test yet.            |
-| 🟣 | Leaks or segmenation fault. |
+| 🟣 | Leaks or segmentation fault.|
 | ⚪ | Weird behavior.             |
 | 🔴 | Not working.                |
-| 🔵 | Not mandatory (i think?!).  |
+| 🔵 | Not mandatory (I think?!).  |
 
 #### BLANK
 |    | Commands   |
@@ -514,8 +514,8 @@ leaks."
 At 42 School, it is expected that almost every project is written in accordance with the Norm, which is the coding standard of the school.
 
 ```
-- No for, do...while, switch, case, goto, ternary operators and variable lenght arrays are allowed
-- Each function must be maximum 25 lines, not counting the function's own curly brackets
+- No for, do...while, switch, case, goto, ternary operators and variable length arrays are allowed
+- Each function must be maximum of 25 lines, not counting the function's curly brackets
 - Each line must be at most 80 columns wide, comments included
 - A function can take 4 named parameters maximum
 - No assigns and declarations in the same line (unless static)
@@ -525,7 +525,7 @@ At 42 School, it is expected that almost every project is written in accordance 
 
 * [42 Norms](https://github.com/jotavare/jotavare/blob/main/42/pdf/en_norm.pdf) - Information about 42 code norms. `PDF`
 * [Norminette](https://github.com/42School/norminette) - Tool by 42, to respect the code norm. `GitHub`
-* [42 Header](https://github.com/42Paris/42header) - 42 header for vim. `GitHub`
+* [42 Header](https://github.com/42Paris/42header) - 42 header for Vim. `GitHub`
 
 ## LICENSE
 <p>
