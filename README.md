@@ -52,10 +52,10 @@ For further information about shell behaviour, you can consult the <a href="http
 - [ ] Handle $? which should expand to the exit status of the most recently executed foreground pipeline.
 
 #### SIGNALS
-- [ ] Handle `CTRL` + `C`, `CTRL` + `D` and `CTRL` + `\` which should behave like in bash.
-- [ ] `CTRL` + `C` displays a new prompt on a new line.
-- [ ] `CTRL` + `D` exits the shell.
-- [ ] `CTRL` + `\` does nothing.
+- [ ] Handle `CTRL + C`, `CTRL + D` and `CTRL + \` which should behave like in bash.
+- [ ] `CTRL + C` displays a new prompt on a new line.
+- [ ] `CTRL + D` exits the shell.
+- [ ] `CTRL + \` does nothing.
 
 #### BUILT-INS
 - [ ] `echo` with option `-n`
