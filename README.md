@@ -24,6 +24,11 @@
 	<a href="#utilities">utilities</a>
 </p>
 
+## ABOUT
+The Minishell project from school 42 is a C-based endeavor that focuses on developing a complete shell program. It encompasses process management, signal handling, and command execution, providing a deep understanding of system programming and command-line interfaces. The project sets a strong foundation for tackling complex system-level challenges, advancing in software development and working in group.
+
+<a href="https://github.com/jotavare/minishell/blob/master/subject/en_subject_minishell.pdf">Click here</a> for the subject of this project.
+
 ## Before Evaluation
 - [ ] Check norminette for any errors.
 - [ ] No segmentation fault, bus error, double free, ...
@@ -54,7 +59,7 @@
 | `--suppressions=valgrind_readline_leaks_ignore.txt` | Specifies the path to a suppression file.        |
 | `--log-file=memleaks.log`                           | Sets the name of the file.                       |
 
-# COMMAND TESTS
+## EXAMPLES
 |    | Definition                  |
 | :- | :-------------------------- |
 | 🟢 | Working.                    |
@@ -411,3 +416,25 @@
 | `float`	| `float`						| `4`            | `1.1754e-38` to `3.4028e+38`   |
 | `float`	| `double`						| `8`            | `2.2250e-308` to `1.7976e+308` |
 | `float`	| `long double`						| `10`           | `3.4E-4932` to `3.4E+4932`     |
+
+## NORMINETTE
+At 42 School, it is expected that almost every project is written in accordance with the Norm, which is the coding standard of the school.
+
+```
+- No for, do...while, switch, case, goto, ternary operators and variable lenght arrays are allowed
+- Each function must be maximum 25 lines, not counting the function's own curly brackets
+- Each line must be at most 80 columns wide, comments included
+- A function can take 4 named parameters maximum
+- No assigns and declarations in the same line (unless static)
+- You can't declare more than 5 variables per function
+- ...
+```
+
+* [42 Norms](https://github.com/jotavare/jotavare/blob/main/42/pdf/en_norm.pdf) - Information about 42 code norms. `PDF`
+* [Norminette](https://github.com/42School/norminette) - Tool by 42, to respect the code norm. `GitHub`
+* [42 Header](https://github.com/42Paris/42header) - 42 header for vim. `GitHub`
+
+## LICENSE
+<p>
+This work is published under the terms of <a href="https://github.com/jotavare/jotavare/blob/main/LICENSE">42 Unlicense</a>.
+</p>
