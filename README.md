@@ -90,10 +90,10 @@ make
 - [ ] Handle $? which should expand to the exit status of the most recently executed foreground pipeline.
 
 #### SIGNALS
-- [ ] Handle `CTRL+C`, `CTRL+D` and `CTRL+\` which should behave like in bash.
-- [ ] `CTRL+C` displays a new prompt on a new line.
-- [ ] `CTRL+D` exits the shell.
-- [ ] `CTRL+\` does nothing.
+- [ ] Handle `CTRL` + `C`, `CTRL` + `D` and `CTRL` + `\` which should behave like in bash.
+- [ ] `CTRL` + `C` displays a new prompt on a new line.
+- [ ] `CTRL` + `D` exits the shell.
+- [ ] `CTRL` + `\` does nothing.
 
 #### BUILT-INS
 - [ ] `echo` with option `-n`
@@ -110,9 +110,9 @@ make
 ## BEFORE EVALUATION
 - [ ] Check norminette for any errors.
 - [ ] No segmentation fault, bus error, double free, ...
-- [ ] Must compile with `-Wall -Wextra -Werror` and `-fsanitize=thread`.
+- [ ] Must compile with `-Wall -Wextra -Werror` and `-fsanitize=adress`.
 - [ ] Makefile must contain `$(NAME)`, `all`, `clean` and `fclean`.
-- [ ] If theres bonus, there must be a `make bonus` rule on Makefile and bonus files must have `_bonus.c(.h)` as a suffix.
+- [ ] If theres bonus, there must be a `make bonus` rule on Makefile and files must have `_bonus.[c/h]`.
 - [ ] Check for forbidden functions.
 
 | Commands                          | Description                                                                    |
