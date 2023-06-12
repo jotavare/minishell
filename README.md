@@ -110,6 +110,8 @@ make
 ## BEFORE EVALUATION
 - [ ] Check norminette for any errors.
 - [ ] No segmentation fault, bus error, double free, ...
+> The readline() function can cause memory leaks. You don’t have to fix them. But that doesn’t mean your own code, yes the code you wrote, can have memory
+leaks.
 - [ ] Must compile with `-Wall -Wextra -Werror` and `-fsanitize=adress`.
 - [ ] Makefile must contain `$(NAME)`, `all`, `clean` and `fclean`.
 - [ ] If theres bonus, there must be a `make bonus` rule on Makefile and files must have `_bonus.[c/h]`.
@@ -136,9 +138,6 @@ make
 | `--gen-suppressions=all`                            | Ignore specific known issues or false positives. |
 | `--suppressions=valgrind_readline_leaks_ignore.txt` | Specifies the path to a suppression file.        |
 | `--log-file=memleaks.log`                           | Sets the name of the file.                       |
-
-> The readline() function can cause memory leaks. You don’t have to fix them. But that doesn’t mean your own code, yes the code you wrote, can have memory
-leaks.
 
 ## UTILITIES
 #### RETURN VALUES
