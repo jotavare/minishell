@@ -116,7 +116,7 @@ make
 - [ ] No segmentation fault, bus error, double free, ...
 > "The readline() function can cause memory leaks. It's not necessary to fix them. But that doesn’t mean your own code, yes the code you wrote, can have memory
 leaks."
-- [ ] Must compile with `-Wall -Wextra -Werror` and `-fsanitize=adress`.
+- [ ] Must compile with `-Wall -Wextra -Werror` and `-fsanitize=adress` flags.
 - [ ] Makefile must contain `$(NAME)`, `all`, `clean` and `fclean`.
 - [ ] If theres bonus, there must be a `make bonus` rule on Makefile and files must have `_bonus.[c/h]`.
 - [ ] Check for forbidden functions.
