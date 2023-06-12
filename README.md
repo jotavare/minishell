@@ -217,7 +217,7 @@ leaks.
 	<a href="#blank">Blank</a> •
 	<a href="#signals">Signals</a> •
 	<a href="#path">Path</a> •
-	<a href="#export,-env-and-unset">Export, env and unset</a> •
+	<a href="#export,-env-and-unset">Export, Env and Unset</a> •
 	<a href="#exit">Exit</a> •
 	<a href="#cd">CD</a> •
 	<a href="#echo">Echo</a>
