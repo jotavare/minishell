@@ -78,7 +78,7 @@ make
 - [ ] Handle `"` (double quote).
 > Should prevent the shell from interpreting the meta-characters in the quoted sequence except for `$`.
 
-#### REDIRECTIONS
+#### REDIRECTIONS, PIPES, VARIABLES AND RETURN STATUS
 - [ ] `<` should redirect input.
 - [ ] `>` should redirect output.
 - [ ] `<<` implement heredoc.
