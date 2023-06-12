@@ -78,14 +78,18 @@ make
 - [ ] Handle `"` (double quote).
 > Should prevent the shell from interpreting the meta-characters in the quoted sequence except for `$`.
 
-#### REDIRECTIONS, PIPES, VARIABLES AND RETURN STATUS
-- [ ] `<` should redirect input.
+#### REDIRECTIONS
 - [ ] `>` should redirect output.
-- [ ] `<<` implement heredoc.
->Should be given a delimiter, then read the input until a line containing the delimiter is seen. However, it doesn’t have to update the history!
 - [ ] `>>` should redirect output in append mode.
+- [ ] `<` should redirect input.
+- [ ] `<<` implement heredoc.
+> Should be given a delimiter, then read the input until a line containing the delimiter is seen and it doesn’t have to update the history.
+
+#### PIPES
 - [ ] Implement pipes `|`.
->The output of each command in the pipeline is connected to the input of the next command via a pipe.
+> The output of each command in the pipeline is connected to the input of the next command via a pipe.
+
+#### VARIABLES AND RETURN STATUS
 - [ ] Handle environment variables ($ followed by a sequence of characters) which should expand to their values.
 - [ ] Handle $? which should expand to the exit status of the most recently executed foreground pipeline.
 
@@ -110,8 +114,8 @@ make
 ## BEFORE EVALUATION
 - [ ] Check norminette for any errors.
 - [ ] No segmentation fault, bus error, double free, ...
-> The readline() function can cause memory leaks. You don’t have to fix them. But that doesn’t mean your own code, yes the code you wrote, can have memory
-leaks.
+> "The readline() function can cause memory leaks. It's not necessary to fix them. But that doesn’t mean your own code, yes the code you wrote, can have memory
+leaks."
 - [ ] Must compile with `-Wall -Wextra -Werror` and `-fsanitize=adress`.
 - [ ] Makefile must contain `$(NAME)`, `all`, `clean` and `fclean`.
 - [ ] If theres bonus, there must be a `make bonus` rule on Makefile and files must have `_bonus.[c/h]`.
