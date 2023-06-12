@@ -49,6 +49,13 @@ make
 ./minishell
 ```
 
+#### 4º - Test some <a href="#examples">examples</a> 
+```bash
+┏━ jotavare@:/home/jotavare/minishell/minishell
+┗━ minihell$ ls | wc
+      8       8      63
+```
+
 #### MAKEFILE RULES
 
 `make` or `make all` - Compile minishell files.
