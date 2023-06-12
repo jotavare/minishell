@@ -76,7 +76,7 @@ make
 - [ ] Handle `’` (single quote).
 > Should prevent the shell from interpreting the meta-characters in the quoted sequence.
 - [ ] Handle `"` (double quote).
-> Should prevent the shell from interpreting the meta-characters in the quoted sequence except for $ (dollar sign).
+> Should prevent the shell from interpreting the meta-characters in the quoted sequence except for `$`.
 
 #### REDIRECTIONS
 - [ ] `<` should redirect input.
