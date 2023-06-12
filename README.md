@@ -13,15 +13,14 @@
 </p>
 
 <p align="center">
-	<a href="#blank">blank</a> •
-	<a href="#signals">signals</a> •
-	<a href="#path">path</a> •
-	<a href="#pwd">pwd</a> •
-	<a href="#export-env-and-unset">export, env and unset</a> •
-	<a href="#exit">exit</a> •
-	<a href="#cd">cd</a> •
-	<a href="#echo">echo</a> •
-	<a href="#utilities">utilities</a>
+	<a href="#about">About</a> •
+	<a href="#mandatory">Mandatory</a> •
+	<a href="#bonus">Bonus</a> •
+	<a href="#before-evaluation">Before Evaluation</a> •
+	<a href="#examples">Examples</a> •
+	<a href="#utilities">Utilities</a> •
+	<a href="#norminette">Norminette</a> •
+	<a href="#license">License</a>
 </p>
 
 ## ABOUT
@@ -138,7 +137,7 @@ leaks.
 | 🔴 | Not working.                |
 | 🔵 | Not mandatory (i think?!).  |
 
-## BLANK
+#### BLANK
 |    | Commands   |
 | :- | :--------- |
 | 🟢 | `<empty>`  |
@@ -146,7 +145,7 @@ leaks.
 | 🟣 | `../../`   |
 | 🟢 | `$`        |
 
-## SIGNALS
+#### SIGNALS
 |    | Commands                                    |
 | :- | :------------------------------------------ |
 | 🟢 | `Ctrl` + `C`                                |
@@ -162,7 +161,7 @@ leaks.
 | 🟢 | `sleep 5` + `Ctrl` + `D`                    |
 | ⚪ | `sleep 5` + `Ctrl` + `\`                    |
 	
-# PATH
+#### PATH
 |    | Commands           |
 | :- | :----------------- |
 | 🟢 | `/bin/echo`        |
@@ -176,14 +175,14 @@ leaks.
 | 🟢 | `/bin/env`         |
 | 🟢 | `/bin/exit`        |
 
-# PWD
+#### PWD
 |    | Commands      |
 | :- | :------------ |
 | 🟢 | `pwd`         |
 | 🟢 | `pwd a`       |
 | 🟢 | `pwd a b c d` |
 
-# EXPORT, ENV AND UNSET
+#### EXPORT, ENV AND UNSET
 |    | Commands                     |
 | :- | :--------------------------- |
 | 🟡 | `ENV`                        |
@@ -242,7 +241,7 @@ leaks.
 | 🟡 | `export U=u V=v W=w X=x Y=y Z=z` |
 | 🟡 | `export _=a; echo $_a` |
 
-# EXIT
+#### EXIT
 |    | Commands                    |
 | :- | :-------------------------- |
 | 🟢 | `EXIT`                      |
@@ -292,7 +291,7 @@ leaks.
 | 🔴 | `exit '42\t\t\ta'`          | 
 
 
-# CD  
+#### CD  
 |    | Commands               |
 | :- | :--------------------- |
 | 🟢 | `CD`                   |
@@ -324,7 +323,7 @@ leaks.
 | 🔵 | `cd //`                |
 | 🔵 | `cd -`                 |
 
-# ECHO  
+#### ECHO  
 |    | Commands                                                             |
 | :- | :------------------------------------------------------------------- |
 | 🟢 | `ECHO`                                                               |
@@ -411,8 +410,8 @@ leaks.
 | 🟡 | `echo "text" "text$USER" ... "$USER`                                 |
 | 🟡 | `echo $PW`                                                           |
 
-# Utilities
-### Return Values ($?)
+## UTILITIES
+#### Return Values ($?)
 
 * All Linux commands return an error code between `0` and `255`.
 * The value 0 represents the value true (command success).
@@ -430,7 +429,7 @@ leaks.
 | `130`   | Finished with `Ctrl` + `C` (130 = 128 + 2).                                      |
 | `255`   | Exit code out of bounds, eg.: `exit -1`.                                         |
 
-### Command Reminders
+#### Command Reminders
 | Command       | Description                                                                                 |
 | :------------ | :------------------------------------------------------------------------------------------ |
 | `yes`		| Writes in an infinite loop `yes teste`.                                                     |
@@ -471,7 +470,7 @@ leaks.
 | `x-ray` | `4+0+1`     | `5`   |
 | `rwx`   | `4+2+1`     | `7`   |
 
-### MAX/MIN
+#### MAX/MIN
 | Data Types    | Qualifiers                                            | Size (in byte) | Range                          |
 | :------------ | :---------------------------------------------------- | :------------- | :----------------------------- |
 | `char`	| `char` or `signed char`				| `1`            | `-128` to `127`                |
