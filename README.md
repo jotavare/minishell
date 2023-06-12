@@ -90,8 +90,8 @@ make
 > The output of each command in the pipeline is connected to the input of the next command via a pipe.
 
 #### VARIABLES AND RETURN STATUS
-- [ ] Handle environment variables ($ followed by a sequence of characters) which should expand to their values.
-- [ ] Handle $? which should expand to the exit status of the most recently executed foreground pipeline.
+- [ ] Handle environment variables (`$` followed by a sequence of characters) which should expand to their values.
+- [ ] Handle `$?` which should expand to the exit status of the most recently executed foreground pipeline.
 
 #### SIGNALS
 - [ ] Handle `CTRL` + `C`, `CTRL` + `D` and `CTRL` + `\` which should behave like in bash.
