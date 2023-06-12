@@ -29,13 +29,13 @@ The Minishell project from school 42 is a C-based endeavor that focuses on devel
 
 <a href="https://github.com/jotavare/minishell/blob/master/subject/en_subject_minishell.pdf">Click here</a> for the subject of this project.
 
-## Before Evaluation
+## MANDATORY
 - [ ] Check norminette for any errors.
 - [ ] No segmentation fault, bus error, double free, ...
-- [ ] Must compile with -Wall, -Wextra and -Werror.
-- [ ] Makefile must contain $(NAME), all, clean, fclean.
-- [ ] If theres bonus, there must be a bonus rule on Makefile and bonus files must have _bonus.c(.h).
-- [ ] Check for forbidden functions in your code.
+- [ ] Must compile with `-Wall -Wextra -Werror` and `-fsanitize=thread`.
+- [ ] Makefile must contain `$(NAME)`, `all`, `clean` and `fclean`.
+- [ ] If theres bonus, there must be a `make bonus` rule on Makefile and bonus files must have `_bonus.c(.h)` as a suffix.
+- [ ] Check for forbidden functions.
 
 | Important Commands | Description |
 | :--- | :--- |
