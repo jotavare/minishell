@@ -32,10 +32,10 @@ For further information about shell behaviour, you can consult the <a href="http
 <a href="https://github.com/jotavare/minishell/blob/master/subject/en_subject_minishell.pdf">Click here</a> for the subject of this project.
 
 ## MANDATORY
-- [x] Display a prompt when waiting for a new command.
-- [x] Having a working history.
-- [x] Search and launch the right executable (based on the PATH or using a relative or absolute path).
-- [x] Not use more than one global variable (explain its purpose if used).
+- [ ] Display a prompt when waiting for a new command.
+- [ ] Have a working history.
+- [ ] Search and launch the right executable (based on the PATH variable or using a relative or an absolute path).
+- [ ] Not use more than one global variable. Think about it. You will have to explain its purpose.
 - [ ] Not interpret unclosed quotes or special characters which are not required by the subject (`\` or `;`).
 - [ ] Handle `’` (single quote) which should prevent the shell from interpreting the meta-characters in the quoted sequence.
 - [ ] Handle `"` (double quote) which should prevent the shell from interpreting the meta-characters in the quoted sequence except for $ (dollar sign).
@@ -65,9 +65,14 @@ For further information about shell behaviour, you can consult the <a href="http
 	- [ ] `export` with no options
 	- [ ] `unset` with no options
 	- [ ] `env` with no options
+> The readline() function can cause memory leaks. You don’t have to fix them. But that doesn’t mean your own code, yes the code you wrote, can have memory
+leaks.
+
+## BONUS
+- [ ] && and || with parenthesis for priorities.
+- [ ] Wildcards * should work for the current working directory.
 
 ## BEFORE EVALUATION
-
 - [ ] Check norminette for any errors.
 - [ ] No segmentation fault, bus error, double free, ...
 - [ ] Must compile with `-Wall -Wextra -Werror` and `-fsanitize=thread`.
