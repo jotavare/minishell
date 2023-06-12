@@ -199,7 +199,7 @@ leaks.
 | `x-ray` | `4+0+1`     | `5`   |
 | `rwx`   | `4+2+1`     | `7`   |
 
-#### MAX/MIN
+#### DATA TYPES
 | Data Types    | Qualifiers                                            | Size (in byte) | Range                          |
 | :------------ | :---------------------------------------------------- | :------------- | :----------------------------- |
 | `char`	| `char` or `signed char`				| `1`            | `-128` to `127`                |
@@ -215,7 +215,6 @@ leaks.
 | `float`	| `long double`						| `10`           | `3.4E-4932` to `3.4E+4932`     |
 
 ## EXAMPLES
-
 <p align="center">
 	<a href="#blank">Blank</a> •
 	<a href="#signals">Signals</a> •
@@ -337,7 +336,7 @@ leaks.
 | 🟡 | `export K=k L=l M=m N=n O=o` |
 | 🟡 | `export P=p Q=q R=r S=s T=t` |
 | 🟡 | `export U=u V=v W=w X=x Y=y Z=z` |
-| 🟡 | `export _=a; echo $_a` |
+| 🟡 | `export _=a; echo $_a`           |
 
 #### EXIT
 |    | Commands                    |
