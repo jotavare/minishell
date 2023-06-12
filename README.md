@@ -111,21 +111,21 @@ make
 - [ ] If theres bonus, there must be a `make bonus` rule on Makefile and bonus files must have `_bonus.c(.h)` as a suffix.
 - [ ] Check for forbidden functions.
 
-| Important Commands | Description |
-| :--- | :--- |
-| `make -n`                         | Display the compilation information without actually compiling the code.       |
+| Commands                          | Description                                                                    |
+| :-------------------------------- | :----------------------------------------------------------------------------- |
+| `make -n`                         | Display the compilation information without compiling the code.                |
 | `echo $?`                         | Display the exit status of the last executed command.                          |
-| `nm -g ./minishell \| grep " U "` | `nm` Display the symbols. `-g` Global symbols. `grep " U "` Undefined symbols. |
+| `nm -g ./minishell \| grep " U "` | Display undefined symbols.                                                     |
 | `norminette`                      | Checks the code for compliance with the coding style and guidelines.           |
-| `cc -g -Wall -Wextra -Werror`     | |
-| `-fsanitize=address`              | |
+| `cc -g -Wall -Wextra -Werror`     | Compile the program with mandatory and debugging flags.                        |
+| `-fsanitize=address`              | Enables runtime memory error detection.                                        |
 | `-lreadline`                      | Link against the readline library.                                             |
 | `ps -e` or `ps -A`                | See all processes currently running on your computer.                          |
-| `ps -a`                           | While tweaking your functions, see if you're creating any dead children.       |
+| `ps -a`                           | Check if its creating any dead child processes.                                |
 
 | Valgrind Flags                                      | Description                                      |
 | :-------------------------------------------------- | :----------------------------------------------- |
-| `-leak-check=full`                                  | Detailed checking for memory leaks.              |
+| `-leak-check=full`                                  | Detailed information about memory leaks.         |
 | `--show-leak-kinds=all`                             | Display all types of memory leaks.               |
 | `--track-origins=yes`                               | Tracks the origins of uninitialized values.      |
 | `--verbose`                                         | Increases the level of verbosity.                |
