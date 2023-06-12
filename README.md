@@ -14,9 +14,10 @@
 
 <p align="center">
 	<a href="#about">About</a> •
+	<a href="#how-to-use">How to use</a> •
 	<a href="#mandatory">Mandatory</a> •
 	<a href="#bonus">Bonus</a> •
-	<a href="#before-evaluation">Before Evaluation</a> •
+	<a href="#before-evaluation">Before evaluation</a> •
 	<a href="#examples">Examples</a> •
 	<a href="#utilities">Utilities</a> •
 	<a href="#norminette">Norminette</a> •
@@ -30,6 +31,7 @@ For further information about shell behaviour, you can consult the <a href="http
 
 <a href="https://github.com/jotavare/minishell/blob/master/subject/en_subject_minishell.pdf">Click here</a> for the subject of this project.
 
+## HOW TO USE
 #### COMPILING AND EXECUTION
 #### 1º - Clone the repository
 ```git
