@@ -6,7 +6,7 @@
 #    By: jotavare <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/12 15:15:58 by alexandre         #+#    #+#              #
-#    Updated: 2023/06/10 14:55:33 by jotavare         ###   ########.fr        #
+#    Updated: 2023/06/16 02:21:41 by jotavare         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,19 +41,20 @@ SRC =	sources/minishell.c \
     	sources/commands/pwd.c \
     	sources/commands/unset.c \
     	sources/executer/executer.c \
+		sources/executer/pipes.c \
+		sources/initialize/init.c \
+    	sources/initialize/start.c \
     	sources/parser/expander.c \
     	sources/parser/lexer.c \
+		sources/parser/redirect.c \
+		sources/sanitize/free.c \
 		sources/sanitize/signals.c \
-    	sources/sanitize/free.c \
     	sources/tokens/count_tokens.c \
     	sources/tokens/get_tokens.c \
+		sources/tokens/get_tokens2.c \
     	sources/tokens/tokens.c \
-    	sources/initialize/init.c \
-    	sources/initialize/start.c \
-		sources/utilities/debugg.c \
     	sources/utilities/prompt.c \
     	sources/utilities/utilities.c \
-		sources/tokens/get_tokens2.c \
 
 OBJSDIR = objects
 OBJ = $(addprefix $(OBJSDIR)/, $(SRC:.c=.o))

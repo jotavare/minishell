@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 17:14:25 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/10 16:38:56 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/16 02:18:13 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,34 +117,6 @@ int	exec_absolute_path(t_exec *args, t_attr *att)
 	return (0);
 }
 
-void    pipe_out(t_attr *att, int index)
-{
-	if (index >= att->number_of_pipes)
-		return ;
-    if (dup2(att->pipesfd[index][WRITE_END], STDOUT_FILENO) < 0)
-		perror("dup2 :[WRITE_END] ");
-    // close(pipes[0]);
-    // close(pipes[1]);
-}
-
-void    pipe_in(t_attr *att, int index)
-{
-	if (index < 1)
-		return ;
-    if (dup2(att->pipesfd[index - 1][READ_END], STDIN_FILENO) < 0)
-		perror("dup2 [READ_END]: ");
-    // close(pipes[0]);
-    // close(pipes[1]);
-}
-
-void	close_pipeline(t_attr *att, int index)
-{
-	if (index > 0)
-		close(att->pipesfd[index - 1][READ_END]);
-	if (index < att->number_of_pipes)
-		close(att->pipesfd[index][WRITE_END]);
-}
-
 void	execute_core(t_attr *att, t_exec *args)
 {
 	if (args->command[0] == '/')
@@ -155,9 +127,9 @@ void	execute_core(t_attr *att, t_exec *args)
 		exec_commands(args, att);
 	printf("%s: command not found \n", att->tok_arr[0]);
 	exit(0);
-} 
+}
 
-int		execute(t_attr *att, int index)
+int	execute(t_attr *att, int index)
 {
 	t_exec	args;
 
@@ -169,30 +141,15 @@ int		execute(t_attr *att, int index)
 	{
 		if (att->number_of_redir > 0 && att->redir)
 			redir_append(att, index);
+		//if (att->number_of_redir > 0 && att->redir)
+		//	redir_input(att, index);
 		execute_core(att, &args);
 	}
 	else
+	{
 		waitpid(-1, NULL, 0);
+	}
 	att->redir = 0;
 	free_arr(args.all_paths);
-	return (0);
-}
-
-int		execute_pipeline(t_attr *att, int index)
-{
-	t_exec	args;
-	
-	start_args(&args, att);
-	args.pid = fork();
-	if (args.pid == -1)
-		return (-1);
-	if (args.pid == 0)
-	{
-		pipe_in(att, index);
-		pipe_out(att, index);
-		execute_core(att, &args);
-	}
-	free_arr(args.all_paths);
-	close_pipeline(att, index);
 	return (0);
 }

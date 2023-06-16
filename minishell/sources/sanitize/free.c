@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 18:15:45 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/08 01:35:05 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/16 02:05:15 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ void	free_g_env(t_attr *att)
 		free(att->g_env[i]);
 		i++;
 	}
-	//free(att->d_env[i]);
 	free(att->g_env);
 }
 
@@ -92,4 +91,14 @@ void	exit_free(t_attr *attr)
 {
 	free_tokens(attr->tok_arr, attr);
 	free(attr->tok_arr);
+}
+
+void ft_delete_matrix (void *matrix)
+{
+	int i;
+
+	i = -1;
+	while (((char **)matrix)[++i])
+		free(((char **)matrix)[i]);
+	free(matrix);
 }
