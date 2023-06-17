@@ -13,120 +13,40 @@
 </p>
 
 <p align="center">
-	<a href="#about">About</a> •
-	<a href="#how-to-use">How to use</a> •
-	<a href="#mandatory">Mandatory</a> •
-	<a href="#bonus">Bonus</a> •
-	<a href="#before-evaluation">Before evaluation</a> •
-	<a href="#examples">Examples</a> •
-	<a href="#utilities">Utilities</a> •
-	<a href="#norminette">Norminette</a> •
-	<a href="#license">License</a>
+	<a href="#blank">blank</a> •
+	<a href="#signals">signals</a> •
+	<a href="#path">path</a> •
+	<a href="#pwd">pwd</a> •
+	<a href="#export-env-and-unset">export, env and unset</a> •
+	<a href="#exit">exit</a> •
+	<a href="#cd">cd</a> •
+	<a href="#echo">echo</a> •
+	<a href="#utilities">utilities</a>
 </p>
 
-## ABOUT
-The Minishell project at School 42 is an educational endeavour centred around creating a comprehensive shell program using the C programming language. It involves various aspects such as process management, signal handling, and executing commands, which contribute to a solid understanding of system programming and command-line interfaces. This project serves as a strong basis for tackling intricate system-level problems, progressing in software development, and collaborating effectively in a team environment.
+## Before Evaluation
+- [ ] Check norminette for any errors.
+- [ ] No segmentation fault, bus error, double free, ...
+- [ ] Must compile with -Wall, -Wextra and -Werror.
+- [ ] Makefile must contain $(NAME), all, clean, fclean.
+- [ ] If theres bonus, there must be a bonus rule on Makefile and bonus files must have _bonus.c(.h).
+- [ ] Check for forbidden functions in your code.
 
-For further information about shell behaviour, you can consult the <a href="https://www.gnu.org/savannah-checkouts/gnu/bash/manual/">GNU Bash manual</a>.
-
-<a href="https://github.com/jotavare/minishell/blob/master/subject/en_subject_minishell.pdf">Click here</a> for the subject of this project.
-
-## HOW TO USE
-#### COMPILING AND EXECUTION
-#### 1º - Clone the repository
-```git
-git clone git@github.com:jotavare/minishell.git
-```
-
-#### 2º - Enter the project folder and run `make`
-```bash
-cd minishell/minishell
-make
-```
-
-#### 3º - Run minishell
-```c
-./minishell
-```
-
-#### 4º - Test some <a href="#examples">examples</a> 
-```bash
-┏━ jotavare@:/home/jotavare/minishell/minishell
-┗━ minihell$ ls | wc
-      8       8      63
-```
-
-#### MAKEFILE RULES
-
-`make` or `make all` - Compile minishell files.
-
-`make clean` - Delete all .o (object files) files.
-
-`make fclean` - Delete all .o (object files) and .a (executable) files.
-
-`make re` - Use rules `fclean` + `all`.
-
-## MANDATORY
-#### MAIN
-- [ ] Display a **prompt** when waiting for a new command.
-- [ ] Have a working **history**.
-- [ ] Search and launch the right executable (based on the **PATH** variable or using a **relative** or an **absolute path**).
-- [ ] Do not use more than one **global variable**. Think about it. You will have to explain its purpose.
-- [ ] Not interpret unclosed quotes or special characters which are not required by the subject `\` or `;`.
-- [ ] Handle `’` (single quote).
-> This should prevent the shell from interpreting the meta-characters in the quoted sequence.
-- [ ] Handle `"` (double quote).
-> This should prevent the shell from interpreting the meta-characters in the quoted sequence except for `$`.
-
-#### REDIRECTIONS
-- [ ] `>` should redirect output.
-- [ ] `>>` should redirect output in append mode.
-- [ ] `<` should redirect input.
-- [ ] `<<` implement heredoc.
-> Should be given a delimiter, then read the input until a line containing the delimiter is seen and it doesn’t have to update the history.
-
-#### PIPES
-- [ ] Implement pipes `|`.
-> The output of each command in the pipeline is connected to the input of the next command via a pipe.
-
-#### VARIABLES AND RETURN STATUS
-- [ ] Handle environment variables (`$` followed by a sequence of characters) which should expand to their values.
-- [ ] Handle `$?` which should expand to the exit status of the most recently executed foreground pipeline.
-
-#### SIGNALS
-- [ ] Handle `CTRL` + `C`, `CTRL` + `D` and `CTRL` + `\` which should behave like in bash.
-- [ ] `CTRL` + `C` displays a new prompt on a new line.
-- [ ] `CTRL` + `D` exits the shell.
-- [ ] `CTRL` + `\` does nothing.
-
-#### BUILT-INS
-- [ ] `echo` with option `-n`
-- [ ] `cd` with only a relative or absolute path
-- [ ] `pwd` with no options
-- [ ] `export` with no options
-- [ ] `unset` with no options
-- [ ] `env` with no options
-
-## BONUS
-- [ ] `&&` and `||` with parenthesis for priorities.
-- [ ] Wildcards `*` should work for the current working directory.
-
-## BEFORE EVALUATION
-| Commands                          | Description                                                                    |
-| :-------------------------------- | :----------------------------------------------------------------------------- |
-| `make -n`                         | Display the compilation information without compiling the code.                |
+| Important Commands | Description |
+| :--- | :--- |
+| `make -n`                         | Display the compilation information without actually compiling the code.       |
 | `echo $?`                         | Display the exit status of the last executed command.                          |
-| `nm -g ./minishell \| grep " U "` | Display undefined symbols.                                                     |
+| `nm -g ./minishell \| grep " U "` | `nm` Display the symbols. `-g` Global symbols. `grep " U "` Undefined symbols. |
 | `norminette`                      | Checks the code for compliance with the coding style and guidelines.           |
-| `cc -g -Wall -Wextra -Werror`     | Compile the program with mandatory and debugging flags.                        |
-| `-fsanitize=address`              | Enables runtime memory error detection.                                        |
+| `cc -g -Wall -Wextra -Werror`     | |
+| `-fsanitize=address`              | |
 | `-lreadline`                      | Link against the readline library.                                             |
 | `ps -e` or `ps -A`                | See all processes currently running on your computer.                          |
-| `ps -a`                           | Check if it creates any dead child processes.                                  |
+| `ps -a`                           | While tweaking your functions, see if you're creating any dead children.       |
 
 | Valgrind Flags                                      | Description                                      |
 | :-------------------------------------------------- | :----------------------------------------------- |
-| `-leak-check=full`                                  | Detailed information about memory leaks.         |
+| `-leak-check=full`                                  | Detailed checking for memory leaks.              |
 | `--show-leak-kinds=all`                             | Display all types of memory leaks.               |
 | `--track-origins=yes`                               | Tracks the origins of uninitialized values.      |
 | `--verbose`                                         | Increases the level of verbosity.                |
@@ -134,111 +54,17 @@ make
 | `--suppressions=valgrind_readline_leaks_ignore.txt` | Specifies the path to a suppression file.        |
 | `--log-file=memleaks.log`                           | Sets the name of the file.                       |
 
-- [ ] Check norminette for any errors.
-- [ ] No segmentation fault, bus error, double free, ...
-> "The readline() function can cause memory leaks. It's not necessary to fix them. But that doesn’t mean your own code, which you wrote, can have memory
-leaks."
-- [ ] Must compile with `-Wall -Wextra -Werror` and `-fsanitize=adress` flags.
-- [ ] Makefile must contain `$(NAME)`, `all`, `clean` and `fclean`.
-- [ ] If there's a bonus, there must be a `make bonus` rule on Makefile and files must have `_bonus.[c/h]`.
-- [ ] Check for forbidden functions.
-
-## UTILITIES
-#### RETURN VALUES
-
-* All Linux commands return an error code between `0` and `255`.
-* The value 0 represents the value true (command success).
-* Values greater than 0 represent false (command failure).
-* The error code of the last command used is contained in the variable `$?`.
-
-| Return value | Description                                                                      |
-| :----------- | :------------------------------------------------------------------------------- |
-| `1`          | Standard for general errors, such as a division by zero.                         |
-| `2`          | Improper use of built-in commands, per Bash documentation.                       |
-| `126`        | The command called cannot be executed, rights problem or is not executable.      |
-| `127`        | Command not found, possible problem with `$PATH` or typing error.                |
-| `128`        | Invalid command argument.                                                        |
-| `128+n`      | 128 + signal number.                                                             |
-| `130`        | Finished with `Ctrl` + `C` (130 = 128 + 2).                                      |
-| `255`        | Exit code out of bounds, eg.: `exit -1`.                                         |
-
-#### COMMAND EXAMPLES
-| Command       | Description                                                                                 |
-| :------------ | :------------------------------------------------------------------------------------------ |
-| `yes`		| Writes in an infinite loop `yes teste`.                                                     |
-| `ln`		| Bind a file or directory.                                                                   |
-| `chmod`	| Change file permissions `chmod 777` (4+2+1 = all permissions) `chmod 000` (no permissions). |
-| `CD`		| Change directory `cd -` (last visited directory) `cd` (user directory) `cd /` (root).       |
-| `clear`	| Clear the screen.                                                                           |	
-| `Diff`	| Compare files line by line.                                                                 |
-| `cmp`		| Write the first line of difference between 2 files.                                         |
-| `pc`		| Copying files.                                                                              |
-| `rm`		| Delete file.                                                                                |
-| `rm -rf`	| Delete the directory recursively.                                                           |
-| `ls -l`	| Show the contents of the directory.                                                         |
-| `exit`	| Exit current process.                                                                       |
-| `grep`	| Search for strings in files `grep "printf" file`.                                           |
-| `mkdir`	| Create a directory.                                                                         |
-| `rmdir`	| Delete a directory.                                                                         |
-| `more`	| Displays a file page by page as in a man.                                                   |
-| `mv`		| Move or rename.                                                                             |
-| `$PATH`	| Path to executables.                                                                        |
-| `cat`		| Send the file to stdout.                                                                    |
-
-#### CHMOD
-| Rights        | Number |
-| :------------ | :----- |
-| `r` (read)	| `4`    |
-| `w` (write)	| `2`    |
-| `x` (execute)	| `1`    |
-	
-| Rights  | Calculation | Total |
-| :------ | :---------- | :---- |
-| `---`   | `0+0+0`     | `0`   |
-| `r--`   | `4+0+0`     | `4`   |
-| `-w-`   | `0+2+0`     | `2`   |
-| `--x`   | `0+0+1`     | `1`   |
-| `rw-`   | `4+2+0`     | `6`   |
-| `-wx`   | `0+2+1`     | `3`   |
-| `x-ray` | `4+0+1`     | `5`   |
-| `rwx`   | `4+2+1`     | `7`   |
-
-#### DATA TYPES
-| Data Types    | Qualifiers                                            | Size (in byte) | Range                          |
-| :------------ | :---------------------------------------------------- | :------------- | :----------------------------- |
-| `char`	| `char` or `signed char`				| `1`            | `-128` to `127`                |
-| `char`	| `unsigned char`					| `1`            | `0` to `255`                   |
-| `int`		| `int` or `signed int`					| `4`            | `-2147483648` to `2147483647`  |
-| `int`		| `unsigned int`					| `4`            | `0` to `4294967295`            |
-| `int`		| `short int` or `short signed int`			| `2`            | `-32768` to `32767`            |
-| `int`		| `unsigned short int`					| `2`            | `0` to `65535`                 |
-| `int`		| `long int` or `signed long int`			| `4`            | `-2147483648` to `2147483647`  |
-| `int`		| `unsigned long int`					| `4`            | `0` to `4294967295`            |
-| `float`	| `float`						| `4`            | `1.1754e-38` to `3.4028e+38`   |
-| `float`	| `double`						| `8`            | `2.2250e-308` to `1.7976e+308` |
-| `float`	| `long double`						| `10`           | `3.4E-4932` to `3.4E+4932`     |
-
-## EXAMPLES
-<p align="center">
-	<a href="#blank">Blank</a> •
-	<a href="#signals">Signals</a> •
-	<a href="#path">Path</a> •
-	<a href="#export,-env-and-unset">Export, Env and Unset</a> •
-	<a href="#exit">Exit</a> •
-	<a href="#cd">CD</a> •
-	<a href="#echo">Echo</a>
-</p>
-
+# COMMAND TESTS
 |    | Definition                  |
 | :- | :-------------------------- |
 | 🟢 | Working.                    |
 | 🟡 | Didn't test yet.            |
-| 🟣 | Leaks or segmentation fault.|
-| ⚪ | Weird behaviour.             |
+| 🟣 | Leaks or segmenation fault. |
+| ⚪ | Weird behavior.             |
 | 🔴 | Not working.                |
-| 🔵 | Not mandatory (I think?!).  |
+| 🔵 | Not mandatory (i think?!).  |
 
-#### BLANK
+## BLANK
 |    | Commands   |
 | :- | :--------- |
 | 🟢 | `<empty>`  |
@@ -246,7 +72,7 @@ leaks."
 | 🟣 | `../../`   |
 | 🟢 | `$`        |
 
-#### SIGNALS
+## SIGNALS
 |    | Commands                                    |
 | :- | :------------------------------------------ |
 | 🟢 | `Ctrl` + `C`                                |
@@ -262,7 +88,7 @@ leaks."
 | 🟢 | `sleep 5` + `Ctrl` + `D`                    |
 | ⚪ | `sleep 5` + `Ctrl` + `\`                    |
 	
-#### PATH
+# PATH
 |    | Commands           |
 | :- | :----------------- |
 | 🟢 | `/bin/echo`        |
@@ -276,14 +102,14 @@ leaks."
 | 🟢 | `/bin/env`         |
 | 🟢 | `/bin/exit`        |
 
-#### PWD
+# PWD
 |    | Commands      |
 | :- | :------------ |
 | 🟢 | `pwd`         |
 | 🟢 | `pwd a`       |
 | 🟢 | `pwd a b c d` |
 
-#### EXPORT, ENV AND UNSET
+# EXPORT, ENV AND UNSET
 |    | Commands                     |
 | :- | :--------------------------- |
 | 🟡 | `ENV`                        |
@@ -340,9 +166,9 @@ leaks."
 | 🟡 | `export K=k L=l M=m N=n O=o` |
 | 🟡 | `export P=p Q=q R=r S=s T=t` |
 | 🟡 | `export U=u V=v W=w X=x Y=y Z=z` |
-| 🟡 | `export _=a; echo $_a`           |
+| 🟡 | `export _=a; echo $_a` |
 
-#### EXIT
+# EXIT
 |    | Commands                    |
 | :- | :-------------------------- |
 | 🟢 | `EXIT`                      |
@@ -391,7 +217,8 @@ leaks."
 | 🔴 | `exit '42     a'`           |                                                            
 | 🔴 | `exit '42\t\t\ta'`          | 
 
-#### CD  
+
+# CD  
 |    | Commands               |
 | :- | :--------------------- |
 | 🟢 | `CD`                   |
@@ -423,7 +250,7 @@ leaks."
 | 🔵 | `cd //`                |
 | 🔵 | `cd -`                 |
 
-#### ECHO  
+# ECHO  
 |    | Commands                                                             |
 | :- | :------------------------------------------------------------------- |
 | 🟢 | `ECHO`                                                               |
@@ -510,24 +337,77 @@ leaks."
 | 🟡 | `echo "text" "text$USER" ... "$USER`                                 |
 | 🟡 | `echo $PW`                                                           |
 
-## NORMINETTE
-At 42 School, it is expected that almost every project is written in accordance with the Norm, which is the coding standard of the school.
+# Utilities
+### Return Values ($?)
 
-```
-- No for, do...while, switch, case, goto, ternary operators and variable-length arrays are allowed
-- Each function must be a maximum of 25 lines, not counting the function's curly brackets
-- Each line must be at most 80 columns wide, comments included
-- A function can take 4 named parameters maximum
-- No assigns and declarations in the same line (unless static)
-- You can't declare more than 5 variables per function
-- ...
-```
+* All Linux commands return an error code between `0` and `255`.
+* The value 0 represents the value true (command success).
+* Values greater than 0 represent false (command failure).
+* The error code of the last command used is contained in the variable `$?`.
 
-* [42 Norms](https://github.com/jotavare/jotavare/blob/main/42/pdf/en_norm.pdf) - Information about 42 code norms. `PDF`
-* [Norminette](https://github.com/42School/norminette) - Tool by 42, to respect the code norm. `GitHub`
-* [42 Header](https://github.com/42Paris/42header) - 42 header for Vim. `GitHub`
+| $?      | Description                                                                      |
+| :------ | :------------------------------------------------------------------------------- |
+| `1`     | Standard for general errors, such as a division by zero.                         |
+| `2`     | Improper use of built-in commands, per Bash documentation.                       |
+| `126`   | The command called cannot be executed, rights problem or command not executable. |
+| `127`   | Command not found, possible problem with $PATH or typing error.                  |
+| `128`   | Invalid command argument.                                                        |
+| `128+n` | 128 + signal number.                                                             |
+| `130`   | Finished with `Ctrl` + `C` (130 = 128 + 2).                                      |
+| `255`   | Exit code out of bounds, eg.: `exit -1`.                                         |
 
-## LICENSE
-<p>
-This work is published under the terms of <a href="https://github.com/jotavare/jotavare/blob/main/LICENSE">42 Unlicense</a>.
-</p>
+### Command Reminders
+| Command       | Description                                                                                 |
+| :------------ | :------------------------------------------------------------------------------------------ |
+| `yes`		| Writes in an infinite loop `yes teste`.                                                     |
+| `ln`		| Bind a file or directory.                                                                   |
+| `chmod`	| Change file permissions `chmod 777` (4+2+1 = all permissions) `chmod 000` (no permissions). |
+| `CD`		| Change directory `cd -` (last visited directory) `cd` (user directory) `cd /` (root).       |
+| `clear`	| Clear the screen.                                                                           |	
+| `Diff`	| Compare files line by line.                                                                 |
+| `cmp`		| Write first line of difference between 2 files.                                             |
+| `pc`		| Copying files.                                                                              |
+| `rm`		| Delete file.                                                                                |
+| `rm -rf`	| Delete the directory recursively.                                                           |
+| `ls -l`	| Show the contents of the directory.                                                         |
+| `exit`	| Exit current process.                                                                       |
+| `grep`	| Search for strings in files `grep "printf" file`.                                           |
+| `mkdir`	| Create a directory.                                                                         |
+| `rmdir`	| Delete a directory.                                                                         |
+| `more`	| Displays a file page by page as in a man.                                                   |
+| `mv`		| Move or rename.                                                                             |
+| `$PATH`	| Path to executables.                                                                        |
+| `cat`		| Send the file to stdout.                                                                    |
+
+### CHMOD
+| Rights        | Number |
+| :------------ | :----- |
+| `r` (read)	| `4`    |
+| `w` (write)	| `2`    |
+| `x` (execute)	| `1`    |
+	
+| Rights  | Calculation | Total |
+| :------ | :---------- | :---- |
+| `---`   | `0+0+0`     | `0`   |
+| `r--`   | `4+0+0`     | `4`   |
+| `-w-`   | `0+2+0`     | `2`   |
+| `--x`   | `0+0+1`     | `1`   |
+| `rw-`   | `4+2+0`     | `6`   |
+| `-wx`   | `0+2+1`     | `3`   |
+| `x-ray` | `4+0+1`     | `5`   |
+| `rwx`   | `4+2+1`     | `7`   |
+
+### MAX/MIN
+| Data Types    | Qualifiers                                            | Size (in byte) | Range                          |
+| :------------ | :---------------------------------------------------- | :------------- | :----------------------------- |
+| `char`	| `char` or `signed char`				| `1`            | `-128` to `127`                |
+| `char`	| `unsigned char`					| `1`            | `0` to `255`                   |
+| `int`		| `int` or `signed int`					| `4`            | `-2147483648` to `2147483647`  |
+| `int`		| `unsigned int`					| `4`            | `0` to `4294967295`            |
+| `int`		| `short int` or `short signed int`			| `2`            | `-32768` to `32767`            |
+| `int`		| `unsigned short int`					| `2`            | `0` to `65535`                 |
+| `int`		| `long int` or `signed long int`			| `4`            | `-2147483648` to `2147483647`  |
+| `int`		| `unsigned long int`					| `4`            | `0` to `4294967295`            |
+| `float`	| `float`						| `4`            | `1.1754e-38` to `3.4028e+38`   |
+| `float`	| `double`						| `8`            | `2.2250e-308` to `1.7976e+308` |
+| `float`	| `long double`						| `10`           | `3.4E-4932` to `3.4E+4932`     |

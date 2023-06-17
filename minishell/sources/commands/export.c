@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:57:28 by alexandre         #+#    #+#             */
-/*   Updated: 2023/06/16 01:47:23 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/05/31 03:03:21 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,9 @@ void	refresh_add_exp(t_attr *att, char *add)
 	att->exp_env[att->len_exp_env] = ft_strdup(add);
 	att->len_exp_env++;
 	att->exp_env[att->len_exp_env] = 0;
+	// temp = malloc(sizeof(char *) * (att->len_exp_env));
+	// temp = att->exp_env;
+	// temp[att->len_exp_env] = 0;
 	free_d_exp_env(att);
 }
 
@@ -132,7 +135,7 @@ void	export(t_attr *att)
 		if (!check_alpha(att->tok_arr[j]))
 		{
 			printf("bash: export: '%s': not a valid identifier\n",
-					att->tok_arr[j]);
+					att->tok_arr[j]); //check
 			j++;
 		}
 		else if (check_equal(att->tok_arr[j]))
@@ -188,8 +191,7 @@ void	export_sort(t_attr att)
 }
 
 /*
-    prints the environment in the format required by
-	the subject of the project
+    prints the environment in the format required by the subject of the project
 */
 
 void	add_quotes(char *s)

@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:51:22 by alexfern          #+#    #+#             */
-/*   Updated: 2023/05/31 03:03:25 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/17 17:44:00 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,11 @@ int	pwd(void)
 {
 	char	pwd[PATH_MAX];
 
+	printf("OUR\n");
 	if (getcwd(pwd, PATH_MAX) == NULL)
 		return (EXIT_FAILURE);
 	printf("%s\n", pwd);
+	kill(getpid(), SIGTERM);
 	return (EXIT_SUCCESS);
 	// if (getcwd(pwd, 0) == NULL)
 	// 	return (EXIT_FAILURE);

@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:51:22 by alexfern          #+#    #+#             */
-/*   Updated: 2023/06/16 02:06:21 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/08 01:27:43 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,41 +165,40 @@ int	check_alpha(char *str)
 	return (1);
 }
 
-int is_symbol(char *s)
+/* char	*dequoter(char *str)
 {
-    char *symbols[] = {">", "<", ">>", "<<", "|" };
-    int i;
+	int		i;
+	int		flagdouble;
+	int		flagsimple;
+	char	*arranged;
 
-    if (s[0] == '\0')
+	arranged = malloc(sizeof(char) * ft_strlen(str) + 1);
+		// malloc esta mal feito - pensar noutra forma de determinar o tamanho,
+		dependendo se as quotes sao double ou nao
+	flagdouble = flag_counter(str, 34);                  
+		//nao ha double quotes (em ascii 34),
+		se == IMPAR ha quotes abertas; se == PAR, quotes fechadas,
+		se flagsimple > 0 ENTAO  == 0;.
+	flagsimple = flag_counter(str, 39);                  
+		// nao ha simple quotes (em ascii 39)
+	if (flagdouble % 2 == 1 || flagsimple % 2 == 1)
+		return (NULL);
+	i = 0;
+	while (str[i])
 	{
-        return 0;
-    }
-
-    i = 0;
-    while (i < 5)
-    {
-        if (!ft_strcmp(s, symbols[i]))
-            return 1;
-        i++;
-    }
-    return 0;
-}
-
-int		check_next_step(t_attr *att, int *i)
-{	
-	if (att->commands_arr[*i + 1] && is_symbol(att->commands_arr[*i + 1]))
-	{
-		if (!ft_strcmp(att->commands_arr[*i + 1], "|"))
-			att->write_to_pipe = 1;
-		else if (!ft_strcmp(att->commands_arr[*i + 1], ">"))
-			att->redir = 1;
+		if (flagdouble > 0 && str[i] == 34)
+		{
+			flagsimple = 0;
+			i++;
+		}
+		if (flagsimple > 0 && str[i] == 39)
+		{
+			flagdouble = 0;
+			i++;
+		}
+		arranged[i] = str[i];
+		i++;
 	}
-	if (*i > 1 && is_symbol(att->commands_arr[*i - 1]))
-	{
-		if (!ft_strcmp(att->commands_arr[*i - 1], "|"))
-			att->read_from_pipe = 1;
-		if (!ft_strcmp(att->commands_arr[*i - 1], ">"))
-			*i = *i + 1;
-	}
-	return (0);
-}  
+	printf("%s\n", arranged);
+	return (arranged); //nao esquecer de dar free!!!
+} */

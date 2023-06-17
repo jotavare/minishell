@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 18:15:45 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/16 02:24:57 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/17 15:11:58 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void	create_array(char *s, t_attr *att)
 {
 	int	count;
+	int	j = 0;
 
 	att->index = 0;
 	att->beforet = malloc((att->nb_tokens + 1) * sizeof(char *));
@@ -27,8 +28,18 @@ void	create_array(char *s, t_attr *att)
 		while (*s == ' ')
 			s++;
 		att->beforet[count] = get_token(s, att);
+ 		if (att->beforet[count] == 0 && count < att->nb_tokens)
+		{
+			s = NULL;
+			return ;
+		}
 		s += att->tok_arr_i;
 		count++;
+	}
+	null_token_handle(att);
+	while(j < att->nb_tokens)
+	{
+		j++;
 	}
 }
 
@@ -42,3 +53,35 @@ char	**get_tokens(char *str, t_attr *att)
 	return (att->beforet);
 }
 
+// FUNCAO EM FASE EXPERIMENTAL!
+
+void	null_token_handle(t_attr *att)
+{
+	int		i;
+	int		j;
+	
+	i = 0;
+	while (i < att->nb_tokens)
+	{
+		
+		if (att->beforet[i] == 0)
+		{
+			att->nb_tokens--;
+		}
+		else
+		i++;
+	}
+	i = 0;
+	j = 0;
+	att->aftert = malloc(sizeof(char *) * (att->nb_tokens + 1));
+	while(i < att->nb_tokens)
+	{
+		if (att->beforet[i])
+		{
+			att->aftert[j] = att->beforet[i];
+			j++;
+		}
+		//free(att->beforet[i]);
+		i++;
+	}
+}
