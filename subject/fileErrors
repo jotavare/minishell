@@ -1,0 +1,94 @@
+| -> bash: syntax error near unexpected token '|';
+|| -> bash: syntax error near unexpected token '||';
+
+
+echo ola >| ls -l -> VALID COMMAND                                  DONE
+echo ola | -> VALID COMMAND                                         DONE
+>| file -> VALID COMMAND                                            DONE
+echo ola || ls -l -> bash: syntax error near unexpected token '|';  DONE
+echo ola || | ls -l -> bash: parse error near '|';                  DONE
+ls -l >| -> bash: syntax error near unexpected token 'newline';     DONE
+echo ola || -> bash: syntax error near unexpected token '|';        DONE
+ls -l > | file -> bash: syntax error near unexpected token '|';     DONE
+ls -l > | -> bash: syntax error near unexpected token '|';          DONE
+ls -l > || -> bash: syntax error near unexpected token '||';        DONE 
+ls -l <| -> bash: syntax error near unexpected token '|';           DONE 
+ls -l <|| -> bash: syntax error near unexpected token '||';         DONE 
+ls -l >>| -> bash: syntax error near unexpected token '|';          DONE 
+ls -l >>| file -> bash: syntax error near unexpected token '|';     DONE 
+ls -l >>|| file -> bash: syntax error near unexpected token '||';   DONE 
+
+> -> bash: syntax error near unexpected token 'newline';            DONE
+>> -> bash: syntax error near unexpected token 'newline';           DONE
+< -> bash: syntax error near unexpected token 'newline';            DONE
+<< -> bash: syntax error near unexpected token 'newline';           DONE
+
+echo >| grep D -> VALID COMMAND                                       DONE
+echo ola > > -> bash: syntax error near unexpected token '>';         DONE
+echo ola > > file -> bash: syntax error near unexpected token '>';    DONE
+echo ola < < -> bash: syntax error near unexpected token '<';         DONE
+echo ola < < file -> bash: syntax error near unexpected token '<';    DONE
+echo ola >>> file -> bash: syntax error near unexpected token '>';    DONE
+echo ola > >> file -> bash: syntax error near unexpected token '>>';  DONE
+echo ola >>>> file -> bash: syntax error near unexpected token '>>';  DONE
+echo > | grep D -> bash: syntax error near unexpected token '|'       DONE
+ls -l > >file -> bash: syntax error near unexpected token '>';        DONE
+ls -l < < file -> bash: syntax error near unexpected token '<';       DONE
+
+#mixed redirects and heredocs#
+ls -l <> file -> VALID COMMAND;                                       DONE
+ls -l < file0 > file -> VALID COMMAND;                                DONE {se existir - tratar no minishell}
+ls -l < file0 >> file -> VALID COMMAND;                               DONE {se existir - tratar no minishell}
+ls -l << file0 >> file -> VALID COMMAND;                              DONE {se existir - tratar no minishell}
+ls -l < > file -> bash: syntax error near unexpected token '>';       DONE
+ls -l < >> file -> bash: syntax error near unexpected token '>>';     DONE
+ls -l <<> file -> bash: syntax error near unexpected token '>';       DONE
+ls -l << > file -> bash: syntax error near unexpected token '>';      DONE
+ls -l <<>> file -> bash: parse error near '>>';                       DONE
+ls -l << >> file -> bash: parse error near '>>';                      DONE
+
+ls -l >< file -> bash: parse error near '<';                          DONE
+ls -l > < file -> bash: parse error near '<';                         DONE
+ls -l ><< file -> bash: parse error near '<<';                        DONE
+ls -l > << file -> bash: parse error near '<<';                       DONE
+
+
+
+ls -l >>< file -> bash: parse error near '<';                         DONE
+ls -l >> < file -> bash: parse error near '<';                        DONE
+ls -l >><< file -> bash: parse error near '<<';                       DONE
+ls -l >> << file -> bash: parse error near '<<';                      DONE
+
+
+#Ver com o Luis#
+quotron 1 == Erro (verifica aspas)
+"" -> Command '' not found;
+'' -> Command '' not found;
+"ls -l" -> ls -l: command not found; (a funcionar)
+'ls -l' -> ls -l: command not found; (a funcionar)
+
+
+
+'#"NO MINISHELL"#
+echo ola > ./Desktop -> bash: is a directory: ./Desktop; 
+echo ola > / -> bash: is a directory: /;
+echo ola > ? -> bash: no matches found : ?;
+echo ola > ?l -> bash: no matches found : ?l;
+
+#####################################################################
+                        NOVOS ERROR ENCONTRADOS
+                    (coloquem depois digo trato deles)
+#####################################################################
+
+
+"echo -> VALID COMMAND;
+'echo -> VALID COMMAND;
+""echo -> VALID COMMAND;
+''echo -> VALID COMMAND;
+echo"" -> VALID COMMAND;
+"" echo -> Command '' not found;
+'' echo -> Command '' not found;
+"    " echo ->     : command not found;
+'    ' echo ->     : command not found;
+"    "echo ->     echo: command not found;
+'    'echo ->     echo: command not found;
