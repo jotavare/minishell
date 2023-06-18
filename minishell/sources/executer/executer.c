@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 17:14:25 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/17 17:46:17 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/18 23:58:40 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -174,63 +174,25 @@ int		execute(t_attr *att, int index)
 			att->pipeindex++;
 		if (att->write_to_pipe)
 			write_to_pipe(att);
-		else if (att->redir)
+		if (att->redir)
 			redir_append(att, index);
 		if (!ft_strcmp(att->tok_arr[0], "pwd"))
 		 	pwd();
 		else if (!ft_strcmp(att->tok_arr[0], "echo"))
 			echo(*att);
 		else if (!ft_strcmp(att->tok_arr[0], "env"))
-			env(att);	
+			env(att);
+		else if (ft_strcmp(att->tok_arr[0], "export") == 0)
+			export_print(*att);
 		else
 			execute_core(att, &args);
+		exit(0);
 	}
 	else
-		waitpid(-1, NULL, 0);
+		waitpid(args.pid, NULL, 0);
 	if (att->write_to_pipe && att->read_from_pipe)
 			att->pipeindex++;
 	close_pipeline(att);
 	free_arr(args.all_paths);
 	return (0);
 }
-/* 
-int		execute_pipeline(t_attr *att, int index)
-{
-	t_exec	args;
-	
-	start_args(&args, att);
-	args.pid = fork();
-	if (args.pid == -1)
-		return (-1);
-	if (args.pid == 0)
-	{
-		write_to_pipe(att, index);
-		if ((att->number_of_redir || att->number_of_append)  && att->redir)
-			redir_append(att, index);
-		else
-			read_from_pipe(att, index);
-		execute_core(att, &args);
-	}
-	free_arr(args.all_paths);
-	close_pipeline(att, index);
-	return (0);
-}
- */
-/* int		execute_pipeline(t_attr *att, int index)
-{
-	t_exec	args;
-	
-	start_args(&args, att);
-	args.pid = fork();
-	if (args.pid == -1)
-		return (-1);
-	if (args.pid == 0)
-	{
-		pipe_in(att, index);
-		pipe_out(att, index);
-		execute_core(att, &args);
-	}
-	free_arr(args.all_paths);
-	close_pipeline(att, index);
-	return (0);
-} */

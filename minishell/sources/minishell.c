@@ -34,39 +34,40 @@ int is_symbol(char *s)
     return 0;
 }
 
-int		check_next_step(t_attr *att, int *i)
-{	
+int check_next_step(t_attr *att, int *i)
+{
 	att->write_to_pipe = 0;
 	att->redir = 0;
 	att->read_from_pipe = 0;
 	att->read_from_file = 0;
-	
+
 	/* if (is_symbol(att->commands_arr[*i]))
 		*i = *i + 1;
 	if (*i > 0 && !ft_strcmp(att->commands_arr[*i - 1], ">") && !ft_strcmp(att->commands_arr[*i - 1], ">")  )
 		*i = *i + 1; */
+	
+	if (*i > 1 && is_symbol(att->commands_arr[*i - 1]))
+	{
+		if (!ft_strcmp(att->commands_arr[*i - 1], "|"))
+			att->read_from_pipe = 1;
+		if (!ft_strcmp(att->commands_arr[*i - 1], ">") || !ft_strcmp(att->commands_arr[*i - 1], ">>"))
+			*i = *i + 1;
+		else if (!ft_strcmp(att->commands_arr[*i - 1], "<") || !ft_strcmp(att->commands_arr[*i - 1], "<<"))
+			*i = *i + 2;
+	}
+
 	if (att->commands_arr[*i + 1] && is_symbol(att->commands_arr[*i + 1]))
 	{
 		if (!ft_strcmp(att->commands_arr[*i + 1], "|"))
 			att->write_to_pipe = 1;
 		else if (!ft_strcmp(att->commands_arr[*i + 1], ">") || !ft_strcmp(att->commands_arr[*i + 1], ">>"))
-		 	att->redir = 1;
+			att->redir = 1;
 		else if (!ft_strcmp(att->commands_arr[*i + 1], "<"))
-		 	att->read_from_file= 1;
+			att->read_from_file = 1;
 	}
-	if (*i > 1 && is_symbol(att->commands_arr[*i - 1]))
-	{
-		if (!ft_strcmp(att->commands_arr[*i - 1], "|"))
-		{
-			att->read_from_pipe = 1;
-		}
-		if (!ft_strcmp(att->commands_arr[*i - 1], ">") || !ft_strcmp(att->commands_arr[*i - 1], ">>"))
-		 	*i = *i + 1;
-		else if (!ft_strcmp(att->commands_arr[*i - 1], "<") || !ft_strcmp(att->commands_arr[*i - 1], "<<"))
-		 	*i = *i + 1;
-	}
-	return (0);
-}  
+
+	return 0;
+}
 
 void	init_pipes(t_attr *att)
 {
@@ -123,6 +124,12 @@ int	main(int ac, char **av, char **envp)
 				check_next_step(&att, &att.i);
 				//if (is_symbol(att.commands_arr[att.i]))
 				//	att.i++;
+				printf("----------------------\n");
+				printf("write to pipe: %d\n", att.write_to_pipe);
+				printf("read from pipe: %d\n", att.read_from_pipe);
+				printf("redir: %d\n", att.redir);
+				printf("read from file: %d\n", att.read_from_file);
+				printf("----------------------\n");
 				att.tok_arr = get_tokens(att.commands_arr[att.i], &att);
 				command(&att, att.i);
 				if (att.read_from_pipe && !att.write_to_pipe)

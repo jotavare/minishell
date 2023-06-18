@@ -1,4 +1,8 @@
-jun 6 - 1. Changed check_the_arr to return -1 if do not found the string in the array. This fix the problem
-	of dont find the string if it is on index 0.
+jun 6 (joalm)
+	1. Changed check_the_arr to return -1 if do not found the string in the array. This fix the problem of dont find the string if it is on index 0.
 	2. Moved the env function to be executed in the child process to allow redirection of its output
+	
+jun 18 (jotavare)
+	1. Moved the export_print to be execute in the child process in the function execute().
+	2. When the export as more arguments like "export a=5", its executed in the command().
 	

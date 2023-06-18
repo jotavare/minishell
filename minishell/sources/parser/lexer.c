@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 18:15:45 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/17 18:08:38 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/18 23:58:45 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ void	redir_append(t_attr *att, int index)
 		dup2(att->redir_fd, STDOUT_FILENO);
 		close(att->redir_fd);
 		att->redir = 0;
-		//att->number_of_append--;
 	}
 }
 
@@ -65,14 +64,13 @@ void	command(t_attr *att, int index)
 		return ;
 	else if (ft_strcmp(att->tok_arr[0], "cd") == 0)
 		cd(att);
-	else if (ft_strcmp(att->tok_arr[0], "export") == 0)
-		export(att);
 	else if (ft_strcmp(att->tok_arr[0], "unset") == 0)
 		unset(att);
-	
 	else if ((ft_strcmp(att->tok_arr[0], "exit") == 0)
 			|| (ft_strcmp(att->tok_arr[0], "\"exit\"") == 0))
 		return (ft_exit(att));
+	else if (ft_strcmp(att->tok_arr[0], "export") == 0 && att->tok_arr[1])
+		export(att);
 	else
-			execute(att, index);
+		execute(att, index);
 }

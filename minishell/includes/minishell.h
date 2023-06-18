@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:28:13 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/17 17:37:01 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/18 23:53:07 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	cd(t_attr *att);
 void	env(t_attr *att);
 
 // exit
-void	ft_exit(t_attr *att);
+void	ft_exit(t_attr *attr);
 int		exit_two(t_attr att);
 
 // echo
