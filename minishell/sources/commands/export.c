@@ -116,7 +116,7 @@ int	check_the_arr(char **search, char *str)
 		}
 		free(to_find);
 	}
-	return (0);
+	return (-1);
 }
 
 void	export(t_attr *att)
@@ -134,15 +134,15 @@ void	export(t_attr *att)
 	{
 		if (!check_alpha(att->tok_arr[j]))
 		{
-			printf("bash: export: '%s': not a valid identifier\n",
+			printf("Minishell: export: '%s': not a valid identifier\n",
 					att->tok_arr[j]); //check
 			j++;
 		}
 		else if (check_equal(att->tok_arr[j]))
 		{
-			if (check_the_arr(att->g_env, att->tok_arr[j]))
+			if (check_the_arr(att->g_env, att->tok_arr[j]) >= 0)
 				refresh_rmenv(att, check_the_arr(att->g_env, att->tok_arr[j]));
-			if (check_the_arr(att->exp_env, att->tok_arr[j]))
+			if (check_the_arr(att->exp_env, att->tok_arr[j]) >= 0)
 				refresh_rmexp_env(att, check_the_arr(att->exp_env,
 							att->tok_arr[j]));
 			refresh_addenv(att, att->tok_arr[j]);
@@ -151,7 +151,7 @@ void	export(t_attr *att)
 		}
 		else if (!check_equal(att->tok_arr[j]))
 		{
-			if (check_the_arr(att->exp_env, att->tok_arr[j]))
+			if (check_the_arr(att->exp_env, att->tok_arr[j]) >= 0)
 				refresh_rmexp_env(att, check_the_arr(att->exp_env,
 							att->tok_arr[j]));
 			refresh_add_exp(att, att->tok_arr[j]);
@@ -161,7 +161,7 @@ void	export(t_attr *att)
 }
 
 /*
-    sorts the environment variables alphabetically
+    sorts the environment variables alphabetically(ASCII)
     using the bubble sort algorithm
 */
 

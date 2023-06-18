@@ -39,5 +39,6 @@ void	env(t_attr *att)
 			printf("%s\n", att->tok_arr[i]);
 		i++;
 	}
-	printf("SIZE: %d\n", att->len_g_env);
+	//printf("SIZE: %d\n", att->len_g_env);
+	kill(getpid(), SIGTERM);
 }

@@ -176,10 +176,12 @@ int		execute(t_attr *att, int index)
 			write_to_pipe(att);
 		else if (att->redir)
 			redir_append(att, index);
-		if (ft_strcmp(att->tok_arr[0], "pwd") == 0)
+		if (!ft_strcmp(att->tok_arr[0], "pwd"))
 		 	pwd();
-		else if (ft_strcmp(att->tok_arr[0], "echo") == 0)
+		else if (!ft_strcmp(att->tok_arr[0], "echo"))
 			echo(*att);
+		else if (!ft_strcmp(att->tok_arr[0], "env"))
+			env(att);	
 		else
 			execute_core(att, &args);
 	}
@@ -188,10 +190,6 @@ int		execute(t_attr *att, int index)
 	if (att->write_to_pipe && att->read_from_pipe)
 			att->pipeindex++;
 	close_pipeline(att);
-	// if (att->pipeindex > 0)
-	// 	close(att->pipesfd[att->pipeindex][0]);
-	// if (att->pipeindex < att->number_of_pipes)
-	// 	close(att->pipesfd[att->pipeindex][1]);
 	free_arr(args.all_paths);
 	return (0);
 }

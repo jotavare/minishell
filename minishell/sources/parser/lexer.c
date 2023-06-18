@@ -49,12 +49,9 @@ void	read_from_file(t_attr *att, int index)
         char	*file_name;
 		int		filefd;
 
-		file_name = ft_strdup(att->commands_arr[index + 2]);
+		file_name = ft_strtrim(att->commands_arr[index + 2], " ");
 		if ((filefd = open(file_name, O_RDONLY)) < 0)
-		{
-			perror("");
-			//return;
-		}
+			perror("Minishell");
 		free(file_name);
         dup2(filefd, 0);
 		close(filefd);
@@ -72,8 +69,7 @@ void	command(t_attr *att, int index)
 		export(att);
 	else if (ft_strcmp(att->tok_arr[0], "unset") == 0)
 		unset(att);
-	else if (ft_strcmp(att->tok_arr[0], "env") == 0)
-		env(att);
+	
 	else if ((ft_strcmp(att->tok_arr[0], "exit") == 0)
 			|| (ft_strcmp(att->tok_arr[0], "\"exit\"") == 0))
 		return (ft_exit(att));
