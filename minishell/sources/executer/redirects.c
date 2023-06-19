@@ -43,21 +43,27 @@ int		read_from_file(t_attr *att, int index)
 		return (0);
 }
 
-void     heredoc(char *delimiter)
+void     heredoc(char *delimiter, t_attr *att)
 {
     char    *line;
     int     fd;
     fd = open(".heredoc", O_CREAT | O_WRONLY | O_APPEND, 0644);
+
     while (1)
     {
         write(1, ">", 1);
         line = get_next_line(0, 1);
         write(fd, line, strlen(line));
-        if (strlen(line) == (strlen(delimiter) + 1) && !strcmp(line, delimiter))
-            break;
-        free(line);
+        if (strncmp(line, delimiter, strlen(delimiter)) == 0)
+		{
+			free(line);
+			break;
+		}
+		free(line);
     }
-    int fd_2 = open(".heredoc", O_RDONLY);
-    dup2(fd_2, 0);
+    att->redir_fd = open(".heredoc", O_RDONLY);
+    dup2(att->redir_fd, 0);
+
     //unlink(".heredoc");
+	exit(0);
 }

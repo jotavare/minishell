@@ -121,7 +121,7 @@ void	execute_core(t_attr *att, t_exec *args)
 {
 	if (args->command[0] == '/')
 		exec_absolute_path(args, att);
-	else if (args->command[0 ]== '.')
+	else if (args->command[0]== '.')
 		exec_binaries(args, att);
 	else
 		exec_commands(args, att);
@@ -146,6 +146,8 @@ int		execute(t_attr *att, int index)
 			if (read_from_file(att, index) < 0)
 				exit(0);
 		}
+		else if (att->heredoc)
+			heredoc(att->commands_arr[2], att);
 		if (att->write_to_pipe && att->read_from_pipe)
 			att->pipeindex++;
 		if (att->write_to_pipe)
@@ -168,7 +170,7 @@ int		execute(t_attr *att, int index)
 		waitpid(args.pid, NULL, 0);
 	if (att->write_to_pipe && att->read_from_pipe)
 			att->pipeindex++;
-	see_flags_and_pipes(*att);
+	//see_flags_and_pipes(*att);
 	close_pipeline(att);
 	free_arr(args.all_paths);
 	return (0);

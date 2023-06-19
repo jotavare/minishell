@@ -116,6 +116,7 @@ void    ft_delete_matrix (void *matrix);
 void    write_to_pipe(t_attr *att);
 void    read_from_pipe(t_attr *att);
 void	close_pipeline(t_attr *att);
+void     heredoc(char *delimiter, t_attr *att);
 
 //parser
 int     check_next_step(t_attr *att, int *i);
