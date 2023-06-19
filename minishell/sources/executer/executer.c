@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 17:14:25 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/10 16:38:56 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/19 16:13:31 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,39 +117,38 @@ int	exec_absolute_path(t_exec *args, t_attr *att)
 	return (0);
 }
 
-void    pipe_out(t_attr *att, int index)
+void    write_to_pipe(t_attr *att)
 {
-	if (index >= att->number_of_pipes)
+	if (att->pipeindex >= att->number_of_pipes)
 		return ;
-    if (dup2(att->pipesfd[index][WRITE_END], STDOUT_FILENO) < 0)
+	close(att->pipesfd[att->pipeindex][0]);
+    if (dup2(att->pipesfd[att->pipeindex][WRITE_END], STDOUT_FILENO) < 0)
 		perror("dup2 :[WRITE_END] ");
-    // close(pipes[0]);
-    // close(pipes[1]);
+	close(att->pipesfd[att->pipeindex][1]);
+	
 }
 
-void    pipe_in(t_attr *att, int index)
+void    read_from_pipe(t_attr *att)
 {
-	if (index < 1)
-		return ;
-    if (dup2(att->pipesfd[index - 1][READ_END], STDIN_FILENO) < 0)
+	close(att->pipesfd[att->pipeindex][1]);
+    if (dup2(att->pipesfd[att->pipeindex][READ_END], STDIN_FILENO) < 0)
 		perror("dup2 [READ_END]: ");
-    // close(pipes[0]);
-    // close(pipes[1]);
+	close(att->pipesfd[att->pipeindex][0]);
 }
 
-void	close_pipeline(t_attr *att, int index)
+void	close_pipeline(t_attr *att)
 {
-	if (index > 0)
-		close(att->pipesfd[index - 1][READ_END]);
-	if (index < att->number_of_pipes)
-		close(att->pipesfd[index][WRITE_END]);
+	if (att->pipeindex > 0)
+		close(att->pipesfd[att->pipeindex - 1][READ_END]);
+	if (att->pipeindex < att->number_of_pipes)
+		close(att->pipesfd[att->pipeindex][WRITE_END]);
 }
 
 void	execute_core(t_attr *att, t_exec *args)
 {
 	if (args->command[0] == '/')
 		exec_absolute_path(args, att);
-	else if (args->command[0] == '.')
+	else if (args->command[0 ]== '.')
 		exec_binaries(args, att);
 	else
 		exec_commands(args, att);
@@ -157,7 +156,7 @@ void	execute_core(t_attr *att, t_exec *args)
 	exit(0);
 } 
 
-int		execute(t_attr *att, int index)
+int		execute(t_attr *att, int index)	
 {
 	t_exec	args;
 
@@ -167,32 +166,34 @@ int		execute(t_attr *att, int index)
 		return (-1);
 	if (args.pid == 0)
 	{
-		if (att->number_of_redir > 0 && att->redir)
+		if (att->read_from_pipe)
+			read_from_pipe(att);
+		else if (att->read_from_file)
+			read_from_file(att, index);
+		if (att->write_to_pipe && att->read_from_pipe)
+			att->pipeindex++;
+		if (att->write_to_pipe)
+			write_to_pipe(att);
+		if (att->redir)
 			redir_append(att, index);
-		execute_core(att, &args);
+		if (!ft_strcmp(att->tok_arr[0], "pwd"))
+		 	pwd();
+		else if (!ft_strcmp(att->tok_arr[0], "echo"))
+			echo(*att);
+		else if (!ft_strcmp(att->tok_arr[0], "env"))
+			env(att);
+		else if (ft_strcmp(att->tok_arr[0], "export") == 0)
+			export_print(*att);
+		else
+			execute_core(att, &args);
+		exit(0);
 	}
 	else
-		waitpid(-1, NULL, 0);
-	att->redir = 0;
+		waitpid(args.pid, NULL, 0);
+	if (att->write_to_pipe && att->read_from_pipe)
+			att->pipeindex++;
+	//see_flags_and_pipes(*att);
+	close_pipeline(att);
 	free_arr(args.all_paths);
-	return (0);
-}
-
-int		execute_pipeline(t_attr *att, int index)
-{
-	t_exec	args;
-	
-	start_args(&args, att);
-	args.pid = fork();
-	if (args.pid == -1)
-		return (-1);
-	if (args.pid == 0)
-	{
-		pipe_in(att, index);
-		pipe_out(att, index);
-		execute_core(att, &args);
-	}
-	free_arr(args.all_paths);
-	close_pipeline(att, index);
 	return (0);
 }

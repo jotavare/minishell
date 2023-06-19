@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 15:38:30 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/08 01:27:40 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/17 15:17:42 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,6 @@ char	*prompt(t_attr *att)
 		printf("┏━" GREEN_BOLD " %s@:" GREEN_BOLD, user);
 		printf(CYAN_BOLD "%s\n" CYAN_BOLD, pwd);
 	}
-	str = readline(RESET "┗━" RED_BOLD " minihell$" RED_BOLD " " RESET "");
+	str = readline(RESET "┗━" RED_BOLD " minihell🦆"  RED_BOLD " " RESET "");
 	return (str);
 }

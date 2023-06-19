@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:57:28 by alexandre         #+#    #+#             */
-/*   Updated: 2023/06/08 01:36:04 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/17 17:47:36 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,25 +22,38 @@ extern int	g_last_return_value;
 void	echo(t_attr att)
 {
 	int	i;
+	int flag_n;
+	int flag_print;
 
 	i = 1;
+	flag_n = 0;
+	flag_print = 0;
 	if (att.nb_tokens == 1)
 		printf("\n");
 	else
 	{
 		while (i < att.nb_tokens)
 		{
-			if (ft_strnstr(att.tok_arr[i], "-n", ft_strlen(att.tok_arr[i])))
+			if (ft_strnstr(att.tok_arr[i], "-n", ft_strlen(att.tok_arr[i])) && flag_print == 0)
+			{
 				echo_n(att);
-			else if (ft_strnstr(att.tok_arr[i], "$?",
-						ft_strlen(att.tok_arr[i])))
+				flag_n = 1;				
+			}
+			else if (ft_strnstr(att.tok_arr[i], "$?", ft_strlen(att.tok_arr[i])))
 				printf("%d", g_last_return_value);
 			else
-				printf("%s ", att.tok_arr[i]);
+			{
+				printf("%s", att.tok_arr[i]);
+				flag_print = 1;
+			}
+			if (i != att.nb_tokens - 1 && flag_print == 1)
+				printf(" ");
 			i++;
 		}
-		printf("\n");
+		if (flag_n == 0)
+			printf("\n");
 	}
+	kill(getpid(), SIGTERM);
 }
 
 /*
@@ -52,26 +65,9 @@ void	echo_n(t_attr att)
 {
 	int	i;
 
-	i = 2;
-	while (i < att.nb_tokens)
-	{
-		ft_putstr_fd(att.tok_arr[i], 1);
-		if (att.tok_arr[i + 1])
-			ft_putchar_fd(' ', 1);
-		i++;
-	}
-}
+	i = 1;
 
-void	echo_doll_ques(t_attr att)
-{
-	int i;
-
-	i = 2;
-	while (i < att.nb_tokens)
-	{
+	if (strcmp(att.tok_arr[i], "-n") != 0)
 		ft_putstr_fd(att.tok_arr[i], 1);
-		if (att.tok_arr[i + 1])
-			ft_putchar_fd(' ', 1);
-		i++;
-	}
+	i++;
 }

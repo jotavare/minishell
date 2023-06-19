@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:28:13 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/10 15:28:24 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/19 16:14:01 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ int		execute_write_p(t_attr *att, int index);
 int		execute_read_p(t_attr *att, int index);
 int		execute_pipeline(t_attr *att, int index);
 void	redir_append(t_attr *att, int index);
+void	read_from_file(t_attr *att, int index);
+
 
 // init
 void	init_params(int ac, char **av, t_attr *attr, char **envp);
@@ -48,12 +50,12 @@ void	handle_interrupt(int signal);
 void	set_signals(void);
 
 // commands
-int		pwd(void);
+int     pwd(void);
 void	cd(t_attr *att);
 void	env(t_attr *att);
 
 // exit
-void	ft_exit(t_attr *att);
+void	ft_exit(t_attr *attr);
 int		exit_two(t_attr att);
 
 // echo
@@ -93,6 +95,7 @@ int		flag_counter(char *str, char c);
 int		ft_strcmp(const char *str1, const char *str2);
 int		flag_counter(char *str, char c);
 int		check_alpha(char *str);
+int		ft_strschc(char *str, char c);
 
 // expander
 char	**expand_tokens(char **tokens, t_attr *att);
@@ -119,6 +122,8 @@ int		valid_dirdoc(t_attr *att);
 char	**get_tokens(char *str, t_attr *att);
 char	**get_tokens2(char *str, t_attr *att);
 void	create_array(char *s, t_attr *att);
+char	*double_quotes_treat(char *s, t_attr *att);
+void	null_token_handle(t_attr *att);
 
 // count_tokens
 int		count_tokens(char *s, t_attr *att);
@@ -137,5 +142,9 @@ char	*process_default(char *s, t_attr *att);
 // debugging
 void	print_t_attr(t_attr *att);
 void	ft_print_array(char **array);
+void  see_flags_and_pipes(t_attr att);
+
+// check readline validation
+int verify_readline(char *str);
 
 #endif

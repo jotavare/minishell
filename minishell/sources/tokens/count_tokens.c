@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 18:15:45 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/08 02:03:31 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/19 14:47:34 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,17 @@
 int	count_tokens(char *s, t_attr *att)
 {
 	int	len;
+	int	i;
 
+	i = 0;
+	while (s[i])
+	{
+		if (s[i] == '"')
+			att->o_dquotes++;
+		else if (s[i] == '\'')
+			att->o_quotes++;
+		i++;
+	}
 	att->nb_tokens = 0;
 	len = ft_strlen(s) - 1;
 	while (len >= 0)
@@ -33,15 +43,20 @@ int	count_tokens(char *s, t_attr *att)
 			len--;
 		else
 			len--;
+		//printf("nb tokens = %d\n", att->nb_tokens);
 	}
 	return (att->nb_tokens);
 }
 
 int	check_single_quotes(char *s, int len, t_attr *att)
 {
-	len--;
-	while (len >= 0 && s[len] != '\'')
+	int	quotes;
+
+	quotes = 0;
+	while (len >= 0 && quotes != att->o_quotes)
 	{
+		if (s[len] == '\'')
+			quotes++;
 		len--;
 	}
 	att->nb_tokens++;
@@ -51,9 +66,13 @@ int	check_single_quotes(char *s, int len, t_attr *att)
 
 int	check_double_quotes(char *s, int len, t_attr *att)
 {
-	len--;
-	while (len >= 0 && s[len] != '"')
+	int	quotes;
+
+	quotes = 0;
+	while (len >= 0 && quotes != att->o_dquotes)
 	{
+		if (s[len] == '"')
+			quotes++;
 		len--;
 	}
 	att->nb_tokens++;

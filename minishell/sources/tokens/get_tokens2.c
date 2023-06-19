@@ -124,6 +124,7 @@ char	*get_token2(char *s, t_attr *att)
 		token[0] = s[j];
 		token[1] = s[j + 1];
 		token[2] = 0;
+		att->number_of_append++;
 	}
 	else if (s[j] == '<' && s[j + 1] != '<')
 	{

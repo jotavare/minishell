@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 15:38:30 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/08 03:16:52 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/19 16:13:47 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,15 @@ void	ft_print_array(char **array)
 		i++;
 	}
 	printf("end of array\n\n");
+}
+
+void  see_flags_and_pipes(t_attr att)
+{
+    printf("----------------------\n");
+    printf("token: <%s>, index: %d\n", att. commands_arr[att.i], att.i);
+    printf("read from pipe: %d\n", att.pipeindex);
+    printf("write to pipe: %d\n", att.pipeindex);
+    printf("redir: %d\n", att.redir);
+    printf("read from file: %d\n", att.read_from_file);
+    printf("----------------------\n");
 }
