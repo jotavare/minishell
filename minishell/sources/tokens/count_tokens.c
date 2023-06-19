@@ -43,7 +43,7 @@ int	count_tokens(char *s, t_attr *att)
 			len--;
 		else
 			len--;
-		printf("nb tokens = %d\n", att->nb_tokens);
+		//printf("nb tokens = %d\n", att->nb_tokens);
 	}
 	return (att->nb_tokens);
 }
@@ -69,7 +69,7 @@ int	check_double_quotes(char *s, int len, t_attr *att)
 	int	quotes;
 
 	quotes = 0;
-	while (len >= 0 && quotes != att->o_quotes)
+	while (len >= 0 && quotes != att->o_dquotes)
 	{
 		if (s[len] == '"')
 			quotes++;

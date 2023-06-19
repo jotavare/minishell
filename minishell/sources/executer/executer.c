@@ -192,7 +192,7 @@ int		execute(t_attr *att, int index)
 		waitpid(args.pid, NULL, 0);
 	if (att->write_to_pipe && att->read_from_pipe)
 			att->pipeindex++;
-	see_flags_and_pipes(*att);
+	//see_flags_and_pipes(*att);
 	close_pipeline(att);
 	free_arr(args.all_paths);
 	return (0);

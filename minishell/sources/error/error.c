@@ -152,7 +152,7 @@ int error_pipes(char *str)
 {
     if (error_simple(str, '|'))
         return (1);
-/*     if (error_twopipe(str)) //removed, we dont need this function
+    /*if (error_twopipe(str)) //removed, we dont need this function
         return (1); */
     if (error_onepipe(str))
         return (1);
@@ -276,6 +276,67 @@ int error_dirdoc(char *str)
     return (0);
 }
 
+int double_quote(char *str, char c)
+{
+    int i;
+    int flag;
+
+    flag = 0;
+    i = 0;
+    while(str[i])
+    {
+        if (str[i] == c && flag == 0)
+            flag = 1;
+        else if (str[i] == '\'' && flag == 1)
+            flag = 2;
+        else if (str[i] == '\'' && flag == 2)
+            flag = 1;
+        else if (str[i] == c && flag == 1)
+            flag = 0;
+        i++;
+    }
+    if (flag)
+    {
+        printf("bash : syntax error unclosed quotes\n");
+        return (1);
+    }
+    return (0);
+}
+
+int single_quote(char *str, char c)
+{
+    int i;
+    int flag;
+
+    flag = 0;
+    i = 0;
+    while(str[i])
+    {
+        if (str[i] == c && flag == 0)
+            flag = 1;
+        else if (str[i] == '\"' && flag == 1)
+            flag = 2;
+        else if (str[i] == '\"' && flag == 2)
+            flag = 1;
+        else if (str[i] == c && flag == 1)
+            flag = 0;
+        i++;
+    }
+    if (flag)
+    {
+        printf("bash : syntax error unclosed quotes\n");
+        return (1);
+    }
+    return (0);
+}
+
+int error_quotes(char *str)
+{
+    if (double_quote(str, '\"') || single_quote(str, '\''))
+        return (1);
+    return (0);
+}
+
 int verify_readline(char *str)
 {
     if (error_pipes(str))
@@ -287,6 +348,11 @@ int verify_readline(char *str)
     {
         g_last_return_value = 2;
         return (1);
+    }
+    else if (error_quotes(str))
+    {
+        g_last_return_value = 2;
+        return(1);
     }
     return (0);
 }

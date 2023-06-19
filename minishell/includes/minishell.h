@@ -95,6 +95,7 @@ int		flag_counter(char *str, char c);
 int		ft_strcmp(const char *str1, const char *str2);
 int		flag_counter(char *str, char c);
 int		check_alpha(char *str);
+int		ft_strschc(char *str, char c);
 
 // expander
 char	**expand_tokens(char **tokens, t_attr *att);

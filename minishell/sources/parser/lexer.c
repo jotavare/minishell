@@ -59,7 +59,7 @@ void	read_from_file(t_attr *att, int index)
 
 void	command(t_attr *att, int index)
 {
-	
+	expand_tokens(&att->tok_arr[0], att);
 	if (!att->tok_arr[0])
 		return ;
 	else if (ft_strcmp(att->tok_arr[0], "cd") == 0)

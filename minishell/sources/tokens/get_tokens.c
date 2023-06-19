@@ -161,18 +161,14 @@ char	*double_quotes_treat(char *s, t_attr *att)
 				if (s[i + 1] == ' ' && j % 2 == 0)
 				{
 					i++;
-					pos = i - j;
-					token = malloc(sizeof(char) * pos);
 					break ;
 				}
 			}
 			else if (!s[i + 1])
-				{
-					i++;
-					pos = i - j;
-					token = malloc(sizeof(char) * pos);
-					break ;
-				}
+			{
+				i++;
+				break ;
+			}
 		}
 		if (s[i] == '\'' && (flag == 0 || flag == 1))
 		{
@@ -184,22 +180,17 @@ char	*double_quotes_treat(char *s, t_attr *att)
 				if (s[i + 1] == ' ' && j % 2 == 0)
 				{
 					i++;
-					pos = i - j;
 					break ;
 				}
 			}
 			else if (!s[i + 1])
 				{
 					i++;
-					pos = i - j;
 					break ;
 				}
 		}
 		if (s[i] == ' ' && j % 2 == 0 && j > 1)
-			{
-				pos = i - j;
 				break ;
-			}
 		i++;
 	}
 	pos = i - j;
@@ -211,6 +202,7 @@ char	*double_quotes_treat(char *s, t_attr *att)
 	{
 		if (flag == 1)
 		{
+
 			while (s[i] != 39 && s[i] != '\0')
 			{
 				if (s[i] == 34)
@@ -222,6 +214,8 @@ char	*double_quotes_treat(char *s, t_attr *att)
 			if (s[i] == 39)
 				att->o_quotes--;
 		}
+		//SE ASPAS ABERTAS: COPIA TUDO ->> <"   sd  ">
+		//SE ASPAS FECHADAS: QUANDO ECONTRA ESPACO DA BREAK ->> <"" >
 		else if (flag == 2)
 		{
 			while (s[i] != 34 && s[i] != '\0')
@@ -237,86 +231,3 @@ char	*double_quotes_treat(char *s, t_attr *att)
 	}
 	return (token);
 }
-
-/*
-char	*double_quotes_treat(char *s, t_attr *att)
-{
-	char	*token;
-	int		i;
-	int		j;
-	int		pos;
-	int		flag;
-
-	j = 0;
-	i = 0;
-
-	token = NULL;
-	pos = att->tok_arr_i - 2;
-	flag = 0;
-	while (s[i])
-	{
-		if (s[i] == '"' && (flag == 0 || flag == 2))
-		{
-			flag = 2;
-			att->o_dquotes--;
-			j++;
-			if (s[i + 1])
-			{
-				if (s[i + 1] == ' ' && j % 2 == 0)
-				{
-					i++;
-					pos = i - j;
-					token = malloc(sizeof(char) * pos);
-					break ;
-				}
-			}
-		else if (s[i] == '\'' && (flag == 0 || flag == 1))
-		{
-			flag = 1;
-			att->o_quotes--;
-			j++;
-			if (s[i + 1])
-			{
-				if (s[i + 1] == ' ' && j % 2 == 0)
-				{
-					i++;
-					pos = i - j;
-					token = malloc(sizeof(char) * pos);
-					break ;
-				}
-		}
-		i++;
-	}
-	token[pos] = 0;
-	i = 0;
-	j = 0;
-	while (j < pos && s[i] != '\0')
-	{
-		if (flag == 1)
-		{
-			while (s[i] != 39 && s[i] != '\0')
-			{
-				if (s[i] == 34)
-					att->o_dquotes--;
-				token[j] = s[i];
-				j++;
-				i++;
-			}
-			if (s[i] == 39)
-				att->o_quotes--;
-		}
-		else if (flag == 2)
-		{
-			while (s[i] != 34 && s[i] != '\0')
-			{
-				if (s[i] == 39)
-					att->o_quotes--;
-				token[j] = s[i];
-				j++;
-				i++;
-			}
-		}
-		i++;
-	}
-	return (token);
-}*/
