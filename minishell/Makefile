@@ -6,7 +6,7 @@
 #    By: jotavare <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/12 15:15:58 by alexandre         #+#    #+#              #
-#    Updated: 2023/06/19 14:29:21 by jotavare         ###   ########.fr        #
+#    Updated: 2023/06/19 20:00:38 by jotavare         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -90,6 +90,7 @@ fclean: clean
 	echo "Everything Deleted..."
 
 re: fclean all
+	./$(NAME)
 	
 .SILENT:
 
