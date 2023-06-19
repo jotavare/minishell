@@ -25,16 +25,39 @@ void	redir_append(t_attr *att, int index)
 	}
 }
 
-void	read_from_file(t_attr *att, int index)
+int		read_from_file(t_attr *att, int index)
 {
         char	*file_name;
 		int		filefd;
 
 		file_name = ft_strtrim(att->commands_arr[index + 2], " ");
 		if ((filefd = open(file_name, O_RDONLY)) < 0)
+		{
 			perror("Minishell");
+			return (-1);
+		}
 		free(file_name);
         dup2(filefd, 0);
 		close(filefd);
 		att->read_from_file = 0;
+		return (0);
+}
+
+void     heredoc(char *delimiter)
+{
+    char    *line;
+    int     fd;
+    fd = open(".heredoc", O_CREAT | O_WRONLY | O_APPEND, 0644);
+    while (1)
+    {
+        write(1, ">", 1);
+        line = get_next_line(0, 1);
+        write(fd, line, strlen(line));
+        if (strlen(line) == (strlen(delimiter) + 1) && !strcmp(line, delimiter))
+            break;
+        free(line);
+    }
+    int fd_2 = open(".heredoc", O_RDONLY);
+    dup2(fd_2, 0);
+    //unlink(".heredoc");
 }

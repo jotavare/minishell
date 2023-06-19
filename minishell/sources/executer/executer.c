@@ -142,7 +142,10 @@ int		execute(t_attr *att, int index)
 		if (att->read_from_pipe)
 			read_from_pipe(att);
 		else if (att->read_from_file)
-			read_from_file(att, index);
+		{
+			if (read_from_file(att, index) < 0)
+				exit(0);
+		}
 		if (att->write_to_pipe && att->read_from_pipe)
 			att->pipeindex++;
 		if (att->write_to_pipe)
@@ -165,7 +168,7 @@ int		execute(t_attr *att, int index)
 		waitpid(args.pid, NULL, 0);
 	if (att->write_to_pipe && att->read_from_pipe)
 			att->pipeindex++;
-	//see_flags_and_pipes(*att);
+	see_flags_and_pipes(*att);
 	close_pipeline(att);
 	free_arr(args.all_paths);
 	return (0);

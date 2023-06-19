@@ -68,26 +68,6 @@ char	*str_join_mod(char *str1, char *str2)
 	return (jointstr);
 }
 
-void	*ft_calloc(size_t nmemb, size_t size)
-{
-	char			*nulled_str;
-	size_t			i;
-	unsigned int	total;
-
-	total = nmemb * size;
-	i = 0;
-	nulled_str = malloc(total);
-	if (!nulled_str)
-		return (NULL);
-	while (total > 0)
-	{
-		nulled_str[i] = 0;
-		total--;
-		i++;
-	}
-	return ((void *)nulled_str);
-}
-
 /* main para testar str_join_mod
 int	main(void)
 {

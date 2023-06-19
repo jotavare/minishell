@@ -50,6 +50,7 @@ typedef struct s_attr
 	int		read_from_pipe;
 	int		read_from_file;
 	int		redir;
+	int		heredoc;
 	int		number_of_pipes;
 	int		number_of_redir;
 	int		number_of_append;

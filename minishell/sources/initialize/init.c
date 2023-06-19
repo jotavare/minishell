@@ -42,6 +42,7 @@ void	init_attributes(t_attr *att)
 	att->number_of_append = 0;
 	att->redir_fd = 0;
 	att->redir = 0;
+	att->heredoc = 0;
 	att->read_from_file = 0;
 	att->pipeindex = 0;
 	att->out_fd = 0;		

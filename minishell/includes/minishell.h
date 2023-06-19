@@ -32,7 +32,7 @@ int		execute_write_p(t_attr *att, int index);
 int		execute_read_p(t_attr *att, int index);
 int		execute_pipeline(t_attr *att, int index);
 void	redir_append(t_attr *att, int index);
-void	read_from_file(t_attr *att, int index);
+int 	read_from_file(t_attr *att, int index);
 
 
 // init
