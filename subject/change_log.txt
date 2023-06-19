@@ -17,3 +17,9 @@ jun 19 (alex, luis, joao)
 	1. adiciona condicoes de aspas no errors.called
 	2. aspas estao quase completas, precisas de resolver casos especifico (""echo ola && echo "'"'ola'"'")
 	3. expander esta ativado na commands para tudo, nao pode para plicas e tem de expandir com texto atras (echo aa$HOME)
+
+jun 20 (jotavare)
+	1. ls > f1 | wc
+	2. ls > f1 > fd
+	3. wc << fim
+	4. heredoc a funcionar mas temos de arranjar um maneira de executar os commandos para tras

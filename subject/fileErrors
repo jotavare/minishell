@@ -81,14 +81,14 @@ echo ola > ?l -> bash: no matches found : ?l;
 #####################################################################
 
 
-"echo -> VALID COMMAND;
-'echo -> VALID COMMAND;
-""echo -> VALID COMMAND;
-''echo -> VALID COMMAND;
-echo"" -> VALID COMMAND;
-"" echo -> Command '' not found;
-'' echo -> Command '' not found;
-"    " echo ->     : command not found;
-'    ' echo ->     : command not found;
-"    "echo ->     echo: command not found;
-'    'echo ->     echo: command not found;
+"echo -> bash: syntax error unclosed quotes         DONE
+'echo -> bash: syntax error unclosed quotes         DONE
+""echo -> VALID COMMAND;                            DONE
+''echo -> VALID COMMAND;                            DONE
+echo"" -> VALID COMMAND;                            
+"" echo -> Command '' not found;                    
+'' echo -> Command '' not found;                    
+"    " echo ->     : command not found;             
+'    ' echo ->     : command not found;             
+"    "echo ->     echo: command not found;          
+'    'echo ->     echo: command not found;          
