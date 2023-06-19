@@ -41,6 +41,7 @@ SRC =	sources/minishell.c \
     	sources/commands/pwd.c \
     	sources/commands/unset.c \
     	sources/executer/executer.c \
+		sources/executer/redirections.c \
     	sources/parser/expander.c \
     	sources/parser/lexer.c \
 		sources/sanitize/signals.c \
@@ -55,6 +56,7 @@ SRC =	sources/minishell.c \
     	sources/utilities/utilities.c \
 		sources/tokens/get_tokens2.c \
 		sources/error/error.c \
+
 
 OBJSDIR = objects
 OBJ = $(addprefix $(OBJSDIR)/, $(SRC:.c=.o))

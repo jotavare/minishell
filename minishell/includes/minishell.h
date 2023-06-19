@@ -33,6 +33,8 @@ int		execute_read_p(t_attr *att, int index);
 int		execute_pipeline(t_attr *att, int index);
 void	redir_append(t_attr *att, int index);
 void	read_from_file(t_attr *att, int index);
+void    write_to_pipe(t_attr *att);
+void    read_from_pipe(t_attr *att);
 
 
 // init
@@ -141,6 +143,7 @@ char	*process_default(char *s, t_attr *att);
 // debugging
 void	print_t_attr(t_attr *att);
 void	ft_print_array(char **array);
+void    see_flags_and_pipes(t_attr att);
 
 // check readline validation
 int verify_readline(char *str);

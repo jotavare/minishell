@@ -5,4 +5,7 @@ jun 6 (joalm)
 jun 18 (jotavare)
 	1. Moved the export_print to be execute in the child process in the function execute().
 	2. When the export as more arguments like "export a=5", its executed in the command().
+jun 19 (joaoalme)
+	1. Function see_flags_and_pipes() to print flags and pipes info created on debugg.c
+	2. function called in executer.c (l.177)
 	
