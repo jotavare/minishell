@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 18:15:45 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/19 14:11:32 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/19 19:45:18 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 void	create_array(char *s, t_attr *att)
 {
 	int	count;
-	int	j = 0;
 
 	att->index = 0;
 	att->beforet = malloc((att->nb_tokens + 1) * sizeof(char *));
@@ -37,10 +36,6 @@ void	create_array(char *s, t_attr *att)
 		count++;
 	}
 	null_token_handle(att);
-	while(j < att->nb_tokens)
-	{
-		j++;
-	}
 }
 
 char	**get_tokens(char *str, t_attr *att)

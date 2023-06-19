@@ -5,7 +5,15 @@ jun 6 (joalm)
 jun 18 (jotavare)
 	1. Moved the export_print to be execute in the child process in the function execute().
 	2. When the export as more arguments like "export a=5", its executed in the command().
+
 jun 19 (joaoalme)
 	1. Function see_flags_and_pipes() to print flags and pipes info created on debugg.c
-	2. function called in executer.c (l.177)
-	
+	2. function called in executer.c (l.170)
+	3. functions related with pipes moved to executer/pipes.c
+	4. functions related with redirects moved to executer/redirects.c
+	5. check_next_step and is_symbol moved to parser/parser.c
+
+jun 19 (alex, luis, joao)
+	1. adiciona condicoes de aspas no errors.called
+	2. aspas estao quase completas, precisas de resolver casos especifico (""echo ola && echo "'"'ola'"'")
+	3. expander esta ativado na commands para tudo, nao pode para plicas e tem de expandir com texto atras (echo aa$HOME)

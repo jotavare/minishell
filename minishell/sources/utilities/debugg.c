@@ -51,9 +51,10 @@ void	ft_print_array(char **array)
 void  see_flags_and_pipes(t_attr att)
 {
     printf("----------------------\n");
-    printf("token: <%s>, index: %d\n", att. commands_arr[att.i], att.i);
-    printf("read from pipe: %d\n", att.pipeindex);
-    printf("write to pipe: %d\n", att.pipeindex);
+    printf("nb of pipes: %d\n", att.number_of_pipes);
+    printf("token: %s, index: %d\n", att. commands_arr[att.i], att.i);
+    printf("read from pipe: %d\n", att.read_from_pipe);
+    printf("write to pipe: %d\n", att.write_to_pipe);
     printf("redir: %d\n", att.redir);
     printf("read from file: %d\n", att.read_from_file);
     printf("----------------------\n");

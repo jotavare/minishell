@@ -95,7 +95,6 @@ int		flag_counter(char *str, char c);
 int		ft_strcmp(const char *str1, const char *str2);
 int		flag_counter(char *str, char c);
 int		check_alpha(char *str);
-int		ft_strschc(char *str, char c);
 
 // expander
 char	**expand_tokens(char **tokens, t_attr *att);
@@ -112,11 +111,15 @@ void	exit_free(t_attr *attr);
 
 // pipes
 int		pipework(t_attr *att);
+void	init_pipes(t_attr *att);
+void    ft_delete_matrix (void *matrix);
+void    write_to_pipe(t_attr *att);
+void    read_from_pipe(t_attr *att);
+void	close_pipeline(t_attr *att);
 
-// redirects and heredocs
-void	count_dirdoc(t_attr *att);
-void	heredocs(t_attr *att);
-int		valid_dirdoc(t_attr *att);
+//parser
+int     check_next_step(t_attr *att, int *i);
+int     is_symbol(char *s);
 
 // tokens
 char	**get_tokens(char *str, t_attr *att);
@@ -142,9 +145,9 @@ char	*process_default(char *s, t_attr *att);
 // debugging
 void	print_t_attr(t_attr *att);
 void	ft_print_array(char **array);
-void  see_flags_and_pipes(t_attr att);
+void    see_flags_and_pipes(t_attr att);
 
 // check readline validation
-int verify_readline(char *str);
+int     verify_readline(char *str);
 
 #endif

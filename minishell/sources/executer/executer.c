@@ -117,33 +117,6 @@ int	exec_absolute_path(t_exec *args, t_attr *att)
 	return (0);
 }
 
-void    write_to_pipe(t_attr *att)
-{
-	if (att->pipeindex >= att->number_of_pipes)
-		return ;
-	close(att->pipesfd[att->pipeindex][0]);
-    if (dup2(att->pipesfd[att->pipeindex][WRITE_END], STDOUT_FILENO) < 0)
-		perror("dup2 :[WRITE_END] ");
-	close(att->pipesfd[att->pipeindex][1]);
-	
-}
-
-void    read_from_pipe(t_attr *att)
-{
-	close(att->pipesfd[att->pipeindex][1]);
-    if (dup2(att->pipesfd[att->pipeindex][READ_END], STDIN_FILENO) < 0)
-		perror("dup2 [READ_END]: ");
-	close(att->pipesfd[att->pipeindex][0]);
-}
-
-void	close_pipeline(t_attr *att)
-{
-	if (att->pipeindex > 0)
-		close(att->pipesfd[att->pipeindex - 1][READ_END]);
-	if (att->pipeindex < att->number_of_pipes)
-		close(att->pipesfd[att->pipeindex][WRITE_END]);
-}
-
 void	execute_core(t_attr *att, t_exec *args)
 {
 	if (args->command[0] == '/')
@@ -192,7 +165,7 @@ int		execute(t_attr *att, int index)
 		waitpid(args.pid, NULL, 0);
 	if (att->write_to_pipe && att->read_from_pipe)
 			att->pipeindex++;
-	//see_flags_and_pipes(*att);
+	see_flags_and_pipes(*att);
 	close_pipeline(att);
 	free_arr(args.all_paths);
 	return (0);

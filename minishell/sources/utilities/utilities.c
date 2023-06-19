@@ -164,3 +164,41 @@ int	check_alpha(char *str)
 	}
 	return (1);
 }
+
+/* char	*dequoter(char *str)
+{
+	int		i;
+	int		flagdouble;
+	int		flagsimple;
+	char	*arranged;
+
+	arranged = malloc(sizeof(char) * ft_strlen(str) + 1);
+		// malloc esta mal feito - pensar noutra forma de determinar o tamanho,
+		dependendo se as quotes sao double ou nao
+	flagdouble = flag_counter(str, 34);                  
+		//nao ha double quotes (em ascii 34),
+		se == IMPAR ha quotes abertas; se == PAR, quotes fechadas,
+		se flagsimple > 0 ENTAO  == 0;.
+	flagsimple = flag_counter(str, 39);                  
+		// nao ha simple quotes (em ascii 39)
+	if (flagdouble % 2 == 1 || flagsimple % 2 == 1)
+		return (NULL);
+	i = 0;
+	while (str[i])
+	{
+		if (flagdouble > 0 && str[i] == 34)
+		{
+			flagsimple = 0;
+			i++;
+		}
+		if (flagsimple > 0 && str[i] == 39)
+		{
+			flagdouble = 0;
+			i++;
+		}
+		arranged[i] = str[i];
+		i++;
+	}
+	printf("%s\n", arranged);
+	return (arranged); //nao esquecer de dar free!!!
+} */

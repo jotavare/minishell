@@ -41,8 +41,11 @@ SRC =	sources/minishell.c \
     	sources/commands/pwd.c \
     	sources/commands/unset.c \
     	sources/executer/executer.c \
+		sources/executer/pipes.c \
+		sources/executer/redirects.c \
     	sources/parser/expander.c \
     	sources/parser/lexer.c \
+		sources/parser/parser.c \
 		sources/sanitize/signals.c \
     	sources/sanitize/free.c \
     	sources/tokens/count_tokens.c \
