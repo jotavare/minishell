@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:51:22 by alexfern          #+#    #+#             */
-/*   Updated: 2023/06/08 01:27:43 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/19 14:03:13 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ int	ft_strcmp(const char *str1, const char *str2)
 
 	i = 0;
 	if (!str1[i] || !str2[i])
-		return (0);
+		return (2);
 	while (str1[i] || str2[i])
 	{
 		if (str1[i] == str2[i])

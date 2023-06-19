@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 18:15:45 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/17 16:28:02 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/19 14:47:34 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ int	count_tokens(char *s, t_attr *att)
 			len--;
 		else
 			len--;
+		printf("nb tokens = %d\n", att->nb_tokens);
 	}
 	return (att->nb_tokens);
 }

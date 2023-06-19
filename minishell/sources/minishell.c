@@ -115,8 +115,18 @@ int	main(int ac, char **av, char **envp)
 				if (is_symbol(att.commands_arr[att.i]))
 					att.i++;
 				check_next_step(&att, &att.i);
+				//if (is_symbol(att.commands_arr[att.i]))
+				//	att.i++;
+				/* printf("----------------------\n");
+				printf("write to pipe: %d\n", att.write_to_pipe);
+				printf("read from pipe: %d\n", att.read_from_pipe);
+				printf("redir: %d\n", att.redir);
+				printf("read from file: %d\n", att.read_from_file);
+				printf("----------------------\n"); */
 				att.tok_arr = get_tokens(att.commands_arr[att.i], &att);
 				command(&att, att.i);
+				if (att.read_from_pipe && !att.write_to_pipe)
+					att.pipeindex++;
 				free_tokens(att.tok_arr, &att);
 				free(att.tok_arr);
 				att.i++;

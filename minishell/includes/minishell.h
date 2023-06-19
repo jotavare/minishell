@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:28:13 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/18 23:53:07 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/19 16:14:01 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,6 @@ int		execute_read_p(t_attr *att, int index);
 int		execute_pipeline(t_attr *att, int index);
 void	redir_append(t_attr *att, int index);
 void	read_from_file(t_attr *att, int index);
-void    write_to_pipe(t_attr *att);
-void    read_from_pipe(t_attr *att);
 
 
 // init
@@ -143,7 +141,7 @@ char	*process_default(char *s, t_attr *att);
 // debugging
 void	print_t_attr(t_attr *att);
 void	ft_print_array(char **array);
-void    see_flags_and_pipes(t_attr att);
+void  see_flags_and_pipes(t_attr att);
 
 // check readline validation
 int verify_readline(char *str);
