@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 18:15:45 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/20 03:03:51 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/20 06:09:34 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ char	*get_token(char *s, t_attr *att)
 {
 	int	flag;
 	int	quotes;
-	
+
 	flag = 0;
 	quotes = 0;
 	att->tok_arr_i = 0;
@@ -37,13 +37,13 @@ char	*get_token(char *s, t_attr *att)
 			flag = 1;
 			quotes++;
 			if (att->o_quotes == quotes)
-				{
-					att->tok_arr_i++;
-					break ;
-				}
+			{
+				att->tok_arr_i++;
+				break ;
+			}
 		}
-		else if (s[att->tok_arr_i] == ' ' && att->o_quotes % 2 == 0 && att->o_dquotes
-				% 2 == 0)
+		else if (s[att->tok_arr_i] == ' ' && att->o_quotes % 2 == 0
+				&& att->o_dquotes % 2 == 0)
 			break ;
 		else if (s[att->tok_arr_i] == '|' && s[att->tok_arr_i + 1] != '|'
 				&& att->o_quotes % 2 == 0 && att->o_dquotes % 2 == 0)
@@ -73,7 +73,9 @@ char	*get_token(char *s, t_attr *att)
 
 char	*process_token_two(char *s, t_attr *att)
 {
-	char	*token;	token = malloc(sizeof(char) * 2);
+	char	*token;
+
+	token = malloc(sizeof(char) * 2);
 	if (!token)
 		return (NULL);
 	token[0] = s[att->tok_arr_i];
@@ -83,7 +85,9 @@ char	*process_token_two(char *s, t_attr *att)
 
 char	*process_token_three(char *s, t_attr *att)
 {
-	char	*token;	token = malloc(sizeof(char) * 3);
+	char	*token;
+
+	token = malloc(sizeof(char) * 3);
 	if (!token)
 		return (NULL);
 	token[0] = s[att->tok_arr_i];
@@ -94,13 +98,15 @@ char	*process_token_three(char *s, t_attr *att)
 
 char	*process_multi_quote(char *s, t_attr *att)
 {
-	char	*token = NULL;
+	char	*token;
 	char	*temp;
-	
+
+	token = NULL;
 	temp = malloc(sizeof(char) * 2);
 	temp[1] = 0;
 	strncpy(temp, s, att->tok_arr_i);
-	if (((strncmp(temp, "\"\"", 2) == 0 || strncmp(temp, "''", 2) == 0)) && s[att->tok_arr_i + 1] == 32)
+	if (((strncmp(temp, "\"\"", 2) == 0 || strncmp(temp, "''", 2) == 0))
+		&& s[att->tok_arr_i + 1] == 32)
 	{
 		if (strncmp(temp, "\"\"", 2) == 0)
 			att->o_dquotes -= 2;
@@ -120,8 +126,8 @@ char	*process_multi_quote(char *s, t_attr *att)
 char	*process_default(char *s, t_attr *att)
 {
 	char	*token;
-	int		i;	
-	
+	int		i;
+
 	i = 0;
 	token = malloc(sizeof(char) * (att->tok_arr_i + 1));
 	if (!token)
@@ -137,11 +143,11 @@ char	*process_default(char *s, t_attr *att)
 
 char	*double_quotes_treat(char *s, t_attr *att)
 {
-	char	*token;
-	int		i;
-	int		j;
-	int		pos;
-	int		flag;
+	char *token;
+	int i;
+	int j;
+	int pos;
+	int flag;
 
 	j = 0;
 	i = 0;
@@ -184,13 +190,13 @@ char	*double_quotes_treat(char *s, t_attr *att)
 				}
 			}
 			else if (!s[i + 1])
-				{
-					i++;
-					break ;
-				}
+			{
+				i++;
+				break ;
+			}
 		}
 		if (s[i] == ' ' && j % 2 == 0 && j > 1)
-				break ;
+			break ;
 		i++;
 	}
 	pos = i - j;
@@ -202,7 +208,6 @@ char	*double_quotes_treat(char *s, t_attr *att)
 	{
 		if (flag == 1)
 		{
-
 			while (s[i] != 39 && s[i] != '\0')
 			{
 				if (s[i] == 34)

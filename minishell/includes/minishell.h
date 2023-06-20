@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:28:13 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/20 05:40:10 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/20 06:11:57 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,10 @@ char	*get_str_paths(t_attr *att, char *path_str);
 void	redir_append(t_attr *att, int index);
 
 // check
-int check_the_arr(char **search, char *str);
-int check_the_arr_without_equal(char **search, char *str);
-int check_the_arr_with_equal(char **search, char *to_find, int length);
-int	check_equal(char *str);
+int		check_the_arr(char **search, char *str);
+int		check_the_arr_without_equal(char **search, char *str);
+int		check_the_arr_with_equal(char **search, char *to_find, int length);
+int		check_equal(char *str);
 
 // init
 void	init_params(int ac, char **av, t_attr *attr, char **envp);
@@ -93,8 +93,8 @@ void	start_exp(char **envp, t_attr *att);
 void	refresh_addenv(t_attr *att, char *add);
 void	refresh_add_exp(t_attr *att, char *add);
 char	*search_var_in_g_env(t_attr *att, char *s);
-void    export_check_equal(t_attr *att, int j);
-void    export_not_equal(t_attr *att, int j);
+void	export_check_equal(t_attr *att, int j);
+void	export_not_equal(t_attr *att, int j);
 
 // utilities
 char	*trim_back(const char *input);

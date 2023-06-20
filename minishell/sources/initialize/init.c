@@ -33,7 +33,7 @@ void	init_attributes(t_attr *att)
 	att->len_d_exp_env = 0;
 	att->commands_arr = NULL;
 	att->tok_arr_i = 0;
-	att->pars_data.nb_tokenst = 0; //get_tokens2
+	att->pars_data.nb_tokenst = 0;  //get_tokens2
 	att->pars_data.pars_arr = NULL; //get_tokens2
 	att->write_to_pipe = 0;
 	att->read_from_pipe = 0;
@@ -45,7 +45,7 @@ void	init_attributes(t_attr *att)
 	att->heredoc = 0;
 	att->read_from_file = 0;
 	att->pipeindex = 0;
-	att->out_fd = 0;		
+	att->out_fd = 0;
 	att->o_dquotes = 0;
 	att->o_quotes = 0;
 	att->aftert = NULL;

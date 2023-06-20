@@ -12,53 +12,56 @@
 
 #include "../../includes/minishell.h"
 
-int check_the_arr(char **search, char *str)
+int	check_the_arr(char **search, char *str)
 {
-    if (check_equal(str))
-    {
-        int j = 0;
-        while (str[j] != '=')
-        {
-            j++;
-        }
-        return check_the_arr_with_equal(search, str, j);
-    }
-    else
-        return check_the_arr_without_equal(search, str);
+	int	j;
+
+	if (check_equal(str))
+	{
+		j = 0;
+		while (str[j] != '=')
+		{
+			j++;
+		}
+		return (check_the_arr_with_equal(search, str, j));
+	}
+	else
+		return (check_the_arr_without_equal(search, str));
 }
-int check_the_arr_without_equal(char **search, char *str)
+int	check_the_arr_without_equal(char **search, char *str)
 {
-    int length = 0;
-    while (str[length])
-        length++;
+	int		length;
+	char	*to_find;
+	int		result;
 
-    char *to_find = add_equal(str);
-
-    int result = check_the_arr_with_equal(search, to_find, length);
-    free(to_find);
-
-    return result;
+	length = 0;
+	while (str[length])
+		length++;
+	to_find = add_equal(str);
+	result = check_the_arr_with_equal(search, to_find, length);
+	free(to_find);
+	return (result);
 }
 
-int check_the_arr_with_equal(char **search, char *to_find, int length)
+int	check_the_arr_with_equal(char **search, char *to_find, int length)
 {
-    int i = 0;
+	int	i;
 
-    while (search[i])
-    {
-        if (!ft_strncmp(search[i], to_find, length))
-        {
-            return i;
-        }
-        i++;
-    }
-
-    return -1;
+	i = 0;
+	while (search[i])
+	{
+		if (!ft_strncmp(search[i], to_find, length))
+		{
+			return (i);
+		}
+		i++;
+	}
+	return (-1);
 }
 
 int	check_equal(char *str)
 {
-	int	i;
+	int i;
 
 	i = 0;
 	while (str[i])

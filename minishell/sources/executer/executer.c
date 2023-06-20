@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 17:14:25 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/20 04:03:37 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/20 06:11:34 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,15 +121,15 @@ void	execute_core(t_attr *att, t_exec *args)
 {
 	if (args->command[0] == '/')
 		exec_absolute_path(args, att);
-	else if (args->command[0]== '.')
+	else if (args->command[0] == '.')
 		exec_binaries(args, att);
 	else
 		exec_commands(args, att);
 	printf("%s: command not found \n", att->tok_arr[0]);
 	exit(0);
-} 
+}
 
-int		execute(t_attr *att, int index)	
+int	execute(t_attr *att, int index)
 {
 	t_exec	args;
 
@@ -155,7 +155,7 @@ int		execute(t_attr *att, int index)
 		if (att->redir)
 			redir_append(att, index);
 		if (!ft_strcmp(att->tok_arr[0], "pwd"))
-		 	pwd();
+			pwd();
 		else if (!ft_strcmp(att->tok_arr[0], "echo"))
 			echo(*att);
 		else if (!ft_strcmp(att->tok_arr[0], "env"))
@@ -169,7 +169,7 @@ int		execute(t_attr *att, int index)
 	else
 		waitpid(args.pid, NULL, 0);
 	if (att->write_to_pipe && att->read_from_pipe)
-			att->pipeindex++;
+		att->pipeindex++;
 	//see_flags_and_pipes(*att);
 	close_pipeline(att);
 	free_arr(args.all_paths);

@@ -82,8 +82,9 @@ void	refresh_rmexp_env(t_attr *att, int rm_index)
 
 void	refresh_rmenv(t_attr *att, int rm_index)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
+
 	i = 0;
 	j = 0;
 	double_myenv(att);
@@ -108,9 +109,9 @@ void	refresh_rmenv(t_attr *att, int rm_index)
 
 void	add_quotes(char *s)
 {
-	int	i;
-	int	j;
-	int	flag;
+	int i;
+	int j;
+	int flag;
 
 	i = 0;
 	j = 0;

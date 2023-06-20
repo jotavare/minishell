@@ -3,9 +3,8 @@
 void	redir_append(t_attr *att, int index)
 {
 	char	*file_name;
-	
-	file_name = ft_strtrim(att->commands_arr[index + 2], " ");	
 
+	file_name = ft_strtrim(att->commands_arr[index + 2], " ");
 	if (strcmp(att->commands_arr[index + 1], ">") == 0)
 	{
 		att->redir_fd = open(file_name, O_WRONLY | O_CREAT | O_TRUNC, 0644);
@@ -14,10 +13,9 @@ void	redir_append(t_attr *att, int index)
 		close(att->redir_fd);
 		att->redir = 0;
 		att->number_of_redir--;
-
 	}
 	else if (strcmp(att->commands_arr[index + 1], ">>") == 0)
-	{   
+	{
 		att->redir_fd = open(file_name, O_WRONLY | O_CREAT | O_APPEND, 0644);
 		dup2(att->redir_fd, STDOUT_FILENO);
 		close(att->redir_fd);
@@ -25,45 +23,45 @@ void	redir_append(t_attr *att, int index)
 	}
 }
 
-int		read_from_file(t_attr *att, int index)
+int	read_from_file(t_attr *att, int index)
 {
-        char	*file_name;
-		int		filefd;
+	char	*file_name;
+	int		filefd;
 
-		file_name = ft_strtrim(att->commands_arr[index + 2], " ");
-		if ((filefd = open(file_name, O_RDONLY)) < 0)
-		{
-			perror("Minishell");
-			return (-1);
-		}
-		free(file_name);
-        dup2(filefd, 0);
-		close(filefd);
-		att->read_from_file = 0;
-		return (0);
+	file_name = ft_strtrim(att->commands_arr[index + 2], " ");
+	if ((filefd = open(file_name, O_RDONLY)) < 0)
+	{
+		perror("Minishell");
+		return (-1);
+	}
+	free(file_name);
+	dup2(filefd, 0);
+	close(filefd);
+	att->read_from_file = 0;
+	return (0);
 }
 
-void     heredoc(char *delimiter, t_attr *att)
+void	heredoc(char *delimiter, t_attr *att)
 {
-    char    *line;
-    int     fd;
-    fd = open(".heredoc", O_CREAT | O_WRONLY | O_APPEND, 0644);
+	char *line;
+	int fd;
+	fd = open(".heredoc", O_CREAT | O_WRONLY | O_APPEND, 0644);
 
-    while (1)
-    {
-        write(1, ">", 1);
-        line = get_next_line(0, 1);
-        write(fd, line, strlen(line));
-        if (strncmp(line, delimiter, strlen(delimiter)) == 0)
+	while (1)
+	{
+		write(1, ">", 1);
+		line = get_next_line(0, 1);
+		write(fd, line, strlen(line));
+		if (strncmp(line, delimiter, strlen(delimiter)) == 0)
 		{
 			free(line);
-			break;
+			break ;
 		}
 		free(line);
-    }
-    att->redir_fd = open(".heredoc", O_RDONLY);
-    dup2(att->redir_fd, 0);
+	}
+	att->redir_fd = open(".heredoc", O_RDONLY);
+	dup2(att->redir_fd, 0);
 
-    //unlink(".heredoc");
+	//unlink(".heredoc");
 	exit(0);
 }

@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:28:13 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/20 05:42:28 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/20 06:12:00 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,11 @@
 # define PATH_MAX 4096
 
 // pipes
-# define READ_END 0 
+# define READ_END 0
 # define WRITE_END 1
 
 // errors
-# define ERROR_CD	"minishell: cd: %s: No such file or directory\n"
-# define ERROR_EXPORT	"minishell: export: '%s': not a valid identifier\n"
+# define ERROR_CD "minishell: cd: %s: No such file or directory\n"
+# define ERROR_EXPORT "minishell: export: '%s': not a valid identifier\n"
 
 #endif

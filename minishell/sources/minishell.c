@@ -16,8 +16,8 @@ int	g_last_return_value;
 
 int	main(int ac, char **av, char **envp)
 {
-	t_attr att;
-	char *str;
+	t_attr	att;
+	char	*str;
 
 	rl_clear_history();
 	set_signals();
@@ -29,7 +29,7 @@ int	main(int ac, char **av, char **envp)
 		if (str == NULL)
 		{
 			rl_clear_history();
-			break;
+			break ;
 		}
 		reinit_attributes(&att);
 		if (str)
@@ -49,7 +49,7 @@ int	main(int ac, char **av, char **envp)
 				att.i++;
 			}
 			while (waitpid(-1, NULL, 0) > 0)
-				continue;
+				continue ;
 			ft_delete_matrix(att.pipesfd);
 			free_arr(att.commands_arr);
 			free(str);

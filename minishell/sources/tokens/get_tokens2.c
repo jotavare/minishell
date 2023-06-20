@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 18:15:45 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/20 03:45:03 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/20 06:09:29 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	count_tokens2(char *s, t_attr *att)
 	len = ft_strlen(s) - 1;
 	while (len >= 0)
 	{
-		if (s[len] != ' ' &&  s[len] != '|'  && s[len] != '<' && s[len] != '>')
+		if (s[len] != ' ' && s[len] != '|' && s[len] != '<' && s[len] != '>')
 		{
 			att->pars_data.nb_tokenst++;
 			while (len > 0 && (s[len] != '|' && s[len] != '<' && s[len] != '>'))
@@ -75,7 +75,7 @@ char	*get_token2(char *s, t_attr *att)
 	i = 0;
 	j = 0;
 	token = 0;
-	if (s[j] != '|' && s[j] != '>' && s[j] != '<' )
+	if (s[j] != '|' && s[j] != '>' && s[j] != '<')
 	{
 		while (s[j] != '|' && s[j] != '>' && s[j] != '<' && s[j] != '\0')
 			j++;
@@ -89,8 +89,8 @@ char	*get_token2(char *s, t_attr *att)
 			i++;
 		}
 	}
-	else if (s[j] == '|' && s[j + 1] != '|') 
-		{
+	else if (s[j] == '|' && s[j + 1] != '|')
+	{
 		token = malloc(sizeof(char) * 2);
 		if (!token)
 			return (NULL);
@@ -98,7 +98,7 @@ char	*get_token2(char *s, t_attr *att)
 		token[1] = 0;
 		att->number_of_pipes++;
 	}
-	else if (s[j] == '|' && s[j + 1] == '|' )
+	else if (s[j] == '|' && s[j + 1] == '|')
 	{
 		token = malloc(sizeof(char) * 3);
 		if (!token)
@@ -116,7 +116,7 @@ char	*get_token2(char *s, t_attr *att)
 		token[1] = 0;
 		att->number_of_redir++;
 	}
-	else if (s[j] == '>' && s[j + 1] == '>' )
+	else if (s[j] == '>' && s[j + 1] == '>')
 	{
 		token = malloc(sizeof(char) * 3);
 		if (!token)
@@ -151,7 +151,8 @@ void	create_array2(char *s, t_attr *att)
 	int	count;
 
 	att->index = 0;
-	att->pars_data.pars_arr = malloc((att->pars_data.nb_tokenst + 1) * sizeof(char *));
+	att->pars_data.pars_arr = malloc((att->pars_data.nb_tokenst + 1)
+			* sizeof(char *));
 	att->pars_data.pars_arr[att->pars_data.nb_tokenst] = NULL;
 	if (!att->pars_data.pars_arr)
 		return ;
@@ -174,7 +175,6 @@ char	**get_tokens2(char *str, t_attr *att)
 	att->pars_data.pars_arr = NULL;
 	count_tokens2(str, att);
 	create_array2(str, att);
-	
 	return (att->pars_data.pars_arr);
 }
 
@@ -308,7 +308,7 @@ int	main(void)
 	}
 	printf("end of array\n\n");
 }
-*/ 
+*/
 /* PSEUDO CODE
 	1 get_tokens build an array untill the first pipe
 	2 execute it and redirect the output to the pipe

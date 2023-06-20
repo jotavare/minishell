@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 18:15:45 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/20 03:58:58 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/20 06:09:48 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,9 +94,9 @@ void	exit_free(t_attr *att)
 	free(att->tok_arr);
 }
 
-void ft_delete_matrix (void *matrix)
+void	ft_delete_matrix(void *matrix)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	while (((char **)matrix)[++i])
