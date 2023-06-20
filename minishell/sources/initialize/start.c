@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 15:38:30 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/20 02:46:09 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/20 04:03:31 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	start_args(t_exec *args, t_attr *att)
 	args->path_srt += 5;
 	args->nb_of_paths = count_paths(args->path_srt);
 	args->all_paths = ft_split(args->path_srt, ':');
-	args->path_command = NULL;
+    args->path_command = NULL;
 }
 
 void	start_env(char **envp, t_attr *att)

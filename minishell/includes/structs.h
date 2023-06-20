@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:28:13 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/18 23:22:26 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/20 04:24:24 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 
 # include "macros.h"
 
-typedef	struct s_pars //get_tokens2
+typedef struct s_pars
 {
-	char **pars_arr;
-	int nb_tokenst;
+	char	**pars_arr;
+	int		nb_tokenst;
 }	t_pars;
 
 typedef struct s_attr
@@ -45,7 +45,6 @@ typedef struct s_attr
 	char	**d_exp_env;
 	int		len_d_exp_env;
 	char	**commands_arr;
-	t_pars	pars_data; //get_tokens2
 	int		write_to_pipe;
 	int		read_from_pipe;
 	int		read_from_file;
@@ -57,7 +56,7 @@ typedef struct s_attr
 	int		**pipesfd;
 	int		redir_fd;
 	int		out_fd;
-	// int		pipefd[2];
+	t_pars	pars_data;
 }			t_attr;
 
 typedef struct s_exec

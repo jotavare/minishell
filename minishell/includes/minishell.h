@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:28:13 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/19 16:14:01 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/20 04:33:44 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,14 @@ int		execute(t_attr *att, int index);
 int		exec_commands(t_exec *args, t_attr *att);
 int		exec_binaries(t_exec *args, t_attr *att);
 int		exec_absolute_path(t_exec *args, t_attr *att);
-char	**build_path(char **all_paths, int nb, char *command);
-char	*get_str_paths(t_attr *att, char *path_str);
+int		read_from_file(t_attr *att, int index);
 int		count_paths(char *s);
 int		execute_write_p(t_attr *att, int index);
 int		execute_read_p(t_attr *att, int index);
 int		execute_pipeline(t_attr *att, int index);
+char	**build_path(char **all_paths, int nb, char *command);
+char	*get_str_paths(t_attr *att, char *path_str);
 void	redir_append(t_attr *att, int index);
-int 	read_from_file(t_attr *att, int index);
-
 
 // init
 void	init_params(int ac, char **av, t_attr *attr, char **envp);
@@ -50,9 +49,13 @@ void	handle_interrupt(int signal);
 void	set_signals(void);
 
 // commands
-int     pwd(void);
-void	cd(t_attr *att);
+int		pwd(void);
 void	env(t_attr *att);
+
+// cd
+void	cd(t_attr *att);
+void	update_oldpwd(t_attr *att, const char *current_path);
+void	update_pwd(t_attr *att);
 
 // exit
 void	ft_exit(t_attr *attr);
@@ -112,15 +115,15 @@ void	exit_free(t_attr *attr);
 // pipes
 int		pipework(t_attr *att);
 void	init_pipes(t_attr *att);
-void    ft_delete_matrix (void *matrix);
-void    write_to_pipe(t_attr *att);
-void    read_from_pipe(t_attr *att);
+void	ft_delete_matrix(void *matrix);
+void	write_to_pipe(t_attr *att);
+void	read_from_pipe(t_attr *att);
 void	close_pipeline(t_attr *att);
-void     heredoc(char *delimiter, t_attr *att);
+void	heredoc(char *delimiter, t_attr *att);
 
 //parser
-int     check_next_step(t_attr *att, int *i);
-int     is_symbol(char *s);
+int		check_next_step(t_attr *att, int *i);
+int		is_symbol(char *s);
 
 // tokens
 char	**get_tokens(char *str, t_attr *att);
@@ -146,9 +149,9 @@ char	*process_default(char *s, t_attr *att);
 // debugging
 void	print_t_attr(t_attr *att);
 void	ft_print_array(char **array);
-void    see_flags_and_pipes(t_attr att);
+void	see_flags_and_pipes(t_attr att);
 
 // check readline validation
-int     verify_readline(char *str);
+int		verify_readline(char *str);
 
 #endif

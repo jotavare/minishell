@@ -6,7 +6,7 @@
 #    By: jotavare <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/12 15:15:58 by alexandre         #+#    #+#              #
-#    Updated: 2023/06/20 03:41:45 by jotavare         ###   ########.fr        #
+#    Updated: 2023/06/20 03:50:50 by jotavare         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -74,7 +74,6 @@ sani: re $(OBJ)
 	$(MAKE) -C ./libft
 	$(CSANI) $(CFLAGS) $(OBJ) $(LIBFT) $(RLFLAG) -o $(NAME)
 	echo "Compiled with fsanitizer"
-	./$(NAME)
 
 $(OBJSDIR)/%.o: %.c
 	mkdir -p $(@D)

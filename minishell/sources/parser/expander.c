@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 18:15:45 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/20 02:15:05 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/20 04:35:51 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,8 +116,9 @@ char **expand_tokens(char **tokens, t_attr *att)
 	
     i = 0;
 
-	if (expanded_token == NULL)
-		return (NULL);
+	// se nao tiver commentado nao vai expandir
+	/* if (expanded_token == NULL)
+		return (NULL); */
     while (tokens[i])
     {
         j = 0;

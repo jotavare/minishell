@@ -6,15 +6,11 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:57:28 by alexandre         #+#    #+#             */
-/*   Updated: 2023/06/18 20:37:20 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/20 04:37:09 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
-
-/*
-    change directory to path given an argument
-*/
 
 extern int	g_last_return_value;
 
@@ -49,72 +45,51 @@ void	cd_rm_add_path(t_attr *att, char *to_remove, char *s)
 	refresh_add_exp(att, s);
 }
 
-void	cd(t_attr *att)
+void cd(t_attr *att)
 {
-	char	*current_path;
-	char	*destiny_path;
-	char	*str_pwd;
-
 	if (att->nb_tokens > 2)
 	{
 		ft_putstr_fd("minishell: cd: too many arguments\n", 1);
 		g_last_return_value = 1;
-		return ;
+		return;
 	}
-	destiny_path = att->tok_arr[1];
+
+	char *destiny_path = att->tok_arr[1];
 	if (!destiny_path || !ft_strcmp(destiny_path, "~"))
 		destiny_path = search_var_in_g_env(att, "HOME");
 	else if (!ft_strcmp(att->tok_arr[1], "-"))
 		destiny_path = att->last_path;
-	current_path = getcwd(NULL, 0);
+
+	char *current_path = getcwd(NULL, 0);
 	if (!current_path)
-		return ;
+		return;
+
 	if (chdir(destiny_path))
 	{
-		printf("minishell: cd: %s: No such file or directory\n",
-				att->tok_arr[1]);
+		printf("minishell: cd: %s: No such file or directory\n", att->tok_arr[1]);
 		g_last_return_value = 1;
 	}
-	str_pwd = ft_strjoin("OLDPWD=", current_path);
+
+	update_oldpwd(att, current_path);
+	update_pwd(att);
+
+	free(current_path);
+}
+
+void update_oldpwd(t_attr *att, const char *current_path)
+{
+	char *str_pwd = ft_strjoin("OLDPWD=", current_path);
 	cd_rm_add_path(att, "OLDPWD", str_pwd);
 	free(str_pwd);
+
 	att->last_path = search_var_in_g_env(att, "OLDPWD");
-	free(current_path);
-	current_path = getcwd(NULL, 0);
-	str_pwd = ft_strjoin("PWD=", current_path);
+}
+
+void update_pwd(t_attr *att)
+{
+	char *current_path = getcwd(NULL, 0);
+	char *str_pwd = ft_strjoin("PWD=", current_path);
 	cd_rm_add_path(att, "PWD", str_pwd);
 	free(str_pwd);
 	free(current_path);
 }
-
-/* void	cd(t_attr *att)
-{
-	char	*current_path;
-	char	*destiny_path;
-
-	if (att->nb_tokens > 2)
-	{
-		ft_putstr_fd("minishell: cd: too many arguments\n", 1);
-		att->last_return_value = 1;
-		return ;
-	}
-	destiny_path = att->tok_arr[1];
-	if (!destiny_path || !ft_strcmp(destiny_path, "~"))
-		destiny_path = getenv("HOME");
-	else if (!ft_strcmp(att->tok_arr[1], "-"))
-		destiny_path = att->last_path;
-	else if (ft_strnstr(destiny_path, "$", ft_strlen(destiny_path)))
-		destiny_path = expand_variable(destiny_path, att->g_env);
-	current_path = getcwd(NULL, 0);
-	if (!current_path)
-		return ;
-	att->last_path = ft_strdup(current_path);
-	if (chdir(destiny_path))
-	{
-		printf("minishell: cd: %s: No such file or directory\n",
-				att->tok_arr[1]);
-		att->last_return_value = 1;
-	}
-	free(current_path);
-}
- */

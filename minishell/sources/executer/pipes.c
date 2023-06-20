@@ -41,13 +41,3 @@ void	init_pipes(t_attr *att)
 		pipe(att->pipesfd[i]);
 	}
 }
-
-void ft_delete_matrix (void *matrix)
-{
-	int i;
-
-	i = -1;
-	while (((char **)matrix)[++i])
-		free(((char **)matrix)[i]);
-	free(matrix);
-}
