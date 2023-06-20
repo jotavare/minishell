@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 18:15:45 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/19 20:49:13 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/20 02:15:05 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,15 +106,18 @@ char	*custom_getenv(const char *variable_name, t_attr *att)
 
 char **expand_tokens(char **tokens, t_attr *att)
 {
-	char *variable_name;
-	char *value;
-	size_t expanded_length;
-	size_t token_length;
-	char *expanded_token;
+	char *variable_name = NULL;
+	char *value = NULL;
+	size_t expanded_length = 0;
+	size_t token_length = 0;
+	char *expanded_token = NULL;
 	int		j;
 	int		i;
 	
     i = 0;
+
+	if (expanded_token == NULL)
+		return (NULL);
     while (tokens[i])
     {
         j = 0;
@@ -129,7 +132,7 @@ char **expand_tokens(char **tokens, t_attr *att)
                     expanded_length = strlen(value);
                     token_length = strlen(tokens[i]);
                     expanded_token = malloc((token_length + expanded_length + 1) * sizeof(char));
-                    strncpy(expanded_token, tokens[i], j); // Copy the portion before the variable
+					strncpy(expanded_token, tokens[i], j); // Copy the portion before the variable
                     expanded_token[j] = '\0'; // Null-terminate the copied portion
                     strcat(expanded_token, value); // Concatenate the expanded value
                     strcat(expanded_token, tokens[i] + j + strlen(variable_name) + 1); // Concatenate the remaining part

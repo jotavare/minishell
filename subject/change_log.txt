@@ -22,4 +22,6 @@ jun 20 (jotavare)
 	1. ls > f1 | wc
 	2. ls > f1 > fd
 	3. wc << fim
-	4. heredoc a funcionar mas temos de arranjar um maneira de executar os commandos para tras
+	4. heredoc a funcionar mas temos de arranjar um maneira de executar
+	os commandos para tras
+	5. memory leaks com sanitize, very hard to fix T_T

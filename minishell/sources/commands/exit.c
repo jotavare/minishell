@@ -58,6 +58,5 @@ void	ft_exit(t_attr *attr)
 		g_last_return_value = 1;
 	}
 	exit_free(attr);
-	printf("Exiting minishell with code %d\n", g_last_return_value);
 	exit(g_last_return_value);
 }

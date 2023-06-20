@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexfern <alexfern@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:57:28 by alexandre         #+#    #+#             */
-/*   Updated: 2023/05/31 21:21:31 by alexfern         ###   ########.fr       */
+/*   Updated: 2023/06/20 01:57:06 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,5 @@ void	env(t_attr *att)
 		i++;
 	}
 	//printf("SIZE: %d\n", att->len_g_env);
-	kill(getpid(), SIGTERM);
+	//kill(getpid(), SIGTERM);
 }
