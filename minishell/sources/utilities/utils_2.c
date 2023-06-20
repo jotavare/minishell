@@ -1,35 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   prompt.c                                           :+:      :+:    :+:   */
+/*   utils_2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/25 15:38:30 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/20 06:23:40 by jotavare         ###   ########.fr       */
+/*   Created: 2023/05/16 16:51:22 by alexfern          #+#    #+#             */
+/*   Updated: 2023/06/20 06:22:16 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
 /*
-    get the current user and pwd variables at g_env
-    and print a custom prompt.
+	if the string is a valid variable name
+	(no spaces, no numbers, no special characters).
 */
 
-char	*prompt(t_attr *att)
+int	check_alpha(char *str)
 {
-	char	*str;
-	char	*user;
-	char	*pwd;
+	int	i;
 
-	user = custom_getenv("USER", att);
-	pwd = custom_getenv("PWD", att);
-	if (pwd != NULL && user != NULL)
+	i = 0;
+	if (str[i] == '=')
+		return (0);
+	while (str[i] && str[i] != '=')
 	{
-		printf("┏━" GREEN_BOLD " %s@:" GREEN_BOLD, user);
-		printf(CYAN_BOLD "%s\n" CYAN_BOLD, pwd);
+		if (!((str[i] >= 'A' && str[i] <= 'Z') || (str[i] >= 'a'
+					&& str[i] <= 'z') //27maio '('')'
+				|| (str[i] == '_')))
+			return (0);
+		i++;
 	}
-	str = readline(RESET "┗━" RED_BOLD " minihell🦆" RED_BOLD " " RESET "");
-	return (str);
+	return (1);
 }

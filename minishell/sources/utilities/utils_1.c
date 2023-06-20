@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utilities.c                                        :+:      :+:    :+:   */
+/*   utils_1.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:51:22 by alexfern          #+#    #+#             */
-/*   Updated: 2023/06/19 14:03:13 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/20 06:22:05 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,64 +141,3 @@ int	flag_counter(char *str, char c)
 	}
 	return (result);
 }
-
-/*
-	if the string is a valid variable name
-	(no spaces, no numbers, no special characters).
-*/
-
-int	check_alpha(char *str)
-{
-	int	i;
-
-	i = 0;
-	if (str[i] == '=')
-		return (0);
-	while (str[i] && str[i] != '=')
-	{
-		if (!((str[i] >= 'A' && str[i] <= 'Z') || (str[i] >= 'a'
-					&& str[i] <= 'z') //27maio '('')'
-				|| (str[i] == '_')))
-			return (0);
-		i++;
-	}
-	return (1);
-}
-
-/* char	*dequoter(char *str)
-{
-	int		i;
-	int		flagdouble;
-	int		flagsimple;
-	char	*arranged;
-
-	arranged = malloc(sizeof(char) * ft_strlen(str) + 1);
-		// malloc esta mal feito - pensar noutra forma de determinar o tamanho,
-		dependendo se as quotes sao double ou nao
-	flagdouble = flag_counter(str, 34);                  
-		//nao ha double quotes (em ascii 34),
-		se == IMPAR ha quotes abertas; se == PAR, quotes fechadas,
-		se flagsimple > 0 ENTAO  == 0;.
-	flagsimple = flag_counter(str, 39);                  
-		// nao ha simple quotes (em ascii 39)
-	if (flagdouble % 2 == 1 || flagsimple % 2 == 1)
-		return (NULL);
-	i = 0;
-	while (str[i])
-	{
-		if (flagdouble > 0 && str[i] == 34)
-		{
-			flagsimple = 0;
-			i++;
-		}
-		if (flagsimple > 0 && str[i] == 39)
-		{
-			flagdouble = 0;
-			i++;
-		}
-		arranged[i] = str[i];
-		i++;
-	}
-	printf("%s\n", arranged);
-	return (arranged); //nao esquecer de dar free!!!
-} */

@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:55:06 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/20 02:50:07 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/20 06:16:16 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static int	ft_stringcounter(const char *s, char c)
 		if (s[i] == c)
 			i--;
 		if (i == 0)
-			break;
+			break ;
 	}
 	return (nstrings);
 }
