@@ -28,6 +28,7 @@ int	check_the_arr(char **search, char *str)
 	else
 		return (check_the_arr_without_equal(search, str));
 }
+
 int	check_the_arr_without_equal(char **search, char *str)
 {
 	int		length;
@@ -61,7 +62,7 @@ int	check_the_arr_with_equal(char **search, char *to_find, int length)
 
 int	check_equal(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i])

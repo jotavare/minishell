@@ -53,6 +53,7 @@ void	refresh_add_exp(t_attr *att, char *add)
 	att->exp_env[att->len_exp_env] = 0;
 	free_d_exp_env(att);
 }
+
 void	refresh_rmexp_env(t_attr *att, int rm_index)
 {
 	int	i;
@@ -109,9 +110,9 @@ void	refresh_rmenv(t_attr *att, int rm_index)
 
 void	add_quotes(char *s)
 {
-	int i;
-	int j;
-	int flag;
+	int	i;
+	int	j;
+	int	flag;
 
 	i = 0;
 	j = 0;

@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:28:13 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/20 06:11:57 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/20 06:27:14 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "macros.h"
 # include "structs.h"
+# include "error.h"
 
 // source
 char	*prompt(t_attr *att);

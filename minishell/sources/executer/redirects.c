@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   redirects.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/05/23 17:14:25 by lde-sous          #+#    #+#             */
+/*   Updated: 2023/06/20 06:38:14 by jotavare         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/minishell.h"
 
 void	redir_append(t_attr *att, int index)
@@ -29,7 +41,8 @@ int	read_from_file(t_attr *att, int index)
 	int		filefd;
 
 	file_name = ft_strtrim(att->commands_arr[index + 2], " ");
-	if ((filefd = open(file_name, O_RDONLY)) < 0)
+	filefd = open(file_name, O_RDONLY);
+	if ((filefd) < 0)
 	{
 		perror("Minishell");
 		return (-1);
@@ -43,10 +56,10 @@ int	read_from_file(t_attr *att, int index)
 
 void	heredoc(char *delimiter, t_attr *att)
 {
-	char *line;
-	int fd;
-	fd = open(".heredoc", O_CREAT | O_WRONLY | O_APPEND, 0644);
+	char	*line;
+	int		fd;
 
+	fd = open(".heredoc", O_CREAT | O_WRONLY | O_APPEND, 0644);
 	while (1)
 	{
 		write(1, ">", 1);
@@ -61,7 +74,5 @@ void	heredoc(char *delimiter, t_attr *att)
 	}
 	att->redir_fd = open(".heredoc", O_RDONLY);
 	dup2(att->redir_fd, 0);
-
-	//unlink(".heredoc");
 	exit(0);
 }

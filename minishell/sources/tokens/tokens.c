@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 18:15:45 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/20 06:09:25 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/20 07:03:27 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ char	**get_tokens(char *str, t_attr *att)
 	create_array(str, att);
 	return (att->beforet);
 }
+
 void	null_token_handle(t_attr *att)
 {
 	int	i;

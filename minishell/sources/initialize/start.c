@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 15:38:30 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/20 06:10:09 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/20 06:44:30 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ void	start_env(char **envp, t_attr *att)
 	while (envp[att->len_g_env])
 		att->len_g_env++;
 	att->g_env = malloc(sizeof(char *) * (att->len_g_env + 2));
-	//verificar malloc, tem leaks
 	if (!att->g_env)
 		return ;
 	while (i < att->len_g_env)
@@ -45,8 +44,9 @@ void	start_env(char **envp, t_attr *att)
 
 void	start_exp(char **envp, t_attr *att)
 {
-	int j = 0;
+	int	j;
 
+	j = 0;
 	att->len_exp_env = 0;
 	while (envp[att->len_exp_env])
 		att->len_exp_env++;

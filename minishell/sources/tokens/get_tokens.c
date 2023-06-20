@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 18:15:45 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/20 06:09:34 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/20 07:02:51 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,25 +43,25 @@ char	*get_token(char *s, t_attr *att)
 			}
 		}
 		else if (s[att->tok_arr_i] == ' ' && att->o_quotes % 2 == 0
-				&& att->o_dquotes % 2 == 0)
+			&& att->o_dquotes % 2 == 0)
 			break ;
 		else if (s[att->tok_arr_i] == '|' && s[att->tok_arr_i + 1] != '|'
-				&& att->o_quotes % 2 == 0 && att->o_dquotes % 2 == 0)
+			&& att->o_quotes % 2 == 0 && att->o_dquotes % 2 == 0)
 			return (process_token_two(s, att));
 		else if (s[att->tok_arr_i] == '|' && s[att->tok_arr_i + 1] == '|'
-				&& att->o_quotes % 2 == 0 && att->o_dquotes % 2 == 0)
+			&& att->o_quotes % 2 == 0 && att->o_dquotes % 2 == 0)
 			return (process_token_three(s, att));
 		else if (s[att->tok_arr_i] == '>' && s[att->tok_arr_i + 1] != '>'
-				&& att->o_quotes % 2 == 0 && att->o_dquotes % 2 == 0)
+			&& att->o_quotes % 2 == 0 && att->o_dquotes % 2 == 0)
 			return (process_token_two(s, att));
 		else if (s[att->tok_arr_i] == '>' && s[att->tok_arr_i + 1] == '>'
-				&& att->o_quotes % 2 == 0 && att->o_dquotes % 2 == 0)
+			&& att->o_quotes % 2 == 0 && att->o_dquotes % 2 == 0)
 			return (process_token_three(s, att));
 		else if (s[att->tok_arr_i] == '<' && s[att->tok_arr_i + 1] != '<'
-				&& att->o_quotes % 2 == 0 && att->o_dquotes % 2 == 0)
+			&& att->o_quotes % 2 == 0 && att->o_dquotes % 2 == 0)
 			return (process_token_two(s, att));
 		else if (s[att->tok_arr_i] == '<' && s[att->tok_arr_i + 1] == '<'
-				&& att->o_quotes % 2 == 0 && att->o_dquotes % 2 == 0)
+			&& att->o_quotes % 2 == 0 && att->o_dquotes % 2 == 0)
 			return (process_token_three(s, att));
 		att->tok_arr_i++;
 	}
@@ -143,15 +143,14 @@ char	*process_default(char *s, t_attr *att)
 
 char	*double_quotes_treat(char *s, t_attr *att)
 {
-	char *token;
-	int i;
-	int j;
-	int pos;
-	int flag;
+	char	*token;
+	int		i;
+	int		j;
+	int		pos;
+	int		flag;
 
 	j = 0;
 	i = 0;
-
 	token = NULL;
 	pos = att->tok_arr_i - 2;
 	flag = 0;
@@ -219,8 +218,6 @@ char	*double_quotes_treat(char *s, t_attr *att)
 			if (s[i] == 39)
 				att->o_quotes--;
 		}
-		//SE ASPAS ABERTAS: COPIA TUDO ->> <"   sd  ">
-		//SE ASPAS FECHADAS: QUANDO ECONTRA ESPACO DA BREAK ->> <"" >
 		else if (flag == 2)
 		{
 			while (s[i] != 34 && s[i] != '\0')

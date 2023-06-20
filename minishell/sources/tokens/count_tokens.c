@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 18:15:45 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/19 19:41:49 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/20 07:00:55 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,12 @@ int	count_tokens(char *s, t_attr *att)
 		else if (s[len] != ' ')
 			len = check_non_space_char(s, len, att);
 		else if (s[len] != ' ' && s[len] != '|' && s[len] != '<'
-				&& s[len] != '>')
+			&& s[len] != '>')
 			len = check_special_char(s, len, att);
 		else if (s[len] == ' ')
 			len--;
 		else
 			len--;
-		//printf("nb tokens = %d\n", att->nb_tokens);
 	}
 	return (att->nb_tokens);
 }
