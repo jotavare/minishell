@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:57:28 by alexandre         #+#    #+#             */
-/*   Updated: 2023/06/19 19:43:28 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/20 05:47:58 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int especialcase(char *str, int i)
 
 int especialcase_two(char *str, int i)
 {
-    char c;
+    char    c;
 
     c = str[i];
     if (str[i - 1] == c && str[i] == c && str[i + 1] == '|' && str[i + 2] == '|')
@@ -112,41 +112,6 @@ int error_onepipe(char *str)
     }
     return (0);
 }
-
-/* int error_twopipe(char *str)
-{
-    int i;
-    int flag;
-
-    flag = 0;
-    i = 0;
-    while (str[i])
-    {
-        if (str[i] == '"')
-            break ;
-        if ((str[i] == '>' || str[i] == '<') && str[i + 1] == '|')
-        {
-            if (especialcase(str, i) || especialcase_two(str, i))
-                return (1);
-            else
-                return (0);
-        }
-        if ((str[i] == '|' || str[i] == '>' || str[i] == '<') && flag == 0)
-            flag = 1;
-        else if (str[i] == '|' && flag == 1)
-            flag = 2;
-        else if ((str[i] != '|' && str[i] != ' ') && (flag == 1 || flag == 2))
-            flag = 0;
-        else if (str[i] == '|' && flag == 2)
-        {
-            printf("bash: syntax error near unexpected token '2p||'\n");
-            return (1);
-        }
-        i++;
-    }
-    return (0);             //we dont need this function, probably we have to create
-                            //a new one, just to respect the norminette
-} */
 
 int error_pipes(char *str)
 {

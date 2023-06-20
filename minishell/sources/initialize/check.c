@@ -1,0 +1,73 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   minishell.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: alexfern <alexfern@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/05/12 15:57:28 by alexandre         #+#    #+#             */
+/*   Updated: 2023/05/18 150:00 by alexfern         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../../includes/minishell.h"
+
+int check_the_arr(char **search, char *str)
+{
+    if (check_equal(str))
+    {
+        int j = 0;
+        while (str[j] != '=')
+        {
+            j++;
+        }
+        return check_the_arr_with_equal(search, str, j);
+    }
+    else
+        return check_the_arr_without_equal(search, str);
+}
+int check_the_arr_without_equal(char **search, char *str)
+{
+    int length = 0;
+    while (str[length])
+        length++;
+
+    char *to_find = add_equal(str);
+
+    int result = check_the_arr_with_equal(search, to_find, length);
+    free(to_find);
+
+    return result;
+}
+
+int check_the_arr_with_equal(char **search, char *to_find, int length)
+{
+    int i = 0;
+
+    while (search[i])
+    {
+        if (!ft_strncmp(search[i], to_find, length))
+        {
+            return i;
+        }
+        i++;
+    }
+
+    return -1;
+}
+
+int	check_equal(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (str[0] == '=')
+			return (0);
+		if (str[i] == '=')
+			return (1);
+		i++;
+	}
+	return (0);
+}

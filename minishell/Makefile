@@ -6,7 +6,7 @@
 #    By: jotavare <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/12 15:15:58 by alexandre         #+#    #+#              #
-#    Updated: 2023/06/20 03:50:50 by jotavare         ###   ########.fr        #
+#    Updated: 2023/06/20 05:34:58 by jotavare         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,7 +51,9 @@ SRC =	sources/minishell.c \
     	sources/tokens/count_tokens.c \
     	sources/tokens/get_tokens.c \
     	sources/tokens/tokens.c \
+		sources/initialize/check.c \
     	sources/initialize/init.c \
+		sources/initialize/refresh.c \
     	sources/initialize/start.c \
 		sources/utilities/debugg.c \
     	sources/utilities/prompt.c \

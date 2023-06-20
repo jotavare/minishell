@@ -25,3 +25,5 @@ jun 20 (jotavare)
 	4. heredoc a funcionar mas temos de arranjar um maneira de executar
 	os commandos para tras
 	5. memory leaks com sanitize, very hard to fix T_T
+	6. removed some kills because of sanitize seg leaks
+	7. rea
