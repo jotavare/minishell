@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_tokens2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 18:15:45 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/20 06:09:29 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/20 11:45:35 by alexandre        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ int	count_tokens2(char *s, t_attr *att)
 {
 	int	len;
 
+	if (!s)
+		return (0);
 	len = ft_strlen(s) - 1;
 	while (len >= 0)
 	{

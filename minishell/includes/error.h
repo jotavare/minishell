@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:28:13 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/20 06:31:31 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/20 11:38:30 by alexandre        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,14 @@
 // error messages
 # define ERROR_CD "minishell: cd: %s: No such file or directory\n"
 # define ERROR_EXPORT "minishell: export: '%s': not a valid identifier\n"
+# define ERROR_NEWLINE "minishell: syntax error near unexpected token 'newline'\n"
+# define ERROR_SIMPLE_2 "minishell: parse error near '%c%c'\n"
+# define ERROR_SIMPLE_1 "minishell: parse error near '%c'\n"
+# define ERROR_PIPE2 "minishel: syntax error near unexpected token '||'\n"
+# define ERROR_PIPE1 "minishel: syntax error near unexpected token '|'\n"
+# define ERROR_TWO "minishell: syntax error near unexpected token '%c%c'\n"
+# define ERROR_ONE "minishell: syntax error near unexpected token '%c'\n"
+# define ERROR_UNCLOSED "minishell : syntax error unclosed quotes\n"
 
 // error_1.c
 int	error_last(char *str, char c);

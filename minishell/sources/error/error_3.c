@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error_3.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:57:28 by alexandre         #+#    #+#             */
-/*   Updated: 2023/06/20 06:25:45 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/20 11:39:10 by alexandre        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	double_quote(char *str, char c)
 	}
 	if (flag)
 	{
-		printf("bash : syntax error unclosed quotes\n");
+		printf(ERROR_UNCLOSED);
 		return (1);
 	}
 	return (0);
@@ -78,7 +78,7 @@ int	single_quote(char *str, char c)
 	}
 	if (flag)
 	{
-		printf("bash : syntax error unclosed quotes\n");
+		printf(ERROR_UNCLOSED);
 		return (1);
 	}
 	return (0);

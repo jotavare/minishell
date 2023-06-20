@@ -37,3 +37,9 @@ jun 20 (jotavare)
 	para ver em que ponto estamos
 	12. recomendo fazer make sani, tem coisas que deviam ser resolvidas
 	antes de fazermos mais funcoes, vou tentar quando vier de dormir
+
+	11H
+	1. alguns leaks resolvidos: error files;
+	2. novas macros para as mensagens de erro e estabelicedas novas
+	respectivas funcoes, e correcao de invalid reads;
+	3. detetamos erros count_tokens2;

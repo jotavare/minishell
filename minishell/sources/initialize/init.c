@@ -86,4 +86,5 @@ void	reinit_attributes(t_attr *att)
 	att->pipeindex = 0;
 	att->o_dquotes = 0;
 	att->o_quotes = 0;
+	att->aftert = NULL;
 }

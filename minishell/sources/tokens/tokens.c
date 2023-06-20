@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tokens.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 18:15:45 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/20 07:03:27 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/20 11:08:11 by alexandre        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	create_array(char *s, t_attr *att)
 		s += att->tok_arr_i;
 		count++;
 	}
-	null_token_handle(att);
+	//null_token_handle(att);
 }
 
 char	**get_tokens(char *str, t_attr *att)

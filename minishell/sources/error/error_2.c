@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error_2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:57:28 by alexandre         #+#    #+#             */
-/*   Updated: 2023/06/20 06:32:43 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/20 11:37:28 by alexandre        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,15 @@ int	error_pipes(char *str)
 
 int	error_simple_dirdoc(char *str, char c)
 {
-	if (str[0] == c && (str[1] == c || str[1] == '\0') && str[2] == '\0')
+	if (!str)
+		return (0);
+	if (ft_strlen(str) >= 2)
 	{
-		printf("bash: syntax error near unexpected token 'newline'\n");
-		return (1);
+		if (str[0] == c && (str[1] == c || str[1] == '\0') && str[2] == '\0')
+		{
+			printf(ERROR_NEWLINE);
+			return (1);
+		}
 	}
 	return (0);
 }
@@ -53,9 +58,9 @@ int	error_single(char *str, char c)
 		else if (str[i] == c && flag == 1)
 		{
 			if (str[i] == c && str[i + 1] == c)
-				printf("bash: syntax error near unexpected token '%c%c'\n", c, c);
+				printf(ERROR_TWO, c, c);
 			else
-				printf("bash: syntax error near unexpected token '%c'\n", c);
+				printf(ERROR_ONE, c);
 			return (1);
 		}
 		i++;
@@ -81,10 +86,9 @@ int	error_double(char *str, char c)
 		else if (((str[i] == c && str[i + 1] == c) || str[i] == c) && flag == 2)
 		{
 			if (str[i] == c && str[i + 1] == c)
-				printf("bash: syntax error near unexpected token'%c%c'\n", c,
-						c);
+				printf(ERROR_TWO, c, c);
 			else
-				printf("bash: syntax error near unexpected token '%c'\n", c);
+				printf(ERROR_ONE, c);
 			return (1);
 		}
 		i++;
@@ -115,10 +119,9 @@ int	error_mixed(char *str, char c, char r)
 		else if (str[i] == r && (flag == 1 || flag == 2))
 		{
 			if (str[i] == r && str[i + 1] == r)
-				printf("bash: syntax error near unexpected token '%c%c'\n", r,
-						r);
+				printf(ERROR_TWO, r, r);
 			else
-				printf("bash: syntax error near unexpected token '%c'\n", r);
+				printf(ERROR_ONE, r);
 			return (1);
 		}
 		i++;
