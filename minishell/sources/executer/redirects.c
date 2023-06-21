@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 17:14:25 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/21 16:57:45 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/21 17:38:03 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ void	redir_append(t_attr *att, int index)
 	
 	if (strcmp(att->commands_arr[index + 1], ">") == 0)
 	{
-		while (!strcmp(att->commands_arr[att->i + 3], ">"))
+		while (!strcmp(att->commands_arr[att->i + 3], ">")
+			|| !strcmp(att->commands_arr[att->i + 3], ">>"))
 		{
 			att->i = att->i + 2;
 			create_file(att);
@@ -34,6 +35,13 @@ void	redir_append(t_attr *att, int index)
 	}
 	else if (strcmp(att->commands_arr[index + 1], ">>") == 0)
 	{
+		while (!strcmp(att->commands_arr[att->i + 3], ">>")
+			|| !strcmp(att->commands_arr[att->i + 3], ">"))
+		{
+			att->i = att->i + 2;
+			create_file(att);
+		}
+		att->i = att->i + 2;
 		file_name = ft_strtrim(att->commands_arr[att->i], " ");
 		att->redir_fd = open(file_name, O_WRONLY | O_CREAT | O_APPEND, 0644);
 		dup2(att->redir_fd, STDOUT_FILENO);

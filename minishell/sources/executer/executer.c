@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 17:14:25 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/21 16:33:17 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/21 19:14:04 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,11 @@
 
 int	exec_commands(t_exec *args, t_attr *att)
 {
+	char	*s;
+	
 	args->i = 0;
-	args->path_command = build_path(args->all_paths, args->nb_of_paths,
-			ft_strjoin("/", att->tok_arr[0]));
+	s = ft_strjoin("/", att->tok_arr[0]);
+	args->path_command = build_path(args->all_paths, args->nb_of_paths, s);
 	while (args->i < args->nb_of_paths)
 	{
 		if (!access(args->path_command[args->i], X_OK))
@@ -31,6 +33,7 @@ int	exec_commands(t_exec *args, t_attr *att)
 		}
 		args->i++;
 	}
+	free_arr(args->path_command);
 	return (0);
 }
 
@@ -123,6 +126,7 @@ int	execute(t_attr *att, int index)
 			export_print(*att);
 		else
 			execute_core(att, &args);
+		free_start_args(&args);
 		exit(0);
 	}
 	else
@@ -130,7 +134,9 @@ int	execute(t_attr *att, int index)
 	if (att->write_to_pipe && att->read_from_pipe)
 		att->pipeindex++;
 	close_pipeline(att);
-	free_arr(args.all_paths);
 	//see_flags_and_pipes(*att);
+	//free_arr(args.all_paths);
+	free_start_args(&args);
+	//free_arr(args.path_command);
 	return (0);
 }

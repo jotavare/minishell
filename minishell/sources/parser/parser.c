@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 18:15:45 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/21 17:05:03 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/21 17:11:34 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,11 @@ int	check_next_step(t_attr *att)
 		else if (!ft_strcmp(att->commands_arr[att->i + 1], ">") || !ft_strcmp(att->commands_arr[att->i + 1], ">>"))
 				att->redir = 1;
 		else if (!ft_strcmp(att->commands_arr[att->i + 1], "<"))
+		{
 			att->read_from_file = 1;
+			if (!ft_strcmp(att->commands_arr[att->i + 3], "|"))
+				att->write_to_pipe = 1;
+		}
 		else if (!ft_strcmp(att->commands_arr[att->i + 1], "<<"))
 			att->heredoc = 1;
 	}
@@ -61,5 +65,5 @@ int	check_next_step(t_attr *att)
 		if (!ft_strcmp(att->commands_arr[att->i - 1], "<"))
 			att->skip = 1;
 	}
-	return (0)
+	return (0);
 }

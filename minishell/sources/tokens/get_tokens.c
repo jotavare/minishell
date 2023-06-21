@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 18:15:45 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/20 07:02:51 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/21 20:12:18 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,20 +102,22 @@ char	*process_multi_quote(char *s, t_attr *att)
 	char	*temp;
 
 	token = NULL;
-	temp = malloc(sizeof(char) * 2);
-	temp[1] = 0;
-	strncpy(temp, s, att->tok_arr_i);
-	if (((strncmp(temp, "\"\"", 2) == 0 || strncmp(temp, "''", 2) == 0))
-		&& s[att->tok_arr_i + 1] == 32)
+	temp = malloc(sizeof(char) * 3);
+	temp[2] = 0;
+	strncpy(temp, s, 2);
+	if (((strncmp(temp, "\"\"", 2) == 0 || strncmp(temp, "''", 2) == 0)) && s[att->tok_arr_i])
 	{
-		if (strncmp(temp, "\"\"", 2) == 0)
-			att->o_dquotes -= 2;
-		else if (strncmp(temp, "''", 2) == 0)
-			att->o_quotes -= 2;
-		token = malloc(sizeof(char));
-		if (!token)
-			return (NULL);
-		token[0] = '\0';
+		if (s[att->tok_arr_i + 1] == 32)
+		{
+			if (strncmp(temp, "\"\"", 2) == 0)
+				att->o_dquotes -= 2;
+			else if (strncmp(temp, "''", 2) == 0)
+				att->o_quotes -= 2;
+			token = malloc(sizeof(char));
+			if (!token)
+				return (NULL);
+			token[0] = '\0';
+		}
 	}
 	else
 		token = double_quotes_treat(s, att);
@@ -199,7 +201,7 @@ char	*double_quotes_treat(char *s, t_attr *att)
 		i++;
 	}
 	pos = i - j;
-	token = malloc(sizeof(char) * pos);
+	token = malloc(sizeof(char) * pos + 1);
 	token[pos] = 0;
 	i = 0;
 	j = 0;

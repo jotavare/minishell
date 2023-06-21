@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:28:13 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/21 16:51:55 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/21 19:13:15 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,7 @@ void	free_d_exp_env(t_attr *att);
 void	free_tokens(char **tokens, t_attr *t);
 void	free_arr(char **arr);
 void	exit_free(t_attr *attr);
+void free_start_args(t_exec *args);
 
 // pipes
 int		pipework(t_attr *att);

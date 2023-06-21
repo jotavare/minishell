@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:57:28 by alexandre         #+#    #+#             */
-/*   Updated: 2023/06/20 05:12:41 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/21 20:14:22 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	echo(t_attr att)
 	i = 1;
 	fl_n = 0;
 	fl_pr = 0;
-	while (i < att.nb_tokens)
+	while (i < att.nb_tokens && att.tok_arr[i])
 	{
 		if (ft_strnstr(att.tok_arr[i], "-n",
 				ft_strlen(att.tok_arr[i])) && fl_pr == 0)
