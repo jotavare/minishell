@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:28:13 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/20 06:27:14 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/21 16:51:55 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,9 +132,10 @@ void	write_to_pipe(t_attr *att);
 void	read_from_pipe(t_attr *att);
 void	close_pipeline(t_attr *att);
 void	heredoc(char *delimiter, t_attr *att);
+void	create_file(t_attr *att);
 
 //parser
-int		check_next_step(t_attr *att, int *i);
+int		check_next_step(t_attr *att);
 int		is_symbol(char *s);
 
 // tokens

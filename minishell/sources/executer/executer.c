@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 17:14:25 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/20 06:41:06 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/21 16:33:17 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,13 @@ int	execute(t_attr *att, int index)
 		return (-1);
 	if (args.pid == 0)
 	{
+		if (att->skip)
+			exit(0);
+/* 		if (att->create_file)
+		{
+			create_file(att, index);
+			exit (0);
+		} */
 		if (att->read_from_pipe)
 			read_from_pipe(att);
 		else if (att->read_from_file)
@@ -124,5 +131,6 @@ int	execute(t_attr *att, int index)
 		att->pipeindex++;
 	close_pipeline(att);
 	free_arr(args.all_paths);
+	//see_flags_and_pipes(*att);
 	return (0);
 }

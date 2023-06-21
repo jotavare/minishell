@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:28:13 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/20 06:11:53 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/21 15:09:12 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,9 @@ typedef struct s_attr
 	int		read_from_pipe;
 	int		read_from_file;
 	int		redir;
+	int		create_file;
 	int		heredoc;
+	int		skip;
 	int		number_of_pipes;
 	int		number_of_redir;
 	int		number_of_append;
