@@ -6,12 +6,12 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:28:13 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/23 22:45:13 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/24 00:27:40 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef COMMANDS_H
-# define COMMANDS_H
+#ifndef MACROS_H
+# define MACROS_H
 
 # include "../libft/libft.h"
 # include <dirent.h>
@@ -40,6 +40,7 @@
 # define RESET "\033[0m"
 # define BLUE_BOLD "\033[1;34m"
 
+// variables
 # define PATH_MAX 4096
 
 // pipes
