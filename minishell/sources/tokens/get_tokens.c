@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 18:15:45 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/23 20:39:18 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/23 21:34:04 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ char	*get_token(char *s, t_attr *att)
 	int	flag;
 	int	quotes;
 
+	att->inside_single_quotes = 0;
 	flag = 0;
 	quotes = 0;
 	att->tok_arr_i = 0;
@@ -126,6 +127,7 @@ char	*process_multi_quote(char *s, t_attr *att)
 	i = 0;
 	token = NULL;
 	flag = 0;
+
 	while (s[i])
 	{
 		if (s[i] == '"' && (flag == 0 || flag == 2))
@@ -140,6 +142,7 @@ char	*process_multi_quote(char *s, t_attr *att)
 					i++;
 					pos = i - j;
 					token = quotentoken(s, att, flag, pos);
+					att->inside_single_quotes = 0;
 					return (token);
 				}
 			}
@@ -148,7 +151,7 @@ char	*process_multi_quote(char *s, t_attr *att)
 				i++;
 				pos = i - j;
 				token = quotentoken(s, att, flag, pos);
-				att->inside_single_quotes = 1;
+				att->inside_single_quotes = 0;
 				return (token);
 			}
 		}
@@ -164,6 +167,7 @@ char	*process_multi_quote(char *s, t_attr *att)
 					i++;
 					pos = i - j;
 					token = quotentoken(s, att, flag, pos);
+					att->inside_single_quotes = 1;
 					return (token);
 				}
 			}
@@ -172,6 +176,7 @@ char	*process_multi_quote(char *s, t_attr *att)
 				i++;
 				pos = i - j;
 				token = quotentoken(s, att, flag, pos);
+				att->inside_single_quotes = 1;
 				return (token);
 			}
 		}

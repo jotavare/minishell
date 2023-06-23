@@ -6,13 +6,13 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:57:28 by alexandre         #+#    #+#             */
-/*   Updated: 2023/06/20 05:14:29 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/23 22:13:40 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-void	env(t_attr *att)
+int	env(t_attr *att)
 {
 	int	i;
 
@@ -22,7 +22,7 @@ void	env(t_attr *att)
 		if (!check_equal(att->tok_arr[i]))
 		{
 			printf("env: ‘%s’: No such file or directory\n", att->tok_arr[i]);
-			return ;
+			return (127);
 		}
 		i++;
 	}
@@ -39,4 +39,5 @@ void	env(t_attr *att)
 			printf("%s\n", att->tok_arr[i]);
 		i++;
 	}
+	return (0);
 }

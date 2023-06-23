@@ -6,13 +6,13 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:57:28 by alexandre         #+#    #+#             */
-/*   Updated: 2023/06/20 05:43:16 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/23 22:25:29 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-void	export(t_attr *att)
+int	export(t_attr *att)
 {
 	int	j;
 
@@ -21,7 +21,7 @@ void	export(t_attr *att)
 	{
 		export_sort(*att);
 		export_print(*att);
-		return ;
+		return (0);
 	}
 	while (att->tok_arr[j])
 	{
@@ -33,6 +33,7 @@ void	export(t_attr *att)
 			export_not_equal(att, j);
 		j++;
 	}
+	return (0);
 }
 
 void	export_sort(t_attr att)
@@ -60,7 +61,7 @@ void	export_sort(t_attr att)
 	}
 }
 
-void	export_print(t_attr att)
+int	export_print(t_attr att)
 {
 	int	i;
 
@@ -81,6 +82,7 @@ void	export_print(t_attr att)
 		ft_putchar_fd('\n', 1);
 	}
 	printf("SIZE: %d\n", att.len_exp_env);
+	return (0);
 }
 
 void	export_check_equal(t_attr *att, int j)

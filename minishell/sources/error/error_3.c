@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   error_3.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
+/*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:57:28 by alexandre         #+#    #+#             */
-/*   Updated: 2023/06/20 11:39:10 by alexandre        ###   ########.fr       */
+/*   Updated: 2023/06/23 21:08:08 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-extern int	g_last_return_value;
+extern int	g_value;
 
 int	error_dirdoc(char *str)
 {
@@ -95,17 +95,17 @@ int	verify_readline(char *str)
 {
 	if (error_pipes(str))
 	{
-		g_last_return_value = 2;
+		g_value = 2;
 		return (1);
 	}
 	else if (error_dirdoc(str))
 	{
-		g_last_return_value = 2;
+		g_value = 2;
 		return (1);
 	}
 	else if (error_quotes(str))
 	{
-		g_last_return_value = 2;
+		g_value = 2;
 		return (1);
 	}
 	return (0);

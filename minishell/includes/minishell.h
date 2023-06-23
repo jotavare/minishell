@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:28:13 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/23 20:19:51 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/23 22:51:06 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include "macros.h"
 # include "structs.h"
 # include "error.h"
+
+extern int	g_value;
 
 // source
 char	*prompt(t_attr *att);
@@ -62,10 +64,10 @@ void	set_signals(void);
 
 // commands
 int		pwd(void);
-void	env(t_attr *att);
+int	env(t_attr *att);
 
 // cd
-void	cd(t_attr *att);
+int	cd(t_attr *att);
 void	update_oldpwd(t_attr *att, const char *current_path);
 void	update_pwd(t_attr *att);
 
@@ -74,8 +76,9 @@ void	ft_exit(t_attr *attr);
 int		exit_two(t_attr att);
 
 // echo
-void	echo(t_attr att);
-void	echo_n(t_attr att);
+int	echo(t_attr att);
+int	echo_n(t_attr att);
+int	handle_echo_options(t_attr att, int *fl_n, int *fl_pr, int i);
 
 // unset
 void	unset(t_attr *att);
@@ -86,9 +89,9 @@ char	*add_equal(char *str);
 int		find_index(char **search, char *str);
 
 // export
-void	export(t_attr *att);
+int	export(t_attr *att);
 void	export_sort(t_attr att);
-void	export_print(t_attr att);
+int	export_print(t_attr att);
 void	double_exp_env(t_attr *att);
 void	start_exp(char **envp, t_attr *att);
 void	refresh_addenv(t_attr *att, char *add);

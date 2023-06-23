@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:28:13 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/23 20:47:59 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/23 22:44:51 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define STRUCTS_H
 
 # include "macros.h"
-
 typedef struct s_pars
 {
 	char	**pars_arr;

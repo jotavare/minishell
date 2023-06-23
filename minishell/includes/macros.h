@@ -6,12 +6,12 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:28:13 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/20 06:31:45 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/23 22:45:13 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MACROS_H
-# define MACROS_H
+#ifndef COMMANDS_H
+# define COMMANDS_H
 
 # include "../libft/libft.h"
 # include <dirent.h>
