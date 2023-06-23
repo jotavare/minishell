@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 18:15:45 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/21 17:11:34 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/23 11:53:55 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ int	check_next_step(t_attr *att)
 			|| !ft_strcmp(att->commands_arr[att->i - 1], ">"))
 			att->skip = 1;
 		if (!ft_strcmp(att->commands_arr[att->i - 1], "<"))
+			att->skip = 1;
+		if (!ft_strcmp(att->commands_arr[att->i - 1], "<<"))
 			att->skip = 1;
 	}
 	return (0);

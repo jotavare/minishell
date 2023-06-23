@@ -21,14 +21,19 @@ int	count_tokens2(char *s, t_attr *att)
 	len = ft_strlen(s) - 1;
 	while (len >= 0)
 	{
-		if (s[len] != ' ' && s[len] != '|' && s[len] != '<' && s[len] != '>')
+		if (s[len] != ' ' && s[len] != '|' && s[len] != '<' && s[len] != '>' && s[len] != ';')
 		{
 			att->pars_data.nb_tokenst++;
-			while (len > 0 && (s[len] != '|' && s[len] != '<' && s[len] != '>'))
+			while (len > 0 && (s[len] != '|' && s[len] != '<' && s[len] != '>' && s[len] != ';'))
 				len--;
 		}
 		if (s[len] == ' ')
 			len--;
+		else if (s[len] == ';')
+		{
+			len--;
+			att->pars_data.nb_tokenst++;
+		}
 		else if (s[len] == '|' && s[len - 1] != '|')
 		{
 			len--;
@@ -77,9 +82,9 @@ char	*get_token2(char *s, t_attr *att)
 	i = 0;
 	j = 0;
 	token = 0;
-	if (s[j] != '|' && s[j] != '>' && s[j] != '<')
+	if (s[j] != '|' && s[j] != '>' && s[j] != '<' && s[j] != ';') 
 	{
-		while (s[j] != '|' && s[j] != '>' && s[j] != '<' && s[j] != '\0')
+		while (s[j] != '|' && s[j] != '>' && s[j] != '<' && s[j] != ';' && s[j] != '\0')
 			j++;
 		token = malloc(sizeof(char) * (j + 1));
 		if (!token)
@@ -90,6 +95,14 @@ char	*get_token2(char *s, t_attr *att)
 			token[i] = s[i];
 			i++;
 		}
+	}
+	else if (s[j] == ';')
+	{
+		token = malloc(sizeof(char) * 2);
+		if (!token)
+			return (NULL);
+		token[0] = s[j];
+		token[1] = 0;
 	}
 	else if (s[j] == '|' && s[j + 1] != '|')
 	{

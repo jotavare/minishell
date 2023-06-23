@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:57:28 by alexandre         #+#    #+#             */
-/*   Updated: 2023/06/20 05:42:36 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/23 19:48:53 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ void	cd(t_attr *att)
 	{
 		ft_putstr_fd("minishell: cd: too many arguments\n", 1);
 		g_last_return_value = 1;
+		free(current_path);
 		return ;
 	}
 	if (!destiny_path || !ft_strcmp(destiny_path, "~"))

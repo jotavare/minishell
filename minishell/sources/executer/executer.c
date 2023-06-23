@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   executer.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 17:14:25 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/21 19:14:04 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/23 12:46:45 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ int	exec_commands(t_exec *args, t_attr *att)
 		}
 		args->i++;
 	}
-	free_arr(args->path_command);
 	return (0);
 }
 
@@ -96,11 +95,6 @@ int	execute(t_attr *att, int index)
 	{
 		if (att->skip)
 			exit(0);
-/* 		if (att->create_file)
-		{
-			create_file(att, index);
-			exit (0);
-		} */
 		if (att->read_from_pipe)
 			read_from_pipe(att);
 		else if (att->read_from_file)
@@ -108,8 +102,8 @@ int	execute(t_attr *att, int index)
 			if (read_from_file(att, index) < 0)
 				exit(0);
 		}
-		else if (att->heredoc)
-			heredoc(att->commands_arr[2], att);
+		if (att->heredoc)
+			heredoc(att->commands_arr[att->i + 2], att);
 		if (att->write_to_pipe && att->read_from_pipe)
 			att->pipeindex++;
 		if (att->write_to_pipe)
@@ -131,12 +125,10 @@ int	execute(t_attr *att, int index)
 	}
 	else
 		waitpid(args.pid, NULL, 0);
-	if (att->write_to_pipe && att->read_from_pipe)
+	if (att->read_from_pipe)
 		att->pipeindex++;
 	close_pipeline(att);
 	//see_flags_and_pipes(*att);
-	//free_arr(args.all_paths);
 	free_start_args(&args);
-	//free_arr(args.path_command);
 	return (0);
 }

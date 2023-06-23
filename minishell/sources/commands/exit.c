@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:57:28 by alexandre         #+#    #+#             */
-/*   Updated: 2023/06/18 20:36:45 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/23 19:52:27 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,10 @@ int	exit_two(t_attr attr)
 	i = 0;
 	arg = attr.tok_arr[1];
 	is_num = 1;
+
+	if (arg[i] == '-')
+		i++;
+	
 	while (arg[i])
 	{
 		if (!isdigit(arg[i++]))
@@ -43,9 +47,6 @@ int	exit_two(t_attr attr)
 
 void	ft_exit(t_attr *attr)
 {
-	free_g_env(attr);
-	free_exp_env(attr);
-	free_arr(attr->commands_arr);
 	g_last_return_value = 0;
 	printf("exit\n");
 	if (attr->nb_tokens == 1)
@@ -54,9 +55,18 @@ void	ft_exit(t_attr *attr)
 		g_last_return_value = exit_two(*attr);
 	else
 	{
+		if (ft_isdigit(attr->tok_arr[1][0]))
+		{
+			ft_putstr_fd("minishell: exit: too many arguments\n", 2);
+			g_last_return_value = 1;
+			return ;
+		}
 		ft_putstr_fd("minishell: exit: too many arguments\n", 2);
 		g_last_return_value = 1;
 	}
+	free_g_env(attr);
+	free_exp_env(attr);
+	free_arr(attr->commands_arr);
 	exit_free(attr);
 	exit(g_last_return_value);
 }

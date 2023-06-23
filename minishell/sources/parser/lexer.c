@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 18:15:45 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/21 18:03:59 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/23 20:36:34 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@
 
 void	command(t_attr *att, int index)
 {
-	expand_tokens(&att->tok_arr[0], att);
+	if(att->inside_single_quotes == 1)
+		expand_tokens(&att->tok_arr[0], att);
 	if (!att->tok_arr[0])
 		return ;
 	else if (ft_strcmp(att->tok_arr[0], "cd") == 0)

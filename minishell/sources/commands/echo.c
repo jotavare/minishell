@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:57:28 by alexandre         #+#    #+#             */
-/*   Updated: 2023/06/21 20:14:22 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/23 20:11:10 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	echo_n(t_attr att)
 	int	i;
 
 	i = 1;
-	if (strcmp(att.tok_arr[i], "-n") != 0)
+	if (ft_strcmp(att.tok_arr[i], "-n") != 0)
 		ft_putstr_fd(att.tok_arr[i], 1);
 	i++;
 }

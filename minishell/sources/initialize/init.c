@@ -51,6 +51,7 @@ void	init_attributes(t_attr *att)
 	att->o_dquotes = 0;
 	att->o_quotes = 0;
 	att->aftert = NULL;
+	att->inside_single_quotes = 0;
 }
 
 void	init_paths(t_attr *att)

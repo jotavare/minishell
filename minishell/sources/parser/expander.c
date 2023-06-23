@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 18:15:45 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/20 06:46:44 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/23 20:26:28 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ char	**expand_tokens(char **tokens, t_attr *att)
 	int		i;
 	
     i = 0;
-
     while (tokens[i])
     {
         j = 0;
@@ -67,13 +66,13 @@ char	**expand_tokens(char **tokens, t_attr *att)
                 value = custom_getenv(variable_name, att);
                 if (value)
                 {
-                    expanded_length = strlen(value);
-                    token_length = strlen(tokens[i]);
+                    expanded_length = ft_strlen(value);
+                    token_length = ft_strlen(tokens[i]);
                     expanded_token = malloc((token_length + expanded_length + 1) * sizeof(char));
-					strncpy(expanded_token, tokens[i], j);
+					ft_strncpy(expanded_token, tokens[i], j);
                     expanded_token[j] = '\0';
-                    strcat(expanded_token, value);
-                    strcat(expanded_token, tokens[i] + j + strlen(variable_name) + 1);
+                    ft_strcat(expanded_token, value);
+                    ft_strcat(expanded_token, tokens[i] + j + ft_strlen(variable_name) + 1);
                     free(tokens[i]);
                     tokens[i] = expanded_token;
                     j += expanded_length;

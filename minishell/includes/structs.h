@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:28:13 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/21 15:09:12 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/23 20:47:59 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ typedef struct s_attr
 	int		create_file;
 	int		heredoc;
 	int		skip;
+	int		inside_single_quotes;
 	int		number_of_pipes;
 	int		number_of_redir;
 	int		number_of_append;

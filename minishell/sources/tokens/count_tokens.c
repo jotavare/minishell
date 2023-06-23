@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 18:15:45 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/20 07:00:55 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/23 20:42:17 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,38 +44,69 @@ int	count_tokens(char *s, t_attr *att)
 		else
 			len--;
 	}
+	//printf("nb_toks= %d\n", att->nb_tokens);
 	return (att->nb_tokens);
 }
 
 int	check_single_quotes(char *s, int len, t_attr *att)
 {
 	int	quotes;
+	int	flag;
 
+	flag = 0;
 	quotes = 0;
 	while (len >= 0 && quotes != att->o_quotes)
 	{
 		if (s[len] == '\'')
+		{
 			quotes++;
+			if (s[len + 1] && flag == 0)
+			{
+				if (s[len + 1] == ' ')
+					flag = 1;
+			}
+			else if (!s[len + 1])
+				flag = 1;
+		}
+		if (quotes % 2 == 0 && flag == 1)
+		{
+			att->nb_tokens++;
+			len--;
+			return (len);
+		}
 		len--;
 	}
-	att->nb_tokens++;
-	len--;
 	return (len);
 }
 
 int	check_double_quotes(char *s, int len, t_attr *att)
 {
 	int	quotes;
+	int	flag;
 
+	flag = 0;
 	quotes = 0;
 	while (len >= 0 && quotes != att->o_dquotes)
 	{
 		if (s[len] == '"')
+		{
 			quotes++;
+			if (s[len + 1] && flag == 0)
+			{
+				if (s[len + 1] == ' ')
+					flag = 1;
+			}
+			else if (!s[len + 1])
+				flag = 1;
+		}
+		if (quotes % 2 == 0 && flag == 1)
+		{
+			att->nb_tokens++;
+			len--;
+			return (len);
+		}
 		len--;
 	}
-	att->nb_tokens++;
-	len--;
 	return (len);
 }
 

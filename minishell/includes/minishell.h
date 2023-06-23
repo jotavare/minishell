@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:28:13 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/21 19:13:15 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/23 20:19:51 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,9 +110,12 @@ int		flag_counter(char *str, char c);
 int		ft_strcmp(const char *str1, const char *str2);
 int		flag_counter(char *str, char c);
 int		check_alpha(char *str);
+char    *ft_strcat(char *dest, const char *src);
+char    *ft_strncpy(char *dest, const char *src, size_t n);
 
 // expander
-char	**expand_tokens(char **tokens, t_attr *att);
+char    **expand_tokens(char **tokens, t_attr *att);
+char    *expand_token(const char *token, t_attr *att);
 char	*custom_getenv(const char *variable_name, t_attr *att);
 
 // free
@@ -143,8 +146,8 @@ int		is_symbol(char *s);
 char	**get_tokens(char *str, t_attr *att);
 char	**get_tokens2(char *str, t_attr *att);
 void	create_array(char *s, t_attr *att);
-char	*double_quotes_treat(char *s, t_attr *att);
 void	null_token_handle(t_attr *att);
+char	*quotentoken(char *s, t_attr *att, int flag, int pos);
 
 // count_tokens
 int		count_tokens(char *s, t_attr *att);
