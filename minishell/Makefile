@@ -6,7 +6,7 @@
 #    By: jotavare <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/12 15:15:58 by alexandre         #+#    #+#              #
-#    Updated: 2023/06/20 06:59:02 by jotavare         ###   ########.fr        #
+#    Updated: 2023/06/24 00:51:25 by jotavare         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,6 +44,8 @@ SRC =	sources/minishell.c \
 		sources/error/error_2.c \
 		sources/error/error_3.c \
     	sources/executer/executer.c \
+		sources/executer/execve.c \
+		sources/executer/heredocs.c \
 		sources/executer/paths.c \
 		sources/executer/pipes.c \
 		sources/executer/redirects.c \

@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:28:13 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/24 00:25:55 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/24 01:00:12 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,26 +17,13 @@
 # include "structs.h"
 # include "error.h"
 # include "commands.h"
+# include "executer.h"
 
 extern int	g_value;
 
 // source
 char	*prompt(t_attr *att);
 void	command(t_attr *att, int index);
-
-// execute
-int		execute(t_attr *att, int index);
-int		exec_commands(t_exec *args, t_attr *att);
-int		exec_binaries(t_exec *args, t_attr *att);
-int		exec_absolute_path(t_exec *args, t_attr *att);
-int		read_from_file(t_attr *att, int index);
-int		count_paths(char *s);
-int		execute_write_p(t_attr *att, int index);
-int		execute_read_p(t_attr *att, int index);
-int		execute_pipeline(t_attr *att, int index);
-char	**build_path(char **all_paths, int nb, char *command);
-char	*get_str_paths(t_attr *att, char *path_str);
-void	redir_append(t_attr *att, int index);
 
 // check
 int		check_the_arr(char **search, char *str);
