@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 18:15:45 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/23 11:53:55 by alex             ###   ########.fr       */
+/*   Updated: 2023/06/24 01:57:11 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,15 @@
 
 int	is_symbol(char *s)
 {
-	char	*symbols[] = {">", "<", ">>", "<<", "|" };
+	char	*symbols[5];
 	int		i;
 
-	if (s[0] == 0)
+	symbols[0] = ">";
+	symbols[1] = "<";
+	symbols[2] = ">>";
+	symbols[3] = "<<";
+	symbols[4] = "|";
+	if (s[0] == '\0')
 	{
 		return (0);
 	}
@@ -40,12 +45,13 @@ int	check_next_step(t_attr *att)
 	att->heredoc = 0;
 	att->skip = 0;
 	att->create_file = 0;
-	if (att->commands_arr[att->i] && att->commands_arr[att-> i+ 1])
+	if (att->commands_arr[att->i] && att->commands_arr[att->i + 1])
 	{
 		if (!ft_strcmp(att->commands_arr[att->i + 1], "|"))
 			att->write_to_pipe = 1;
-		else if (!ft_strcmp(att->commands_arr[att->i + 1], ">") || !ft_strcmp(att->commands_arr[att->i + 1], ">>"))
-				att->redir = 1;
+		else if (!ft_strcmp(att->commands_arr[att->i + 1], ">")
+				|| !ft_strcmp(att->commands_arr[att->i + 1], ">>"))
+			att->redir = 1;
 		else if (!ft_strcmp(att->commands_arr[att->i + 1], "<"))
 		{
 			att->read_from_file = 1;
@@ -55,7 +61,7 @@ int	check_next_step(t_attr *att)
 		else if (!ft_strcmp(att->commands_arr[att->i + 1], "<<"))
 			att->heredoc = 1;
 	}
-	if (att->i > 1 )
+	if (att->i > 1)
 	{
 		if (!ft_strcmp(att->commands_arr[att->i - 1], "|"))
 			att->read_from_pipe = 1;

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_1.c                                           :+:      :+:    :+:   */
+/*   free_one.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 18:15:45 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/21 19:20:23 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/24 02:11:56 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,15 +74,4 @@ void	free_exp_env(t_attr *att)
 	}
 	free(att->exp_env[i]);
 	free(att->exp_env);
-}
-
-void free_start_args(t_exec *args)
-{
-    int i = 0;
-    while (args->all_paths[i] != NULL)
-    {
-        free(args->all_paths[i]);
-        i++;
-    }
-    free(args->all_paths);
 }

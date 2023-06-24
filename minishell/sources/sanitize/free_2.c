@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_2.c                                           :+:      :+:    :+:   */
+/*   free_two.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 18:15:45 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/24 01:06:13 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/24 02:11:54 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,17 @@ void	ft_delete_matrix(void *matrix)
 	while (((char **)matrix)[++i])
 		free(((char **)matrix)[i]);
 	free(matrix);
+}
+
+void	free_start_args(t_exec *args)
+{
+	int	i;
+
+	i = 0;
+	while (args->all_paths[i] != NULL)
+	{
+		free(args->all_paths[i]);
+		i++;
+	}
+	free(args->all_paths);
 }

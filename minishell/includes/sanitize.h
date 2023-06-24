@@ -1,29 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   sanitize.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:28:13 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/24 02:34:32 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/24 02:12:17 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#ifndef SANITIZE_H
+# define SANITIZE_H
 
-# include "structs.h"
-# include "macros.h"
-# include "inicialize.h"
-# include "tokens.h"
-# include "parser.h"
-# include "commands.h"
-# include "executer.h"
-# include "error.h"
-# include "sanitize.h"
-# include "utilities.h"
+# include "minishell.h"
 
-extern int	g_value;
+// free_one.c
+void	free_arr(char **arr);
+void	free_tokens(char **tokens, t_attr *att);
+void	free_g_env(t_attr *att);
+void	free_d_env(t_attr *att);
+void	free_exp_env(t_attr *att);
+
+// free_two.c
+void	free_d_exp_env(t_attr *att);
+void	exit_free(t_attr *att);
+void	ft_delete_matrix(void *matrix);
+void	free_start_args(t_exec *args);
 
 #endif

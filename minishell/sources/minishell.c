@@ -38,8 +38,8 @@ int	main(int ac, char **av, char **envp)
 			att.commands_arr = get_tokens2(str, &att);
 			//ft_print_array(att.commands_arr);
 			init_pipes(&att);
-			while (att.commands_arr[att.i]
-				&& !verify_readline(str) && att.commands_arr[att.i][0] != '\0')
+			while (att.commands_arr[att.i] && !verify_readline(str)
+				&& att.commands_arr[att.i][0] != '\0')
 			{
 				if (is_symbol(att.commands_arr[att.i]))
 					att.i++;

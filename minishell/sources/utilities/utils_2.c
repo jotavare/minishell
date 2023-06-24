@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:51:22 by alexfern          #+#    #+#             */
-/*   Updated: 2023/06/23 20:06:12 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/24 02:16:53 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 	(no spaces, no numbers, no special characters).
 */
 
-int check_firstchar(char *str)
+int	check_firstchar(char *str)
 {
 	if (!str)
 		return (0);
@@ -49,30 +49,26 @@ int	check_alpha(char *str)
 	return (1);
 }
 
-char *ft_strcat(char *dest, const char *src)
+char	*ft_strcat(char *dest, const char *src)
 {
-    char *ptr = dest;
+	char	*ptr;
 
-    while (*ptr)
-        ptr++;
-
-    while (*src)
-        *ptr++ = *src++;
-
-    *ptr = '\0';
-
-    return dest;
+	ptr = dest;
+	while (*ptr)
+		ptr++;
+	while (*src)
+		*ptr++ = *src++;
+	*ptr = '\0';
+	return (dest);
 }
 
-char *ft_strncpy(char *dest, const char *src, size_t n)
+char	*ft_strncpy(char *dest, const char *src, size_t n)
 {
-    size_t i;
+	size_t	i;
 
-    for (i = 0; i < n && src[i] != '\0'; i++)
-        dest[i] = src[i];
-
-    for (; i < n; i++)
-        dest[i] = '\0';
-
-    return dest;
+	for (i = 0; i < n && src[i] != '\0'; i++)
+		dest[i] = src[i];
+	for (; i < n; i++)
+		dest[i] = '\0';
+	return (dest);
 }
