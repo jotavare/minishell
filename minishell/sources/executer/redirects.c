@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   redirect.c                                         :+:      :+:    :+:   */
+/*   redirects.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 17:14:25 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/24 00:41:04 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/24 01:02:26 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	redir_append(t_attr *att, int index)
 {
-	expand_tokens(&att->commands_arr[att->i], att);
 	char	*file_name;
-	
+
+	expand_tokens(&att->commands_arr[att->i], att);
 	if (ft_strcmp(att->commands_arr[index + 1], ">") == 0)
 	{
 		while (!ft_strcmp(att->commands_arr[att->i + 3], ">")
@@ -78,4 +78,3 @@ void	create_file(t_attr *att)
 	file_name = ft_strtrim(att->commands_arr[att->i], " ");
 	att->redir_fd = open(file_name, O_CREAT, 0644);
 }
-		

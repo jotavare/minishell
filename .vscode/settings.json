@@ -3,7 +3,9 @@
         "minishell.h": "c",
         "structs.h": "c",
         "error.h": "c",
-        "commands.h": "c"
+        "commands.h": "c",
+        "executer.h": "c",
+        "macros.h": "c"
     }
 }
 

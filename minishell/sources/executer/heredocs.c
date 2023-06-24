@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   heredoc.c                                          :+:      :+:    :+:   */
+/*   heredocs.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 17:14:25 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/24 00:41:16 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/24 01:02:13 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	heredoc(char *delimiter, t_attr *att)
 {
-	char	*line;
-	int		fd;
+	char *line;
+	int fd;
 
 	fd = open(".heredoc", O_CREAT | O_WRONLY | O_TRUNC, 0644);
 	while (1)
@@ -35,5 +35,5 @@ void	heredoc(char *delimiter, t_attr *att)
 	dup2(att->redir_fd, 0);
 	close(att->redir_fd);
 	unlink(".heredoc");
-	return;
+	return ;
 }

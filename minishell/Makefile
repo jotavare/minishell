@@ -6,7 +6,7 @@
 #    By: jotavare <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/12 15:15:58 by alexandre         #+#    #+#              #
-#    Updated: 2023/06/24 00:51:25 by jotavare         ###   ########.fr        #
+#    Updated: 2023/06/24 01:35:31 by jotavare         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,7 +49,11 @@ SRC =	sources/minishell.c \
 		sources/executer/paths.c \
 		sources/executer/pipes.c \
 		sources/executer/redirects.c \
-    	sources/parser/expander.c \
+    	sources/initialize/init.c \
+		sources/initialize/refresh.c \
+    	sources/initialize/start.c \
+		sources/parser/check.c \
+		sources/parser/expander.c \
     	sources/parser/lexer.c \
 		sources/parser/parser.c \
 		sources/sanitize/signals.c \
@@ -58,10 +62,6 @@ SRC =	sources/minishell.c \
     	sources/tokens/count_tokens.c \
     	sources/tokens/get_tokens.c \
     	sources/tokens/tokens.c \
-		sources/initialize/check.c \
-    	sources/initialize/init.c \
-		sources/initialize/refresh.c \
-    	sources/initialize/start.c \
 		sources/utilities/debugg.c \
     	sources/utilities/prompt.c \
     	sources/utilities/utils_1.c \

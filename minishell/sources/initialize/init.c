@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.c                                        :+:      :+:    :+:   */
+/*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexfern <alexfern@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/12 15:57:28 by alexandre         #+#    #+#             */
-/*   Updated: 2023/05/18 150:00 by alexfern         ###   ########.fr       */
+/*   Created: 2023/06/24 01:30:35 by jotavare          #+#    #+#             */
+/*   Updated: 2023/06/24 01:40:28 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@ void	init_params(int ac, char **av, t_attr *attr, char **envp)
 {
 	(void)ac;
 	(void)av;
-	init_attributes(attr);
+	init_attributes_one(attr);
+	init_attributes_two(attr);
 	start_env(envp, attr);
 	start_exp(envp, attr);
-	init_paths(attr);
 }
 
-void	init_attributes(t_attr *att)
+void	init_attributes_one(t_attr *att)
 {
 	att->nb_tokens = 0;
 	att->index = 0;
@@ -37,6 +37,10 @@ void	init_attributes(t_attr *att)
 	att->pars_data.pars_arr = NULL;
 	att->write_to_pipe = 0;
 	att->read_from_pipe = 0;
+}
+
+void	init_attributes_two(t_attr *att)
+{
 	att->number_of_pipes = 0;
 	att->number_of_redir = 0;
 	att->number_of_append = 0;
@@ -47,32 +51,11 @@ void	init_attributes(t_attr *att)
 	att->skip = 0;
 	att->read_from_file = 0;
 	att->pipeindex = 0;
-	att->out_fd = 0;
 	att->o_dquotes = 0;
 	att->o_quotes = 0;
 	att->aftert = NULL;
 	att->inside_single_quotes = 0;
-}
-
-void	init_paths(t_attr *att)
-{
-	att->last_path = search_var_in_g_env(att, "HOME");
-}
-
-int	count_commands(char *s)
-{
-	int	i;
-	int	count;
-
-	i = 0;
-	count = 1;
-	while (s[i])
-	{
-		if (s[i] == '|')
-			count++;
-		i++;
-	}
-	return (count);
+	//att->last_path = search_var_in_g_env(att, "HOME");
 }
 
 void	reinit_attributes(t_attr *att)

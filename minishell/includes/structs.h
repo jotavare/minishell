@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:28:13 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/23 22:44:51 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/24 01:18:03 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,6 @@ typedef struct s_attr
 	int		tok_arr_i;
 	int		nb_tokens;
 	int		pipeindex;
-	int		rediindex;
-	int		appendindex;
 	int		index;
 	int		len_d_env;
 	int		len_g_env;
@@ -57,7 +55,6 @@ typedef struct s_attr
 	int		number_of_append;
 	int		**pipesfd;
 	int		redir_fd;
-	int		out_fd;
 	t_pars	pars_data;
 }			t_attr;
 
