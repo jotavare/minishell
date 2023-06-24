@@ -6,7 +6,7 @@
 /*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:57:28 by alexandre         #+#    #+#             */
-/*   Updated: 2023/06/24 05:29:41 by alex             ###   ########.fr       */
+/*   Updated: 2023/06/24 12:26:21 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 int	error_pipes(char *str)
 {
+	if (error_last(str, '|'))
+		return (1);
 	if (error_simple(str, '|'))
 		return (1);
 	if (error_onepipe(str))
-		return (1);
-	if (error_last(str, '|'))
 		return (1);
 	return (0);
 }

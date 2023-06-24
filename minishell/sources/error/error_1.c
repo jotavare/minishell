@@ -6,7 +6,7 @@
 /*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:57:28 by alexandre         #+#    #+#             */
-/*   Updated: 2023/06/24 05:30:32 by alex             ###   ########.fr       */
+/*   Updated: 2023/06/24 12:28:16 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,12 @@ int	error_last(char *str, char c)
 		if (c != '|')
 			printf(ERROR_NEWLINE);
 		else
-			printf(ERROR_PIPE1);
+		{
+			if (str[len - 2] == c)
+				printf(ERROR_PIPE2);
+			else
+				printf(ERROR_PIPE1);
+		}
 		return (1);
 	}
 	return (0);
