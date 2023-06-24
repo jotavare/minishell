@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error_2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:57:28 by alexandre         #+#    #+#             */
-/*   Updated: 2023/06/24 00:20:28 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/24 05:29:41 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	error_pipes(char *str)
 	if (error_onepipe(str))
 		return (1);
 	if (error_last(str, '|'))
-		return (0);
+		return (1);
 	return (0);
 }
 

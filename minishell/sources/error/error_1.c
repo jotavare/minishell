@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error_1.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:57:28 by alexandre         #+#    #+#             */
-/*   Updated: 2023/06/24 00:20:24 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/24 05:30:32 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ int	error_last(char *str, char c)
 	{
 		if (c != '|')
 			printf(ERROR_NEWLINE);
+		else
+			printf(ERROR_PIPE1);
 		return (1);
 	}
 	return (0);
