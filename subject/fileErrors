@@ -91,4 +91,420 @@ echo"" -> VALID COMMAND;
 "    " echo ->     : command not found;             
 '    ' echo ->     : command not found;             
 "    "echo ->     echo: command not found;          
-'    'echo ->     echo: command not found;          
+'    'echo ->     echo: command not found;
+
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+\\\\\\\\\\\\\\\\\\\\Evaluation 25 jun 2023 - 15h30\\\\\\\\\\\\\\\\\\\\
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+
+Norminette nao esta checked btw, ela dirá se estámos a usar external functions
+
+
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+############################### ECHO ################################
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+
+command: "echo -n"                              CORRECT!
+leaks:
+==14107== 8 bytes in 1 blocks are still reachable in loss record 5 of 71
+==14107==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==14107==    by 0x1107F3: ft_calloc (in /home/alex/Desktop/minishell/minishell/minishell)
+==14107==    by 0x10C767: init_pipes (pipes.c:43)
+==14107==    by 0x1095E9: main (minishell.c:40)
+==14107== 
+==14107== 8 bytes in 2 blocks are still reachable in loss record 6 of 71
+==14107==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==14107==    by 0x10EEAA: process_default (get_tokens_1.c:105)
+==14107==    by 0x10EDA2: get_token (get_tokens_1.c:71)
+==14107==    by 0x10FE8B: create_array (tokens.c:29)
+==14107==    by 0x10FF34: get_tokens (tokens.c:46)
+==14107==    by 0x109658: main (minishell.c:47)
+==14107== 
+==14107== 9 bytes in 2 blocks are still reachable in loss record 7 of 71
+==14107==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==14107==    by 0x10F865: get_token2 (get_tokens_2.c:92)
+==14107==    by 0x10FD1A: create_array2 (get_tokens_2.c:182)
+==14107==    by 0x10FDC6: get_tokens2 (get_tokens_2.c:195)
+==14107==    by 0x1095D6: main (minishell.c:38)
+
+==14107== 24 bytes in 1 blocks are still reachable in loss record 17 of 71
+==14107==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==14107==    by 0x10FC8E: create_array2 (get_tokens_2.c:172)
+==14107==    by 0x10FDC6: get_tokens2 (get_tokens_2.c:195)
+==14107==    by 0x1095D6: main (minishell.c:38)
+==14107== 
+==14107== 24 bytes in 1 blocks are still reachable in loss record 18 of 71
+==14107==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==14107==    by 0x10FE0B: create_array (tokens.c:20)
+==14107==    by 0x10FF34: get_tokens (tokens.c:46)
+==14107==    by 0x109658: main (minishell.c:47)
+
+==14107== 600 bytes in 1 blocks are still reachable in loss record 32 of 71
+==14107==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==14107==    by 0x10D607: start_exp (start.c:53)
+==14107==    by 0x10CC5D: init_params (init.c:22)
+==14107==    by 0x109526: main (minishell.c:24)
+==14107== 
+==14107== 608 bytes in 1 blocks are still reachable in loss record 33 of 71
+==14107==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==14107==    by 0x10D50D: start_env (start.c:34)
+==14107==    by 0x10CC4A: init_params (init.c:21)
+==14107==    by 0x109526: main (minishell.c:24)
+
+==14107== 4,086 bytes in 74 blocks are still reachable in loss record 49 of 71
+==14107==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==14107==    by 0x110BCA: ft_strdup (in /home/alex/Desktop/minishell/minishell/minishell)
+==14107==    by 0x10D55C: start_env (start.c:39)
+==14107==    by 0x10CC4A: init_params (init.c:21)
+==14107==    by 0x109526: main (minishell.c:24)
+==14107== 
+==14107== 4,086 bytes in 74 blocks are still reachable in loss record 50 of 71
+==14107==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==14107==    by 0x110BCA: ft_strdup (in /home/alex/Desktop/minishell/minishell/minishell)
+==14107==    by 0x10D656: start_exp (start.c:58)
+==14107==    by 0x10CC5D: init_params (init.c:22)
+==14107==    by 0x109526: main (minishell.c:24)
+
+______________________________________________________________________________________
+
+command: "echo ola -n tudo bem"                 CORRECT!
+leaks:
+==14542== 8 bytes in 1 blocks are still reachable in loss record 2 of 71
+==14542==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==14542==    by 0x1107F3: ft_calloc (in /home/alex/Desktop/minishell/minishell/minishell)
+==14542==    by 0x10C767: init_pipes (pipes.c:43)
+==14542==    by 0x1095E9: main (minishell.c:40)
+
+==14542== 21 bytes in 5 blocks are still reachable in loss record 11 of 71
+==14542==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==14542==    by 0x10EEAA: process_default (get_tokens_1.c:105)
+==14542==    by 0x10EDA2: get_token (get_tokens_1.c:71)
+==14542==    by 0x10FE8B: create_array (tokens.c:29)
+==14542==    by 0x10FF34: get_tokens (tokens.c:46)
+==14542==    by 0x109658: main (minishell.c:47)
+==14542== 
+==14542== 22 bytes in 2 blocks are still reachable in loss record 12 of 71
+==14542==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==14542==    by 0x10F865: get_token2 (get_tokens_2.c:92)
+==14542==    by 0x10FD1A: create_array2 (get_tokens_2.c:182)
+==14542==    by 0x10FDC6: get_tokens2 (get_tokens_2.c:195)
+==14542==    by 0x1095D6: main (minishell.c:38)
+
+==14542== 24 bytes in 1 blocks are still reachable in loss record 14 of 71
+==14542==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==14542==    by 0x10FC8E: create_array2 (get_tokens_2.c:172)
+==14542==    by 0x10FDC6: get_tokens2 (get_tokens_2.c:195)
+==14542==    by 0x1095D6: main (minishell.c:38)
+
+=14542== 48 bytes in 1 blocks are still reachable in loss record 22 of 71
+==14542==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==14542==    by 0x10FE0B: create_array (tokens.c:20)
+==14542==    by 0x10FF34: get_tokens (tokens.c:46)
+==14542==    by 0x109658: main (minishell.c:47)
+
+==14542== 600 bytes in 1 blocks are still reachable in loss record 32 of 71
+==14542==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==14542==    by 0x10D607: start_exp (start.c:53)
+==14542==    by 0x10CC5D: init_params (init.c:22)
+==14542==    by 0x109526: main (minishell.c:24)
+==14542== 
+==14542== 608 bytes in 1 blocks are still reachable in loss record 33 of 71
+==14542==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==14542==    by 0x10D50D: start_env (start.c:34)
+==14542==    by 0x10CC4A: init_params (init.c:21)
+==14542==    by 0x109526: main (minishell.c:24)
+==14542== 
+
+==14542== 4,086 bytes in 74 blocks are still reachable in loss record 49 of 71
+==14542==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==14542==    by 0x110BCA: ft_strdup (in /home/alex/Desktop/minishell/minishell/minishell)
+==14542==    by 0x10D55C: start_env (start.c:39)
+==14542==    by 0x10CC4A: init_params (init.c:21)
+==14542==    by 0x109526: main (minishell.c:24)
+==14542== 
+==14542== 4,086 bytes in 74 blocks are still reachable in loss record 50 of 71
+==14542==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==14542==    by 0x110BCA: ft_strdup (in /home/alex/Desktop/minishell/minishell/minishell)
+==14542==    by 0x10D656: start_exp (start.c:58)
+==14542==    by 0x10CC5D: init_params (init.c:22)
+==14542==    by 0x109526: main (minishell.c:24)
+______________________________________________________________________________________
+
+command: "echo $USER"                           CORRECT!
+
+command: "echo -n nnnnnnnnnnnnnnnnnnnnnnnn"     CORRECT!
+
+command: "echo aaaa$USER"                       CORRECT!
+
+command: "echo -n -n -n -n"                     CORRECT!
+
+command: "echo -n -n -n a -n"                   CORRECT!
+
+command: "echo -n -n -n -a -n"                  CORRECT!
+
+command: "echo |"                               CORRECT! (visto que nao lidámos com dquotes)
+
+command: "echo >"                               CORRECT!
+
+______________________________________________________________________
+command: "echo ##"
+return: ##
+expected:
+        (newline)
+        prompt
+
+______________________________________________________________________
+command: "echo $$"
+return: $$
+expected: PID of the current shell (ex: 10085)
+
+______________________________________________________________________
+
+command: "echo $$$"
+return $$$ 
+expected: PID of the current shell+$ (ex: 10085$)
+
+______________________________________________________________________
+
+command: "echo $$$$"
+return $$$$ 
+expected: PID of the current shell twice (ex: 1008510085)
+
+______________________________________________________________________
+
+
+command: "echo -nnnnnnnnnnnnnnnnnnnnnnnnnn"
+return: "-nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn┏━ alex@:/home/alex/Desktop/minishell/minishell"
+expected: prompt
+
+
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+###############################  EXIT  ##############################
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+
+command: "exit"                                         CORRECT!
+leaks:
+==15271== 8 bytes in 1 blocks are still reachable in loss record 5 of 63
+==15271==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==15271==    by 0x1107F3: ft_calloc (in /home/alex/Desktop/minishell/minishell/minishell)
+==15271==    by 0x10C767: init_pipes (pipes.c:43)
+==15271==    by 0x1095E9: main (minishell.c:40)
+
+______________________________________________________________________
+
+command: "exit 1"                                       CORRECT!
+leaks: 
+==15271== 8 bytes in 1 blocks are still reachable in loss record 5 of 63
+==15271==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==15271==    by 0x1107F3: ft_calloc (in /home/alex/Desktop/minishell/minishell/minishell)
+==15271==    by 0x10C767: init_pipes (pipes.c:43)
+==15271==    by 0x1095E9: main (minishell.c:40)
+
+______________________________________________________________________
+
+command: "exit a"                                       ???????
+leaks: need to be checked. (probably same has the previous command)
+return:
+exit
+minishell: exit: a: numeric argument required
+
+______________________________________________________________________
+
+command: "exit 1 2 3"                                  CORRECT!
+leaks: none, just the same leak when you make the command "exit"
+
+
+
+#######################################################################
+#####################  RETURN VALUE OF A PROCESS  #####################
+#######################################################################
+
+
+command: "/bin/ls" + "echo $?"                        CORRECT!  
+leaks: 
+-- first command "/bin/ls" NO LEAKS;
+-- second command "echo $?"
+
+==7556== 8 bytes in 1 blocks are still reachable in loss record 3 of 71
+==7556==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==7556==    by 0x1107F3: ft_calloc (in /home/alex/Desktop/minishell/minishell/minishell)
+==7556==    by 0x10C767: init_pipes (pipes.c:43)
+==7556==    by 0x1095E9: main (minishell.c:40)
+
+==7556== 8 bytes in 2 blocks are still reachable in loss record 5 of 71
+==7556==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==7556==    by 0x10EEAA: process_default (get_tokens_1.c:105)
+==7556==    by 0x10EDA2: get_token (get_tokens_1.c:71)
+==7556==    by 0x10FE8B: create_array (tokens.c:29)
+==7556==    by 0x10FF34: get_tokens (tokens.c:46)
+==7556==    by 0x109658: main (minishell.c:47)
+==7556== 
+==7556== 9 bytes in 2 blocks are still reachable in loss record 6 of 71
+==7556==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==7556==    by 0x10F865: get_token2 (get_tokens_2.c:92)
+==7556==    by 0x10FD1A: create_array2 (get_tokens_2.c:182)
+==7556==    by 0x10FDC6: get_tokens2 (get_tokens_2.c:195)
+==7556==    by 0x1095D6: main (minishell.c:38)
+
+==7556== 24 bytes in 1 blocks are still reachable in loss record 15 of 71
+==7556==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==7556==    by 0x10FC8E: create_array2 (get_tokens_2.c:172)
+==7556==    by 0x10FDC6: get_tokens2 (get_tokens_2.c:195)
+==7556==    by 0x1095D6: main (minishell.c:38)
+==7556== 
+==7556== 24 bytes in 1 blocks are still reachable in loss record 16 of 71
+==7556==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==7556==    by 0x10FE0B: create_array (tokens.c:20)
+==7556==    by 0x10FF34: get_tokens (tokens.c:46)
+==7556==    by 0x109658: main (minishell.c:47)
+
+==7556== 600 bytes in 1 blocks are still reachable in loss record 32 of 71
+==7556==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==7556==    by 0x10D607: start_exp (start.c:53)
+==7556==    by 0x10CC5D: init_params (init.c:22)
+==7556==    by 0x109526: main (minishell.c:24)
+==7556== 
+==7556== 608 bytes in 1 blocks are still reachable in loss record 33 of 71
+==7556==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==7556==    by 0x10D50D: start_env (start.c:34)
+==7556==    by 0x10CC4A: init_params (init.c:21)
+==7556==    by 0x109526: main (minishell.c:24)
+
+==7556== 4,086 bytes in 74 blocks are still reachable in loss record 49 of 71
+==7556==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==7556==    by 0x110BCA: ft_strdup (in /home/alex/Desktop/minishell/minishell/minishell)
+==7556==    by 0x10D55C: start_env (start.c:39)
+==7556==    by 0x10CC4A: init_params (init.c:21)
+==7556==    by 0x109526: main (minishell.c:24)
+==7556== 
+==7556== 4,086 bytes in 74 blocks are still reachable in loss record 50 of 71
+==7556==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==7556==    by 0x110BCA: ft_strdup (in /home/alex/Desktop/minishell/minishell/minishell)
+==7556==    by 0x10D656: start_exp (start.c:58)
+==7556==    by 0x10CC5D: init_params (init.c:22)
+==7556==    by 0x109526: main (minishell.c:24)
+
+___________________________________________________________________
+
+command: "bin/ls/filethatdoesntexist" + "echo $?"
+returns: "/bin/ls/filethatdoesntexist: command not found" + "0";
+expected return: "bash: /bin/ls/filethatdoesntexist: Not a directory" + "126"
+leaks:
+==8237== 8 bytes in 1 blocks are still reachable in loss record 3 of 73
+==8237==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8237==    by 0x1107F3: ft_calloc (in /home/alex/Desktop/minishell/minishell/minishell)
+==8237==    by 0x10C767: init_pipes (pipes.c:43)
+==8237==    by 0x1095E9: main (minishell.c:40)
+
+==8237== 16 bytes in 1 blocks are still reachable in loss record 10 of 73
+==8237==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8237==    by 0x10FE0B: create_array (tokens.c:20)
+==8237==    by 0x10FF34: get_tokens (tokens.c:46)
+==8237==    by 0x109658: main (minishell.c:47)
+
+==8237== 24 bytes in 1 blocks are still reachable in loss record 14 of 73
+==8237==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8237==    by 0x10FC8E: create_array2 (get_tokens_2.c:172)
+==8237==    by 0x10FDC6: get_tokens2 (get_tokens_2.c:195)
+==8237==    by 0x1095D6: main (minishell.c:38)
+
+==8237== 28 bytes in 1 blocks are still reachable in loss record 17 of 73
+==8237==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8237==    by 0x10EEAA: process_default (get_tokens_1.c:105)
+==8237==    by 0x10EDA2: get_token (get_tokens_1.c:71)
+==8237==    by 0x10FE8B: create_array (tokens.c:29)
+==8237==    by 0x10FF34: get_tokens (tokens.c:46)
+==8237==    by 0x109658: main (minishell.c:47)
+==8237== 
+==8237== 29 bytes in 2 blocks are still reachable in loss record 18 of 73
+==8237==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8237==    by 0x10F865: get_token2 (get_tokens_2.c:92)
+==8237==    by 0x10FD1A: create_array2 (get_tokens_2.c:182)
+==8237==    by 0x10FDC6: get_tokens2 (get_tokens_2.c:195)
+==8237==    by 0x1095D6: main (minishell.c:38)
+
+==8237== 88 bytes in 1 blocks are still reachable in loss record 25 of 73
+==8237==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8237==    by 0x110A63: ft_split (in /home/alex/Desktop/minishell/minishell/minishell)
+==8237==    by 0x10D484: start_args (start.c:22)
+==8237==    by 0x10BC5D: execute (executer.c:32)
+==8237==    by 0x10DCD6: command (lexer.c:36)
+==8237==    by 0x109676: main (minishell.c:48)
+
+==8237== 109 bytes in 10 blocks are still reachable in loss record 28 of 73
+==8237==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8237==    by 0x111138: ft_substr (in /home/alex/Desktop/minishell/minishell/minishell)
+==8237==    by 0x110AE4: ft_split (in /home/alex/Desktop/minishell/minishell/minishell)
+==8237==    by 0x10D484: start_args (start.c:22)
+==8237==    by 0x10BC5D: execute (executer.c:32)
+==8237==    by 0x10DCD6: command (lexer.c:36)
+==8237==    by 0x109676: main (minishell.c:48)
+
+____________________________________________________________________________
+
+command: "CTRL + C" + "echo $?"                         CORRECT!
+return: 130
+leaks:
+--first command NO LEAKS;
+--second command probably same has the previous command;
+
+____________________________________________________________________________
+
+command: ">>" + "echo $"                                CORRECT!
+return: 2
+leaks:
+--first command NO LEAKS;
+--second command probably same has the previous command;
+
+____________________________________________________________________________
+
+command: echo $? + $?                               ?????????/CORRECT
+return: 0+0
+expected: 0 + 0 (just missing some spaces);
+leaks: need to be checked. (probably same has the previous command)
+
+____________________________________________________________________________
+
+
+
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+#############################  SIGNALS  ###############################
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+ctrl-C                          CORRECT!
+ctrl-\                          CORRECT!
+ctrl-D                          CORRECT!
+"write some stuff" + ctrl-C     CORRECT!
+buffer cleaned                  CORRECT!
+"write some stuff" + ctrl-D     CORRECT!
+"write some stuff" + ctrl-\     CORRECT!
+
+Try ctrl-C after running a blocking command 
+like cat without arguments or grep "seomthing"          CORRECT!
+
+Try ctrl-D after running a blocking command 
+like cat without arguments or grep "seomthing"          CORRECT!
+
+Try ctrl-\ after running a blocking command 
+like cat without arguments or grep "seomthing"          ????????
+return:^\^\ (we need to spam the command)
+expected:
+^\
+new prompt
+
+
+Leaks: "ctrl-C"
+-- NONE
+
+Leaks: "ctrl-\"
+-- NONE, fact is... impossible to check
+
+Leaks: "ctrl-D"
+--NONE, just readline leaks;
+
+
