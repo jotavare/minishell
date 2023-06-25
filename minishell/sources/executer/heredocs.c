@@ -1,43 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   env.c                                              :+:      :+:    :+:   */
+/*   heredocs.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/12 15:57:28 by alexandre         #+#    #+#             */
-/*   Updated: 2023/06/23 22:13:40 by jotavare         ###   ########.fr       */
+/*   Created: 2023/05/23 17:14:25 by lde-sous          #+#    #+#             */
+/*   Updated: 2023/06/24 02:07:36 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-int	env(t_attr *att)
+void	heredoc(char *delimiter, t_attr *att)
 {
-	int	i;
+	char *line;
+	int fd;
 
-	i = 1;
-	while (att->tok_arr[i])
+	fd = open(".heredoc", O_CREAT | O_WRONLY | O_TRUNC, 0644);
+	while (1)
 	{
-		if (!check_equal(att->tok_arr[i]))
+		write(1, ">", 1);
+		line = get_next_line(0, 1);
+		if (ft_strncmp(line, delimiter, ft_strlen(delimiter)) == 0)
 		{
-			printf("env: ‘%s’: No such file or directory\n", att->tok_arr[i]);
-			return (127);
+			free(line);
+			break ;
 		}
-		i++;
+		write(fd, line, ft_strlen(line));
+		free(line);
 	}
-	i = 0;
-	while (i < att->len_g_env)
-	{
-		printf("%s\n", att->g_env[i]);
-		i++;
-	}
-	i = 1;
-	while (att->tok_arr[i])
-	{
-		if (check_equal(att->tok_arr[i]))
-			printf("%s\n", att->tok_arr[i]);
-		i++;
-	}
-	return (0);
+	close(fd);
+	att->redir_fd = open(".heredoc", O_RDONLY);
+	dup2(att->redir_fd, 0);
+	close(att->redir_fd);
+	unlink(".heredoc");
 }

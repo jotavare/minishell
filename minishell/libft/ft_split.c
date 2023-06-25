@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:55:06 by lde-sous          #+#    #+#             */
-/*   Updated: 2022/12/30 18:12:18 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/06/20 06:16:16 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static int	ft_stringcounter(const char *s, char c)
 		if (s[i] == c)
 			i--;
 		if (i == 0)
-			break;
+			break ;
 	}
 	return (nstrings);
 }

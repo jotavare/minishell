@@ -6,7 +6,7 @@
 #    By: jotavare <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/12 15:15:58 by alexandre         #+#    #+#              #
-#    Updated: 2023/06/19 14:29:21 by jotavare         ###   ########.fr        #
+#    Updated: 2023/06/24 02:26:22 by jotavare         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,21 +40,33 @@ SRC =	sources/minishell.c \
     	sources/commands/export.c \
     	sources/commands/pwd.c \
     	sources/commands/unset.c \
+		sources/error/error_1.c \
+		sources/error/error_2.c \
+		sources/error/error_3.c \
     	sources/executer/executer.c \
-    	sources/parser/expander.c \
-    	sources/parser/lexer.c \
-		sources/sanitize/signals.c \
-    	sources/sanitize/free.c \
-    	sources/tokens/count_tokens.c \
-    	sources/tokens/get_tokens.c \
-    	sources/tokens/tokens.c \
+		sources/executer/execve.c \
+		sources/executer/heredocs.c \
+		sources/executer/paths.c \
+		sources/executer/pipes.c \
+		sources/executer/redirects.c \
     	sources/initialize/init.c \
+		sources/initialize/refresh.c \
     	sources/initialize/start.c \
+		sources/parser/check.c \
+		sources/parser/expander.c \
+    	sources/parser/lexer.c \
+		sources/parser/parser.c \
+		sources/parser/signals.c \
+    	sources/sanitize/free_1.c \
+		sources/sanitize/free_2.c \
+    	sources/tokens/count_tokens.c \
+    	sources/tokens/get_tokens_1.c \
+		sources/tokens/get_tokens_2.c \
+    	sources/tokens/tokens.c \
 		sources/utilities/debugg.c \
     	sources/utilities/prompt.c \
-    	sources/utilities/utilities.c \
-		sources/tokens/get_tokens2.c \
-		sources/error/error.c \
+    	sources/utilities/utils_1.c \
+		sources/utilities/utils_2.c \
 
 OBJSDIR = objects
 OBJ = $(addprefix $(OBJSDIR)/, $(SRC:.c=.o))
@@ -71,7 +83,6 @@ sani: re $(OBJ)
 	$(MAKE) -C ./libft
 	$(CSANI) $(CFLAGS) $(OBJ) $(LIBFT) $(RLFLAG) -o $(NAME)
 	echo "Compiled with fsanitizer"
-	./$(NAME)
 
 $(OBJSDIR)/%.o: %.c
 	mkdir -p $(@D)
@@ -87,7 +98,7 @@ fclean: clean
 	echo "Everything Deleted..."
 
 re: fclean all
-	
+
 .SILENT:
 
 .PHONY: all clean fclean re

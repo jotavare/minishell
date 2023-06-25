@@ -1,23 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pwd.c                                              :+:      :+:    :+:   */
+/*   sanitize.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/16 16:51:22 by alexfern          #+#    #+#             */
-/*   Updated: 2023/06/20 05:44:07 by jotavare         ###   ########.fr       */
+/*   Created: 2023/05/12 15:28:13 by lde-sous          #+#    #+#             */
+/*   Updated: 2023/06/24 02:12:17 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#ifndef SANITIZE_H
+# define SANITIZE_H
 
-int	pwd(void)
-{
-	char	pwd[PATH_MAX];
+# include "minishell.h"
 
-	if (getcwd(pwd, PATH_MAX) == NULL)
-		return (EXIT_FAILURE);
-	printf("%s\n", pwd);
-	return (EXIT_SUCCESS);
-}
+// free_one.c
+void	free_arr(char **arr);
+void	free_tokens(char **tokens, t_attr *att);
+void	free_g_env(t_attr *att);
+void	free_d_env(t_attr *att);
+void	free_exp_env(t_attr *att);
+
+// free_two.c
+void	free_d_exp_env(t_attr *att);
+void	exit_free(t_attr *att);
+void	ft_delete_matrix(void *matrix);
+void	free_start_args(t_exec *args);
+
+#endif

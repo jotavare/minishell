@@ -1,43 +1,55 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   env.c                                              :+:      :+:    :+:   */
+/*   free_two.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/12 15:57:28 by alexandre         #+#    #+#             */
-/*   Updated: 2023/06/23 22:13:40 by jotavare         ###   ########.fr       */
+/*   Created: 2023/05/15 18:15:45 by lde-sous          #+#    #+#             */
+/*   Updated: 2023/06/24 02:11:54 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-int	env(t_attr *att)
+void	free_d_exp_env(t_attr *att)
 {
 	int	i;
 
-	i = 1;
-	while (att->tok_arr[i])
-	{
-		if (!check_equal(att->tok_arr[i]))
-		{
-			printf("env: ‘%s’: No such file or directory\n", att->tok_arr[i]);
-			return (127);
-		}
-		i++;
-	}
 	i = 0;
-	while (i < att->len_g_env)
+	while (att->d_exp_env[i] != NULL)
 	{
-		printf("%s\n", att->g_env[i]);
+		free(att->d_exp_env[i]);
 		i++;
 	}
-	i = 1;
-	while (att->tok_arr[i])
+	free(att->d_exp_env);
+}
+
+void	exit_free(t_attr *att)
+{
+	free_tokens(att->tok_arr, att);
+	free(att->tok_arr);
+}
+
+void	ft_delete_matrix(void *matrix)
+{
+	int	i;
+
+	i = -1;
+	while (((char **)matrix)[++i])
+		free(((char **)matrix)[i]);
+	free(matrix);
+}
+
+void	free_start_args(t_exec *args)
+{
+	int	i;
+
+	i = 0;
+	while (args->all_paths[i] != NULL)
 	{
-		if (check_equal(att->tok_arr[i]))
-			printf("%s\n", att->tok_arr[i]);
+		free(args->all_paths[i]);
 		i++;
 	}
-	return (0);
+	free(args->all_paths);
 }

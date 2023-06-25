@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tokens.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 18:15:45 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/19 14:11:32 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/20 11:08:11 by alexandre        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 void	create_array(char *s, t_attr *att)
 {
 	int	count;
-	int	j = 0;
 
 	att->index = 0;
 	att->beforet = malloc((att->nb_tokens + 1) * sizeof(char *));
@@ -28,7 +27,7 @@ void	create_array(char *s, t_attr *att)
 		while (*s == ' ')
 			s++;
 		att->beforet[count] = get_token(s, att);
- 		if (att->beforet[count] == 0 && count < att->nb_tokens)
+		if (att->beforet[count] == 0 && count < att->nb_tokens)
 		{
 			s = NULL;
 			return ;
@@ -36,11 +35,7 @@ void	create_array(char *s, t_attr *att)
 		s += att->tok_arr_i;
 		count++;
 	}
-	null_token_handle(att);
-	while(j < att->nb_tokens)
-	{
-		j++;
-	}
+	//null_token_handle(att);
 }
 
 char	**get_tokens(char *str, t_attr *att)
@@ -49,39 +44,34 @@ char	**get_tokens(char *str, t_attr *att)
 		return (NULL);
 	count_tokens(str, att);
 	create_array(str, att);
-	//expand_tokens(att->tok_arr, att);
 	return (att->beforet);
 }
 
-// FUNCAO EM FASE EXPERIMENTAL!
-
 void	null_token_handle(t_attr *att)
 {
-	int		i;
-	int		j;
-	
+	int	i;
+	int	j;
+
+	i = 0;
 	i = 0;
 	while (i < att->nb_tokens)
 	{
-		
 		if (att->beforet[i] == 0)
-		{
 			att->nb_tokens--;
-		}
 		else
-		i++;
+			i++;
 	}
+	free(att->aftert);
 	i = 0;
 	j = 0;
 	att->aftert = malloc(sizeof(char *) * (att->nb_tokens + 1));
-	while(i < att->nb_tokens)
+	while (i < att->nb_tokens)
 	{
 		if (att->beforet[i])
 		{
 			att->aftert[j] = att->beforet[i];
 			j++;
 		}
-		//free(att->beforet[i]);
 		i++;
 	}
 }

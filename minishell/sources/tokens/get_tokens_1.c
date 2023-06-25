@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 18:15:45 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/19 16:16:23 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/24 02:15:10 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ char	*get_token(char *s, t_attr *att)
 {
 	int	flag;
 	int	quotes;
-	
+
+	att->inside_single_quotes = 0;
 	flag = 0;
 	quotes = 0;
 	att->tok_arr_i = 0;
@@ -37,13 +38,12 @@ char	*get_token(char *s, t_attr *att)
 			flag = 1;
 			quotes++;
 			if (att->o_quotes == quotes)
-				{
-					att->tok_arr_i++;
-					break ;
-				}
+			{
+				att->tok_arr_i++;
+				break ;
+			}
 		}
-		else if (s[att->tok_arr_i] == ' ' && att->o_quotes % 2 == 0 && att->o_dquotes
-				% 2 == 0)
+		else if (s[att->tok_arr_i] == ' ' && quotes % 2 == 0 && quotes % 2 == 0)
 			break ;
 		else if (s[att->tok_arr_i] == '|' && s[att->tok_arr_i + 1] != '|'
 				&& att->o_quotes % 2 == 0 && att->o_dquotes % 2 == 0)
@@ -73,7 +73,9 @@ char	*get_token(char *s, t_attr *att)
 
 char	*process_token_two(char *s, t_attr *att)
 {
-	char	*token;	token = malloc(sizeof(char) * 2);
+	char	*token;
+
+	token = malloc(sizeof(char) * 2);
 	if (!token)
 		return (NULL);
 	token[0] = s[att->tok_arr_i];
@@ -83,7 +85,9 @@ char	*process_token_two(char *s, t_attr *att)
 
 char	*process_token_three(char *s, t_attr *att)
 {
-	char	*token;	token = malloc(sizeof(char) * 3);
+	char	*token;
+
+	token = malloc(sizeof(char) * 3);
 	if (!token)
 		return (NULL);
 	token[0] = s[att->tok_arr_i];
@@ -92,36 +96,11 @@ char	*process_token_three(char *s, t_attr *att)
 	return (token);
 }
 
-char	*process_multi_quote(char *s, t_attr *att)
-{
-	char	*token = NULL;
-	char	*temp;
-	
-	temp = malloc(sizeof(char) * 2);
-	temp[1] = 0;
-	strncpy(temp, s, att->tok_arr_i);
-	if (((strncmp(temp, "\"\"", 2) == 0 || strncmp(temp, "''", 2) == 0)) && s[att->tok_arr_i + 1] == 32)
-	{
-		if (strncmp(temp, "\"\"", 2) == 0)
-			att->o_dquotes -= 2;
-		else if (strncmp(temp, "''", 2) == 0)
-			att->o_quotes -= 2;
-		token = malloc(sizeof(char));
-		if (!token)
-			return (NULL);
-		token[0] = '\0';
-	}
-	else
-		token = double_quotes_treat(s, att);
-	free(temp);
-	return (token);
-}
-
 char	*process_default(char *s, t_attr *att)
 {
 	char	*token;
-	int		i;	
-	
+	int		i;
+
 	i = 0;
 	token = malloc(sizeof(char) * (att->tok_arr_i + 1));
 	if (!token)
@@ -135,7 +114,7 @@ char	*process_default(char *s, t_attr *att)
 	return (token);
 }
 
-char	*double_quotes_treat(char *s, t_attr *att)
+char	*process_multi_quote(char *s, t_attr *att)
 {
 	char	*token;
 	int		i;
@@ -145,9 +124,7 @@ char	*double_quotes_treat(char *s, t_attr *att)
 
 	j = 0;
 	i = 0;
-
 	token = NULL;
-	pos = att->tok_arr_i - 2;
 	flag = 0;
 	while (s[i])
 	{
@@ -161,13 +138,19 @@ char	*double_quotes_treat(char *s, t_attr *att)
 				if (s[i + 1] == ' ' && j % 2 == 0)
 				{
 					i++;
-					break ;
+					pos = i - j;
+					token = quotentoken(s, att, flag, pos);
+					att->inside_single_quotes = 0;
+					return (token);
 				}
 			}
 			else if (!s[i + 1])
 			{
 				i++;
-				break ;
+				pos = i - j;
+				token = quotentoken(s, att, flag, pos);
+				att->inside_single_quotes = 0;
+				return (token);
 			}
 		}
 		if (s[i] == '\'' && (flag == 0 || flag == 1))
@@ -180,52 +163,76 @@ char	*double_quotes_treat(char *s, t_attr *att)
 				if (s[i + 1] == ' ' && j % 2 == 0)
 				{
 					i++;
-					break ;
+					pos = i - j;
+					token = quotentoken(s, att, flag, pos);
+					att->inside_single_quotes = 1;
+					return (token);
 				}
 			}
 			else if (!s[i + 1])
-				{
-					i++;
-					break ;
-				}
+			{
+				i++;
+				pos = i - j;
+				token = quotentoken(s, att, flag, pos);
+				att->inside_single_quotes = 1;
+				return (token);
+			}
 		}
 		if (s[i] == ' ' && j % 2 == 0 && j > 1)
-				break ;
+		{
+			pos = i - j;
+			token = quotentoken(s, att, flag, pos);
+			return (token);
+		}
 		i++;
 	}
 	pos = i - j;
-	token = malloc(sizeof(char) * pos);
+	token = quotentoken(s, att, flag, pos);
+	return (token);
+}
+char	*quotentoken(char *s, t_attr *att, int flag, int pos)
+{
+	int i;
+	int j;
+	char *token;
+	int closed;
+
+	token = malloc(sizeof(char) * (pos + 1));
 	token[pos] = 0;
+	closed = 0;
 	i = 0;
 	j = 0;
 	while (j < pos && s[i] != '\0')
 	{
 		if (flag == 1)
 		{
-
+			if (s[i] == 39)
+				closed++;
 			while (s[i] != 39 && s[i] != '\0')
 			{
-				if (s[i] == 34)
-					att->o_dquotes--;
+				if (closed >= 2 && s[i] == ' ')
+					return (token);
+				token[j] = s[i];
+				j++;
+				i++;
+			}
+			if (s[i] == 34)
+				att->o_dquotes--;
+		}
+		else if (flag == 2)
+		{
+			if (s[i] == 34)
+				closed++;
+			while (s[i] != 34 && s[i] != '\0')
+			{
+				if (closed >= 2 && s[i] == ' ')
+					return (token);
 				token[j] = s[i];
 				j++;
 				i++;
 			}
 			if (s[i] == 39)
 				att->o_quotes--;
-		}
-		//SE ASPAS ABERTAS: COPIA TUDO ->> <"   sd  ">
-		//SE ASPAS FECHADAS: QUANDO ECONTRA ESPACO DA BREAK ->> <"" >
-		else if (flag == 2)
-		{
-			while (s[i] != 34 && s[i] != '\0')
-			{
-				if (s[i] == 39)
-					att->o_quotes--;
-				token[j] = s[i];
-				j++;
-				i++;
-			}
 		}
 		i++;
 	}

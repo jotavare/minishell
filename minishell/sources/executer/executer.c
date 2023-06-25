@@ -6,159 +6,28 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 17:14:25 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/19 16:13:31 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/23 22:02:01:26 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-char	**build_path(char **all_paths, int nb, char *command)
-{
-	char	**paths_comm;
-	int		i;
-
-	paths_comm = malloc(sizeof(char *) * nb + 1);
-	i = 0;
-	paths_comm[nb - 1] = NULL;
-	while (i < nb)
-	{
-		paths_comm[i] = ft_strjoin(all_paths[i], command);
-		i++;
-	}
-	free(command);
-	return (paths_comm);
-}
-
-int	count_paths(char *s)
-{
-	int	count;
-
-	count = 0;
-	while (*s)
-	{
-		if (*s == ':')
-			count++;
-		s++;
-	}
-	return (count);
-}
-
-char	*get_str_paths(t_attr *att, char *path_str)
-{
-	int	i;
-
-	i = 0;
-	while (att->g_env[i])
-	{
-		if (!ft_strncmp(att->g_env[i], "PATH", 4))
-		{
-			path_str = att->g_env[i];
-			return (path_str);
-		}
-		i++;
-	}
-	return (NULL);
-}
-
-int	exec_commands(t_exec *args, t_attr *att)
-{
-	args->i = 0;
-	args->path_command = build_path(args->all_paths, args->nb_of_paths,
-			ft_strjoin("/", att->tok_arr[0]));
-	while (args->i < args->nb_of_paths)
-	{
-		if (!access(args->path_command[args->i], X_OK))
-		{
-			args->ret = execve(args->path_command[args->i], att->tok_arr,
-					att->g_env);
-			if (args->ret != 0)
-			{
-				perror("execve");
-				return (-1);
-			}
-		}
-		args->i++;
-	}
-	return (0);
-}
-
-int	exec_binaries(t_exec *args, t_attr *att)
-{
-	char	*filepath;
-
-	getcwd(args->curr_path, PATH_MAX);
-	args->command++;
-	filepath = ft_strjoin(args->curr_path, args->command);
-	if (!access(filepath, X_OK))
-	{
-		args->ret = execve(filepath, att->tok_arr, att->g_env);
-		if (args->ret != 0)
-		{
-			perror("execve");
-			free(filepath);
-			return (-1);
-		}
-	}
-	free(filepath);
-	return (0);
-}
-
-int	exec_absolute_path(t_exec *args, t_attr *att)
-{
-	if (!access(att->tok_arr[0], X_OK))
-	{
-		args->ret = execve(att->tok_arr[0], att->tok_arr, att->g_env);
-		if (args->ret != 0)
-		{
-			perror("execve");
-			return (-1);
-		}
-	}
-	return (0);
-}
-
-void    write_to_pipe(t_attr *att)
-{
-	if (att->pipeindex >= att->number_of_pipes)
-		return ;
-	close(att->pipesfd[att->pipeindex][0]);
-    if (dup2(att->pipesfd[att->pipeindex][WRITE_END], STDOUT_FILENO) < 0)
-		perror("dup2 :[WRITE_END] ");
-	close(att->pipesfd[att->pipeindex][1]);
-	
-}
-
-void    read_from_pipe(t_attr *att)
-{
-	close(att->pipesfd[att->pipeindex][1]);
-    if (dup2(att->pipesfd[att->pipeindex][READ_END], STDIN_FILENO) < 0)
-		perror("dup2 [READ_END]: ");
-	close(att->pipesfd[att->pipeindex][0]);
-}
-
-void	close_pipeline(t_attr *att)
-{
-	if (att->pipeindex > 0)
-		close(att->pipesfd[att->pipeindex - 1][READ_END]);
-	if (att->pipeindex < att->number_of_pipes)
-		close(att->pipesfd[att->pipeindex][WRITE_END]);
-}
-
 void	execute_core(t_attr *att, t_exec *args)
 {
 	if (args->command[0] == '/')
 		exec_absolute_path(args, att);
-	else if (args->command[0 ]== '.')
+	else if (args->command[0] == '.')
 		exec_binaries(args, att);
 	else
 		exec_commands(args, att);
 	printf("%s: command not found \n", att->tok_arr[0]);
-	exit(0);
-} 
+	exit(WEXITSTATUS(g_value));
+}
 
-int		execute(t_attr *att, int index)	
+int	execute(t_attr *att, int index)
 {
 	t_exec	args;
+	int		exit_status;
 
 	start_args(&args, att);
 	args.pid = fork();
@@ -166,10 +35,17 @@ int		execute(t_attr *att, int index)
 		return (-1);
 	if (args.pid == 0)
 	{
+		if (att->skip)
+			exit(g_value);
 		if (att->read_from_pipe)
 			read_from_pipe(att);
 		else if (att->read_from_file)
-			read_from_file(att, index);
+		{
+			if (read_from_file(att, index) < 0)
+				exit(g_value);
+		}
+		if (att->heredoc)
+			heredoc(att->commands_arr[att->i + 2], att);
 		if (att->write_to_pipe && att->read_from_pipe)
 			att->pipeindex++;
 		if (att->write_to_pipe)
@@ -177,23 +53,27 @@ int		execute(t_attr *att, int index)
 		if (att->redir)
 			redir_append(att, index);
 		if (!ft_strcmp(att->tok_arr[0], "pwd"))
-		 	pwd();
+			pwd();
 		else if (!ft_strcmp(att->tok_arr[0], "echo"))
-			echo(*att);
+			g_value = echo(*att);
 		else if (!ft_strcmp(att->tok_arr[0], "env"))
-			env(att);
+			g_value = env(att);
 		else if (ft_strcmp(att->tok_arr[0], "export") == 0)
 			export_print(*att);
 		else
 			execute_core(att, &args);
-		exit(0);
+		free_start_args(&args);
+		//printf("Return value [CHILD]: %d\n", g_value);
+		exit(g_value);
 	}
 	else
-		waitpid(args.pid, NULL, 0);
-	if (att->write_to_pipe && att->read_from_pipe)
-			att->pipeindex++;
-	//see_flags_and_pipes(*att);
+		waitpid(args.pid, &g_value, 0);
+	if (att->read_from_pipe)
+		att->pipeindex++;
 	close_pipeline(att);
-	free_arr(args.all_paths);
-	return (0);
+	//see_flags_and_pipes(*att);
+	free_start_args(&args);
+	exit_status = WEXITSTATUS(g_value);
+	//printf("Return value [PARENT]: %d\n", exit_status);
+	return (exit_status);
 }

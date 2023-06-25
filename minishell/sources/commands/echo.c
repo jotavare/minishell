@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:57:28 by alexandre         #+#    #+#             */
-/*   Updated: 2023/06/17 17:47:36 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/23 22:13:21 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,43 +17,54 @@
 	with a new line at the end of the string
 */
 
-extern int	g_last_return_value;
-
-void	echo(t_attr att)
+int	echo(t_attr att)
 {
 	int	i;
-	int flag_n;
-	int flag_print;
+	int	fl_n;
+	int	fl_pr;
 
 	i = 1;
-	flag_n = 0;
-	flag_print = 0;
-	if (att.nb_tokens == 1)
-		printf("\n");
-	else
+	fl_n = 0;
+	fl_pr = 0;
+	while (i < att.nb_tokens && att.tok_arr[i])
 	{
-		while (i < att.nb_tokens)
+		if (handle_echo_options(att, &fl_n, &fl_pr, i))
 		{
-			if (ft_strnstr(att.tok_arr[i], "-n", ft_strlen(att.tok_arr[i])) && flag_print == 0)
-			{
-				echo_n(att);
-				flag_n = 1;				
-			}
-			else if (ft_strnstr(att.tok_arr[i], "$?", ft_strlen(att.tok_arr[i])))
-				printf("%d", g_last_return_value);
-			else
-			{
-				printf("%s", att.tok_arr[i]);
-				flag_print = 1;
-			}
-			if (i != att.nb_tokens - 1 && flag_print == 1)
-				printf(" ");
 			i++;
+			continue ;
 		}
-		if (flag_n == 0)
-			printf("\n");
+		if (fl_pr)
+			printf(" ");
+		printf("%s", att.tok_arr[i]);
+		fl_pr = 1;
+		i++;
 	}
-	kill(getpid(), SIGTERM);
+	if (fl_n == 0)
+		printf("\n");
+	return (0);
+}
+
+/*
+	checks if the string after echo command is an option
+	-n = no new line at the end of the string
+	$? = prints the exit status of the last command
+*/
+
+int	handle_echo_options(t_attr att, int *fl_n, int *fl_pr, int i)
+{
+	if (ft_strnstr(att.tok_arr[i], "-n", ft_strlen(att.tok_arr[i]))
+		&& *fl_pr == 0)
+	{
+		echo_n(att);
+		*fl_n = 1;
+		return (1);
+	}
+	if (ft_strnstr(att.tok_arr[i], "$?", ft_strlen(att.tok_arr[i])))
+	{
+		printf("%d", g_value);
+		return (1);
+	}
+	return (0);
 }
 
 /*
@@ -61,13 +72,13 @@ void	echo(t_attr att)
 	with the -n option = no new line at the end of the string
 */
 
-void	echo_n(t_attr att)
+int	echo_n(t_attr att)
 {
 	int	i;
 
 	i = 1;
-
-	if (strcmp(att.tok_arr[i], "-n") != 0)
+	if (ft_strcmp(att.tok_arr[i], "-n") != 0)
 		ft_putstr_fd(att.tok_arr[i], 1);
 	i++;
+	return (0);
 }

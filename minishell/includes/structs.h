@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:28:13 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/18 23:22:26 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/24 01:18:03 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,11 @@
 # define STRUCTS_H
 
 # include "macros.h"
-
-typedef	struct s_pars //get_tokens2
+typedef struct s_pars
 {
-	char **pars_arr;
-	int nb_tokenst;
-}	t_pars;
+	char	**pars_arr;
+	int		nb_tokenst;
+}			t_pars;
 
 typedef struct s_attr
 {
@@ -31,8 +30,6 @@ typedef struct s_attr
 	int		tok_arr_i;
 	int		nb_tokens;
 	int		pipeindex;
-	int		rediindex;
-	int		appendindex;
 	int		index;
 	int		len_d_env;
 	int		len_g_env;
@@ -45,18 +42,20 @@ typedef struct s_attr
 	char	**d_exp_env;
 	int		len_d_exp_env;
 	char	**commands_arr;
-	t_pars	pars_data; //get_tokens2
 	int		write_to_pipe;
 	int		read_from_pipe;
 	int		read_from_file;
 	int		redir;
+	int		create_file;
+	int		heredoc;
+	int		skip;
+	int		inside_single_quotes;
 	int		number_of_pipes;
 	int		number_of_redir;
 	int		number_of_append;
 	int		**pipesfd;
 	int		redir_fd;
-	int		out_fd;
-	// int		pipefd[2];
+	t_pars	pars_data;
 }			t_attr;
 
 typedef struct s_exec

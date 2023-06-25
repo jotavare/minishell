@@ -6,46 +6,11 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 18:15:45 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/08 01:35:11 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/24 01:50:22 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
-
-/*
-    expands the tokens that start with a '$' sign and 
-    replaces the token with the value of the environment
-    variable named after the token.
-*/
-
-char	**expand_tokens(char **tokens, t_attr *att)
-{
-	int		i;
-	char	*value;
-	size_t	expanded_length;
-	char	*expanded_token;
-	char	*variable_name;
-
-	i = 0;
-	while (tokens[i] != NULL)
-	{
-		if (tokens[i][0] == '$' && tokens[i][1] != '\0')
-		{
-			variable_name = tokens[i] + 1;
-			value = custom_getenv(variable_name, att);
-			if (value != NULL)
-			{
-				expanded_length = ft_strlen(value);
-				expanded_token = malloc((expanded_length + 1) * sizeof(char));
-				ft_strcpy(expanded_token, value);
-				free(tokens[i]);
-				tokens[i] = expanded_token;
-			}
-		}
-		i++;
-	}
-	return (tokens);
-}
 
 /*
     custom implementation of the getenv() function.
@@ -77,4 +42,52 @@ char	*custom_getenv(const char *variable_name, t_attr *att)
 		i++;
 	}
 	return (NULL);
+}
+
+char	**expand_tokens(char **tokens, t_attr *att)
+{
+	char	*variable_name;
+	char	*value;
+	size_t	expanded_length;
+	size_t	token_length;
+	char	*expanded_token;
+	int		j;
+	int		i;
+
+	variable_name = NULL;
+	value = NULL;
+	expanded_length = 0;
+	token_length = 0;
+	expanded_token = NULL;
+	i = 0;
+	while (tokens[i])
+	{
+		j = 0;
+		while (tokens[i][j])
+		{
+			if (tokens[i][j] == '$' && tokens[i][j + 1])
+			{
+				variable_name = tokens[i] + j + 1;
+				value = custom_getenv(variable_name, att);
+				if (value)
+				{
+					expanded_length = ft_strlen(value);
+					token_length = ft_strlen(tokens[i]);
+					expanded_token = malloc((token_length + expanded_length + 1)
+							* sizeof(char));
+					ft_strncpy(expanded_token, tokens[i], j);
+					expanded_token[j] = '\0';
+					ft_strcat(expanded_token, value);
+					ft_strcat(expanded_token, tokens[i] + j
+							+ ft_strlen(variable_name) + 1);
+					free(tokens[i]);
+					tokens[i] = expanded_token;
+					j += expanded_length;
+				}
+			}
+			j++;
+		}
+		i++;
+	}
+	return (tokens);
 }
