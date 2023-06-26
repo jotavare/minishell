@@ -62,7 +62,7 @@ int	execute(t_attr *att, int index)
 			export_print(*att);
 		else
 			execute_core(att, &args);
-		free_start_args(&args);
+		free_child(att, &args);
 		//printf("Return value [CHILD]: %d\n", g_value);
 		exit(g_value);
 	}
@@ -75,5 +75,5 @@ int	execute(t_attr *att, int index)
 	free_start_args(&args);
 	exit_status = WEXITSTATUS(g_value);
 	//printf("Return value [PARENT]: %d\n", exit_status);
-	return (exit_status);
+	return (g_value = exit_status);
 }

@@ -24,6 +24,7 @@ int		check_equal(char *str);
 // expander.c
 char	*custom_getenv(const char *variable_name, t_attr *att);
 char	**expand_tokens(char **tokens, t_attr *att);
+char	*has_correct_name(char *str);
 
 // lexer.c
 void	command(t_attr *att, int index);

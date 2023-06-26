@@ -53,7 +53,9 @@ char	**expand_tokens(char **tokens, t_attr *att)
 	char	*expanded_token;
 	int		j;
 	int		i;
+	int		has_quote;
 
+	has_quote = 0;
 	variable_name = NULL;
 	value = NULL;
 	expanded_length = 0;
@@ -63,11 +65,14 @@ char	**expand_tokens(char **tokens, t_attr *att)
 	while (tokens[i])
 	{
 		j = 0;
-		while (tokens[i][j])
 		{
+			if (tokens[i][j] == '\'')
+				has_quote = 1;
 			if (tokens[i][j] == '$' && tokens[i][j + 1])
 			{
 				variable_name = tokens[i] + j + 1;
+				if (has_quote == 1)
+					variable_name = has_correct_name(tokens[i] + j + 1);
 				value = custom_getenv(variable_name, att);
 				if (value)
 				{
@@ -82,6 +87,8 @@ char	**expand_tokens(char **tokens, t_attr *att)
 							+ ft_strlen(variable_name) + 1);
 					free(tokens[i]);
 					tokens[i] = expanded_token;
+					if (has_quote)
+						free(variable_name); 
 					j += expanded_length;
 				}
 			}
@@ -90,4 +97,26 @@ char	**expand_tokens(char **tokens, t_attr *att)
 		i++;
 	}
 	return (tokens);
+}
+
+char	*has_correct_name(char *str)
+{
+	int	i;
+	int j;
+	char	*correct;
+
+	correct = malloc(sizeof(char) * (ft_strlen(str)));
+	i = 0;
+	j = 0;
+	while (str[i])
+	{
+		if (str[i] != '\'')
+		{
+			correct[j] = str[i];
+		    j++;
+		}
+		i++;
+	}
+	correct[j] = 0;
+	return (correct);
 }

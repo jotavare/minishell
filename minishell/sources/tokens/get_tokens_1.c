@@ -27,20 +27,26 @@ char	*get_token(char *s, t_attr *att)
 		{
 			flag = 2;
 			quotes++;
-			if (att->o_dquotes == quotes)
+			if (att->o_dquotes == quotes && s[att->tok_arr_i + 1])
 			{
-				att->tok_arr_i++;
-				break ;
+				if (s[att->tok_arr_i + 1] == ' ')
+				{
+					att->tok_arr_i++;
+					break ;
+				}
 			}
 		}
 		else if (s[att->tok_arr_i] == '\'' && (flag == 0 || flag == 1))
 		{
 			flag = 1;
 			quotes++;
-			if (att->o_quotes == quotes)
+			if (att->o_quotes == quotes && s[att->tok_arr_i + 1])
 			{
-				att->tok_arr_i++;
-				break ;
+				if (s[att->tok_arr_i + 1] == ' ')
+				{
+					att->tok_arr_i++;
+					break ;
+				}
 			}
 		}
 		else if (s[att->tok_arr_i] == ' ' && quotes % 2 == 0 && quotes % 2 == 0)
@@ -66,7 +72,9 @@ char	*get_token(char *s, t_attr *att)
 		att->tok_arr_i++;
 	}
 	if (quotes >= 2)
+	{
 		return (process_multi_quote(s, att));
+	}
 	else
 		return (process_default(s, att));
 }
@@ -130,6 +138,7 @@ char	*process_multi_quote(char *s, t_attr *att)
 	{
 		if (s[i] == '"' && (flag == 0 || flag == 2))
 		{
+			att->inside_single_quotes = 0;
 			flag = 2;
 			att->o_dquotes--;
 			j++;
@@ -140,7 +149,6 @@ char	*process_multi_quote(char *s, t_attr *att)
 					i++;
 					pos = i - j;
 					token = quotentoken(s, att, flag, pos);
-					att->inside_single_quotes = 0;
 					return (token);
 				}
 			}
@@ -149,13 +157,14 @@ char	*process_multi_quote(char *s, t_attr *att)
 				i++;
 				pos = i - j;
 				token = quotentoken(s, att, flag, pos);
-				att->inside_single_quotes = 0;
+				//att->inside_single_quotes = 0;
 				return (token);
 			}
 		}
 		if (s[i] == '\'' && (flag == 0 || flag == 1))
 		{
 			flag = 1;
+			att->inside_single_quotes = 1;
 			att->o_quotes--;
 			j++;
 			if (s[i + 1])
@@ -165,7 +174,6 @@ char	*process_multi_quote(char *s, t_attr *att)
 					i++;
 					pos = i - j;
 					token = quotentoken(s, att, flag, pos);
-					att->inside_single_quotes = 1;
 					return (token);
 				}
 			}
@@ -174,7 +182,6 @@ char	*process_multi_quote(char *s, t_attr *att)
 				i++;
 				pos = i - j;
 				token = quotentoken(s, att, flag, pos);
-				att->inside_single_quotes = 1;
 				return (token);
 			}
 		}
@@ -187,6 +194,7 @@ char	*process_multi_quote(char *s, t_attr *att)
 		i++;
 	}
 	pos = i - j;
+	printf("pos %d\n", pos);
 	token = quotentoken(s, att, flag, pos);
 	return (token);
 }

@@ -28,7 +28,10 @@ void	free_d_exp_env(t_attr *att)
 void	exit_free(t_attr *att)
 {
 	free_tokens(att->tok_arr, att);
-	free(att->tok_arr);
+	free_g_env(att);
+	free_exp_env(att);
+	free_arr(att->commands_arr);
+	ft_delete_matrix(att->pipesfd);
 }
 
 void	ft_delete_matrix(void *matrix)
@@ -52,4 +55,14 @@ void	free_start_args(t_exec *args)
 		i++;
 	}
 	free(args->all_paths);
+}
+
+void	free_child(t_attr *att, t_exec *args)
+{
+	free_start_args(args);
+	free_g_env(att);
+	free_exp_env(att);
+	free_arr(att->commands_arr);
+	ft_delete_matrix(att->pipesfd);
+	free_tokens(att->tok_arr, att);
 }

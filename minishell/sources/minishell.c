@@ -47,11 +47,10 @@ int	main(int ac, char **av, char **envp)
 				att.tok_arr = get_tokens(att.commands_arr[att.i], &att);
 				command(&att, att.i);
 				free_tokens(att.tok_arr, &att);
-				free(att.tok_arr);
 				att.i = att.i + 2;
 			}
-			while (waitpid(-1, NULL, 0) > 0)
-				continue ;
+			// while (waitpid(-1, NULL, 0) > 0)
+			// 	continue ;
 			ft_delete_matrix(att.pipesfd);
 			free_arr(att.commands_arr);
 			free(str);

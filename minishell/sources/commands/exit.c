@@ -45,17 +45,17 @@ int	ft_exit_args(t_attr attr)
 	return (g_value);
 }
 
-void	ft_exit(t_attr *attr)
+void	ft_exit(t_attr *att)
 {
 	g_value = 0;
 	printf("exit\n");
-	if (attr->nb_tokens == 1)
+	if (att->nb_tokens == 1)
 		g_value = 0;
-	else if (attr->nb_tokens == 2)
-		g_value = ft_exit_args(*attr);
+	else if (att->nb_tokens == 2)
+		g_value = ft_exit_args(*att);
 	else
 	{
-		if (ft_isdigit(attr->tok_arr[1][0]))
+		if (ft_isdigit(att->tok_arr[1][0]))
 		{
 			ft_putstr_fd("minishell: exit: too many arguments\n", 2);
 			g_value = 1;
@@ -64,9 +64,7 @@ void	ft_exit(t_attr *attr)
 		ft_putstr_fd("minishell: exit: too many arguments\n", 2);
 		g_value = 1;
 	}
-	free_g_env(attr);
-	free_exp_env(attr);
-	free_arr(attr->commands_arr);
-	exit_free(attr);
+	
+	exit_free(att);
 	exit(g_value);
 }

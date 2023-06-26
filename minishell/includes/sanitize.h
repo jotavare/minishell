@@ -27,5 +27,6 @@ void	free_d_exp_env(t_attr *att);
 void	exit_free(t_attr *att);
 void	ft_delete_matrix(void *matrix);
 void	free_start_args(t_exec *args);
+void	free_child(t_attr *att, t_exec *args);
 
 #endif
