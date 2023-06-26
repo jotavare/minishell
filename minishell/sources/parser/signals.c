@@ -23,7 +23,6 @@ void	handle_quit(int sig)
 	if (sig == SIGQUIT)
 	{
 		g_value = 131;
-		signal(SIGQUIT, SIG_IGN);
 	}
 }
 
@@ -41,7 +40,7 @@ void	handle_interrupt(int sig)
 
 void	set_signals(void)
 {
-	signal(SIGINT, handle_interrupt);
-	signal(SIGQUIT, handle_quit);
-	signal(SIGTSTP, SIG_IGN);
+	signal(SIGINT, handle_interrupt); //ctrl+C
+	signal(SIGQUIT, handle_quit); //ctrl+backslash
+	signal(SIGTSTP, SIG_IGN); //ctrl+Z
 }

@@ -15,8 +15,17 @@
 int	count_tokens(char *s, t_attr *att)
 {
 	int	len;
+	int	i;
 
-	count_quotes(s, att);
+	i = 0;
+	while (s[i])
+	{
+		if (s[i] == '"')
+			att->o_dquotes++;
+		else if (s[i] == '\'')
+			att->o_quotes++;
+		i++;
+	}
 	att->nb_tokens = 0;
 	len = ft_strlen(s) - 1;
 	while (len >= 0)
@@ -28,14 +37,14 @@ int	count_tokens(char *s, t_attr *att)
 		else if (s[len] != ' ')
 			len = check_non_space_char(s, len, att);
 		else if (s[len] != ' ' && s[len] != '|' && s[len] != '<'
-					&& s[len] != '>')
+				&& s[len] != '>')
 			len = check_special_char(s, len, att);
 		else if (s[len] == ' ')
 			len--;
 		else
 			len--;
 	}
-	printf("tokens = %d\n", att->nb_tokens);
+	//printf("nb_toks= %d\n", att->nb_tokens);
 	return (att->nb_tokens);
 }
 

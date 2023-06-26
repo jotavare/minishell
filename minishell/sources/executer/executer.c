@@ -47,7 +47,7 @@ void	check_flags(t_attr *att, int index)
 		redir_append(att, index);
 }
 
-void	execute_builtin(t_attr *att, t_exec *args)
+void	executer(t_attr *att, t_exec *args)
 {
 	if (!ft_strcmp(att->tok_arr[0], "pwd"))
 		g_value = pwd();
@@ -64,7 +64,7 @@ void	execute_builtin(t_attr *att, t_exec *args)
 int	execute(t_attr *att, int index)
 {
 	t_exec	args;
-	int		exit_status;
+	//int		exit_status;
 
 	start_args(&args, att);
 	args.pid = fork();
@@ -73,9 +73,9 @@ int	execute(t_attr *att, int index)
 	if (args.pid == 0)
 	{
 		check_flags(att, index);
-		execute_builtin(att, &args);
+		executer(att, &args);
 		free_child(att, &args);
-		exit(g_value);
+		//exit(g_value);
 	}
 	else
 		waitpid(args.pid, &g_value, 0);
@@ -83,6 +83,6 @@ int	execute(t_attr *att, int index)
 		att->pipeindex++;
 	close_pipeline(att);
 	free_start_args(&args);
-	exit_status = WEXITSTATUS(g_value);
-	return (g_value = exit_status);
+	g_value = WEXITSTATUS(g_value);
+	return (g_value);
 }
