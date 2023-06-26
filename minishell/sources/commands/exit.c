@@ -14,19 +14,24 @@
 
 extern int	g_value;
 
-int	ft_exit_args(t_attr attr)
+int exit_print_err(const char *arg)
+{
+	printf("minishell: exit: %s: numeric argument required\n", arg);
+	return (g_value = 2);
+}
+
+int	ft_exit_args(t_attr att)
 {
 	int			i;
 	int			is_num;
 	const char	*arg;
 
 	i = 0;
-	arg = attr.tok_arr[1];
+	arg = att.tok_arr[1];
 	is_num = 1;
 
 	if (arg[i] == '-')
 		i++;
-	
 	while (arg[i])
 	{
 		if (!isdigit(arg[i++]))
@@ -38,10 +43,7 @@ int	ft_exit_args(t_attr attr)
 	if (is_num)
 		g_value = ft_atoi(arg);
 	else
-	{
-		printf("minishell: exit: %s: numeric argument required\n", arg);
-		g_value = 2;
-	}
+		exit_print_err(arg);
 	return (g_value);
 }
 
