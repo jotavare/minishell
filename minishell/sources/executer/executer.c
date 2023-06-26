@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 17:14:25 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/23 22:02:01:26 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/23 22:02:01:26 by jotavare         ###   ########.fr    */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,43 @@ void	execute_core(t_attr *att, t_exec *args)
 	exit(127);
 }
 
+void	check_flags(t_attr *att, int index)
+{
+	if (att->only_create)
+		file_create_only(att);
+	if (att->skip)
+		exit(g_value);
+	if (att->read_from_pipe)
+		read_from_pipe(att);
+	else if (att->read_from_file)
+	{
+		if (read_from_file(att, index) < 0)
+			exit(g_value);
+	}
+	if (att->heredoc)
+		heredoc(att->commands_arr[att->i + 2], att);
+	if (att->write_to_pipe && att->read_from_pipe)
+		att->pipeindex++;
+	if (att->write_to_pipe)
+		write_to_pipe(att);
+	if (att->redir)
+		redir_append(att, index);
+}
+
+void	execute_builtin(t_attr *att, t_exec *args)
+{
+	if (!ft_strcmp(att->tok_arr[0], "pwd"))
+		g_value = pwd();
+	else if (!ft_strcmp(att->tok_arr[0], "echo"))
+		g_value = echo(*att);
+	else if (!ft_strcmp(att->tok_arr[0], "env"))
+		g_value = env(att);
+	else if (ft_strcmp(att->tok_arr[0], "export") == 0)
+		export_print(*att);
+	else
+		execute_core(att, args);
+}
+
 int	execute(t_attr *att, int index)
 {
 	t_exec	args;
@@ -35,35 +72,9 @@ int	execute(t_attr *att, int index)
 		return (-1);
 	if (args.pid == 0)
 	{
-		if (att->skip)
-			exit(g_value);
-		if (att->read_from_pipe)
-			read_from_pipe(att);
-		else if (att->read_from_file)
-		{
-			if (read_from_file(att, index) < 0)
-				exit(g_value);
-		}
-		if (att->heredoc)
-			heredoc(att->commands_arr[att->i + 2], att);
-		if (att->write_to_pipe && att->read_from_pipe)
-			att->pipeindex++;
-		if (att->write_to_pipe)
-			write_to_pipe(att);
-		if (att->redir)
-			redir_append(att, index);
-		if (!ft_strcmp(att->tok_arr[0], "pwd"))
-			g_value = pwd();
-		else if (!ft_strcmp(att->tok_arr[0], "echo"))
-			g_value = echo(*att);
-		else if (!ft_strcmp(att->tok_arr[0], "env"))
-			g_value = env(att);
-		else if (ft_strcmp(att->tok_arr[0], "export") == 0)
-			export_print(*att);
-		else
-			execute_core(att, &args);
+		check_flags(att, index);
+		execute_builtin(att, &args);
 		free_child(att, &args);
-		printf("Return value [CHILD]: %d\n", g_value);
 		exit(g_value);
 	}
 	else
@@ -71,9 +82,7 @@ int	execute(t_attr *att, int index)
 	if (att->read_from_pipe)
 		att->pipeindex++;
 	close_pipeline(att);
-	//see_flags_and_pipes(*att);
 	free_start_args(&args);
 	exit_status = WEXITSTATUS(g_value);
-	printf("Return value [PARENT]: %d\n", exit_status);
 	return (g_value = exit_status);
 }

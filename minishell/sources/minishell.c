@@ -41,8 +41,8 @@ int	main(int ac, char **av, char **envp)
 			while (att.commands_arr[att.i] && !verify_readline(str)
 				&& att.commands_arr[att.i][0] != '\0')
 			{
-				if (is_symbol(att.commands_arr[att.i]))
-					att.i++;
+				// if (is_symbol(att.commands_arr[att.i]))
+				// 	att.i++;
 				check_next_step(&att);
 				att.tok_arr = get_tokens(att.commands_arr[att.i], &att);
 				command(&att, att.i);

@@ -12,6 +12,18 @@
 
 #include "../../includes/minishell.h"
 
+void	file_create_only(t_attr *att)
+{
+	char	**file_name;
+	int		i;
+
+	i = 1;
+	file_name = ft_split(att->commands_arr[att->i + 1], ' ');
+	att->redir_fd = open(file_name[0], O_CREAT, 0664);
+	if (file_name[1])
+		printf("%s: command not found\n", file_name[i]);
+}
+
 void	redir_append(t_attr *att, int index)
 {
 	char	*file_name;
@@ -27,7 +39,7 @@ void	redir_append(t_attr *att, int index)
 		}
 		att->i = att->i + 2;
 		file_name = ft_strtrim(att->commands_arr[att->i], " ");
-		att->redir_fd = open(file_name, O_WRONLY | O_CREAT | O_TRUNC, 0644);
+		att->redir_fd = open(file_name, O_WRONLY | O_CREAT | O_TRUNC, 0664);
 		free(file_name);
 		dup2(att->redir_fd, STDOUT_FILENO);
 		close(att->redir_fd);
@@ -44,7 +56,7 @@ void	redir_append(t_attr *att, int index)
 		}
 		att->i = att->i + 2;
 		file_name = ft_strtrim(att->commands_arr[att->i], " ");
-		att->redir_fd = open(file_name, O_WRONLY | O_CREAT | O_APPEND, 0644);
+		att->redir_fd = open(file_name, O_WRONLY | O_CREAT | O_APPEND, 0664);
 		free(file_name);
 		dup2(att->redir_fd, STDOUT_FILENO);
 		close(att->redir_fd);

@@ -45,7 +45,15 @@ int	check_next_step(t_attr *att)
 	att->heredoc = 0;
 	att->skip = 0;
 	att->create_file = 0;
-	if (att->commands_arr[att->i] && att->commands_arr[att->i + 1])
+	att->only_create = 0;
+
+	if (!ft_strcmp(att->commands_arr[0], ">")
+				|| !ft_strcmp(att->commands_arr[0], ">>"))
+	{
+		att->only_create = 1;
+		att->skip = 1;			
+	}
+	else if (att->commands_arr[att->i] && att->commands_arr[att->i + 1])
 	{
 		if (!ft_strcmp(att->commands_arr[att->i + 1], "|"))
 			att->write_to_pipe = 1;

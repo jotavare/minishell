@@ -32,7 +32,7 @@ int	error_last(char *str, char c);
 int	error_simple(char *str, char c);
 int	especialcase(char *str, int i);
 int	especialcase_two(char *str, int i);
-int	error_onepipe(char *str);
+
 
 // error_2.c
 int	error_pipes(char *str);
@@ -47,5 +47,11 @@ int	double_quote(char *str, char c);
 int	single_quote(char *str, char c);
 int	error_quotes(char *str);
 int	verify_readline(char *str);
+
+// error_4.c
+int	print_error_pipe(char *str, int i);
+int	error_onepipe(char *str);
+int	print_mixed_error(char *str, char r, int i);
+int	error_mixed(char *str, char c, char r);
 
 #endif

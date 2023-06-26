@@ -16,8 +16,11 @@
 # include "minishell.h"
 
 // executer.c
+void	check_flags(t_attr *att, int index);
 void	execute_core(t_attr *att, t_exec *args);
 int		execute(t_attr *att, int index);
+void	check_flags(t_attr *att, int index);
+void execute_builtin(t_attr *att, t_exec *args);
 
 // execve.c
 int		exec_commands(t_exec *args, t_attr *att);
@@ -42,5 +45,6 @@ void	init_pipes(t_attr *att);
 void	redir_append(t_attr *att, int index);
 int		read_from_file(t_attr *att, int index);
 void	create_file(t_attr *att);
+void	file_create_only(t_attr *att);
 
 #endif

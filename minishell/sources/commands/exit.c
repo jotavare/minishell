@@ -12,9 +12,7 @@
 
 #include "../../includes/minishell.h"
 
-extern int	g_value;
-
-int exit_print_err(const char *arg)
+int	exit_print_err(const char *arg)
 {
 	printf("minishell: exit: %s: numeric argument required\n", arg);
 	return (g_value = 2);
@@ -29,7 +27,6 @@ int	ft_exit_args(t_attr att)
 	i = 0;
 	arg = att.tok_arr[1];
 	is_num = 1;
-
 	if (arg[i] == '-')
 		i++;
 	while (arg[i])
@@ -66,7 +63,6 @@ void	ft_exit(t_attr *att)
 		ft_putstr_fd("minishell: exit: too many arguments\n", 2);
 		g_value = 1;
 	}
-	
 	exit_free(att);
 	exit(g_value);
 }

@@ -47,6 +47,7 @@ typedef struct s_attr
 	int		read_from_file;
 	int		redir;
 	int		create_file;
+	int		only_create;
 	int		heredoc;
 	int		skip;
 	int		inside_single_quotes;
