@@ -49,6 +49,6 @@ char	*add_equal(char *str);
 int		find_index(char **search, char *str);
 void	double_myenv(t_attr *att);
 void	double_exp_env(t_attr *att);
-void	unset(t_attr *att);
+int     unset(t_attr *att);
 
 #endif

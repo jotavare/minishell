@@ -21,7 +21,7 @@ void	execute_core(t_attr *att, t_exec *args)
 	else
 		exec_commands(args, att);
 	printf("%s: command not found \n", att->tok_arr[0]);
-	exit(WEXITSTATUS(g_value));
+	exit(127);
 }
 
 int	execute(t_attr *att, int index)
@@ -53,7 +53,7 @@ int	execute(t_attr *att, int index)
 		if (att->redir)
 			redir_append(att, index);
 		if (!ft_strcmp(att->tok_arr[0], "pwd"))
-			pwd();
+			g_value = pwd();
 		else if (!ft_strcmp(att->tok_arr[0], "echo"))
 			g_value = echo(*att);
 		else if (!ft_strcmp(att->tok_arr[0], "env"))
@@ -63,7 +63,7 @@ int	execute(t_attr *att, int index)
 		else
 			execute_core(att, &args);
 		free_child(att, &args);
-		//printf("Return value [CHILD]: %d\n", g_value);
+		printf("Return value [CHILD]: %d\n", g_value);
 		exit(g_value);
 	}
 	else
@@ -74,6 +74,6 @@ int	execute(t_attr *att, int index)
 	//see_flags_and_pipes(*att);
 	free_start_args(&args);
 	exit_status = WEXITSTATUS(g_value);
-	//printf("Return value [PARENT]: %d\n", exit_status);
+	printf("Return value [PARENT]: %d\n", exit_status);
 	return (g_value = exit_status);
 }
