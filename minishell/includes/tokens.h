@@ -41,4 +41,7 @@ void		create_array(char *s, t_attr *att);
 char		**get_tokens(char *str, t_attr *att);
 void		null_token_handle(t_attr *att);
 
+// tokens_utils.c
+void		count_quotes(char *s, t_attr *att);
+
 #endif

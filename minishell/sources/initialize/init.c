@@ -56,7 +56,6 @@ void	init_attributes_two(t_attr *att)
 	att->o_quotes = 0;
 	att->aftert = NULL;
 	att->inside_single_quotes = 0;
-	//att->last_path = search_var_in_g_env(att, "HOME");
 }
 
 void	reinit_attributes(t_attr *att)

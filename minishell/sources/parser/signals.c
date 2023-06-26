@@ -18,9 +18,18 @@
     starts a new line with a new prompt.
 */
 
-void	handle_interrupt(int signal)
+void	handle_quit(int sig)
 {
-	if (signal == SIGINT)
+	if (sig == SIGQUIT)
+	{
+		g_value = 131;
+		signal(SIGQUIT, SIG_IGN);
+	}
+}
+
+void	handle_interrupt(int sig)
+{
+	if (sig == SIGINT)
 	{
 		printf("\n");
 		rl_replace_line("", 0);
@@ -30,14 +39,9 @@ void	handle_interrupt(int signal)
 	}
 }
 
-/*
-    set up signal handlers for:
-    Ctrl+C, Ctrl+Z, and Ctrl+"\".
-*/
-
 void	set_signals(void)
 {
 	signal(SIGINT, handle_interrupt);
-	signal(SIGQUIT, SIG_IGN);
+	signal(SIGQUIT, handle_quit);
 	signal(SIGTSTP, SIG_IGN);
 }

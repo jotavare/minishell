@@ -36,7 +36,7 @@ int	is_symbol(char *s)
 	return (0);
 }
 
-int	check_next_step(t_attr *att)
+void	reset_flags(t_attr *att)
 {
 	att->write_to_pipe = 0;
 	att->redir = 0;
@@ -46,40 +46,50 @@ int	check_next_step(t_attr *att)
 	att->skip = 0;
 	att->create_file = 0;
 	att->only_create = 0;
+}
 
+void	next_step_sub2(t_attr *att)
+{
+	if (!ft_strcmp(att->commands_arr[att->i - 1], "|"))
+		att->read_from_pipe = 1;
+	if (!ft_strcmp(att->commands_arr[att->i - 1], ">>")
+		|| !ft_strcmp(att->commands_arr[att->i - 1], ">"))
+		att->skip = 1;
+	if (!ft_strcmp(att->commands_arr[att->i - 1], "<"))
+		att->skip = 1;
+	if (!ft_strcmp(att->commands_arr[att->i - 1], "<<"))
+		att->skip = 1;
+}
+
+void	next_step_sub(t_attr *att)
+{
+	if (!ft_strcmp(att->commands_arr[att->i + 1], "|"))
+		att->write_to_pipe = 1;
+	else if (!ft_strcmp(att->commands_arr[att->i + 1], ">")
+		|| !ft_strcmp(att->commands_arr[att->i + 1], ">>"))
+		att->redir = 1;
+	else if (!ft_strcmp(att->commands_arr[att->i + 1], "<"))
+	{
+		att->read_from_file = 1;
+		if (!ft_strcmp(att->commands_arr[att->i + 3], "|"))
+			att->write_to_pipe = 1;
+	}
+	else if (!ft_strcmp(att->commands_arr[att->i + 1], "<<"))
+		att->heredoc = 1;
+}
+
+int	check_next_step(t_attr *att)
+{
+	reset_flags(att);
 	if (!ft_strcmp(att->commands_arr[0], ">")
-				|| !ft_strcmp(att->commands_arr[0], ">>"))
+		|| !ft_strcmp(att->commands_arr[0], ">>"))
 	{
 		att->only_create = 1;
-		att->skip = 1;			
+		att->skip = 1;
 	}
 	else if (att->commands_arr[att->i] && att->commands_arr[att->i + 1])
-	{
-		if (!ft_strcmp(att->commands_arr[att->i + 1], "|"))
-			att->write_to_pipe = 1;
-		else if (!ft_strcmp(att->commands_arr[att->i + 1], ">")
-				|| !ft_strcmp(att->commands_arr[att->i + 1], ">>"))
-			att->redir = 1;
-		else if (!ft_strcmp(att->commands_arr[att->i + 1], "<"))
-		{
-			att->read_from_file = 1;
-			if (!ft_strcmp(att->commands_arr[att->i + 3], "|"))
-				att->write_to_pipe = 1;
-		}
-		else if (!ft_strcmp(att->commands_arr[att->i + 1], "<<"))
-			att->heredoc = 1;
-	}
+		next_step_sub(att);
 	if (att->i > 1)
-	{
-		if (!ft_strcmp(att->commands_arr[att->i - 1], "|"))
-			att->read_from_pipe = 1;
-		if (!ft_strcmp(att->commands_arr[att->i - 1], ">>")
-			|| !ft_strcmp(att->commands_arr[att->i - 1], ">"))
-			att->skip = 1;
-		if (!ft_strcmp(att->commands_arr[att->i - 1], "<"))
-			att->skip = 1;
-		if (!ft_strcmp(att->commands_arr[att->i - 1], "<<"))
-			att->skip = 1;
-	}
+		next_step_sub2(att);
 	return (0);
 }

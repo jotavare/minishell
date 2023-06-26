@@ -64,6 +64,7 @@ SRC =	sources/minishell.c \
     	sources/tokens/get_tokens_1.c \
 		sources/tokens/get_tokens_2.c \
     	sources/tokens/tokens.c \
+		sources/tokens/tokens_utils.c \
 		sources/utilities/debugg.c \
     	sources/utilities/prompt.c \
     	sources/utilities/utils_1.c \

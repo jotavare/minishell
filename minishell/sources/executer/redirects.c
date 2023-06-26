@@ -24,6 +24,25 @@ void	file_create_only(t_attr *att)
 		printf("%s: command not found\n", file_name[i]);
 }
 
+void	redir_append2(t_attr *att)
+{
+	char	*file_name;
+
+	while (!ft_strcmp(att->commands_arr[att->i + 3], ">>")
+		|| !ft_strcmp(att->commands_arr[att->i + 3], ">"))
+	{
+		att->i = att->i + 2;
+		create_file(att);
+	}
+	att->i = att->i + 2;
+	file_name = ft_strtrim(att->commands_arr[att->i], " ");
+	att->redir_fd = open(file_name, O_WRONLY | O_CREAT | O_APPEND, 0664);
+	free(file_name);
+	dup2(att->redir_fd, STDOUT_FILENO);
+	close(att->redir_fd);
+	att->redir = 0;
+}
+
 void	redir_append(t_attr *att, int index)
 {
 	char	*file_name;
@@ -47,21 +66,7 @@ void	redir_append(t_attr *att, int index)
 		att->number_of_redir--;
 	}
 	else if (ft_strcmp(att->commands_arr[index + 1], ">>") == 0)
-	{
-		while (!ft_strcmp(att->commands_arr[att->i + 3], ">>")
-			|| !ft_strcmp(att->commands_arr[att->i + 3], ">"))
-		{
-			att->i = att->i + 2;
-			create_file(att);
-		}
-		att->i = att->i + 2;
-		file_name = ft_strtrim(att->commands_arr[att->i], " ");
-		att->redir_fd = open(file_name, O_WRONLY | O_CREAT | O_APPEND, 0664);
-		free(file_name);
-		dup2(att->redir_fd, STDOUT_FILENO);
-		close(att->redir_fd);
-		att->redir = 0;
-	}
+		redir_append2(att);
 }
 
 int	read_from_file(t_attr *att, int index)

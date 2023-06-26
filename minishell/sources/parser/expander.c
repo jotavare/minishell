@@ -44,65 +44,68 @@ char	*custom_getenv(const char *variable_name, t_attr *att)
 	return (NULL);
 }
 
+void	init_var(t_exp *var)
+{
+	var->variable_name = NULL;
+	var->value = NULL;
+	var->expanded_length = 0;
+	var->token_length = 0;
+	var->expanded_token = NULL;
+	var->i = 0;
+	var->has_quote = 0;
+}
+
+void	expand_tokens2(char **tokens, t_exp *info)
+{
+	info->expanded_length = ft_strlen(info->value);
+	info->token_length = ft_strlen(tokens[info->i]);
+	info->expanded_token = malloc((info->token_length
+				+ info->expanded_length + 1) * sizeof(char));
+	ft_strncpy(info->expanded_token, tokens[info->i], info->j);
+	info->expanded_token[info->j] = '\0';
+	ft_strcat(info->expanded_token, info->value);
+	ft_strcat(info->expanded_token, tokens[info->i] + info->j
+		+ ft_strlen(info->variable_name) + 1);
+	free(tokens[info->i]);
+	tokens[info->i] = info->expanded_token;
+	if (info->has_quote)
+		free(info->variable_name);
+	info->j += info->expanded_length;
+}
+
 char	**expand_tokens(char **tokens, t_attr *att)
 {
-	char	*variable_name;
-	char	*value;
-	size_t	expanded_length;
-	size_t	token_length;
-	char	*expanded_token;
-	int		j;
-	int		i;
-	int		has_quote;
+	t_exp	info;
 
-	has_quote = 0;
-	variable_name = NULL;
-	value = NULL;
-	expanded_length = 0;
-	token_length = 0;
-	expanded_token = NULL;
-	i = 0;
-	while (tokens[i])
+	init_var(&info);
+	while (tokens[info.i])
 	{
-		j = 0;
+		info.j = 0;
+		while (tokens[info.i][info.j])
 		{
-			if (tokens[i][j] == '\'')
-				has_quote = 1;
-			if (tokens[i][j] == '$' && tokens[i][j + 1])
+			if (tokens[info.i][info.j] == '\'')
+				info.has_quote = 1;
+			if (tokens[info.i][info.j] == '$' && tokens[info.i][info.j + 1])
 			{
-				variable_name = tokens[i] + j + 1;
-				if (has_quote == 1)
-					variable_name = has_correct_name(tokens[i] + j + 1);
-				value = custom_getenv(variable_name, att);
-				if (value)
-				{
-					expanded_length = ft_strlen(value);
-					token_length = ft_strlen(tokens[i]);
-					expanded_token = malloc((token_length + expanded_length + 1)
-							* sizeof(char));
-					ft_strncpy(expanded_token, tokens[i], j);
-					expanded_token[j] = '\0';
-					ft_strcat(expanded_token, value);
-					ft_strcat(expanded_token, tokens[i] + j
-							+ ft_strlen(variable_name) + 1);
-					free(tokens[i]);
-					tokens[i] = expanded_token;
-					if (has_quote)
-						free(variable_name); 
-					j += expanded_length;
-				}
+				info.variable_name = tokens[info.i] + info.j + 1;
+				if (info.has_quote == 1)
+					info.variable_name = has_correct_name(tokens[info.i]
+							+ info.j + 1);
+				info.value = custom_getenv(info.variable_name, att);
+				if (info.value)
+					expand_tokens2(tokens, &info);
 			}
-			j++;
+			info.j++;
 		}
-		i++;
+		info.i++;
 	}
 	return (tokens);
 }
 
 char	*has_correct_name(char *str)
 {
-	int	i;
-	int j;
+	int		i;
+	int		j;
 	char	*correct;
 
 	correct = malloc(sizeof(char) * (ft_strlen(str)));
@@ -113,7 +116,7 @@ char	*has_correct_name(char *str)
 		if (str[i] != '\'')
 		{
 			correct[j] = str[i];
-		    j++;
+			j++;
 		}
 		i++;
 	}

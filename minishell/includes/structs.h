@@ -72,4 +72,17 @@ typedef struct s_exec
 	pid_t	pid;
 }			t_exec;
 
+typedef struct s_exp
+{
+	char	*variable_name;
+	char	*value;
+	size_t	expanded_length;
+	size_t	token_length;
+	char	*expanded_token;
+	int		j;
+	int		i;
+	int		has_quote;
+}	t_exp;
+
+
 #endif
