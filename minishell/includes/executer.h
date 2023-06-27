@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:28:13 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/24 01:23:14 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/27 14:43:38 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@
 
 // executer.c
 void	check_flags(t_attr *att, int index);
-int	execute_core(t_attr *att, t_exec *args);
+int		execute_core(t_attr *att, t_exec *args);
 int		execute(t_attr *att, int index);
 void	check_flags(t_attr *att, int index);
-void execute_builtin(t_attr *att, t_exec *args);
+void	execute_builtin(t_attr *att, t_exec *args);
 
 // execve.c
 int		exec_commands(t_exec *args, t_attr *att);

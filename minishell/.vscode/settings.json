@@ -17,4 +17,5 @@
     },
     "norminette.dcommand": "norminette",
     "norminette.fileregex": "^ft.*\\.[ch]$"
+
 }

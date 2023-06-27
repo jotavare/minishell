@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error_1.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:57:28 by alexandre         #+#    #+#             */
-/*   Updated: 2023/06/26 14:36:24 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/06/27 14:41:56 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	error_last(char *str, char c)
 	if (str[len - 1] == c)
 	{
 		if (c != '|')
-			printf(ERROR_NEWLINE);
+			printf(ERROR_NLINE);
 		else
 		{
 			if (str[len - 2] == c)
@@ -59,7 +59,7 @@ int	especialcase(char *str, int i)
 	if (str[i] == '>' && str[i + 1] == '|' && str[i + 2] == '\0' && str[i
 			- 1] != '>')
 	{
-		printf(ERROR_NEWLINE);
+		printf(ERROR_NLINE);
 		return (1);
 	}
 	else if (str[i] == '<' && str[i + 1] == '|')

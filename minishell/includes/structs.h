@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:28:13 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/24 01:18:03 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/27 14:40:59 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define STRUCTS_H
 
 # include "macros.h"
+
 typedef struct s_pars
 {
 	char	**pars_arr;
@@ -83,7 +84,6 @@ typedef struct s_exp
 	int		j;
 	int		i;
 	int		has_quote;
-}	t_exp;
-
+}			t_exp;
 
 #endif

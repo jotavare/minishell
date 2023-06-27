@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:28:13 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/24 00:26:34 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/27 14:43:26 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int		env(t_attr *att);
 int		env_print_err(t_attr *att, int i);
 
 // exit.c
-int     exit_print_err(const char *arg);
+int		exit_print_err(const char *arg);
 int		ft_exit_args(t_attr attr);
 void	ft_exit(t_attr *attr);
 
@@ -51,6 +51,6 @@ char	*add_equal(char *str);
 int		find_index(char **search, char *str);
 void	double_myenv(t_attr *att);
 void	double_exp_env(t_attr *att);
-int     unset(t_attr *att);
+int		unset(t_attr *att);
 
 #endif

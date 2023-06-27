@@ -6,12 +6,12 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:28:13 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/24 01:40:34 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/27 14:46:23 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef INITIALIZE_H
-# define INITIALIZE_H
+#ifndef INICIALIZE_H
+# define INICIALIZE_H
 
 # include "minishell.h"
 
