@@ -66,6 +66,8 @@ int	execute(t_attr *att, int index)
 	t_exec	args;
 	//int		exit_status;
 
+	signal(SIGINT, handler_exec); //NOT WORKING
+	signal(SIGTSTP, handler_exec); //NOT WORKING
 	start_args(&args, att);
 	args.pid = fork();
 	if (args.pid == -1)
@@ -75,7 +77,7 @@ int	execute(t_attr *att, int index)
 		check_flags(att, index);
 		executer(att, &args);
 		free_child(att, &args);
-		//exit(g_value);
+		exit(g_value);
 	}
 	else
 		waitpid(args.pid, &g_value, 0);

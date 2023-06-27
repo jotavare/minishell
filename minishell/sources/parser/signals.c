@@ -16,15 +16,10 @@
     handle_interrupt is a signal handler for Ctrl+C
     (SIGINT) that clears the current input line and
     starts a new line with a new prompt.
+	SIGINT - CTRL C
+	SIGQUIT - CTRL BACKSLSH
+	SIGTSTP - CTRL Z
 */
-
-void	handle_quit(int sig)
-{
-	if (sig == SIGQUIT)
-	{
-		g_value = 131;
-	}
-}
 
 void	handle_interrupt(int sig)
 {
@@ -38,9 +33,17 @@ void	handle_interrupt(int sig)
 	}
 }
 
+void	handler_exec(int sig)
+{
+	if (sig == SIGINT)
+		signal(SIGINT, SIG_DFL);
+	if (sig == SIGTSTP)
+		signal(SIGTSTP, SIG_DFL);
+}
+
 void	set_signals(void)
 {
-	signal(SIGINT, handle_interrupt); //ctrl+C
-	signal(SIGQUIT, handle_quit); //ctrl+backslash
-	signal(SIGTSTP, SIG_IGN); //ctrl+Z
+	signal(SIGINT, handle_interrupt);
+	signal(SIGQUIT, SIG_IGN);
+	signal(SIGSTOP, SIG_IGN);
 }

@@ -37,5 +37,6 @@ int		check_next_step(t_attr *att);
 void	handle_quit(int signal);
 void	handle_interrupt(int signal);
 void	set_signals(void);
+void	handler_exec(int sig);
 
 #endif
