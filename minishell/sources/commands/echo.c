@@ -52,7 +52,15 @@ int	echo(t_attr att)
 
 int	handle_echo_options(t_attr att, int *fl_n, int *fl_pr, int i)
 {
-	if (ft_strnstr(att.tok_arr[i], "-n", ft_strlen(att.tok_arr[i]))
+	if (ft_strnstr(att.tok_arr[i], "n", ft_strlen(att.tok_arr[i]))
+		&& *fl_pr == 0)
+	{
+		if (att.tok_arr[i + 1] != NULL)
+			i++;
+		*fl_n = 1;
+		return (1);
+	}
+	else if (ft_strnstr(att.tok_arr[i], "-n", ft_strlen(att.tok_arr[i]))
 		&& *fl_pr == 0)
 	{
 		echo_n(att);

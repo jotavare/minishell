@@ -35,7 +35,6 @@ void	create_array(char *s, t_attr *att)
 		s += att->tok_arr_i;
 		count++;
 	}
-	//null_token_handle(att);
 }
 
 char	**get_tokens(char *str, t_attr *att)
@@ -45,33 +44,4 @@ char	**get_tokens(char *str, t_attr *att)
 	count_tokens(str, att);
 	create_array(str, att);
 	return (att->beforet);
-}
-
-void	null_token_handle(t_attr *att)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	i = 0;
-	while (i < att->nb_tokens)
-	{
-		if (att->beforet[i] == 0)
-			att->nb_tokens--;
-		else
-			i++;
-	}
-	free(att->aftert);
-	i = 0;
-	j = 0;
-	att->aftert = malloc(sizeof(char *) * (att->nb_tokens + 1));
-	while (i < att->nb_tokens)
-	{
-		if (att->beforet[i])
-		{
-			att->aftert[j] = att->beforet[i];
-			j++;
-		}
-		i++;
-	}
 }

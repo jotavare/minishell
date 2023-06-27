@@ -37,8 +37,8 @@ void	handler_exec(int sig)
 {
 	if (sig == SIGINT)
 		signal(SIGINT, SIG_DFL);
-	if (sig == SIGTSTP)
-		signal(SIGTSTP, SIG_DFL);
+	// if (sig == SIGTSTP)
+	// 	signal(SIGTSTP, SIG_DFL);
 }
 
 void	set_signals(void)

@@ -27,11 +27,11 @@ int	ft_exit_args(t_attr att)
 	i = 0;
 	arg = att.tok_arr[1];
 	is_num = 1;
-	if (arg[i] == '-')
+	if (arg[0] == '#' || arg[0] == '-' || arg[0] == '+')
 		i++;
 	while (arg[i])
 	{
-		if (!isdigit(arg[i++]))
+		if (!ft_isdigit(arg[i++]))
 		{
 			is_num = 0;
 			break ;

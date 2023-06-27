@@ -12,7 +12,7 @@
 
 #include "../../includes/minishell.h"
 
-void	execute_core(t_attr *att, t_exec *args)
+int		execute_core(t_attr *att, t_exec *args)
 {
 	if (args->command[0] == '/')
 		exec_absolute_path(args, att);
@@ -21,7 +21,7 @@ void	execute_core(t_attr *att, t_exec *args)
 	else
 		exec_commands(args, att);
 	printf("%s: command not found \n", att->tok_arr[0]);
-	exit(127);
+	return(127);
 }
 
 void	check_flags(t_attr *att, int index)
@@ -58,7 +58,7 @@ void	executer(t_attr *att, t_exec *args)
 	else if (ft_strcmp(att->tok_arr[0], "export") == 0)
 		export_print(*att);
 	else
-		execute_core(att, args);
+		g_value = execute_core(att, args);
 }
 
 int	execute(t_attr *att, int index)
@@ -66,8 +66,8 @@ int	execute(t_attr *att, int index)
 	t_exec	args;
 	//int		exit_status;
 
-	signal(SIGINT, handler_exec); //NOT WORKING
-	signal(SIGTSTP, handler_exec); //NOT WORKING
+	//signal(SIGINT, handler_exec); //NOT WORKING
+	//signal(SIGTSTP, handler_exec); //NOT WORKING
 	start_args(&args, att);
 	args.pid = fork();
 	if (args.pid == -1)

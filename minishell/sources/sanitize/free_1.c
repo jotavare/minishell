@@ -20,7 +20,7 @@ void	free_arr(char **arr)
 	while (arr[i])
 	{
 		free(arr[i]);
-		arr[i] = NULL;
+		//arr[i] = NULL;
 		i++;
 	}
 	free(arr);
@@ -59,7 +59,7 @@ void	free_d_env(t_attr *att)
 		free(att->d_env[i]);
 		i++;
 	}
-	free(att->d_env[i]);
+	//free(att->d_env[i]);
 	free(att->d_env);
 }
 
@@ -73,6 +73,6 @@ void	free_exp_env(t_attr *att)
 		free(att->exp_env[i]);
 		i++;
 	}
-	free(att->exp_env[i]);
+	//free(att->exp_env[i]);
 	free(att->exp_env);
 }

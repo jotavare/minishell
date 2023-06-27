@@ -6,20 +6,20 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/24 01:30:35 by jotavare          #+#    #+#             */
-/*   Updated: 2023/06/24 01:40:28 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/27 13:48:27 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-void	init_params(int ac, char **av, t_attr *attr, char **envp)
+void	init_params(int ac, char **av, t_attr *att, char **envp)
 {
 	(void)ac;
 	(void)av;
-	init_attributes_one(attr);
-	init_attributes_two(attr);
-	start_env(envp, attr);
-	start_exp(envp, attr);
+	init_attributes_one(att);
+	init_attributes_two(att);
+	start_env(envp, att);
+	start_exp(envp, att);
 }
 
 void	init_attributes_one(t_attr *att)
@@ -38,6 +38,7 @@ void	init_attributes_one(t_attr *att)
 	att->write_to_pipe = 0;
 	att->read_from_pipe = 0;
 	att->only_create = 0;
+	att->first_flag = 0;
 }
 
 void	init_attributes_two(t_attr *att)
