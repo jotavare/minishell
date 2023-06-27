@@ -29,21 +29,20 @@ void	handle_interrupt(int sig)
 		rl_replace_line("", 0);
 		rl_on_new_line();
 		rl_redisplay();
-		g_value = 130;
 	}
+	g_value = 130;
 }
 
 void	handler_exec(int sig)
 {
-	if (sig == SIGINT)
-		signal(SIGINT, SIG_DFL);
-	/*  if (sig == SIGTSTP)
-	 	signal(SIGTSTP, SIG_DFL); */
+	g_value = 131;
+	printf("entrou");
+	if (sig == SIGQUIT)
+		kill(0, SIGINT);
 }
 
 void	set_signals(void)
 {
 	signal(SIGINT, handle_interrupt);
 	signal(SIGQUIT, SIG_IGN);
-	signal(SIGSTOP, SIG_IGN);
 }

@@ -64,16 +64,14 @@ void	executer(t_attr *att, t_exec *args)
 int	execute(t_attr *att, int index)
 {
 	t_exec	args;
-	/* int		exit_status;
-
-	signal(SIGINT, handler_exec); //NOT WORKING
-	signal(SIGTSTP, handler_exec); //NOT WORKING */
+	
 	start_args(&args, att);
 	args.pid = fork();
 	if (args.pid == -1)
 		return (-1);
 	if (args.pid == 0)
 	{
+		signal(SIGQUIT, handler_exec);
 		check_flags(att, index);
 		executer(att, &args);
 		free_child(att, &args);
