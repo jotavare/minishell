@@ -33,6 +33,7 @@ int	exec_commands(t_exec *args, t_attr *att)
 		}
 		args->i++;
 	}
+	free_arr(args->path_command);
 	return (0);
 }
 

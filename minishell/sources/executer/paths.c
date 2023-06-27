@@ -17,9 +17,9 @@ char	**build_path(char **all_paths, int nb, char *command)
 	char	**paths_comm;
 	int		i;
 
-	paths_comm = malloc(sizeof(char *) * nb + 1);
+	paths_comm = malloc(sizeof(char *) * (nb + 1));
 	i = 0;
-	paths_comm[nb - 1] = NULL;
+	paths_comm[nb] = NULL;
 	while (i < nb)
 	{
 		paths_comm[i] = ft_strjoin(all_paths[i], command);

@@ -50,8 +50,9 @@ void	init_var(t_exp *var)
 	var->value = NULL;
 	var->expanded_length = 0;
 	var->token_length = 0;
-	var->expanded_token = NULL;
+	var->expanded_token = 0;
 	var->i = 0;
+	var->j = 0;
 	var->has_quote = 0;
 }
 
@@ -76,26 +77,27 @@ void	expand_tokens2(char **tokens, t_exp *info)
 char	**expand_tokens(char **tokens, t_attr *att)
 {
 	t_exp	info;
+	int j;
 
 	init_var(&info);
 	while (tokens[info.i])
 	{
-		info.j = 0;
-		while (tokens[info.i][info.j])
+		j = 0;
+		while (tokens[info.i][j])
 		{
 			if (tokens[info.i][info.j] == '\'')
 				info.has_quote = 1;
-			if (tokens[info.i][info.j] == '$' && tokens[info.i][info.j + 1])
+			if (tokens[info.i][j] == '$' && tokens[info.i][j + 1])
 			{
-				info.variable_name = tokens[info.i] + info.j + 1;
+				info.variable_name = tokens[info.i] + j + 1;
 				if (info.has_quote == 1)
 					info.variable_name = has_correct_name(tokens[info.i]
-							+ info.j + 1);
+							+ j + 1);
 				info.value = custom_getenv(info.variable_name, att);
 				if (info.value)
 					expand_tokens2(tokens, &info);
 			}
-			info.j++;
+			j++;
 		}
 		info.i++;
 	}

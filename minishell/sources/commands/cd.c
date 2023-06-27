@@ -59,7 +59,19 @@ int	cd(t_attr *att)
 	if (!destiny_path || !ft_strcmp(destiny_path, "~"))
 		destiny_path = search_var_in_g_env(att, "HOME");
 	else if (!ft_strcmp(att->tok_arr[1], "-"))
-		destiny_path = att->last_path;
+	{
+		if (!att->first_flag)
+		{
+			destiny_path = search_var_in_g_env(att, "PWD");
+			att->first_flag = 1;
+			printf("%s\n", destiny_path);
+		}
+		else
+		{
+			destiny_path = att->last_path;
+			printf("%s\n", destiny_path);
+		}
+	}
 	if (!current_path || chdir(destiny_path))
 	{
 		printf(ERROR_CD, att->tok_arr[1]);

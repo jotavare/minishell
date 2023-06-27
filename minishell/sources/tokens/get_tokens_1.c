@@ -157,7 +157,6 @@ char	*process_multi_quote(char *s, t_attr *att)
 				i++;
 				pos = i - j;
 				token = quotentoken(s, att, flag, pos);
-				//att->inside_single_quotes = 0;
 				return (token);
 			}
 		}
@@ -194,10 +193,10 @@ char	*process_multi_quote(char *s, t_attr *att)
 		i++;
 	}
 	pos = i - j;
-	printf("pos %d\n", pos);
 	token = quotentoken(s, att, flag, pos);
 	return (token);
 }
+
 char	*quotentoken(char *s, t_attr *att, int flag, int pos)
 {
 	int i;

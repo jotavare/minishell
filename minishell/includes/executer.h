@@ -17,7 +17,7 @@
 
 // executer.c
 void	check_flags(t_attr *att, int index);
-void	execute_core(t_attr *att, t_exec *args);
+int	execute_core(t_attr *att, t_exec *args);
 int		execute(t_attr *att, int index);
 void	check_flags(t_attr *att, int index);
 void execute_builtin(t_attr *att, t_exec *args);

@@ -56,6 +56,7 @@ typedef struct s_attr
 	int		number_of_append;
 	int		**pipesfd;
 	int		redir_fd;
+	int		first_flag;
 	t_pars	pars_data;
 }			t_attr;
 

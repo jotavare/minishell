@@ -182,20 +182,22 @@
 | 🟢 | `exit "test"`               |
 | 🟢 | `"exit test"`               |
 | 🟢 | `"exit"`                    |
-| 🔴 | `exit1`                     |
-| 🔴 | `exita`                     |
+| 🟢 | `exit1`                     |
+| 🟢 | `exita`                     |
 | 🟢 | `exit exit`                 |
 | 🟢 | `exit a`                    |
 | 🟢 | `exit abc`                  |
-| 🔴 | `exit a b c`                |
+| 🟢 | `exit a b c`                |
 | 🟢 | `exit a b c d`              |
-| 🔵 | `exit #`                    |
-| 🔵 | `exit *`                    |
+| 🟢 | `exit #`                    |
+| 🟢 | `exit *`                    |
 | 🟢 | `exit 0`                    |
 | 🟢 | `exit 1`                    |
 | 🟢 | `exit 123`                  |
 | 🟢 | `exit 1234`                 |
-| 🔴 | `exit 1 2 3 4`              |
+| 🟢 | `exit 1 2 3 4`              |
+| 🟢 | `exit +`                    |
+| 🟢 | `exit -`                    |
 | 🔴 | `exit +10`                  |
 | 🔴 | `exit -10`                  |
 | 🔴 | `exit +2000`                |
@@ -208,14 +210,14 @@
 | 🔴 | `exit 2147483648`           |
 | 🔴 | `exit 00000000000000000000` |
 | 🔴 | `exit 11111111111111111111` |
-| 🔴 | `exit ' 42'`                |                                                                
-| 🔴 | `exit '\t42'`               |                                                                
-| 🔴 | `exit '\t\f\r 42'`          |                                                           
-| 🔴 | `exit '42 '`                |                                                                 
-| 🔴 | `exit '42\t'`               |                                                                
-| 🔴 | `exit '42\r'`               |                                                                
-| 🔴 | `exit '42\t\f\r '`          |                                                           
-| 🔴 | `exit '42     a'`           |                                                            
+| 🔴 | `exit'42'`                  |
+| 🔴 | `exit '\t42'`               |
+| 🔴 | `exit '\t\f\r 42'`          |
+| 🔴 | `exit '42 '`                |
+| 🔴 | `exit '42\t'`               |
+| 🔴 | `exit '42\r'`               |
+| 🔴 | `exit '42\t\f\r '`          |
+| 🔴 | `exit '42     a'`           |
 | 🔴 | `exit '42\t\t\ta'`          | 
 
 
@@ -241,15 +243,17 @@
 | 🟢 | `cd abc`               |
 | 🟢 | `cd a b c`             |
 | 🟢 | `cd a b c d`           |
-| 🟢 | `cd /`                 |
 | 🟢 | `cd ../../`            |
 | 🟢 | `cd ../../../../../../`|
 | 🟢 | `cd ../../...`         |
 | 🟢 | `cd .../../..`         |
 | 🟢 | `cd .../../...`        |
-| 🔵 | `cd \`                 |
-| 🔵 | `cd //`                |
-| 🔵 | `cd -`                 |
+| 🟢 | `cd \`                 |
+| 🟢 | `cd /`                 |
+| 🟢 | `cd //`                |
+| 🟢 | `cd ///`               |
+| 🟢 | `cd -`                 |
+| 🟢 | `cd $[VAR]`            |
 
 # ECHO  
 |    | Commands                                                             |
@@ -265,78 +269,87 @@
 | 🟢 | `echo .`                                                             |
 | 🟢 | `echo ~`                                                             |
 | 🟢 | `echo echo ~`                                                        |
-| 🟡 | `"echo test"`                                                        |
-| 🟡 | `echo "~"`                                                           |
-| 🟡 | `echo '~'`                                                           |
-| 🟡 | `echo ~123`                                                          |
-| 🟡 | `echo 123~`                                                          |
-| 🟡 | `echo ~/123`                                                         |
-| 🟡 | `echo ~/123/456`                                                     |
-| 🟡 | `echo #`                                                             |
-| 🟡 | `echofile`                                                           |
-| 🟡 | `echo file`                                                          |
-| 🟡 | `echo no_file`                                                       |
-| 🟡 | `echo file test`                                                     |
-| 🟡 | `echo file   test`                                                   |
-| 🟡 | `echo file     test file   test`                                     |
-| 🟡 | `echo a"b"c`							    |
-| 🟡 | `echo "a'b'c`							    |
-| 🟡 | `echo "test"`                                                        |
-| 🟡 | `echo test`                                                          |
-| 🟡 | `echo 'test'`                                                        |
-| 🟡 | `echo -n test`                                                       |
-| 🟡 | `echo -nn test`                                                      |
-| 🟡 | `echo -n -n -n test`                                                 |
-| 🟡 | `echo "-n" test`                                                     |
-| 🟡 | `echo -n"-n" test`                                                   |
-| 🟡 | `echo "-nnnn" test`                                                  |
-| 🟡 | `echo "-n -n -n"-n test`                                             |
-| 🟡 | `echo "-n '-n'" test `                                               |
-| 🟡 | `echo -n file test`                                                  |
-| 🟡 | `echo -n -n -n file test`                                            |
-| 🟡 | `echo $USER`                                                         |
-| 🟡 | `echo "$USER"`                                                       |
-| 🟡 | `echo "'$USER'"`                                                     |
-| 🟡 | `echo " '$USER' "`                                                   |
-| 🟡 | `echo text"$USER"`                                                   |
-| 🟡 | `echo text"'$USER'" ' $USER '`                                       |
-| 🟡 | `echo "text"   "$USER"    "$USER"`                                   |
-| 🟡 | `echo '              $USER          '`                               |
-| 🟡 | `echo               text "$USER"            "$USER"text`             |
-| 🟡 | `echo ''''''''''$USER''''''''''`                                     |
-| 🟡 | `echo """"""""$USER""""""""`                                         |
-| 🟡 | `echo $USER'$USER'text oui oui     oui  oui $USER oui      $USER ''` |
-| 🟡 | `echo $USER '' $USER $USER '' $USER '' $USER -n $USER`               |
-| 🟡 | `echo ' \' ' \'`                                                     |
-| 🟡 | `echo '\" ' " \"\""`                                                 |
-| 🟡 | `echo \\\" \\\" \\\" \\\"\\\"\\\" \\\'\\\'\\\'`                      |
-| 🟡 | `echo "$USER""$USER""$USER"`                                         |
-| 🟡 | `echo text"$USER"test`                                               |
-| 🟡 | `echo '$USER' "$USER" "text \' text"`                                |
-| 🟡 | `echo '$USER'`                                                       |
-| 🟡 | `echo $USER " "`                                                     |
-| 🟡 | `echo "$USER""Users/$USER/file""'$USER'"'$USER'`                     |
-| 🟡 | `echo "$USER$USER$USER"`                                             |
-| 🟡 | `echo '$USER'"$USER"'$USER'`                                         |
-| 🟡 | `echo '"$USER"''$USER'"""$USER"`                                     |
-| 🟡 | `echo " $USER  "'$PWD'`                                              |
-| 🟡 | `echo " $USER  \$ "'$PWD'`                                           |
-| 🟡 | `echo $USER=4`                                                       |
-| 🟡 | `echo $USER=thallard`                                                |
-| 🟡 | `echo $USER`                                                         |
-| 🟡 | `echo $?`                                                            |
-| 🟡 | `echo $USER213`                                                      |
-| 🟡 | `echo $USER$12USER$USER=4$USER12`                                    |
-| 🟡 | `echo $USER $123456789USER $USER123456789`                           |
-| 🟡 | `echo $USER $9999USER $8888USER $7777USER`                           |
-| 🟡 | `echo $USER $USER9999 $USER8888 $USER7777`                           |
-| 🟡 | `echo $USER $USER9999 $USER8888 $USER7777 "$USER"`                   |
-| 🟡 | `echo "$USER=12$USER"`                                               |
-| 🟡 | `echo "$9USER" "'$USER=12$SOMETHING'"`                               |
-| 🟡 | `echo $PWD/file`                                                     |
-| 🟡 | `echo "$PWD/file`                                                    |
-| 🟡 | `echo "text" "text$USER" ... "$USER`                                 |
-| 🟡 | `echo $PW`                                                           |
+| 🟢 | `"echo test"`                                                        |
+| 🟢 | `echo "~"`                                                           |
+| 🟢 | `echo '~'`                                                           |
+| 🟢 | `echo ~123`                                                          |
+| 🟢 | `echo 123~`                                                          |
+| 🟢 | `echo ~/123`                                                         |
+| 🟢 | `echo ~/123/456`                                                     |
+| 🟢 | `echo #`                                                             |
+| 🟢 | `echofile`                                                           |
+| 🟢 | `echo file`                                                          |
+| 🟢 | `echo no_file`                                                       |
+| 🟢 | `echo file test`                                                     |
+| 🟢 | `echo file   test`                                                   |
+| 🟢 | `echo file     test file   test`                                     |
+| 🟢 | `echo a"b"c`															|
+| 🟢 | `echo "a'b'c`														|
+| 🟢 | `echo "test"`                                                        |
+| 🟢 | `echo test`                                                          |
+| 🟢 | `echo 'test'`                                                        |
+| 🟢 | `echo -n`															|
+| 🟢 | `echo -n -n -n -n`													|
+| 🟢 | `echo -nnnnnnnnnnnnnnnnnnnnnnnn`                                     |
+| 🟢 | `echo -n test -n`													|
+| 🟢 | `"echo" "-n"`														|
+| 🔴 | `echo -n test`                                                       |
+| 🔴 | `echo -nn test`                                                      |
+| 🔴 | `echo -n -n -n test`                                                 |
+| 🔴 | `echo "-n" test`                                                     |
+| 🔴 | `echo -n"-n" test`                                                   |
+| 🔴 | `echo "-nnnn" test`                                                  |
+| 🔴 | `echo "-n -n -n"-n test`                                             |
+| 🔴 | `echo "-n '-n'" test `                                               |
+| 🔴 | `echo -n file test`                                                  |
+| 🔴 | `echo -n -n -n file test`                                            |
+| 🔴 | `echo $USER`                                                         |
+| 🔴 | `echo "$USER"`                                                       |
+| 🔴 | `echo "'$USER'"`                                                     |
+| 🔴 | `echo " '$USER' "`                                                   |
+| 🔴 | `echo text"$USER"`                                                   |
+| 🔴 | `echo text"'$USER'" ' $USER '`                                       |
+| 🔴 | `echo "text"   "$USER"    "$USER"`                                   |
+| 🔴 | `echo '              $USER          '`                               |
+| 🔴 | `echo               text "$USER"            "$USER"text`             |
+| 🔴 | `echo ''''''''''$USER''''''''''`                                     |
+| 🔴 | `echo """"""""$USER""""""""`                                         |
+| 🔴 | `echo $USER'$USER'text oui oui     oui  oui $USER oui      $USER ''` |
+| 🔴 | `echo $USER '' $USER $USER '' $USER '' $USER -n $USER`               |
+| 🔴 | `echo ' \' ' \'`                                                     |
+| 🔴 | `echo '\" ' " \"\""`                                                 |
+| 🔴 | `echo \\\" \\\" \\\" \\\"\\\"\\\" \\\'\\\'\\\'`                      |
+| 🔴 | `echo "$USER""$USER""$USER"`                                         |
+| 🔴 | `echo text"$USER"test`                                               |
+| 🔴 | `echo '$USER' "$USER" "text \' text"`                                |
+| 🔴 | `echo '$USER'`                                                       |
+| 🔴 | `echo $USER " "`                                                     |
+| 🔴 | `echo "$USER""Users/$USER/file""'$USER'"'$USER'`                     |
+| 🔴 | `echo "$USER$USER$USER"`                                             |
+| 🔴 | `echo '$USER'"$USER"'$USER'`                                         |
+| 🔴 | `echo '"$USER"''$USER'"""$USER"`                                     |
+| 🔴 | `echo " $USER  "'$PWD'`                                              |
+| 🔴 | `echo " $USER  \$ "'$PWD'`                                           |
+| 🔴 | `echo $USER=4`                                                       |
+| 🔴 | `echo $USER=thallard`                                                |
+| 🔴 | `echo $USER`                                                         |
+| 🔴 | `echo $?`                                                            |
+| 🔴 | `echo $USER213`                                                      |
+| 🔴 | `echo $USER$12USER$USER=4$USER12`                                    |
+| 🔴 | `echo $USER $123456789USER $USER123456789`                           |
+| 🔴 | `echo $USER $9999USER $8888USER $7777USER`                           |
+| 🔴 | `echo $USER $USER9999 $USER8888 $USER7777`                           |
+| 🔴 | `echo $USER $USER9999 $USER8888 $USER7777 "$USER"`                   |
+| 🔴 | `echo "$USER=12$USER"`                                               |
+| 🔴 | `echo "$9USER" "'$USER=12$SOMETHING'"`                               |
+| 🔴 | `echo $PWD/file`                                                     |
+| 🔴 | `echo "$PWD/file`                                                    |
+| 🔴 | `echo "text" "text$USER" ... "$USER`                                 |
+| 🔴 | `echo $PW`                                                           |
+| 🔴 | `echo "'"'ola'"'"`                                                   |
+| 🔴 | `echo "'"' ola '"'"`                                                 |
+
+
 
 # Utilities
 ### Return Values ($?)
@@ -358,8 +371,8 @@
 | `255`   | Exit code out of bounds, eg.: `exit -1`.                                         |
 
 ### Command Reminders
-| Command       | Description                                                                                 |
-| :------------ | :------------------------------------------------------------------------------------------ |
+| Command   | Description                                                                                 |
+| :-------- | :------------------------------------------------------------------------------------------ |
 | `yes`		| Writes in an infinite loop `yes teste`.                                                     |
 | `ln`		| Bind a file or directory.                                                                   |
 | `chmod`	| Change file permissions `chmod 777` (4+2+1 = all permissions) `chmod 000` (no permissions). |
@@ -399,16 +412,16 @@
 | `rwx`   | `4+2+1`     | `7`   |
 
 ### MAX/MIN
-| Data Types    | Qualifiers                                            | Size (in byte) | Range                          |
-| :------------ | :---------------------------------------------------- | :------------- | :----------------------------- |
+| Data Types | Qualifiers | Size (in byte) | Range |
+| :- | :- | :- | :- |
 | `char`	| `char` or `signed char`				| `1`            | `-128` to `127`                |
-| `char`	| `unsigned char`					| `1`            | `0` to `255`                   |
+| `char`	| `unsigned char`						| `1`            | `0` to `255`                   |
 | `int`		| `int` or `signed int`					| `4`            | `-2147483648` to `2147483647`  |
-| `int`		| `unsigned int`					| `4`            | `0` to `4294967295`            |
-| `int`		| `short int` or `short signed int`			| `2`            | `-32768` to `32767`            |
+| `int`		| `unsigned int`						| `4`            | `0` to `4294967295`            |
+| `int`		| `short int` or `short signed int`		| `2`            | `-32768` to `32767`            |
 | `int`		| `unsigned short int`					| `2`            | `0` to `65535`                 |
-| `int`		| `long int` or `signed long int`			| `4`            | `-2147483648` to `2147483647`  |
+| `int`		| `long int` or `signed long int`		| `4`            | `-2147483648` to `2147483647`  |
 | `int`		| `unsigned long int`					| `4`            | `0` to `4294967295`            |
-| `float`	| `float`						| `4`            | `1.1754e-38` to `3.4028e+38`   |
-| `float`	| `double`						| `8`            | `2.2250e-308` to `1.7976e+308` |
-| `float`	| `long double`						| `10`           | `3.4E-4932` to `3.4E+4932`     |
+| `float`	| `float`								| `4`            | `1.1754e-38` to `3.4028e+38`   |
+| `float`	| `double`								| `8`            | `2.2250e-308` to `1.7976e+308` |
+| `float`	| `long double`							| `10`           | `3.4E-4932` to `3.4E+4932`     |

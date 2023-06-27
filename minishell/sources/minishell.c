@@ -36,21 +36,16 @@ int	main(int ac, char **av, char **envp)
 		{
 			add_history(str);
 			att.commands_arr = get_tokens2(str, &att);
-			//ft_print_array(att.commands_arr);
 			init_pipes(&att);
 			while (att.commands_arr[att.i] && !verify_readline(str)
 				&& att.commands_arr[att.i][0] != '\0')
 			{
-				// if (is_symbol(att.commands_arr[att.i]))
-				// 	att.i++;
 				check_next_step(&att);
 				att.tok_arr = get_tokens(att.commands_arr[att.i], &att);
 				command(&att, att.i);
 				free_tokens(att.tok_arr, &att);
 				att.i = att.i + 2;
 			}
-			// while (waitpid(-1, NULL, 0) > 0)
-			// 	continue ;
 			ft_delete_matrix(att.pipesfd);
 			free_arr(att.commands_arr);
 			free(str);
