@@ -6,60 +6,11 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 18:15:45 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/27 18:51:56 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/27 19:22:59 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
-
-/*
-
-void	count_dquotes_quotes(char *s, t_attr *att)
-{
-	int i;
-
-	i = 0;
-	//if (!s)
-	//	return ;
-	while(s[i])
-	{
-		if (s[i] == '"')
-			att->o_dquotes++;
-		else if (s[i] == '\'')
-			att->o_quotes++;
-		i++;
-	}
-}
-int	check_single_quotes(char *s, int i, t_attr *att)
-{
-	int flag;
-	
-	flag = 0;
-	while(s[i])
-	{
-		if(s[i] == '\'' && !flag)
-			flag == 1;
-	
-		i++;
-	}
-}
-
-
-int	count_tokens(char *s, t__attr *att)
-{
-	int i;
-
-	i = 0;
-	count_dquotes_quotes(s, att);
-	att->nb_tokens = 0;
-	while(s[i])
-	{
-		if(s[i] == '\'')
-			i = check_single_quotes(s, i, att);
-		i++;
-	}
-}
-*/
 
 int	count_tokens(char *s, t_attr *att)
 {
@@ -93,8 +44,7 @@ int	count_tokens(char *s, t_attr *att)
 			len = check_special_char(s, len, att);
 		else if (s[len] == ' ')
 			len--;
-		else
-			len--;
+		len--;
 	}
 	return (att->nb_tokens);
 }
@@ -106,7 +56,7 @@ int	check_single_quotes(char *s, int len, t_attr *att)
 
 	flag = 0;
 	quotes = 0;
-	while (len >= 0 && quotes <= att->o_quotes)
+	while (len >= 0 && quotes != att->o_quotes)
 	{
 		if (s[len] == '\'')
 		{
@@ -137,7 +87,7 @@ int	check_double_quotes(char *s, int len, t_attr *att)
 
 	flag = 0;
 	quotes = 0;
-	while (len >= 0 && quotes <= att->o_dquotes)
+	while (len >= 0 && quotes != att->o_dquotes)
 	{
 		if (s[len] == '"')
 		{

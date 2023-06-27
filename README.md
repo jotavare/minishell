@@ -32,30 +32,29 @@
 - [ ] If theres bonus, there must be a bonus rule on Makefile and bonus files must have _bonus.c(.h).
 - [ ] Check for forbidden functions in your code.
 
-
-
 | Important Commands | Description |
 | :--- | :--- |
-| `make -n`                         | Display the compilation information without actually compiling the code.       |
-| `echo $?`                         | Display the exit status of the last executed command.                          |
-| `nm -g ./minishell \| grep " U "` | Check for forbidden functions. |
-| `norminette`                      | Checks the code for compliance with the coding style and guidelines.           |
-| `-R CheckForbiddenSourceHeader`   | |
-| `cc -g -Wall -Wextra -Werror`     | |
-| `-fsanitize=address`              | |
-| `-lreadline`                      | Link against the readline library.                                             |
-| `ps -e` or `ps -A`                | See all processes currently running on your computer.                          |
-| `ps -a`                           | While tweaking your functions, see if you're creating any dead children.       |
+| `make -n`                         | Display the compilation information without actually compiling the code. |
+| `echo $?`                         | Display the exit status of the last executed command.                    |
+| `nm -g ./minishell \| grep " U "` | Check for forbidden functions.                                           |
+| `norminette`                      | Checks the code for compliance with the coding style and guidelines.     |
+| `-R CheckForbiddenSourceHeader`   | Check header files.                                                      |
+| `cc -g -Wall -Wextra -Werror`     | Compile with the mandatory flags.                                        |
+| `-fsanitize=address`              | Check for leaks.                                                         |
+| `-lreadline`                      | Link against the readline library.                                       |
+| `ps -e` or `ps -A`                | See all processes currently running on your computer.                    |
+| `ps -a`                           | While tweaking your functions, see if you're creating any dead children. |
 
-| Valgrind Flags                                      | Description                                      |
-| :-------------------------------------------------- | :----------------------------------------------- |
-| `-leak-check=full`                                  | Detailed checking for memory leaks.              |
-| `--show-leak-kinds=all`                             | Display all types of memory leaks.               |
-| `--track-origins=yes`                               | Tracks the origins of uninitialized values.      |
-| `--verbose`                                         | Increases the level of verbosity.                |
-| `--gen-suppressions=all`                            | Ignore specific known issues or false positives. |
-| `--suppressions=valgrind_readline_leaks_ignore.txt` | Specifies the path to a suppression file.        |
-| `--log-file=memleaks.log`                           | Sets the name of the file.                       |
+| Valgrind Flags                 | Description                                      |
+| :----------------------------- | :----------------------------------------------- |
+| `valgrind ./minishell`         | Check for leaks                                  |
+| `-leak-check=full`             | Detailed checking for memory leaks.              |
+| `--show-leak-kinds=all`        | Display all types of memory leaks.               |
+| `--track-origins=yes`          | Tracks the origins of uninitialized values.      |
+| `--verbose`                    | Increases the level of verbosity.                |
+| `--gen-suppressions=all`       | Ignore specific known issues or false positives. |
+| `--suppressions=readline.supp` | Specifies the path to a suppression file.        |
+| `--log-file=memleaks.log`      | Sets the name of the file.                       |
 
 ```
 {
@@ -75,241 +74,221 @@
 
 `valgrind --suppressions=readline.supp --leak-check=full --show-leak-kinds=all ./minishell`
 
-# COMMAND TESTS
-|    | Definition                  |
-| :- | :-------------------------- |
-| 🟢 | Working.                    |
-| 🟡 | Didn't test yet.            |
-| 🟣 | Leaks or segmenation fault. |
-| ⚪ | Weird behavior.             |
-| 🔴 | Not working.                |
-| 🔵 | Not mandatory (i think?!).  |
-
 ## BLANK
-|    | Commands   |
-| :- | :--------- |
-| 🟢 | `<empty>`  |
-| 🟢 | `<spaces>` |
-| 🟢 | `../../`   |
-| 🟢 | `$`        |
+|    | Commands                            |
+| :- | :---------------------------------- |
+| 🟢 | `<empty>`                           |
+| 🟢 | `<spaces>`                          |
+| 🟢 | `../../`                            |
+| 🟢 | `$`                                 |
 
 ## SIGNALS
-|    | Commands                                    |
-| :- | :------------------------------------------ |
-| 🟢 | `Ctrl` + `C`                                |
-| 🟢 | `Ctrl` + `D`                                |
-| 🟢 | `Ctrl` + `\`                                |
-| 🟢 | `write something then press` + `Ctrl` + `C` |
-| 🟢 | `write something then press` + `Ctrl` + `D` |
-| 🟢 | `write something then press` + `Ctrl` + `\` |
-| 🟢 | `cat` + `Ctrl` + `C`                        |
-| 🟢 | `cat` + `Ctrl` + `D`                        |
-| 🟢 | `cat` + `Ctrl` + `\`                        |
-| 🟢 | `sleep 5` + `Ctrl` + `C`                    |
-| 🟢 | `sleep 5` + `Ctrl` + `D`                    |
-| 🟢 | `sleep 5` + `Ctrl` + `\`                    |
+|    | Commands                            |
+| :- | :-----------------------------------|
+| 🟢 | `Ctrl` + `C`                        |
+| 🟢 | `Ctrl` + `D`                        |
+| 🟢 | `Ctrl` + `\`                        |
+| 🟢 | `write` + `Ctrl` + `C`              |
+| 🟢 | `write` + `Ctrl` + `D`              |
+| 🟢 | `write` + `Ctrl` + `\`              |
+| 🟢 | `cat` + `Ctrl` + `C`                |
+| 🟢 | `cat` + `Ctrl` + `D`                |
+| 🟢 | `cat` + `Ctrl` + `\`                |
+| 🟢 | `sleep 5` + `Ctrl` + `C`            |
+| 🟢 | `sleep 5` + `Ctrl` + `D`            |
+| 🟢 | `sleep 5` + `Ctrl` + `\`            |
 	
 # PATH
-|    | Commands           |
-| :- | :----------------- |
-| 🟢 | `/bin/echo`        |
-| 🟢 | `/bin/grep`        |
-| 🟢 | `/bin/ls`          |
-| 🟢 | `/bin/ls -la`      |
-| 🟢 | `/bin/cat`         |
-| 🟢 | `/bin/pwd`         |
-| 🟢 | `/bin/cd`          |
-| 🟢 | `/bin/export`      |
-| 🟢 | `/bin/env`         |
-| 🟢 | `/bin/exit`        |
+|    | Commands                            |
+| :- | :---------------------------------- |
+| 🟢 | `/bin/echo`                         |
+| 🟢 | `/bin/grep`                         |
+| 🟢 | `/bin/ls`                           |
+| 🟢 | `/bin/ls -la`                       |
+| 🟢 | `/bin/cat`                          |
+| 🟢 | `/bin/pwd`                          |
+| 🟢 | `/bin/cd`                           |
+| 🟢 | `/bin/export`                       |
+| 🟢 | `/bin/env`                          |
+| 🟢 | `/bin/exit`                         |
 
 # PWD
-|    | Commands      |
-| :- | :------------ |
-| 🟢 | `PWD`         |
-| 🟢 | `pWd`         |
-| 🟢 | `pwd`         |
-| 🟢 | ` pwd`        |
-| 🟢 | `pwd `        |
-| 🟢 | `  pwd  `     |
-| 🟢 | `pwd a`       |
-| 🟢 | `pwd a b c d` |
-| 🟢 | `pwd 1`       |
-| 🟢 | `pwd 1 2 3 4` |
+|    | Commands                            |
+| :- | :---------------------------------- |
+| 🟢 | `PWD`                               |
+| 🟢 | `pWd`                               |
+| 🟢 | `pwd`                               |
+| 🟢 | ` pwd`                              |
+| 🟢 | `pwd `                              |
+| 🟢 | `  pwd  `                           |
+| 🟢 | `pwd a`                             |
+| 🟢 | `pwd a b c d`                       |
+| 🟢 | `pwd 1`                             |
+| 🟢 | `pwd 1 2 3 4`                       |
 
 # EXPORT, ENV AND UNSET
-|    | Commands                         |
-| :- | :------------------------------- |
-| 🟢 | `ENV`                        	|
-| 🟢 | `eNv`                        	|
-| 🟢 | `env`                        	|
-| 🟢 | ` env`                       	|
-| 🟢 | `env `                       	|
-| 🟢 | `  env  `                    	|
-| 🟢 | `UNSET`                      	|
-| 🟢 | `uNsEt`                      	|
-| 🟢 | `unset`                      	|
-| 🟢 | ` unset`                     	|
-| 🟢 | `unset `                     	|
-| 🟢 | `  unset  `                  	|
-| 🟢 | `unset [variable]`           	|
-| 🟢 | `unset [variable] [variable]`	|
-| 🔴 | `unset [all variables]`      	|
-| 🟢 | `EXPORT`                     	|
-| 🟢 | `eXpOrT`                     	|
-| 🟢 | `export`                     	|
-| 🟢 | ` export`                    	|
-| 🟢 | `export `                    	|
-| 🟢 | `  export  `                 	|
-| 🟢 | `export a=42`                	|
-| 🟢 | `export b=24`		    		|
-| 🟢 | `export c=42`                	|
-| 🟢 | `export a = 42`              	|
-| 🟢 | `export a=" 42 "`            	|
-| 🟢 | `export a=' 42 '`            	| 
-| 🟢 | `export a = 42`              	|
-| 🟢 | `export a` 		    			|
-| 🟢 | `export =` 		  				|
-| 🟢 | `export ==`		  				|
-| 🟢 | `export a=` 		  				|
-| 🟢 | `export a=42=` 		    		|
-| 🟢 | `export =a=42` 		    		|
-| 🟢 | `export a==42` 		    		|
-| 🟢 | `export "a=42"` 		    		|
-| 🟢 | `export a="42"` 		    		|
-| 🟢 | `export 42=42`		    		|
-| 🟢 | `export a b = 42`	    		|
-| 🟢 | `export a= b= 42`	    		|
-| 🟢 | `export a=42 % b=42 @ c=42`  	|
-| 🟢 | `export a=42 b=42 c=42`	    	|
-| 🔴 | `export A=a B=b C=c D=d E=e` 	|
-| 🔴 | `export F=f G=g H=h I=i J=j` 	|
-| 🔴 | `export K=k L=l M=m N=n O=o` 	|
-| 🔴 | `export P=p Q=q R=r S=s T=t` 	|
-| 🔴 | `export U=u V=v W=w X=x Y=y Z=z` |
+|    | Commands                            |
+| :- | :---------------------------------- |
+| 🟢 | `ENV`                        	   |
+| 🟢 | `eNv`                        	   |
+| 🟢 | `env`                        	   |
+| 🟢 | ` env`                       	   |
+| 🟢 | `env `                       	   |
+| 🟢 | `  env  `                    	   |
+| 🟢 | `UNSET`                      	   |
+| 🟢 | `uNsEt`                      	   |
+| 🟢 | `unset`                      	   |
+| 🟢 | ` unset`                     	   |
+| 🟢 | `unset `                     	   |
+| 🟢 | `  unset  `                  	   |
+| 🟢 | `unset [variable]`           	   |
+| 🟢 | `EXPORT`                     	   |
+| 🟢 | `eXpOrT`                     	   |
+| 🟢 | `export`                     	   |
+| 🟢 | ` export`                    	   |
+| 🟢 | `export `                    	   |
+| 🟢 | `  export  `                 	   |
+| 🟢 | `export a=42`                	   |
+| 🟢 | `export b=24`		    		   |
+| 🟢 | `export c=42`                	   |
+| 🟢 | `export a = 42`              	   |
+| 🟢 | `export a=" 42 "`            	   |
+| 🟢 | `export a=' 42 '`            	   | 
+| 🟢 | `export a = 42`              	   |
+| 🟢 | `export a` 		    			   |
+| 🟢 | `export =` 		  				   |
+| 🟢 | `export ==`		  				   |
+| 🟢 | `export a=` 		  				   |
+| 🟢 | `export a=42=` 		    		   |
+| 🟢 | `export =a=42` 		    		   |
+| 🟢 | `export a==42` 		    		   |
+| 🟢 | `export "a=42"` 		    		   |
+| 🟢 | `export a="42"` 		    		   |
+| 🟢 | `export 42=42`		    		   |
+| 🟢 | `export a b = 42`	    		   |
+| 🟢 | `export a= b= 42`	    		   |
+| 🟢 | `export a=42 % b=42 @ c=42`  	   |
+| 🟢 | `export a=42 b=42 c=42`	    	   |
 
 # EXIT
-|    | Commands                    |
-| :- | :-------------------------- |
-| 🟢 | `EXIT`                      |
-| 🟢 | `eXiT`                      |
-| 🟢 | `exit`                      |
-| 🟢 | `exit `                     |
-| 🟢 | ` exit`                     |
-| 🟢 | `  exit  `                  |
-| 🟢 | `exit test`                 |
-| 🟢 | `"exit" "test"`             |
-| 🟢 | `exit "test"`               |
-| 🟢 | `"exit test"`               |
-| 🟢 | `"exit"`                    |
-| 🟢 | `exit1`                     |
-| 🟢 | `exita`                     |
-| 🟢 | `exit exit`                 |
-| 🟢 | `exit a`                    |
-| 🟢 | `exit abc`                  |
-| 🟢 | `exit a b c`                |
-| 🟢 | `exit a b c d`              |
-| 🟢 | `exit #`                    |
-| 🟢 | `exit *`                    |
-| 🟢 | `exit 0`                    |
-| 🟢 | `exit 1`                    |
-| 🟢 | `exit 123`                  |
-| 🟢 | `exit 1234`                 |
-| 🟢 | `exit 1 2 3 4`              |
-| 🟢 | `exit +`                    |
-| 🟢 | `exit -`                    |
-| 🟢 | `exit +10`                  |
-| 🟢 | `exit -10`                  |
-| 🟢 | `exit +2000`                |
-| 🟢 | `exit -2000`                |
-| 🟢 | `exit +-2000`               |
-| 🟢 | `exit -+2000`               |
-| 🟢 | `exit ++2000`               |
-| 🟢 | `exit --2000`               |
-| 🟢 | `exit -2147483649`          |
-| 🟢 | `exit 2147483648`           |
-| 🟢 | `exit 00000000000000000000` |
-| 🟢 | `exit 11111111111111111111` |
+|    | Commands                            |
+| :- | :---------------------------------- |
+| 🟢 | `EXIT`                              |
+| 🟢 | `eXiT`                              |
+| 🟢 | `exit`                              |
+| 🟢 | `exit `                             |
+| 🟢 | ` exit`                             |
+| 🟢 | `  exit  `                          |
+| 🟢 | `exit test`                         |
+| 🟢 | `"exit" "test"`                     |
+| 🟢 | `exit "test"`                       |
+| 🟢 | `"exit test"`                       |
+| 🟢 | `"exit"`                            |
+| 🟢 | `exit1`                             |
+| 🟢 | `exita`                             |
+| 🟢 | `exit exit`                         |
+| 🟢 | `exit a`                            |
+| 🟢 | `exit abc`                          |
+| 🟢 | `exit a b c`                        |
+| 🟢 | `exit a b c d`                      |
+| 🟢 | `exit #`                            |
+| 🟢 | `exit *`                            |
+| 🟢 | `exit 0`                            |
+| 🟢 | `exit 1`                            |
+| 🟢 | `exit 123`                          |
+| 🟢 | `exit 1234`                         |
+| 🟢 | `exit 1 2 3 4`                      |
+| 🟢 | `exit +`                            |
+| 🟢 | `exit -`                            |
+| 🟢 | `exit +10`                          |
+| 🟢 | `exit -10`                          |
+| 🟢 | `exit +2000`                        |
+| 🟢 | `exit -2000`                        |
+| 🟢 | `exit +-2000`                       |
+| 🟢 | `exit -+2000`                       |
+| 🟢 | `exit ++2000`                       |
+| 🟢 | `exit --2000`                       |
+| 🟢 | `exit -2147483649`                  |
+| 🟢 | `exit 2147483648`                   |
+| 🟢 | `exit 00000000000000000000`         |
+| 🟢 | `exit 11111111111111111111`         |
 
 # CD  
-|    | Commands                |
-| :- | :---------------------- |
-| 🟢 | `CD`                    |
-| 🟢 | `cd`                    |
-| 🟢 | `cd `                   |
-| 🟢 | ` cd`                   |
-| 🟢 | `  cd  `                |
-| 🟢 | `cd .`                  |
-| 🟢 | `cd ~`                  |
-| 🟢 | `cd no_file`            |
-| 🟢 | `cd1`                   |
-| 🟢 | `cd 0`                  |
-| 🟢 | `cd 1`                  |
-| 🟢 | `cd 123`                |
-| 🟢 | `cd 1234`               |
-| 🟢 | `cd 1 2 3 4`            |
-| 🟢 | `cd cd`                 |
-| 🟢 | `cd a`                  |
-| 🟢 | `cd abc`                |
-| 🟢 | `cd a b c`              |
-| 🟢 | `cd a b c d`            |
-| 🟢 | `cd ../../`             |
-| 🟢 | `cd ../../../../../../` |
-| 🟢 | `cd ../../...`          |
-| 🟢 | `cd .../../..`          |
-| 🟢 | `cd .../../...`         |
-| 🟢 | `cd \`                  |
-| 🟢 | `cd /`                  |
-| 🟢 | `cd //`                 |
-| 🟢 | `cd ///`                |
-| 🟢 | `cd -`                  |
-| 🟢 | `cd $[VAR]`             |
+|    | Commands                            |
+| :- | :---------------------------------- |
+| 🟢 | `CD`                                |
+| 🟢 | `cd`                                |
+| 🟢 | `cd `                               |
+| 🟢 | ` cd`                               |
+| 🟢 | `  cd  `                            |
+| 🟢 | `cd .`                              |
+| 🟢 | `cd ~`                              |
+| 🟢 | `cd no_file`                        |
+| 🟢 | `cd1`                               |
+| 🟢 | `cd 0`                              |
+| 🟢 | `cd 1`                              |
+| 🟢 | `cd 123`                            |
+| 🟢 | `cd 1234`                           |
+| 🟢 | `cd 1 2 3 4`                        |
+| 🟢 | `cd cd`                             |
+| 🟢 | `cd a`                              |
+| 🟢 | `cd abc`                            |
+| 🟢 | `cd a b c`                          |
+| 🟢 | `cd a b c d`                        |
+| 🟢 | `cd ../../`                         |
+| 🟢 | `cd ../../../../../../`             |
+| 🟢 | `cd ../../...`                      |
+| 🟢 | `cd .../../..`                      |
+| 🟢 | `cd .../../...`                     |
+| 🟢 | `cd \`                              |
+| 🟢 | `cd /`                              |
+| 🟢 | `cd //`                             |
+| 🟢 | `cd ///`                            |
+| 🟢 | `cd -`                              |
+| 🟢 | `cd $[VAR]`                         |
 
-# ECHO  
-|    | Commands                                                             |
-| :- | :------------------------------------------------------------------- |
-| 🟢 | `ECHO`                                                               |
-| 🟢 | `echO`                                                               |
-| 🟢 | `ECHo`                                                               |
-| 🟢 | `echo`                                                               |
-| 🟢 | `echo echo`                                                          |
-| 🟢 | `echo `                                                              |
-| 🟢 | ` echo`                                                              |
-| 🟢 | `  echo  `                                                           |
-| 🟢 | `echo .`                                                             |
-| 🟢 | `echo ~`                                                             |
-| 🟢 | `echo echo ~`                                                        |
-| 🟢 | `"echo test"`                                                        |
-| 🟢 | `echo "~"`                                                           |
-| 🟢 | `echo '~'`                                                           |
-| 🟢 | `echo ~123`                                                          |
-| 🟢 | `echo 123~`                                                          |
-| 🟢 | `echo ~/123`                                                         |
-| 🟢 | `echo ~/123/456`                                                     |
-| 🟢 | `echo #`                                                             |
-| 🟢 | `echofile`                                                           |
-| 🟢 | `echo file`                                                          |
-| 🟢 | `echo no_file`                                                       |
-| 🟢 | `echo file test`                                                     |
-| 🟢 | `echo file   test`                                                   |
-| 🟢 | `echo file     test file   test`                                     |
-| 🟢 | `echo a"b"c`															|
-| 🟢 | `echo "a'b'c`														|
-| 🟢 | `echo "test"`                                                        |
-| 🟢 | `echo test`                                                          |
-| 🟢 | `echo 'test'`                                                        |
-| 🟢 | `echo -n`															|
-| 🟢 | `echo -n -n`													        |
-| 🟢 | `echo -nnnnnnnnnnnnnnnnnnnnnnnn`                                     |
-| 🟢 | `echo -n test -n`													|
-| 🟢 | `"echo" "-n"`														|
-| 🟢 | `echo $USER`                                                         |
-| 🟢 | `echo "$USER"`                                                       |
-| 🔴 | `echo '$USER'`                                                       |
-| 🔴 | `echo "'$USER'"`                                                     |
-| 🔴 | `echo '"$USER"'`                                                     |
-| 🔴 | `echo $USER`                                                         |
-| 🔴 | `echo $?`                                                            |
+# ECHO
+|    | Commands                            |
+| :- | :-----------------------------------|
+| 🟢 | `ECHO`                              |
+| 🟢 | `echO`                              |
+| 🟢 | `ECHo`                              |
+| 🟢 | `echo`                              |
+| 🟢 | `echo echo`                         |
+| 🟢 | `echo `                             |
+| 🟢 | ` echo`                             |
+| 🟢 | `  echo  `                          |
+| 🟢 | `echo .`                            |
+| 🟢 | `echo ~`                            |
+| 🟢 | `echo echo ~`                       |
+| 🟢 | `"echo test"`                       |
+| 🟢 | `echo "~"`                          |
+| 🟢 | `echo '~'`                          |
+| 🟢 | `echo ~123`                         |
+| 🟢 | `echo 123~`                         |
+| 🟢 | `echo ~/123`                        |
+| 🟢 | `echo ~/123/456`                    |
+| 🟢 | `echo #`                            |
+| 🟢 | `echofile`                          |
+| 🟢 | `echo file`                         |
+| 🟢 | `echo no_file`                      |
+| 🟢 | `echo file test`                    |
+| 🟢 | `echo file  test`                   |
+| 🟢 | `echo file   test file   test`      |
+| 🟢 | `echo a"b"c`			               |
+| 🟢 | `echo "a'b'c`		               |
+| 🟢 | `echo "test"`                       |
+| 🟢 | `echo test`                         |
+| 🟢 | `echo 'test'`                       |
+| 🟢 | `echo -n`			               |
+| 🟢 | `echo -n -n`                        |
+| 🟢 | `echo -nnnnnn`                      |
+| 🟢 | `echo -n test -n`	               |
+| 🟢 | `"echo" "-n"`		               |
+| 🟢 | `echo $USER`                        |
+| 🟢 | `echo "$USER"`                      |
+| 🟢 | `echo '$USER'`                      |
+| 🔴 | `echo $?`                           |
 
 # Utilities
 ### Return Values ($?)
