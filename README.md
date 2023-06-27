@@ -88,106 +88,106 @@
 ## BLANK
 |    | Commands   |
 | :- | :--------- |
-| 🟢 | `<empty>`  |
-| 🟢 | `<spaces>` |
-| 🟣 | `../../`   |
-| 🟢 | `$`        |
+| 🔴 | `<empty>`  |
+| 🔴 | `<spaces>` |
+| 🔴 | `../../`   |
+| 🔴 | `$`        |
 
 ## SIGNALS
 |    | Commands                                    |
 | :- | :------------------------------------------ |
-| 🟢 | `Ctrl` + `C`                                |
-| 🟢 | `Ctrl` + `D`                                |
-| 🟢 | `Ctrl` + `\`                                |
-| 🟢 | `write something then press` + `Ctrl` + `C` |
-| 🟢 | `write something then press` + `Ctrl` + `D` |
-| 🟢 | `write something then press` + `Ctrl` + `\` |
-| ⚪ | `cat` + `Ctrl` + `C`                        |
-| 🟢 | `cat` + `Ctrl` + `D`                        |
-| ⚪ | `cat` + `Ctrl` + `\`                        |
-| ⚪ | `sleep 5` + `Ctrl` + `C`                    |
-| 🟢 | `sleep 5` + `Ctrl` + `D`                    |
-| ⚪ | `sleep 5` + `Ctrl` + `\`                    |
+| 🔴 | `Ctrl` + `C`                                |
+| 🔴 | `Ctrl` + `D`                                |
+| 🔴 | `Ctrl` + `\`                                |
+| 🔴 | `write something then press` + `Ctrl` + `C` |
+| 🔴 | `write something then press` + `Ctrl` + `D` |
+| 🔴 | `write something then press` + `Ctrl` + `\` |
+| 🔴 | `cat` + `Ctrl` + `C`                        |
+| 🔴 | `cat` + `Ctrl` + `D`                        |
+| 🔴 | `cat` + `Ctrl` + `\`                        |
+| 🔴 | `sleep 5` + `Ctrl` + `C`                    |
+| 🔴 | `sleep 5` + `Ctrl` + `D`                    |
+| 🔴 | `sleep 5` + `Ctrl` + `\`                    |
 	
 # PATH
 |    | Commands           |
 | :- | :----------------- |
-| 🟢 | `/bin/echo`        |
-| 🟢 | `/bin/grep`        |
-| 🟢 | `/bin/ls`          |
-| 🟢 | `/bin/ls -la`      |
-| 🟢 | `/bin/cat`         |
-| 🟢 | `/bin/pwd`         |
-| 🟢 | `/bin/cd`          |
-| 🟢 | `/bin/export`      |
-| 🟢 | `/bin/env`         |
-| 🟢 | `/bin/exit`        |
+| 🔴 | `/bin/echo`        |
+| 🔴 | `/bin/grep`        |
+| 🔴 | `/bin/ls`          |
+| 🔴 | `/bin/ls -la`      |
+| 🔴 | `/bin/cat`         |
+| 🔴 | `/bin/pwd`         |
+| 🔴 | `/bin/cd`          |
+| 🔴 | `/bin/export`      |
+| 🔴 | `/bin/env`         |
+| 🔴 | `/bin/exit`        |
 
 # PWD
 |    | Commands      |
 | :- | :------------ |
-| 🟢 | `pwd`         |
-| 🟢 | `pwd a`       |
-| 🟢 | `pwd a b c d` |
+| 🔴 | `pwd`         |
+| 🔴 | `pwd a`       |
+| 🔴 | `pwd a b c d` |
 
 # EXPORT, ENV AND UNSET
 |    | Commands                     |
 | :- | :--------------------------- |
-| 🟡 | `ENV`                        |
-| 🟡 | `eNv`                        |
-| 🟡 | `env`                        |
-| 🟡 | ` env`                       |
-| 🟡 | `env `                       |
-| 🟡 | `  env  `                    |
-| 🟡 | `UNSET`                      |
-| 🟡 | `uNsEt`                      |
-| 🟡 | `unset`                      |
-| 🟡 | ` unset`                     |
-| 🟡 | `unset `                     |
-| 🟡 | `  unset  `                  |
-| 🟡 | `unset [variable]`           |
-| 🟡 | `unset [variable] [variable]`|
-| 🟡 | `unset [all variables]`      |
-| 🟡 | `EXPORT`                     |
-| 🟡 | `eXpOrT`                     |
-| 🟡 | `export`                     |
-| 🟡 | ` export`                    |
-| 🟡 | `export `                    |
-| 🟡 | `  export  `                 |
-| 🟡 | `export a=42`                |
-| 🟡 | `export a=24`		    |
-| 🟡 | `export b=42`                |
-| 🟡 | `export a = 42`              |
-| 🟡 | `export a=" 42 "`            |
-| 🟡 | `export a=' 42 '`            |
-| 🟡 | `export a = 42`              |
-| 🟡 | `export a` 		    |
-| 🟡 | `export a=''`           	    |                                         
-| 🟡 | `export a='"'`               |                                   
-| 🟡 | `export a='\'`               |                                
-| 🟡 | `export a='$'`               |                                 
-| 🟡 | `export a='\t'`              |                                    
-| 🟡 | `export a='''` 		    | 
-| 🟡 | `export =` 		    |
-| 🟡 | `export ==`		    |
-| 🟡 | `export a=` 		    |
-| 🟡 | `export a=42=` 		    |
-| 🟡 | `export =a=42` 		    |
-| 🟡 | `export a==42` 		    |
-| 🟡 | `export "a=42"` 		    |
-| 🟡 | `export a="42"` 		    |
-| 🟡 | `export _=42` 		    |
-| 🟡 | `export 42=42`		    |
-| 🟡 | `export a b = 42`	    |
-| 🟡 | `export a= b= 42`	    |
-| 🟡 | `export a=42 % b=42 @ c=42`  |
-| 🟡 | `export a=42 b=42 c=42`	    |
-| 🟡 | `export A=a B=b C=c D=d E=e` |
-| 🟡 | `export F=f G=g H=h I=i J=j` |
-| 🟡 | `export K=k L=l M=m N=n O=o` |
-| 🟡 | `export P=p Q=q R=r S=s T=t` |
-| 🟡 | `export U=u V=v W=w X=x Y=y Z=z` |
-| 🟡 | `export _=a; echo $_a` |
+| 🔴 | `ENV`                        |
+| 🔴 | `eNv`                        |
+| 🔴 | `env`                        |
+| 🔴 | ` env`                       |
+| 🔴 | `env `                       |
+| 🔴 | `  env  `                    |
+| 🔴 | `UNSET`                      |
+| 🔴 | `uNsEt`                      |
+| 🔴 | `unset`                      |
+| 🔴 | ` unset`                     |
+| 🔴 | `unset `                     |
+| 🔴 | `  unset  `                  |
+| 🔴 | `unset [variable]`           |
+| 🔴 | `unset [variable] [variable]`|
+| 🔴 | `unset [all variables]`      |
+| 🔴 | `EXPORT`                     |
+| 🔴 | `eXpOrT`                     |
+| 🔴 | `export`                     |
+| 🔴 | ` export`                    |
+| 🔴 | `export `                    |
+| 🔴 | `  export  `                 |
+| 🔴 | `export a=42`                |
+| 🔴 | `export a=24`		    |
+| 🔴 | `export b=42`                |
+| 🔴 | `export a = 42`              |
+| 🔴 | `export a=" 42 "`            |
+| 🔴 | `export a=' 42 '`            |
+| 🔴 | `export a = 42`              |
+| 🔴 | `export a` 		    |
+| 🔴 | `export a=''`           	    |                                         
+| 🔴 | `export a='"'`               |                                   
+| 🔴 | `export a='\'`               |                                
+| 🔴 | `export a='$'`               |                                 
+| 🔴 | `export a='\t'`              |                                    
+| 🔴 | `export a='''` 		    | 
+| 🔴 | `export =` 		    |
+| 🔴 | `export ==`		    |
+| 🔴 | `export a=` 		    |
+| 🔴 | `export a=42=` 		    |
+| 🔴 | `export =a=42` 		    |
+| 🔴 | `export a==42` 		    |
+| 🔴 | `export "a=42"` 		    |
+| 🔴 | `export a="42"` 		    |
+| 🔴 | `export _=42` 		    |
+| 🔴 | `export 42=42`		    |
+| 🔴 | `export a b = 42`	    |
+| 🔴 | `export a= b= 42`	    |
+| 🔴 | `export a=42 % b=42 @ c=42`  |
+| 🔴 | `export a=42 b=42 c=42`	    |
+| 🔴 | `export A=a B=b C=c D=d E=e` |
+| 🔴 | `export F=f G=g H=h I=i J=j` |
+| 🔴 | `export K=k L=l M=m N=n O=o` |
+| 🔴 | `export P=p Q=q R=r S=s T=t` |
+| 🔴 | `export U=u V=v W=w X=x Y=y Z=z` |
+| 🔴 | `export _=a; echo $_a` |
 
 # EXIT
 |    | Commands                    |
