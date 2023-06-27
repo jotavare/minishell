@@ -32,8 +32,8 @@
 - [ ] If theres bonus, there must be a bonus rule on Makefile and bonus files must have _bonus.c(.h).
 - [ ] Check for forbidden functions in your code.
 
-| Important Commands | Description |
-| :--- | :--- |
+| Important Commands                | Description                                                              |
+| :-------------------------------- | :----------------------------------------------------------------------- |
 | `make -n`                         | Display the compilation information without actually compiling the code. |
 | `echo $?`                         | Display the exit status of the last executed command.                    |
 | `nm -g ./minishell \| grep " U "` | Check for forbidden functions.                                           |
@@ -41,9 +41,9 @@
 | `-R CheckForbiddenSourceHeader`   | Check header files.                                                      |
 | `cc -g -Wall -Wextra -Werror`     | Compile with the mandatory flags.                                        |
 | `-fsanitize=address`              | Check for leaks.                                                         |
-| `-lreadline`                      | Link against the readline library.                                       |
+| `-lreadline`                      | Necessary to use readline library.                                       |
 | `ps -e` or `ps -A`                | See all processes currently running on your computer.                    |
-| `ps -a`                           | While tweaking your functions, see if you're creating any dead children. |
+| `ps -a`                           | Check for any dead children.                                             |
 
 | Valgrind Flags                 | Description                                      |
 | :----------------------------- | :----------------------------------------------- |
@@ -73,222 +73,6 @@
 > Note that the above suppressions file will ignore leaks related to the readline and add_history functions.
 
 `valgrind --suppressions=readline.supp --leak-check=full --show-leak-kinds=all ./minishell`
-
-## BLANK
-|    | Commands                            |
-| :- | :---------------------------------- |
-| 🟢 | `<empty>`                           |
-| 🟢 | `<spaces>`                          |
-| 🟢 | `../../`                            |
-| 🟢 | `$`                                 |
-
-## SIGNALS
-|    | Commands                            |
-| :- | :-----------------------------------|
-| 🟢 | `Ctrl` + `C`                        |
-| 🟢 | `Ctrl` + `D`                        |
-| 🟢 | `Ctrl` + `\`                        |
-| 🟢 | `write` + `Ctrl` + `C`              |
-| 🟢 | `write` + `Ctrl` + `D`              |
-| 🟢 | `write` + `Ctrl` + `\`              |
-| 🟢 | `cat` + `Ctrl` + `C`                |
-| 🟢 | `cat` + `Ctrl` + `D`                |
-| 🟢 | `cat` + `Ctrl` + `\`                |
-| 🟢 | `sleep 5` + `Ctrl` + `C`            |
-| 🟢 | `sleep 5` + `Ctrl` + `D`            |
-| 🟢 | `sleep 5` + `Ctrl` + `\`            |
-	
-# PATH
-|    | Commands                            |
-| :- | :---------------------------------- |
-| 🟢 | `/bin/echo`                         |
-| 🟢 | `/bin/grep`                         |
-| 🟢 | `/bin/ls`                           |
-| 🟢 | `/bin/ls -la`                       |
-| 🟢 | `/bin/cat`                          |
-| 🟢 | `/bin/pwd`                          |
-| 🟢 | `/bin/cd`                           |
-| 🟢 | `/bin/export`                       |
-| 🟢 | `/bin/env`                          |
-| 🟢 | `/bin/exit`                         |
-
-# PWD
-|    | Commands                            |
-| :- | :---------------------------------- |
-| 🟢 | `PWD`                               |
-| 🟢 | `pWd`                               |
-| 🟢 | `pwd`                               |
-| 🟢 | ` pwd`                              |
-| 🟢 | `pwd `                              |
-| 🟢 | `  pwd  `                           |
-| 🟢 | `pwd a`                             |
-| 🟢 | `pwd a b c d`                       |
-| 🟢 | `pwd 1`                             |
-| 🟢 | `pwd 1 2 3 4`                       |
-
-# EXPORT, ENV AND UNSET
-|    | Commands                            |
-| :- | :---------------------------------- |
-| 🟢 | `ENV`                        	   |
-| 🟢 | `eNv`                        	   |
-| 🟢 | `env`                        	   |
-| 🟢 | ` env`                       	   |
-| 🟢 | `env `                       	   |
-| 🟢 | `  env  `                    	   |
-| 🟢 | `UNSET`                      	   |
-| 🟢 | `uNsEt`                      	   |
-| 🟢 | `unset`                      	   |
-| 🟢 | ` unset`                     	   |
-| 🟢 | `unset `                     	   |
-| 🟢 | `  unset  `                  	   |
-| 🟢 | `unset [variable]`           	   |
-| 🟢 | `EXPORT`                     	   |
-| 🟢 | `eXpOrT`                     	   |
-| 🟢 | `export`                     	   |
-| 🟢 | ` export`                    	   |
-| 🟢 | `export `                    	   |
-| 🟢 | `  export  `                 	   |
-| 🟢 | `export a=42`                	   |
-| 🟢 | `export b=24`		    		   |
-| 🟢 | `export c=42`                	   |
-| 🟢 | `export a = 42`              	   |
-| 🟢 | `export a=" 42 "`            	   |
-| 🟢 | `export a=' 42 '`            	   | 
-| 🟢 | `export a = 42`              	   |
-| 🟢 | `export a` 		    			   |
-| 🟢 | `export =` 		  				   |
-| 🟢 | `export ==`		  				   |
-| 🟢 | `export a=` 		  				   |
-| 🟢 | `export a=42=` 		    		   |
-| 🟢 | `export =a=42` 		    		   |
-| 🟢 | `export a==42` 		    		   |
-| 🟢 | `export "a=42"` 		    		   |
-| 🟢 | `export a="42"` 		    		   |
-| 🟢 | `export 42=42`		    		   |
-| 🟢 | `export a b = 42`	    		   |
-| 🟢 | `export a= b= 42`	    		   |
-| 🟢 | `export a=42 % b=42 @ c=42`  	   |
-| 🟢 | `export a=42 b=42 c=42`	    	   |
-
-# EXIT
-|    | Commands                            |
-| :- | :---------------------------------- |
-| 🟢 | `EXIT`                              |
-| 🟢 | `eXiT`                              |
-| 🟢 | `exit`                              |
-| 🟢 | `exit `                             |
-| 🟢 | ` exit`                             |
-| 🟢 | `  exit  `                          |
-| 🟢 | `exit test`                         |
-| 🟢 | `"exit" "test"`                     |
-| 🟢 | `exit "test"`                       |
-| 🟢 | `"exit test"`                       |
-| 🟢 | `"exit"`                            |
-| 🟢 | `exit1`                             |
-| 🟢 | `exita`                             |
-| 🟢 | `exit exit`                         |
-| 🟢 | `exit a`                            |
-| 🟢 | `exit abc`                          |
-| 🟢 | `exit a b c`                        |
-| 🟢 | `exit a b c d`                      |
-| 🟢 | `exit #`                            |
-| 🟢 | `exit *`                            |
-| 🟢 | `exit 0`                            |
-| 🟢 | `exit 1`                            |
-| 🟢 | `exit 123`                          |
-| 🟢 | `exit 1234`                         |
-| 🟢 | `exit 1 2 3 4`                      |
-| 🟢 | `exit +`                            |
-| 🟢 | `exit -`                            |
-| 🟢 | `exit +10`                          |
-| 🟢 | `exit -10`                          |
-| 🟢 | `exit +2000`                        |
-| 🟢 | `exit -2000`                        |
-| 🟢 | `exit +-2000`                       |
-| 🟢 | `exit -+2000`                       |
-| 🟢 | `exit ++2000`                       |
-| 🟢 | `exit --2000`                       |
-| 🟢 | `exit -2147483649`                  |
-| 🟢 | `exit 2147483648`                   |
-| 🟢 | `exit 00000000000000000000`         |
-| 🟢 | `exit 11111111111111111111`         |
-
-# CD  
-|    | Commands                            |
-| :- | :---------------------------------- |
-| 🟢 | `CD`                                |
-| 🟢 | `cd`                                |
-| 🟢 | `cd `                               |
-| 🟢 | ` cd`                               |
-| 🟢 | `  cd  `                            |
-| 🟢 | `cd .`                              |
-| 🟢 | `cd ~`                              |
-| 🟢 | `cd no_file`                        |
-| 🟢 | `cd1`                               |
-| 🟢 | `cd 0`                              |
-| 🟢 | `cd 1`                              |
-| 🟢 | `cd 123`                            |
-| 🟢 | `cd 1234`                           |
-| 🟢 | `cd 1 2 3 4`                        |
-| 🟢 | `cd cd`                             |
-| 🟢 | `cd a`                              |
-| 🟢 | `cd abc`                            |
-| 🟢 | `cd a b c`                          |
-| 🟢 | `cd a b c d`                        |
-| 🟢 | `cd ../../`                         |
-| 🟢 | `cd ../../../../../../`             |
-| 🟢 | `cd ../../...`                      |
-| 🟢 | `cd .../../..`                      |
-| 🟢 | `cd .../../...`                     |
-| 🟢 | `cd \`                              |
-| 🟢 | `cd /`                              |
-| 🟢 | `cd //`                             |
-| 🟢 | `cd ///`                            |
-| 🟢 | `cd -`                              |
-| 🟢 | `cd $[VAR]`                         |
-
-# ECHO
-|    | Commands                            |
-| :- | :-----------------------------------|
-| 🟢 | `ECHO`                              |
-| 🟢 | `echO`                              |
-| 🟢 | `ECHo`                              |
-| 🟢 | `echo`                              |
-| 🟢 | `echo echo`                         |
-| 🟢 | `echo `                             |
-| 🟢 | ` echo`                             |
-| 🟢 | `  echo  `                          |
-| 🟢 | `echo .`                            |
-| 🟢 | `echo ~`                            |
-| 🟢 | `echo echo ~`                       |
-| 🟢 | `"echo test"`                       |
-| 🟢 | `echo "~"`                          |
-| 🟢 | `echo '~'`                          |
-| 🟢 | `echo ~123`                         |
-| 🟢 | `echo 123~`                         |
-| 🟢 | `echo ~/123`                        |
-| 🟢 | `echo ~/123/456`                    |
-| 🟢 | `echo #`                            |
-| 🟢 | `echofile`                          |
-| 🟢 | `echo file`                         |
-| 🟢 | `echo no_file`                      |
-| 🟢 | `echo file test`                    |
-| 🟢 | `echo file  test`                   |
-| 🟢 | `echo file   test file   test`      |
-| 🟢 | `echo a"b"c`			               |
-| 🟢 | `echo "a'b'c`		               |
-| 🟢 | `echo "test"`                       |
-| 🟢 | `echo test`                         |
-| 🟢 | `echo 'test'`                       |
-| 🟢 | `echo -n`			               |
-| 🟢 | `echo -n -n`                        |
-| 🟢 | `echo -nnnnnn`                      |
-| 🟢 | `echo -n test -n`	               |
-| 🟢 | `"echo" "-n"`		               |
-| 🟢 | `echo $USER`                        |
-| 🟢 | `echo "$USER"`                      |
-| 🟢 | `echo '$USER'`                      |
-| 🔴 | `echo $?`                           |
 
 # Utilities
 ### Return Values ($?)
@@ -351,16 +135,16 @@
 | `rwx`   | `4+2+1`     | `7`   |
 
 ### MAX/MIN
-| Data Types | Qualifiers | Size (in byte) | Range |
-| :- | :- | :- | :- |
-| `char`	| `char` or `signed char`				| `1`            | `-128` to `127`                |
-| `char`	| `unsigned char`						| `1`            | `0` to `255`                   |
-| `int`		| `int` or `signed int`					| `4`            | `-2147483648` to `2147483647`  |
-| `int`		| `unsigned int`						| `4`            | `0` to `4294967295`            |
-| `int`		| `short int` or `short signed int`		| `2`            | `-32768` to `32767`            |
-| `int`		| `unsigned short int`					| `2`            | `0` to `65535`                 |
-| `int`		| `long int` or `signed long int`		| `4`            | `-2147483648` to `2147483647`  |
-| `int`		| `unsigned long int`					| `4`            | `0` to `4294967295`            |
-| `float`	| `float`								| `4`            | `1.1754e-38` to `3.4028e+38`   |
-| `float`	| `double`								| `8`            | `2.2250e-308` to `1.7976e+308` |
-| `float`	| `long double`							| `10`           | `3.4E-4932` to `3.4E+4932`     |
+| Data Types | Qualifiers                        | Size (in byte) | Range                          |
+| :--------- | :-------------------------------- | :------------- | :----------------------------- |
+| `char`	 | `char` or `signed char`			 | `1`            | `-128` to `127`                |
+| `char`	 | `unsigned char`					 | `1`            | `0` to `255`                   |
+| `int`		 | `int` or `signed int`			 | `4`            | `-2147483648` to `2147483647`  |
+| `int`		 | `unsigned int`					 | `4`            | `0` to `4294967295`            |
+| `int`		 | `short int` or `short signed int` | `2`            | `-32768` to `32767`            |
+| `int`		 | `unsigned short int`				 | `2`            | `0` to `65535`                 |
+| `int`		 | `long int` or `signed long int`	 | `4`            | `-2147483648` to `2147483647`  |
+| `int`		 | `unsigned long int`				 | `4`            | `0` to `4294967295`            |
+| `float`	 | `float`							 | `4`            | `1.1754e-38` to `3.4028e+38`   |
+| `float`	 | `double`							 | `8`            | `2.2250e-308` to `1.7976e+308` |
+| `float`	 | `long double`					 | `10`           | `3.4E-4932` to `3.4E+4932`     |
