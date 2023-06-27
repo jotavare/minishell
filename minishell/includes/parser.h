@@ -24,6 +24,7 @@ int		check_equal(char *str);
 // expander.c
 char	*custom_getenv(const char *variable_name, t_attr *att);
 char	**expand_tokens(char **tokens, t_attr *att);
+char	*has_correct_name(char *str);
 
 // lexer.c
 void	command(t_attr *att, int index);
@@ -33,7 +34,9 @@ int		is_symbol(char *s);
 int		check_next_step(t_attr *att);
 
 // signals.c
+void	handle_quit(int signal);
 void	handle_interrupt(int signal);
 void	set_signals(void);
+void	handler_exec(int sig);
 
 #endif

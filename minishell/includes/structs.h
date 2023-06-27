@@ -47,6 +47,7 @@ typedef struct s_attr
 	int		read_from_file;
 	int		redir;
 	int		create_file;
+	int		only_create;
 	int		heredoc;
 	int		skip;
 	int		inside_single_quotes;
@@ -70,5 +71,18 @@ typedef struct s_exec
 	int		ret;
 	pid_t	pid;
 }			t_exec;
+
+typedef struct s_exp
+{
+	char	*variable_name;
+	char	*value;
+	size_t	expanded_length;
+	size_t	token_length;
+	char	*expanded_token;
+	int		j;
+	int		i;
+	int		has_quote;
+}	t_exp;
+
 
 #endif

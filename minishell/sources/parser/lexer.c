@@ -27,11 +27,11 @@ void	command(t_attr *att, int index)
 	else if (ft_strcmp(att->tok_arr[0], "cd") == 0)
 		g_value = cd(att);
 	else if (ft_strcmp(att->tok_arr[0], "unset") == 0)
-		unset(att);
+		g_value = unset(att);
 	else if ((ft_strcmp(att->tok_arr[0], "exit") == 0))
 		return (ft_exit(att));
 	else if (ft_strcmp(att->tok_arr[0], "export") == 0 && att->tok_arr[1])
-		export(att);
+		g_value = export(att);
 	else
 		execute(att, index);
 }

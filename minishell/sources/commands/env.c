@@ -12,6 +12,12 @@
 
 #include "../../includes/minishell.h"
 
+int	env_print_err(t_attr *att, int i)
+{
+	printf("env: ‘%s’: No such file or directory\n", att->tok_arr[i]);
+	return (127);
+}
+
 int	env(t_attr *att)
 {
 	int	i;
@@ -20,10 +26,7 @@ int	env(t_attr *att)
 	while (att->tok_arr[i])
 	{
 		if (!check_equal(att->tok_arr[i]))
-		{
-			printf("env: ‘%s’: No such file or directory\n", att->tok_arr[i]);
-			return (127);
-		}
+			return (env_print_err(att, i));
 		i++;
 	}
 	i = 0;

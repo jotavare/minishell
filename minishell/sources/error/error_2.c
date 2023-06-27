@@ -93,36 +93,3 @@ int	error_double(char *str, char c)
 	}
 	return (0);
 }
-
-int	error_mixed(char *str, char c, char r)
-{
-	int	i;
-	int	flag;
-
-	i = 0;
-	flag = 0;
-	while (str[i])
-	{
-		if (str[i] == '>' && str[i + 1] == '|')
-			return (0);
-		else if (str[i] == '<' && str[i + 1] == '>' && flag == 0)
-			return (0);
-		else if (str[i] == c && flag == 0)
-			flag = 1;
-		else if (str[i] == c && flag == 1)
-			flag = 2;
-		else if ((str[i] != c && str[i] != ' ' && str[i] != r) && (flag == 1
-					|| flag == 2))
-			flag = 0;
-		else if (str[i] == r && (flag == 1 || flag == 2))
-		{
-			if (str[i] == r && str[i + 1] == r)
-				printf(ERROR_TWO, r, r);
-			else
-				printf(ERROR_ONE, r);
-			return (1);
-		}
-		i++;
-	}
-	return (0);
-}

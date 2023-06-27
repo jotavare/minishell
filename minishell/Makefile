@@ -43,6 +43,7 @@ SRC =	sources/minishell.c \
 		sources/error/error_1.c \
 		sources/error/error_2.c \
 		sources/error/error_3.c \
+		sources/error/error_4.c \
     	sources/executer/executer.c \
 		sources/executer/execve.c \
 		sources/executer/heredocs.c \
@@ -63,6 +64,7 @@ SRC =	sources/minishell.c \
     	sources/tokens/get_tokens_1.c \
 		sources/tokens/get_tokens_2.c \
     	sources/tokens/tokens.c \
+		sources/tokens/tokens_utils.c \
 		sources/utilities/debugg.c \
     	sources/utilities/prompt.c \
     	sources/utilities/utils_1.c \

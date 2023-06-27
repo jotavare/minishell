@@ -33,6 +33,7 @@ void	free_tokens(char **tokens, t_attr *att)
 	i = 0;
 	while (i < att->nb_tokens)
 		free(tokens[i++]);
+	free(tokens);
 }
 
 void	free_g_env(t_attr *att)

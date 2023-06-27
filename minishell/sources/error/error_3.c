@@ -17,7 +17,7 @@ int	error_dirdoc(char *str)
 	if (error_simple_dirdoc(str, '>') || error_simple_dirdoc(str, '<'))
 		return (1);
 	else if (error_mixed(str, '>', '<') || error_mixed(str, '<', '>')
-			|| error_mixed(str, '<', '|') || error_mixed(str, '>', '|'))
+		|| error_mixed(str, '<', '|') || error_mixed(str, '>', '|'))
 		return (1);
 	else if (error_double(str, '>') || error_double(str, '<'))
 		return (1);

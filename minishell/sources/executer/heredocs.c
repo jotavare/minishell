@@ -14,9 +14,10 @@
 
 void	heredoc(char *delimiter, t_attr *att)
 {
-	char *line;
-	int fd;
+	char	*line;
+	int		fd;
 
+	signal(SIGINT, SIG_DFL);
 	fd = open(".heredoc", O_CREAT | O_WRONLY | O_TRUNC, 0644);
 	while (1)
 	{

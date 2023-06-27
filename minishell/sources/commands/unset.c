@@ -85,22 +85,26 @@ void	double_exp_env(t_attr *att)
 	att->d_exp_env[i] = 0;
 }
 
-void	unset(t_attr *att)
+int	unset(t_attr *att)
 {
 	int	j;
 
 	j = 1;
 	if (!att->tok_arr[1])
-		return ;
+		return (0);
 	while (att->tok_arr[j])
 	{
 		if (!check_alpha(att->tok_arr[j]))
+		{
 			printf("bash: unset: '%s': not a valid identifier\n",
 				att->tok_arr[j]);
+			return (1);
+		}
 		if ((find_index(att->g_env, att->tok_arr[j])))
 			refresh_rmenv(att, check_the_arr(att->g_env, att->tok_arr[j]));
 		if ((find_index(att->exp_env, att->tok_arr[j])))
 			refresh_rmexp_env(att, find_index(att->exp_env, att->tok_arr[j]));
 		j++;
 	}
+	return (0);
 }

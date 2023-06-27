@@ -29,8 +29,10 @@ int		echo_n(t_attr att);
 
 // env.c
 int		env(t_attr *att);
+int		env_print_err(t_attr *att, int i);
 
 // exit.c
+int     exit_print_err(const char *arg);
 int		ft_exit_args(t_attr attr);
 void	ft_exit(t_attr *attr);
 
@@ -49,6 +51,6 @@ char	*add_equal(char *str);
 int		find_index(char **search, char *str);
 void	double_myenv(t_attr *att);
 void	double_exp_env(t_attr *att);
-void	unset(t_attr *att);
+int     unset(t_attr *att);
 
 #endif

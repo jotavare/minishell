@@ -37,6 +37,7 @@ void	init_attributes_one(t_attr *att)
 	att->pars_data.pars_arr = NULL;
 	att->write_to_pipe = 0;
 	att->read_from_pipe = 0;
+	att->only_create = 0;
 }
 
 void	init_attributes_two(t_attr *att)
@@ -55,7 +56,6 @@ void	init_attributes_two(t_attr *att)
 	att->o_quotes = 0;
 	att->aftert = NULL;
 	att->inside_single_quotes = 0;
-	//att->last_path = search_var_in_g_env(att, "HOME");
 }
 
 void	reinit_attributes(t_attr *att)
