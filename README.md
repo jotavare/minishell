@@ -32,6 +32,8 @@
 - [ ] If theres bonus, there must be a bonus rule on Makefile and bonus files must have _bonus.c(.h).
 - [ ] Check for forbidden functions in your code.
 
+
+
 | Important Commands | Description |
 | :--- | :--- |
 | `make -n`                         | Display the compilation information without actually compiling the code.       |
@@ -54,6 +56,24 @@
 | `--gen-suppressions=all`                            | Ignore specific known issues or false positives. |
 | `--suppressions=valgrind_readline_leaks_ignore.txt` | Specifies the path to a suppression file.        |
 | `--log-file=memleaks.log`                           | Sets the name of the file.                       |
+
+```
+{
+    leak readline
+    Memcheck:Leak
+    ...
+    fun:readline
+}
+{
+    leak add_history
+    Memcheck:Leak
+    ...
+    fun:add_history
+}
+```
+> Note that the above suppressions file will ignore leaks related to the readline and add_history functions.
+
+`valgrind --suppressions=your_file.txt --leak-check=full --show-leak-kinds=all ./minishell`
 
 # COMMAND TESTS
 |    | Definition                  |
