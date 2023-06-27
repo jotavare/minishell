@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:51:22 by alexfern          #+#    #+#             */
-/*   Updated: 2023/06/20 05:44:07 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/27 14:50:49 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,4 +20,26 @@ int	pwd(void)
 		return (EXIT_FAILURE);
 	printf("%s\n", pwd);
 	return (EXIT_SUCCESS);
+}
+
+void	update_oldpwd(t_attr *att, const char *current_path)
+{
+	char	*str_pwd;
+
+	str_pwd = ft_strjoin("OLDPWD=", current_path);
+	cd_rm_add_path(att, "OLDPWD", str_pwd);
+	free(str_pwd);
+	att->last_path = search_var_in_g_env(att, "OLDPWD");
+}
+
+void	update_pwd(t_attr *att)
+{
+	char	*current_path;
+	char	*str_pwd;
+
+	current_path = getcwd(NULL, 0);
+	str_pwd = ft_strjoin("PWD=", current_path);
+	cd_rm_add_path(att, "PWD", str_pwd);
+	free(str_pwd);
+	free(current_path);
 }

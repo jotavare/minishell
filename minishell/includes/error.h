@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:28:13 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/23 22:45:24 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/27 14:46:08 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 // error messages
 # define ERROR_CD "minishell: cd: %s: No such file or directory\n"
 # define ERROR_EXPORT "minishell: export: '%s': not a valid identifier\n"
-# define ERROR_NEWLINE "minishell: syntax error near unexpected token 'newline'\n"
+# define ERROR_NLINE "minishell: syntax error near unexpected token 'newline'\n"
 # define ERROR_SIMPLE_2 "minishell: parse error near '%c%c'\n"
 # define ERROR_SIMPLE_1 "minishell: parse error near '%c'\n"
 # define ERROR_PIPE2 "minishel: syntax error near unexpected token '||'\n"
@@ -32,7 +32,6 @@ int	error_last(char *str, char c);
 int	error_simple(char *str, char c);
 int	especialcase(char *str, int i);
 int	especialcase_two(char *str, int i);
-
 
 // error_2.c
 int	error_pipes(char *str);

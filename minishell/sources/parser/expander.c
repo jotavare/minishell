@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 18:15:45 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/24 01:50:22 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/27 15:05:07 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,8 @@ void	expand_tokens2(char **tokens, t_exp *info)
 {
 	info->expanded_length = ft_strlen(info->value);
 	info->token_length = ft_strlen(tokens[info->i]);
-	info->expanded_token = malloc((info->token_length
-				+ info->expanded_length + 1) * sizeof(char));
+	info->expanded_token = malloc((info->token_length + info->expanded_length
+				+ 1) * sizeof(char));
 	ft_strncpy(info->expanded_token, tokens[info->i], info->j);
 	info->expanded_token[info->j] = '\0';
 	ft_strcat(info->expanded_token, info->value);
@@ -77,7 +77,7 @@ void	expand_tokens2(char **tokens, t_exp *info)
 char	**expand_tokens(char **tokens, t_attr *att)
 {
 	t_exp	info;
-	int j;
+	int		j;
 
 	init_var(&info);
 	while (tokens[info.i])
@@ -91,8 +91,7 @@ char	**expand_tokens(char **tokens, t_attr *att)
 			{
 				info.variable_name = tokens[info.i] + j + 1;
 				if (info.has_quote == 1)
-					info.variable_name = has_correct_name(tokens[info.i]
-							+ j + 1);
+					info.variable_name = correct_name(tokens[info.i] + j + 1);
 				info.value = custom_getenv(info.variable_name, att);
 				if (info.value)
 					expand_tokens2(tokens, &info);
@@ -104,7 +103,7 @@ char	**expand_tokens(char **tokens, t_attr *att)
 	return (tokens);
 }
 
-char	*has_correct_name(char *str)
+char	*correct_name(char *str)
 {
 	int		i;
 	int		j;

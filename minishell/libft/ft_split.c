@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 11:55:06 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/20 06:16:16 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/27 14:47:33 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ char	**ft_split(char const *s, char c)
 	}
 	result[o] = 0;
 	return (result);
-}	
+}
 /*
 int	main(void)
 {

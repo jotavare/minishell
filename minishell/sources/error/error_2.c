@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error_2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:57:28 by alexandre         #+#    #+#             */
-/*   Updated: 2023/06/24 12:26:21 by alex             ###   ########.fr       */
+/*   Updated: 2023/06/27 14:41:45 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	error_simple_dirdoc(char *str, char c)
 	{
 		if (str[0] == c && (str[1] == c || str[1] == '\0') && str[2] == '\0')
 		{
-			printf(ERROR_NEWLINE);
+			printf(ERROR_NLINE);
 			return (1);
 		}
 	}

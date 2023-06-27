@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_tokens.c                                       :+:      :+:    :+:   */
+/*   get_tokens_1.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 18:15:45 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/24 02:15:10 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/27 15:07:26 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,22 +52,22 @@ char	*get_token(char *s, t_attr *att)
 		else if (s[att->tok_arr_i] == ' ' && quotes % 2 == 0 && quotes % 2 == 0)
 			break ;
 		else if (s[att->tok_arr_i] == '|' && s[att->tok_arr_i + 1] != '|'
-				&& att->o_quotes % 2 == 0 && att->o_dquotes % 2 == 0)
+			&& att->o_quotes % 2 == 0 && att->o_dquotes % 2 == 0)
 			return (process_token_two(s, att));
 		else if (s[att->tok_arr_i] == '|' && s[att->tok_arr_i + 1] == '|'
-				&& att->o_quotes % 2 == 0 && att->o_dquotes % 2 == 0)
+			&& att->o_quotes % 2 == 0 && att->o_dquotes % 2 == 0)
 			return (process_token_three(s, att));
 		else if (s[att->tok_arr_i] == '>' && s[att->tok_arr_i + 1] != '>'
-				&& att->o_quotes % 2 == 0 && att->o_dquotes % 2 == 0)
+			&& att->o_quotes % 2 == 0 && att->o_dquotes % 2 == 0)
 			return (process_token_two(s, att));
 		else if (s[att->tok_arr_i] == '>' && s[att->tok_arr_i + 1] == '>'
-				&& att->o_quotes % 2 == 0 && att->o_dquotes % 2 == 0)
+			&& att->o_quotes % 2 == 0 && att->o_dquotes % 2 == 0)
 			return (process_token_three(s, att));
 		else if (s[att->tok_arr_i] == '<' && s[att->tok_arr_i + 1] != '<'
-				&& att->o_quotes % 2 == 0 && att->o_dquotes % 2 == 0)
+			&& att->o_quotes % 2 == 0 && att->o_dquotes % 2 == 0)
 			return (process_token_two(s, att));
 		else if (s[att->tok_arr_i] == '<' && s[att->tok_arr_i + 1] == '<'
-				&& att->o_quotes % 2 == 0 && att->o_dquotes % 2 == 0)
+			&& att->o_quotes % 2 == 0 && att->o_dquotes % 2 == 0)
 			return (process_token_three(s, att));
 		att->tok_arr_i++;
 	}
@@ -199,10 +199,10 @@ char	*process_multi_quote(char *s, t_attr *att)
 
 char	*quotentoken(char *s, t_attr *att, int flag, int pos)
 {
-	int i;
-	int j;
-	char *token;
-	int closed;
+	int		i;
+	int		j;
+	char	*token;
+	int		closed;
 
 	token = malloc(sizeof(char) * (pos + 1));
 	token[pos] = 0;

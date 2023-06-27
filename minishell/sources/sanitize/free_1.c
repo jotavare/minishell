@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_one.c                                         :+:      :+:    :+:   */
+/*   free_1.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 18:15:45 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/24 02:11:56 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/27 14:49:50 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ void	free_arr(char **arr)
 	while (arr[i])
 	{
 		free(arr[i]);
-		//arr[i] = NULL;
 		i++;
 	}
 	free(arr);
@@ -59,7 +58,6 @@ void	free_d_env(t_attr *att)
 		free(att->d_env[i]);
 		i++;
 	}
-	//free(att->d_env[i]);
 	free(att->d_env);
 }
 
@@ -73,6 +71,5 @@ void	free_exp_env(t_attr *att)
 		free(att->exp_env[i]);
 		i++;
 	}
-	//free(att->exp_env[i]);
 	free(att->exp_env);
 }

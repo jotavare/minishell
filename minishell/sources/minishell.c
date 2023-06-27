@@ -12,7 +12,7 @@
 
 #include "../includes/minishell.h"
 
-int	g_value;
+int	g_value = 0;
 
 int	main(int ac, char **av, char **envp)
 {

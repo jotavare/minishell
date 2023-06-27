@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:57:28 by alexandre         #+#    #+#             */
-/*   Updated: 2023/06/24 00:17:56 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/27 14:58:11 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,19 +59,7 @@ int	cd(t_attr *att)
 	if (!destiny_path || !ft_strcmp(destiny_path, "~"))
 		destiny_path = search_var_in_g_env(att, "HOME");
 	else if (!ft_strcmp(att->tok_arr[1], "-"))
-	{
-		if (!att->first_flag)
-		{
-			destiny_path = search_var_in_g_env(att, "PWD");
-			att->first_flag = 1;
-			printf("%s\n", destiny_path);
-		}
-		else
-		{
-			destiny_path = att->last_path;
-			printf("%s\n", destiny_path);
-		}
-	}
+		cd_previous_path(att, &destiny_path);
 	if (!current_path || chdir(destiny_path))
 	{
 		printf(ERROR_CD, att->tok_arr[1]);
@@ -84,24 +72,17 @@ int	cd(t_attr *att)
 	return (0);
 }
 
-void	update_oldpwd(t_attr *att, const char *current_path)
+void	cd_previous_path(t_attr *att, char **destiny_path)
 {
-	char	*str_pwd;
-
-	str_pwd = ft_strjoin("OLDPWD=", current_path);
-	cd_rm_add_path(att, "OLDPWD", str_pwd);
-	free(str_pwd);
-	att->last_path = search_var_in_g_env(att, "OLDPWD");
-}
-
-void	update_pwd(t_attr *att)
-{
-	char	*current_path;
-	char	*str_pwd;
-
-	current_path = getcwd(NULL, 0);
-	str_pwd = ft_strjoin("PWD=", current_path);
-	cd_rm_add_path(att, "PWD", str_pwd);
-	free(str_pwd);
-	free(current_path);
+	if (!att->first_flag)
+	{
+		*destiny_path = search_var_in_g_env(att, "PWD");
+		att->first_flag = 1;
+		printf("%s\n", *destiny_path);
+	}
+	else
+	{
+		*destiny_path = att->last_path;
+		printf("%s\n", *destiny_path);
+	}
 }
