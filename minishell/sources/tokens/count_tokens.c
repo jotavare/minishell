@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 18:15:45 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/27 18:51:54 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/27 18:51:56 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	check_single_quotes(char *s, int i, t_attr *att)
 	{
 		if(s[i] == '\'' && !flag)
 			flag == 1;
-		
+	
 		i++;
 	}
 }
