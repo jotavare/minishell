@@ -24,13 +24,13 @@
 	<a href="#utilities">utilities</a>
 </p>
 
-## Before Evaluation
+# BEFORE EVALUATION
 - [ ] Check norminette for any errors.
 - [ ] No segmentation fault, bus error, double free, leaks, ...
 - [ ] Must compile with -Wall, -Wextra and -Werror.
 - [ ] Makefile must contain $(NAME), all, clean, fclean.
 - [ ] Check for forbidden functions in your code.
-- [ ] Check the [Evaluation Page](https://github.com/jotavare/jotavare/blob/main/42/project_evaluations/minishell_evaluation_page.pdf) for any errors, leaks or other requirements.
+- [ ] Check the [evaluation page](https://github.com/jotavare/jotavare/blob/main/42/project_evaluations/minishell_evaluation_page.pdf) for any errors, leaks or other requirements.
 
 | Important Commands                | Description                                                              |
 | :-------------------------------- | :----------------------------------------------------------------------- |
@@ -74,8 +74,8 @@
 
 `valgrind --suppressions=readline.supp --leak-check=full --show-leak-kinds=all ./minishell`
 
-# Utilities
-### Return Values ($?)
+# UTILITIES
+## Return Values ($?)
 
 * All Linux commands return an error code between `0` and `255`.
 * The value 0 represents the value true (command success).
@@ -91,17 +91,17 @@
 | `128`   | Invalid command argument.                                                        |
 | `128+n` | 128 + signal number.                                                             |
 | `130`   | Finished with `Ctrl` + `C` (130 = 128 + 2).                                      |
-| `255`   | Exit code out of bounds, eg.: `exit -1`.                                         |
+| `255`   | Exit code out of bounds. Example: `exit -1`.                                     |
 
-### Command Reminders
+## Command Reminders
 | Command   | Description                                                                                 |
 | :-------- | :------------------------------------------------------------------------------------------ |
 | `yes`		| Writes in an infinite loop `yes teste`.                                                     |
 | `ln`		| Bind a file or directory.                                                                   |
-| `chmod`	| Change file permissions `chmod 777` (4+2+1 = all permissions) `chmod 000` (no permissions). |
-| `CD`		| Change directory `cd -` (last visited directory) `cd` (user directory) `cd /` (root).       |
+| `chmod`	| Change file permissions `chmod 777` (all permissions) `chmod 000` (no permissions).         |
+| `cd`		| Change directory. `cd -` (last visited directory) `cd` (user directory) `cd /` (root).      |
 | `clear`	| Clear the screen.                                                                           |	
-| `Diff`	| Compare files line by line.                                                                 |
+| `diff`	| Compare files line by line.                                                                 |
 | `cmp`		| Write first line of difference between 2 files.                                             |
 | `pc`		| Copying files.                                                                              |
 | `rm`		| Delete file.                                                                                |
@@ -116,7 +116,7 @@
 | `$PATH`	| Path to executables.                                                                        |
 | `cat`		| Send the file to stdout.                                                                    |
 
-### CHMOD
+## CHMOD
 | Rights        | Number |
 | :------------ | :----- |
 | `r` (read)	| `4`    |
@@ -134,7 +134,7 @@
 | `x-ray` | `4+0+1`     | `5`   |
 | `rwx`   | `4+2+1`     | `7`   |
 
-### MAX/MIN
+## MAX/MIN
 | Data Types | Qualifiers                        | Size (in byte) | Range                          |
 | :--------- | :-------------------------------- | :------------- | :----------------------------- |
 | `char`	 | `char` or `signed char`			 | `1`            | `-128` to `127`                |
