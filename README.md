@@ -26,11 +26,11 @@
 
 ## Before Evaluation
 - [ ] Check norminette for any errors.
-- [ ] No segmentation fault, bus error, double free, ...
+- [ ] No segmentation fault, bus error, double free, leaks, ...
 - [ ] Must compile with -Wall, -Wextra and -Werror.
 - [ ] Makefile must contain $(NAME), all, clean, fclean.
-- [ ] If theres bonus, there must be a bonus rule on Makefile and bonus files must have _bonus.c(.h).
 - [ ] Check for forbidden functions in your code.
+- [ ] Check the [Evaluation Page](https://github.com/jotavare/jotavare/blob/main/42/project_evaluations/minishell_evaluation_page.pdf) for any errors, leaks or other requirements.
 
 | Important Commands                | Description                                                              |
 | :-------------------------------- | :----------------------------------------------------------------------- |
