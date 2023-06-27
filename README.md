@@ -13,15 +13,8 @@
 </p>
 
 <p align="center">
-	<a href="#blank">blank</a> •
-	<a href="#signals">signals</a> •
-	<a href="#path">path</a> •
-	<a href="#pwd">pwd</a> •
-	<a href="#export-env-and-unset">export, env and unset</a> •
-	<a href="#exit">exit</a> •
-	<a href="#cd">cd</a> •
-	<a href="#echo">echo</a> •
-	<a href="#utilities">utilities</a>
+	<a href="#before-evaluation">Before evaluation</a> •
+	<a href="#utilities">Utilities</a>
 </p>
 
 ## BEFORE EVALUATION
