@@ -24,7 +24,7 @@
 	<a href="#utilities">utilities</a>
 </p>
 
-# BEFORE EVALUATION
+## BEFORE EVALUATION
 - [ ] Check norminette for any errors.
 - [ ] No segmentation fault, bus error, double free, leaks, ...
 - [ ] Must compile with -Wall, -Wextra and -Werror.
@@ -74,8 +74,8 @@
 
 `valgrind --suppressions=readline.supp --leak-check=full --show-leak-kinds=all ./minishell`
 
-# UTILITIES
-## Return Values ($?)
+## UTILITIES
+### Return Values ($?)
 
 * All Linux commands return an error code between `0` and `255`.
 * The value 0 represents the value true (command success).
@@ -93,7 +93,7 @@
 | `130`   | Finished with `Ctrl` + `C` (130 = 128 + 2).                                      |
 | `255`   | Exit code out of bounds. Example: `exit -1`.                                     |
 
-## Command Reminders
+### Command Reminders
 | Command   | Description                                                                                 |
 | :-------- | :------------------------------------------------------------------------------------------ |
 | `yes`		| Writes in an infinite loop `yes teste`.                                                     |
@@ -116,7 +116,7 @@
 | `$PATH`	| Path to executables.                                                                        |
 | `cat`		| Send the file to stdout.                                                                    |
 
-## CHMOD
+### CHMOD
 | Rights        | Number |
 | :------------ | :----- |
 | `r` (read)	| `4`    |
@@ -134,7 +134,7 @@
 | `x-ray` | `4+0+1`     | `5`   |
 | `rwx`   | `4+2+1`     | `7`   |
 
-## MAX/MIN
+### MAX/MIN
 | Data Types | Qualifiers                        | Size (in byte) | Range                          |
 | :--------- | :-------------------------------- | :------------- | :----------------------------- |
 | `char`	 | `char` or `signed char`			 | `1`            | `-128` to `127`                |
