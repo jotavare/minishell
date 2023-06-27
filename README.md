@@ -26,7 +26,7 @@
 
 ## BEFORE EVALUATION
 - [ ] Check norminette for any errors.
-- [ ] No segmentation fault, bus error, double free, leaks, ...
+- [ ] Check for segmentation fault, bus error, double free, leaks, ...
 - [ ] Must compile with -Wall, -Wextra and -Werror.
 - [ ] Makefile must contain $(NAME), all, clean, fclean.
 - [ ] Check for forbidden functions in your code.
@@ -38,7 +38,7 @@
 | `echo $?`                         | Display the exit status of the last executed command.                    |
 | `nm -g ./minishell \| grep " U "` | Check for forbidden functions.                                           |
 | `norminette`                      | Checks the code for compliance with the coding style and guidelines.     |
-| `-R CheckForbiddenSourceHeader`   | Check header files.                                                      |
+| `-R CheckForbiddenSourceHeader`   | Check the code in header files.                                          |
 | `cc -g -Wall -Wextra -Werror`     | Compile with the mandatory flags.                                        |
 | `-fsanitize=address`              | Check for leaks.                                                         |
 | `-lreadline`                      | Necessary to use readline library.                                       |
@@ -56,6 +56,7 @@
 | `--suppressions=readline.supp` | Specifies the path to a suppression file.        |
 | `--log-file=memleaks.log`      | Sets the name of the file.                       |
 
+> To ignore leaks related to the `readline` and `add_history` functions, create a file called `readline.supp` with the following content:
 ```
 {
     leak readline
@@ -70,7 +71,6 @@
     fun:add_history
 }
 ```
-> Note that the above suppressions file will ignore leaks related to the readline and add_history functions.
 
 `valgrind --suppressions=readline.supp --leak-check=full --show-leak-kinds=all ./minishell`
 
