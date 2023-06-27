@@ -6,13 +6,13 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 17:14:25 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/23 22:02:01:26 by jotavare         ###   ########.fr    */
+/*   Updated: 2023/06/27 14:59:32 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-int		execute_core(t_attr *att, t_exec *args)
+int	execute_core(t_attr *att, t_exec *args)
 {
 	if (args->command[0] == '/')
 		exec_absolute_path(args, att);
@@ -21,7 +21,7 @@ int		execute_core(t_attr *att, t_exec *args)
 	else
 		exec_commands(args, att);
 	printf("%s: command not found \n", att->tok_arr[0]);
-	return(127);
+	return (127);
 }
 
 void	check_flags(t_attr *att, int index)
@@ -64,10 +64,10 @@ void	executer(t_attr *att, t_exec *args)
 int	execute(t_attr *att, int index)
 {
 	t_exec	args;
-	//int		exit_status;
+	/* int		exit_status;
 
-	//signal(SIGINT, handler_exec); //NOT WORKING
-	//signal(SIGTSTP, handler_exec); //NOT WORKING
+	signal(SIGINT, handler_exec); //NOT WORKING
+	signal(SIGTSTP, handler_exec); //NOT WORKING */
 	start_args(&args, att);
 	args.pid = fork();
 	if (args.pid == -1)

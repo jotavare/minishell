@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:57:28 by alexandre         #+#    #+#             */
-/*   Updated: 2023/06/24 02:05:05 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/27 15:05:21 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ void	handler_exec(int sig)
 {
 	if (sig == SIGINT)
 		signal(SIGINT, SIG_DFL);
-	// if (sig == SIGTSTP)
-	// 	signal(SIGTSTP, SIG_DFL);
+	/*  if (sig == SIGTSTP)
+	 	signal(SIGTSTP, SIG_DFL); */
 }
 
 void	set_signals(void)
