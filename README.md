@@ -131,63 +131,63 @@
 | 🔴 | `pwd a b c d` |
 
 # EXPORT, ENV AND UNSET
-|    | Commands                     |
-| :- | :--------------------------- |
-| 🔴 | `ENV`                        |
-| 🔴 | `eNv`                        |
-| 🔴 | `env`                        |
-| 🔴 | ` env`                       |
-| 🔴 | `env `                       |
-| 🔴 | `  env  `                    |
-| 🔴 | `UNSET`                      |
-| 🔴 | `uNsEt`                      |
-| 🔴 | `unset`                      |
-| 🔴 | ` unset`                     |
-| 🔴 | `unset `                     |
-| 🔴 | `  unset  `                  |
-| 🔴 | `unset [variable]`           |
-| 🔴 | `unset [variable] [variable]`|
-| 🔴 | `unset [all variables]`      |
-| 🔴 | `EXPORT`                     |
-| 🔴 | `eXpOrT`                     |
-| 🔴 | `export`                     |
-| 🔴 | ` export`                    |
-| 🔴 | `export `                    |
-| 🔴 | `  export  `                 |
-| 🔴 | `export a=42`                |
-| 🔴 | `export a=24`		    |
-| 🔴 | `export b=42`                |
-| 🔴 | `export a = 42`              |
-| 🔴 | `export a=" 42 "`            |
-| 🔴 | `export a=' 42 '`            |
-| 🔴 | `export a = 42`              |
-| 🔴 | `export a` 		    |
-| 🔴 | `export a=''`           	    |                                         
-| 🔴 | `export a='"'`               |                                   
-| 🔴 | `export a='\'`               |                                
-| 🔴 | `export a='$'`               |                                 
-| 🔴 | `export a='\t'`              |                                    
-| 🔴 | `export a='''` 		    | 
-| 🔴 | `export =` 		    |
-| 🔴 | `export ==`		    |
-| 🔴 | `export a=` 		    |
-| 🔴 | `export a=42=` 		    |
-| 🔴 | `export =a=42` 		    |
-| 🔴 | `export a==42` 		    |
-| 🔴 | `export "a=42"` 		    |
-| 🔴 | `export a="42"` 		    |
-| 🔴 | `export _=42` 		    |
-| 🔴 | `export 42=42`		    |
-| 🔴 | `export a b = 42`	    |
-| 🔴 | `export a= b= 42`	    |
-| 🔴 | `export a=42 % b=42 @ c=42`  |
-| 🔴 | `export a=42 b=42 c=42`	    |
-| 🔴 | `export A=a B=b C=c D=d E=e` |
-| 🔴 | `export F=f G=g H=h I=i J=j` |
-| 🔴 | `export K=k L=l M=m N=n O=o` |
-| 🔴 | `export P=p Q=q R=r S=s T=t` |
+|    | Commands                         |
+| :- | :------------------------------- |
+| 🔴 | `ENV`                        	|
+| 🔴 | `eNv`                        	|
+| 🔴 | `env`                        	|
+| 🔴 | ` env`                       	|
+| 🔴 | `env `                       	|
+| 🔴 | `  env  `                    	|
+| 🔴 | `UNSET`                      	|
+| 🔴 | `uNsEt`                      	|
+| 🔴 | `unset`                      	|
+| 🔴 | ` unset`                     	|
+| 🔴 | `unset `                     	|
+| 🔴 | `  unset  `                  	|
+| 🔴 | `unset [variable]`           	|
+| 🔴 | `unset [variable] [variable]`	|
+| 🔴 | `unset [all variables]`      	|
+| 🔴 | `EXPORT`                     	|
+| 🔴 | `eXpOrT`                     	|
+| 🔴 | `export`                     	|
+| 🔴 | ` export`                    	|
+| 🔴 | `export `                    	|
+| 🔴 | `  export  `                 	|
+| 🔴 | `export a=42`                	|
+| 🔴 | `export a=24`		    		|
+| 🔴 | `export b=42`                	|
+| 🔴 | `export a = 42`              	|
+| 🔴 | `export a=" 42 "`            	|
+| 🔴 | `export a=' 42 '`            	|
+| 🔴 | `export a = 42`              	|
+| 🔴 | `export a` 		    			|
+| 🔴 | `export a=''`           	    	|                                         
+| 🔴 | `export a='"'`               	|                                   
+| 🔴 | `export a='\'`               	|                                
+| 🔴 | `export a='$'`               	|                                 
+| 🔴 | `export a='\t'`              	|                                    
+| 🔴 | `export a='''` 		 			| 
+| 🔴 | `export =` 		  				|
+| 🔴 | `export ==`		  				|
+| 🔴 | `export a=` 		  				|
+| 🔴 | `export a=42=` 		    		|
+| 🔴 | `export =a=42` 		    		|
+| 🔴 | `export a==42` 		    		|
+| 🔴 | `export "a=42"` 		    		|
+| 🔴 | `export a="42"` 		    		|
+| 🔴 | `export _=42` 		    		|
+| 🔴 | `export 42=42`		    		|
+| 🔴 | `export a b = 42`	    		|
+| 🔴 | `export a= b= 42`	    		|
+| 🔴 | `export a=42 % b=42 @ c=42`  	|
+| 🔴 | `export a=42 b=42 c=42`	    	|
+| 🔴 | `export A=a B=b C=c D=d E=e` 	|
+| 🔴 | `export F=f G=g H=h I=i J=j` 	|
+| 🔴 | `export K=k L=l M=m N=n O=o` 	|
+| 🔴 | `export P=p Q=q R=r S=s T=t` 	|
 | 🔴 | `export U=u V=v W=w X=x Y=y Z=z` |
-| 🔴 | `export _=a; echo $_a` |
+| 🔴 | `export _=a; echo $_a` 			|
 
 # EXIT
 |    | Commands                    |
@@ -242,38 +242,38 @@
 
 
 # CD  
-|    | Commands               |
-| :- | :--------------------- |
-| 🟢 | `CD`                   |
-| 🟢 | `cd`                   |
-| 🟢 | `cd `                  |
-| 🟢 | ` cd`                  |
-| 🟢 | `  cd  `               |
-| 🟢 | `cd .`                 |
-| 🟢 | `cd ~`                 |
-| 🟢 | `cd no_file`           |
-| 🟢 | `cd1`                  |
-| 🟢 | `cd 0`                 |
-| 🟢 | `cd 1`                 |
-| 🟢 | `cd 123`               |
-| 🟢 | `cd 1234`              |
-| 🟢 | `cd 1 2 3 4`           |
-| 🟢 | `cd cd`                |
-| 🟢 | `cd a`                 |
-| 🟢 | `cd abc`               |
-| 🟢 | `cd a b c`             |
-| 🟢 | `cd a b c d`           |
-| 🟢 | `cd ../../`            |
-| 🟢 | `cd ../../../../../../`|
-| 🟢 | `cd ../../...`         |
-| 🟢 | `cd .../../..`         |
-| 🟢 | `cd .../../...`        |
-| 🟢 | `cd \`                 |
-| 🟢 | `cd /`                 |
-| 🟢 | `cd //`                |
-| 🟢 | `cd ///`               |
-| 🟢 | `cd -`                 |
-| 🟢 | `cd $[VAR]`            |
+|    | Commands                |
+| :- | :---------------------- |
+| 🟢 | `CD`                    |
+| 🟢 | `cd`                    |
+| 🟢 | `cd `                   |
+| 🟢 | ` cd`                   |
+| 🟢 | `  cd  `                |
+| 🟢 | `cd .`                  |
+| 🟢 | `cd ~`                  |
+| 🟢 | `cd no_file`            |
+| 🟢 | `cd1`                   |
+| 🟢 | `cd 0`                  |
+| 🟢 | `cd 1`                  |
+| 🟢 | `cd 123`                |
+| 🟢 | `cd 1234`               |
+| 🟢 | `cd 1 2 3 4`            |
+| 🟢 | `cd cd`                 |
+| 🟢 | `cd a`                  |
+| 🟢 | `cd abc`                |
+| 🟢 | `cd a b c`              |
+| 🟢 | `cd a b c d`            |
+| 🟢 | `cd ../../`             |
+| 🟢 | `cd ../../../../../../` |
+| 🟢 | `cd ../../...`          |
+| 🟢 | `cd .../../..`          |
+| 🟢 | `cd .../../...`         |
+| 🟢 | `cd \`                  |
+| 🟢 | `cd /`                  |
+| 🟢 | `cd //`                 |
+| 🟢 | `cd ///`                |
+| 🟢 | `cd -`                  |
+| 🟢 | `cd $[VAR]`             |
 
 # ECHO  
 |    | Commands                                                             |
