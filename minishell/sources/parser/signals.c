@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:57:28 by alexandre         #+#    #+#             */
-/*   Updated: 2023/06/27 15:05:21 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/28 11:30:11 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,32 @@ void	handle_interrupt(int sig)
 
 void	handler_exec(int sig)
 {
-	g_value = 131;
-	printf("entrou");
-	if (sig == SIGQUIT)
-		kill(0, SIGINT);
+	(void) sig;
+	printf("\n");
 }
-
+ 
 void	set_signals(void)
 {
 	signal(SIGINT, handle_interrupt);
 	signal(SIGQUIT, SIG_IGN);
+}
+
+void	set_signals2(void)
+{
+	signal(SIGINT, handler_exec);
+	signal(SIGQUIT, handler_exec);
+} 
+
+void heredoc_handler(int sig)
+{
+	if (sig == SIGINT)
+	{
+		unlink(".heredoc");
+		exit(130);
+	}
+	else if (sig == SIGQUIT)
+	{
+		unlink(".heredoc");
+		exit(131);
+	}
 }

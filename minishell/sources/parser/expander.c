@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 18:15:45 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/27 15:05:07 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/28 09:59:54 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,10 @@ char	**expand_tokens(char **tokens, t_attr *att)
 		while (tokens[info.i][j])
 		{
 			if (tokens[info.i][info.j] == '\'')
+			/*
+			nos trocamos para uma variavel local, porque o info.j estava a dar erro
+			nem compilava, acho que pode ser dai
+			*/
 				info.has_quote = 1;
 			if (tokens[info.i][j] == '$' && tokens[info.i][j + 1])
 			{
@@ -109,7 +113,8 @@ char	*correct_name(char *str)
 	int		j;
 	char	*correct;
 
-	correct = malloc(sizeof(char) * (ft_strlen(str)));
+	correct = malloc(sizeof(char) * (ft_strlen(str) - 1));
+	printf("check1 %s\n", str);
 	i = 0;
 	j = 0;
 	while (str[i])

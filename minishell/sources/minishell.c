@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:57:28 by alexandre         #+#    #+#             */
-/*   Updated: 2023/06/27 14:00:14 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/28 11:12:47 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,12 @@ int	main(int ac, char **av, char **envp)
 
 	rl_clear_history();
 	set_signals();
+	
+	// att.act.sa_handler = &set_sigaction;
+	// sigemptyset(&att.act.sa_mask);
+	// att.act.sa_flags = 0;
+	// sigaction(SIGINT, &att.act, NULL);
+	// sigaction(SIGQUIT, &att.act, NULL);
 	init_params(ac, av, &att, envp);
 	while (1)
 	{

@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:28:13 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/27 14:40:59 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/28 11:31:16 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ typedef struct s_pars
 	char	**pars_arr;
 	int		nb_tokenst;
 }			t_pars;
+
 
 typedef struct s_attr
 {

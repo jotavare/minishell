@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 17:14:25 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/27 14:59:32 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/28 11:15:56 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,14 +64,14 @@ void	executer(t_attr *att, t_exec *args)
 int	execute(t_attr *att, int index)
 {
 	t_exec	args;
-	
+
 	start_args(&args, att);
+	set_signals2();
 	args.pid = fork();
 	if (args.pid == -1)
 		return (-1);
 	if (args.pid == 0)
 	{
-		signal(SIGQUIT, handler_exec);
 		check_flags(att, index);
 		executer(att, &args);
 		free_child(att, &args);
@@ -83,6 +83,10 @@ int	execute(t_attr *att, int index)
 		att->pipeindex++;
 	close_pipeline(att);
 	free_start_args(&args);
-	g_value = WEXITSTATUS(g_value);
+	if (!WTERMSIG(g_value))
+		g_value = WEXITSTATUS(g_value);
+	else
+		g_value = 128 + WTERMSIG(g_value);
+	set_signals();
 	return (g_value);
 }

@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:28:13 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/27 15:02:43 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/28 11:31:47 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,10 @@ int		is_symbol(char *s);
 int		check_next_step(t_attr *att);
 
 // signals.c
-void	handle_quit(int signal);
-void	handle_interrupt(int signal);
-void	set_signals(void);
+void	handle_interrupt(int sig);
 void	handler_exec(int sig);
+void	set_signals(void);
+void	set_signals2(void);
+void	heredoc_handler(int sig);
 
 #endif

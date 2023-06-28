@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 18:15:45 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/27 19:22:59 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/28 09:15:47 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ int	count_tokens(char *s, t_attr *att)
 		i++;
 		
 	}
-	printf("dquotes= %d\n", att->o_dquotes);
-	printf("squotes= %d\n", att->o_quotes);
+	//printf("dquotes= %d\n", att->o_dquotes);
+	//printf("squotes= %d\n", att->o_quotes);
 	att->nb_tokens = 0;
 	len = ft_strlen(s) - 1;
 	while (len >= 0)
