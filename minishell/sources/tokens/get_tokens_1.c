@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 18:15:45 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/28 23:58:24 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/29 00:28:06 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ char	*get_token(char *s, t_attr *att, t_toki tok)
 	int	flag;
 	int	quotes;
 
-	att->inside_single_quotes = 0;
 	flag = 0;
 	quotes = 0;
 	att->tok_arr_i = 0;
@@ -31,7 +30,7 @@ char	*get_token(char *s, t_attr *att, t_toki tok)
 		
 		if (s[att->tok_arr_i] == '"' && (flag == 0 || flag == 2))
 		{
-			
+				att->inside_single_quotes = 0;
 			flag = 2;
 			quotes++;
 			if (att->o_dquotes == quotes && s[att->tok_arr_i + 1])
@@ -45,6 +44,7 @@ char	*get_token(char *s, t_attr *att, t_toki tok)
 		}
 		else if (s[att->tok_arr_i] == '\'' && (flag == 0 || flag == 1))
 		{
+			att->inside_single_quotes = 1;
 			flag = 1;
 			quotes++;
 			if (att->o_quotes == quotes && s[att->tok_arr_i + 1])
