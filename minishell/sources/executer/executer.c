@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 17:14:25 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/28 11:15:56 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/28 14:15:50 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,18 +24,24 @@ int	execute_core(t_attr *att, t_exec *args)
 	return (127);
 }
 
-void	check_flags(t_attr *att, int index)
+void	check_flags(t_attr *att, int index, t_exec *args)
 {
 	if (att->only_create)
 		file_create_only(att);
 	if (att->skip)
+	{
+		free_child(att, args);
 		exit(g_value);
+	}
 	if (att->read_from_pipe)
 		read_from_pipe(att);
 	else if (att->read_from_file)
 	{
 		if (read_from_file(att, index) < 0)
+		{
+			free_child(att, args);
 			exit(g_value);
+		}
 	}
 	if (att->heredoc)
 		heredoc(att->commands_arr[att->i + 2], att);
@@ -72,7 +78,7 @@ int	execute(t_attr *att, int index)
 		return (-1);
 	if (args.pid == 0)
 	{
-		check_flags(att, index);
+		check_flags(att, index, &args);
 		executer(att, &args);
 		free_child(att, &args);
 		exit(g_value);

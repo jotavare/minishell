@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:28:13 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/27 14:43:38 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/28 14:17:33 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,9 @@
 # include "minishell.h"
 
 // executer.c
-void	check_flags(t_attr *att, int index);
+void	check_flags(t_attr *att, int index, t_exec *args);
 int		execute_core(t_attr *att, t_exec *args);
 int		execute(t_attr *att, int index);
-void	check_flags(t_attr *att, int index);
 void	execute_builtin(t_attr *att, t_exec *args);
 
 // execve.c
@@ -29,6 +28,7 @@ int		exec_absolute_path(t_exec *args, t_attr *att);
 
 // heredocs.c
 void	heredoc(char *delimiter, t_attr *att);
+void    handle_heredoc(t_attr *att);
 
 // paths.c
 char	**build_path(char **all_paths, int nb, char *command);
