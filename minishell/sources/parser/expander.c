@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 18:15:45 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/28 09:59:54 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/28 15:28:48 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 /*
     custom implementation of the getenv() function.
     returns the value of the environment variable
-    named "variable_name" and if not found, returns NULL.
+    named "var_name" and if not found, returns NULL.
 */
 
-char	*custom_getenv(const char *variable_name, t_attr *att)
+char	*custom_getenv(const char *var_name, t_attr *att)
 {
 	int		i;
 	char	*entry;
@@ -35,8 +35,8 @@ char	*custom_getenv(const char *variable_name, t_attr *att)
 		if (delimiter != NULL)
 		{
 			variable_length = delimiter - entry;
-			if (ft_strncmp(entry, variable_name, variable_length) == 0
-				&& variable_name[variable_length] == '\0')
+			if (ft_strncmp(entry, var_name, variable_length) == 0
+				&& var_name[variable_length] == '\0')
 				return (delimiter + 1);
 		}
 		i++;
@@ -46,7 +46,7 @@ char	*custom_getenv(const char *variable_name, t_attr *att)
 
 void	init_var(t_exp *var)
 {
-	var->variable_name = NULL;
+	var->var_name = NULL;
 	var->value = NULL;
 	var->expanded_length = 0;
 	var->token_length = 0;
@@ -66,41 +66,36 @@ void	expand_tokens2(char **tokens, t_exp *info)
 	info->expanded_token[info->j] = '\0';
 	ft_strcat(info->expanded_token, info->value);
 	ft_strcat(info->expanded_token, tokens[info->i] + info->j
-		+ ft_strlen(info->variable_name) + 1);
+		+ ft_strlen(info->var_name) + 1);
 	free(tokens[info->i]);
 	tokens[info->i] = info->expanded_token;
 	if (info->has_quote)
-		free(info->variable_name);
+		free(info->var_name);
 	info->j += info->expanded_length;
 }
 
 char	**expand_tokens(char **tokens, t_attr *att)
 {
 	t_exp	info;
-	int		j;
 
 	init_var(&info);
 	while (tokens[info.i])
 	{
-		j = 0;
-		while (tokens[info.i][j])
+		info.j = 0;
+		while (tokens[info.i][info.j])
 		{
 			if (tokens[info.i][info.j] == '\'')
-			/*
-			nos trocamos para uma variavel local, porque o info.j estava a dar erro
-			nem compilava, acho que pode ser dai
-			*/
 				info.has_quote = 1;
-			if (tokens[info.i][j] == '$' && tokens[info.i][j + 1])
+			if (tokens[info.i][info.j] == '$' && tokens[info.i][info.j + 1])
 			{
-				info.variable_name = tokens[info.i] + j + 1;
+				info.var_name = tokens[info.i] + info.j + 1;
 				if (info.has_quote == 1)
-					info.variable_name = correct_name(tokens[info.i] + j + 1);
-				info.value = custom_getenv(info.variable_name, att);
+					info.var_name = correct_name(tokens[info.i] + info.j + 1);
+				info.value = custom_getenv(info.var_name, att);
 				if (info.value)
 					expand_tokens2(tokens, &info);
 			}
-			j++;
+			info.j++;
 		}
 		info.i++;
 	}
@@ -113,8 +108,7 @@ char	*correct_name(char *str)
 	int		j;
 	char	*correct;
 
-	correct = malloc(sizeof(char) * (ft_strlen(str) - 1));
-	printf("check1 %s\n", str);
+	correct = malloc(sizeof(char) * (ft_strlen(str) + 1));
 	i = 0;
 	j = 0;
 	while (str[i])

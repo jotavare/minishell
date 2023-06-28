@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 17:14:25 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/28 14:15:50 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/28 15:27:09 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,10 +89,15 @@ int	execute(t_attr *att, int index)
 		att->pipeindex++;
 	close_pipeline(att);
 	free_start_args(&args);
+	exit_child_status();
+	set_signals();
+	return (g_value);
+}
+
+void	exit_child_status(void)
+{
 	if (!WTERMSIG(g_value))
 		g_value = WEXITSTATUS(g_value);
 	else
 		g_value = 128 + WTERMSIG(g_value);
-	set_signals();
-	return (g_value);
 }

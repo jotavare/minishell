@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 17:14:25 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/28 14:17:16 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/28 15:23:28 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,23 +40,22 @@ void	heredoc(char *delimiter, t_attr *att)
 	unlink(".heredoc");
 }
 
-void    handle_heredoc(t_attr *att)
+void	handle_heredoc(t_attr *att)
 {
-    int     i;
-    char    **d;
-    i = 1;
-    d = ft_split(att->commands_arr[att->i + 2], ' ');
-    if (d[1] != NULL)
-    {
-        while (d[i])
-        {
-            printf("%s: %s: No such file or directory\n",
-                    att->commands_arr[att->i],
-                    d[i]);
-            i++;
-        }
-    }
-    heredoc(d[0], att);
-    free_arr(d);
-}
+	int		i;
+	char	**d;
 
+	i = 1;
+	d = ft_split(att->commands_arr[att->i + 2], ' ');
+	if (d[1] != NULL)
+	{
+		while (d[i])
+		{
+			printf("%s: %s: No such file or directory\n",
+				att->commands_arr[att->i], d[i]);
+			i++;
+		}
+	}
+	heredoc(d[0], att);
+	free_arr(d);
+}

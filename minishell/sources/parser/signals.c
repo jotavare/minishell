@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:57:28 by alexandre         #+#    #+#             */
-/*   Updated: 2023/06/28 11:30:11 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/28 15:29:39 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	handler_exec(int sig)
 	(void) sig;
 	printf("\n");
 }
- 
+
 void	set_signals(void)
 {
 	signal(SIGINT, handle_interrupt);
@@ -49,9 +49,9 @@ void	set_signals2(void)
 {
 	signal(SIGINT, handler_exec);
 	signal(SIGQUIT, handler_exec);
-} 
+}
 
-void heredoc_handler(int sig)
+void	heredoc_handler(int sig)
 {
 	if (sig == SIGINT)
 	{
