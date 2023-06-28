@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/24 01:30:35 by jotavare          #+#    #+#             */
-/*   Updated: 2023/06/28 17:16:23 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/28 23:41:37 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ void	init_attributes_one(t_attr *att)
 	att->read_from_pipe = 0;
 	att->only_create = 0;
 	att->first_flag = 0;
-	att->token = NULL;
 }
 
 void	init_attributes_two(t_attr *att)
@@ -59,6 +58,15 @@ void	init_attributes_two(t_attr *att)
 	att->o_quotes = 0;
 	att->aftert = NULL;
 	att->inside_single_quotes = 0;
+}
+
+void	init_toki(t_toki *tok)
+{
+	tok->i = 0;
+	tok->j = 0;
+	tok->pos = 0;
+	tok->flag = 0;
+	tok->token = NULL;
 }
 
 void	reinit_attributes(t_attr *att)

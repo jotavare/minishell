@@ -6,18 +6,17 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 18:15:45 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/28 18:01:35 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/28 22:18:21 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-void	create_array(char *s, t_attr *att)
+void	create_array(char *s, t_attr *att, t_toki tok)
 {
 	int	count;
 
 	att->index = 0;
-	//printf("NUM TOKS = %d\n", att->nb_tokens);
 	att->beforet = malloc((att->nb_tokens + 1) * sizeof(char *));
 	att->beforet[att->nb_tokens] = NULL;
 	if (!att->beforet)
@@ -27,8 +26,7 @@ void	create_array(char *s, t_attr *att)
 	{
 		while (*s == ' ')
 			s++;
-		att->beforet[count] = get_token(s, att);
-		//printf("TOKEN GIVEN = %s\n", att->beforet[count]);
+		att->beforet[count] = get_token(s, att, tok);
 		if (att->beforet[count] == 0 && count < att->nb_tokens)
 		{
 			s = NULL;
@@ -39,11 +37,11 @@ void	create_array(char *s, t_attr *att)
 	}
 }
 
-char	**get_tokens(char *str, t_attr *att)
+char	**get_tokens(char *str, t_attr *att, t_toki tok)
 {
 	if (!str)
 		return (NULL);
 	count_tokens(str, att);
-	create_array(str, att);
+	create_array(str, att, tok);
 	return (att->beforet);
 }

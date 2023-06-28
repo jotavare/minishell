@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 18:52:47 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/06/28 17:18:18 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/28 21:15:41 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,4 +80,33 @@ void	process_next_check(char *s, int j, t_attr *att, char **token)
 		att->number_of_redir++;
 	else if (check_if_read(token, j, s))
 		att->number_of_read++;
+}
+
+void	count_d_s_quotes(char *s, t_attr *att)
+{
+	int	i;
+	int	single;
+
+	i = 0;
+	single = 0;
+	while (s[i])
+	{
+		if (s[i] == '"')
+		{
+			if (single == 0)
+				single = 2;
+			att->o_dquotes++;
+		}
+		else if (s[i] == '\'')
+		{
+			if (single == 0)
+				single = 1;
+			att->o_quotes++;
+		}
+		i++;
+	}
+	if (single == 1)
+		att->inside_single_quotes = 1;
+	else if (single == 2 || single == 0)
+		att->inside_single_quotes = 0;
 }

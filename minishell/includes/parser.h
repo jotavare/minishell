@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:28:13 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/28 15:28:48 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/28 23:17:41 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int		check_equal(char *str);
 // expander.c
 char	*custom_getenv(const char *var_name, t_attr *att);
 char	**expand_tokens(char **tokens, t_attr *att);
+void	expand_tokens2(char **tokens, t_exp *info, int j);
 char	*correct_name(char *str);
 
 // lexer.c

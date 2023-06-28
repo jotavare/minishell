@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:28:13 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/28 17:27:13 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/28 23:22:48 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ typedef struct s_attr
 	int		**pipesfd;
 	int		redir_fd;
 	int		first_flag;
-	char	*token;
 	t_pars	pars_data;
 }			t_attr;
 
@@ -87,5 +86,14 @@ typedef struct s_exp
 	int		i;
 	int		has_quote;
 }			t_exp;
+
+typedef struct s_toki
+{
+	char	*token;
+	int		flag;
+	int		pos;
+	int		j;
+	int		i;
+}			t_toki;
 
 #endif

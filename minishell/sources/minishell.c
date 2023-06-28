@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:57:28 by alexandre         #+#    #+#             */
-/*   Updated: 2023/06/28 18:01:25 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/28 22:07:54 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,13 @@ int	g_value = 0;
 int	main(int ac, char **av, char **envp)
 {
 	t_attr	att;
+	t_toki	tok;
 	char	*str;
 
 	rl_clear_history();
 	set_signals();
 	init_params(ac, av, &att, envp);
+	init_toki(&tok);
 	while (1)
 	{
 		att.i = 0;
@@ -42,9 +44,9 @@ int	main(int ac, char **av, char **envp)
 				&& att.commands_arr[att.i][0] != '\0')
 			{
 				check_next_step(&att);
-				att.tok_arr = get_tokens(att.commands_arr[att.i], &att);
+				att.tok_arr = get_tokens(att.commands_arr[att.i], &att, tok);
 				//printf("tok_arr: ");
-				ft_print_array(att.tok_arr);
+				//ft_print_array(att.tok_arr);
 				command(&att, att.i);
 				free_tokens(att.tok_arr, &att);
 				att.i = att.i + 2;
