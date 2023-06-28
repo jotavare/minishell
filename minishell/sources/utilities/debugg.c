@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 15:38:30 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/24 02:16:18 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/28 17:26:23 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,4 +22,17 @@ void	see_flags_and_pipes(t_attr att)
 	printf("redir: %d\n", att.redir);
 	printf("read from file: %d\n", att.read_from_file);
 	printf("----------------------\n");
+}
+
+void	ft_print_array(char **array)
+{
+	int		i;
+
+	i = 0;
+	while (array[i])
+	{
+		printf ("%d - %s\n", i, array[i]);
+		i++;
+	}
+	printf("end of array\n\n");
 }

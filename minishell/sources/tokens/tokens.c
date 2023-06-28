@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tokens.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexandre <alexandre@student.42.fr>        +#+  +:+       +#+        */
+/*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 18:15:45 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/20 11:08:11 by alexandre        ###   ########.fr       */
+/*   Updated: 2023/06/28 18:01:35 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	create_array(char *s, t_attr *att)
 	int	count;
 
 	att->index = 0;
+	//printf("NUM TOKS = %d\n", att->nb_tokens);
 	att->beforet = malloc((att->nb_tokens + 1) * sizeof(char *));
 	att->beforet[att->nb_tokens] = NULL;
 	if (!att->beforet)
@@ -27,6 +28,7 @@ void	create_array(char *s, t_attr *att)
 		while (*s == ' ')
 			s++;
 		att->beforet[count] = get_token(s, att);
+		//printf("TOKEN GIVEN = %s\n", att->beforet[count]);
 		if (att->beforet[count] == 0 && count < att->nb_tokens)
 		{
 			s = NULL;

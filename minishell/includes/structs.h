@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:28:13 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/28 15:28:48 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/28 17:27:13 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,12 @@ typedef struct s_attr
 	int		inside_single_quotes;
 	int		number_of_pipes;
 	int		number_of_redir;
+	int		number_of_read;
 	int		number_of_append;
 	int		**pipesfd;
 	int		redir_fd;
 	int		first_flag;
+	char	*token;
 	t_pars	pars_data;
 }			t_attr;
 

@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 17:14:25 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/24 01:02:26 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/28 16:24:55 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ int	read_from_file(t_attr *att, int index)
 	if ((filefd) < 0)
 	{
 		perror("Minishell");
+		free(file_name);
 		return (-1);
 	}
 	free(file_name);

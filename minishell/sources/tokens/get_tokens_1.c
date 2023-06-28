@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 18:15:45 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/27 15:07:26 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/28 17:45:04 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,9 +72,7 @@ char	*get_token(char *s, t_attr *att)
 		att->tok_arr_i++;
 	}
 	if (quotes >= 2)
-	{
 		return (process_multi_quote(s, att));
-	}
 	else
 		return (process_default(s, att));
 }
@@ -122,6 +120,61 @@ char	*process_default(char *s, t_attr *att)
 	return (token);
 }
 
+/*void	flag2up(char *s, t_attr att, int flag, int pos)
+{
+	int		j;
+	int		i;
+	int		pos;
+	int		flag;
+	
+	att->inside_single_quotes = 0;
+	flag = 2;
+	att->o_dquotes--;
+	j++;
+	if (s[i + 1])
+	{
+		if (s[i + 1] == ' ' && j % 2 == 0)
+		{
+			i++;
+			pos = i - j;
+			att->token = quotentoken(s, att, flag, pos);
+		}
+	}
+	else if (!s[i + 1])
+	{
+		i++;
+		pos = i - j;
+		att->token = quotentoken(s, att, flag, pos);
+	}
+}*/
+
+/*void	flag1up(char *s, t_attr att, int flag, int pos)
+{
+	int		j;
+	int		i;
+	int		pos;
+	int		flag;
+	
+	flag = 1;
+	att->inside_single_quotes = 1;
+	att->o_quotes--;
+	j++;
+	if (s[i + 1])
+	{
+		if (s[i + 1] == ' ' && j % 2 == 0)
+		{
+			i++;
+			pos = i - j;
+			att->token = quotentoken(s, att, flag, pos);
+			}
+		}
+	else if (!s[i + 1])
+	{
+		i++;
+		pos = i - j;
+		att->token = quotentoken(s, att, flag, pos);
+	}*/
+
 char	*process_multi_quote(char *s, t_attr *att)
 {
 	char	*token;
@@ -133,11 +186,13 @@ char	*process_multi_quote(char *s, t_attr *att)
 	j = 0;
 	i = 0;
 	token = NULL;
+	att->token = NULL;
 	flag = 0;
 	while (s[i])
 	{
 		if (s[i] == '"' && (flag == 0 || flag == 2))
 		{
+			//flag2up();
 			att->inside_single_quotes = 0;
 			flag = 2;
 			att->o_dquotes--;
@@ -162,6 +217,7 @@ char	*process_multi_quote(char *s, t_attr *att)
 		}
 		if (s[i] == '\'' && (flag == 0 || flag == 1))
 		{
+			//flag1up();
 			flag = 1;
 			att->inside_single_quotes = 1;
 			att->o_quotes--;

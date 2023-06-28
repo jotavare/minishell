@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/24 01:30:35 by jotavare          #+#    #+#             */
-/*   Updated: 2023/06/27 13:48:27 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/28 17:16:23 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void	init_attributes_one(t_attr *att)
 	att->read_from_pipe = 0;
 	att->only_create = 0;
 	att->first_flag = 0;
+	att->token = NULL;
 }
 
 void	init_attributes_two(t_attr *att)
@@ -46,6 +47,7 @@ void	init_attributes_two(t_attr *att)
 	att->number_of_pipes = 0;
 	att->number_of_redir = 0;
 	att->number_of_append = 0;
+	att->number_of_read = 0;
 	att->redir_fd = 0;
 	att->redir = 0;
 	att->create_file = 0;
