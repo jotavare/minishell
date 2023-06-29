@@ -17,10 +17,10 @@
 
 // count_tokens.c
 int		count_tokens(char *s, t_attr *att);
-int		check_single_quotes(char *s, int len, t_attr *att);
-int		check_double_quotes(char *s, int len, t_attr *att);
-int		check_non_space_char(char *s, int len, t_attr *att);
-int		check_special_char(char *s, int len, t_attr *att);
+int		check_single_quotes(char *s, int len, int i, t_attr *att);
+int		check_double_quotes(char *s, int len, int i, t_attr *att);
+int		check_non_space_char(char *s, int len, int i, t_attr *att);
+int		check_special_char(char *s, int len, int i, t_attr *att);
 
 // get_tokens_1.c
 char	*get_token(char *s, t_attr *att, t_toki tok);

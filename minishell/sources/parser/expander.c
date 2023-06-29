@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 18:15:45 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/28 23:36:35 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/29 12:15:59 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,14 +60,13 @@ void	expand_tokens2(char **tokens, t_exp *info, int j)
 {
 	info->expanded_length = ft_strlen(info->value);
 	info->token_length = ft_strlen(tokens[info->i]) - j + 1;
-	info->expanded_token = malloc((info->token_length +
-									info->expanded_length + 1) *
-									sizeof(char));
+	info->expanded_token = malloc((info->token_length
+				+ info->expanded_length + 1) * sizeof(char));
 	ft_strncpy(info->expanded_token, tokens[info->i], j);
 	info->expanded_token[j] = '\0';
 	ft_strcat(info->expanded_token, info->value);
-	ft_strcat(info->expanded_token, tokens[info->i] + j
-			+ ft_strlen(info->var_name) + 1);
+	ft_strcat(info->expanded_token, tokens[info->i]
+		+ j + ft_strlen(info->var_name) + 1);
 	free(tokens[info->i]);
 	tokens[info->i] = info->expanded_token;
 	if (info->has_quote)
