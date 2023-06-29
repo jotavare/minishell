@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/24 01:30:35 by jotavare          #+#    #+#             */
-/*   Updated: 2023/06/27 13:48:27 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/29 14:43:21 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ void	init_attributes_one(t_attr *att)
 	att->read_from_pipe = 0;
 	att->only_create = 0;
 	att->first_flag = 0;
+	att->already_dealt = 0;
+	att->has_path = 1;
 }
 
 void	init_attributes_two(t_attr *att)
@@ -46,6 +48,7 @@ void	init_attributes_two(t_attr *att)
 	att->number_of_pipes = 0;
 	att->number_of_redir = 0;
 	att->number_of_append = 0;
+	att->number_of_read = 0;
 	att->redir_fd = 0;
 	att->redir = 0;
 	att->create_file = 0;
@@ -57,6 +60,15 @@ void	init_attributes_two(t_attr *att)
 	att->o_quotes = 0;
 	att->aftert = NULL;
 	att->inside_single_quotes = 0;
+}
+
+void	init_toki(t_toki *tok)
+{
+	tok->i = 0;
+	tok->j = 0;
+	tok->pos = 0;
+	tok->flag = 0;
+	tok->token = NULL;
 }
 
 void	reinit_attributes(t_attr *att)
@@ -74,4 +86,6 @@ void	reinit_attributes(t_attr *att)
 	att->o_dquotes = 0;
 	att->o_quotes = 0;
 	att->aftert = NULL;
+	att->already_dealt = 0;
+	att->has_path = 1;
 }

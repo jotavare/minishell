@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:28:13 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/27 14:40:59 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/29 14:16:59 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,13 @@ typedef struct s_attr
 	int		inside_single_quotes;
 	int		number_of_pipes;
 	int		number_of_redir;
+	int		number_of_read;
 	int		number_of_append;
 	int		**pipesfd;
 	int		redir_fd;
 	int		first_flag;
+	int		already_dealt;
+	int		has_path;
 	t_pars	pars_data;
 }			t_attr;
 
@@ -76,7 +79,7 @@ typedef struct s_exec
 
 typedef struct s_exp
 {
-	char	*variable_name;
+	char	*var_name;
 	char	*value;
 	size_t	expanded_length;
 	size_t	token_length;
@@ -85,5 +88,14 @@ typedef struct s_exp
 	int		i;
 	int		has_quote;
 }			t_exp;
+
+typedef struct s_toki
+{
+	char	*token;
+	int		flag;
+	int		pos;
+	int		j;
+	int		i;
+}			t_toki;
 
 #endif

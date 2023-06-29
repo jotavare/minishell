@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:57:28 by alexandre         #+#    #+#             */
-/*   Updated: 2023/06/23 22:13:21 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/29 14:42:20 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int	echo(t_attr att)
 		printf("%s", att.tok_arr[i]);
 		fl_pr = 1;
 		i++;
+		att.already_dealt = 1;
 	}
 	if (fl_n == 0)
 		printf("\n");
@@ -52,11 +53,8 @@ int	echo(t_attr att)
 
 int	handle_echo_options(t_attr att, int *fl_n, int *fl_pr, int i)
 {
-	if (ft_strnstr(att.tok_arr[i], "n", ft_strlen(att.tok_arr[i]))
-		&& *fl_pr == 0)
+	if (has_n(att.tok_arr[i], 'n') && att.already_dealt == 0)
 	{
-		if (att.tok_arr[i + 1] != NULL)
-			i++;
 		*fl_n = 1;
 		return (1);
 	}
@@ -90,3 +88,58 @@ int	echo_n(t_attr att)
 	i++;
 	return (0);
 }
+
+int	has_n(char *str, char n)
+{
+	int	i;
+	int	len;
+
+	i = 0;
+	len = (int)strlen(str);
+	if (str[i] && str[i] == '-')
+	{
+		i++;
+		while (i < len)
+		{
+			if (str[i] == n)
+				while (i < len && str[i] == n)
+					i++;
+			else
+				return (0);
+			if (i == len)
+				break ;
+			if (str[i] != n)
+				return (0);
+			i++;
+		}
+		return (1);
+	}
+	return (0);
+}
+
+/*int has_n(char *str, char n)
+{
+    int i = 0;
+    int length = ft_strlen(str);
+
+    if (length > 0 && str[i] == '-')
+    {
+        i++;
+        if (i < length)
+        {
+            while (i < length)
+            {
+                if (str[i] == n)
+                {
+                    while (str[i] == n && i < length)
+                        i++;
+                }
+                else if (str[i] != 0 && str[i] != n)
+                    return 0;
+                i++;
+            }
+            return 1;
+        }
+    }
+    return 0;
+}*/
