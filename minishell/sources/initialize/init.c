@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/24 01:30:35 by jotavare          #+#    #+#             */
-/*   Updated: 2023/06/28 23:41:37 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/29 14:43:21 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ void	init_attributes_one(t_attr *att)
 	att->read_from_pipe = 0;
 	att->only_create = 0;
 	att->first_flag = 0;
+	att->already_dealt = 0;
+	att->has_path = 1;
 }
 
 void	init_attributes_two(t_attr *att)
@@ -84,4 +86,6 @@ void	reinit_attributes(t_attr *att)
 	att->o_dquotes = 0;
 	att->o_quotes = 0;
 	att->aftert = NULL;
+	att->already_dealt = 0;
+	att->has_path = 1;
 }

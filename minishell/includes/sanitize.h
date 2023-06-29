@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:28:13 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/24 02:12:17 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/29 14:20:30 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	free_exp_env(t_attr *att);
 void	free_d_exp_env(t_attr *att);
 void	exit_free(t_attr *att);
 void	ft_delete_matrix(void *matrix);
-void	free_start_args(t_exec *args);
+void	free_start_args(t_exec *args, t_attr *att);
 void	free_child(t_attr *att, t_exec *args);
 
 #endif

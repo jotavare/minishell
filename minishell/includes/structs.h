@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:28:13 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/28 23:22:48 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/29 14:16:59 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,8 @@ typedef struct s_attr
 	int		**pipesfd;
 	int		redir_fd;
 	int		first_flag;
+	int		already_dealt;
+	int		has_path;
 	t_pars	pars_data;
 }			t_attr;
 

@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:57:28 by alexandre         #+#    #+#             */
-/*   Updated: 2023/06/28 22:07:54 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/29 14:36:30 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	main(int ac, char **av, char **envp)
 		{
 			add_history(str);
 			att.commands_arr = get_tokens2(str, &att);
-			ft_print_array(att.commands_arr);
+			//ft_print_array(att.commands_arr);
 			init_pipes(&att);
 			while (att.commands_arr[att.i] && !verify_readline(str)
 				&& att.commands_arr[att.i][0] != '\0')

@@ -6,16 +6,11 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 18:15:45 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/29 12:16:15 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/29 14:35:58 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
-
-/* void	get_token_aux(char *s, t_attr *att, t_toki tok)
-{
-	
-}*/
 
 char	*get_token(char *s, t_attr *att, t_toki tok)
 {

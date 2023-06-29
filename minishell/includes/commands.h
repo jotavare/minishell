@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:28:13 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/27 14:58:07 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/29 13:07:07 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	cd_previous_path(t_attr *att, char **destiny_path);
 int		echo(t_attr att);
 int		handle_echo_options(t_attr att, int *fl_n, int *fl_pr, int i);
 int		echo_n(t_attr att);
+int		has_n(char *str, char n);
 
 // env.c
 int		env(t_attr *att);

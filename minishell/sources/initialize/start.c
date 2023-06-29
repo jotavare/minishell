@@ -6,21 +6,24 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/24 01:30:53 by jotavare          #+#    #+#             */
-/*   Updated: 2023/06/29 12:11:55 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/29 14:14:46 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-void	start_args(t_exec *args, t_attr *att)
+int		start_args(t_exec *args, t_attr *att)
 {
 	args->i = 0;
 	args->command = att->tok_arr[0];
 	args->path_srt = get_str_paths(att, args->path_srt);
+	if (args->path_srt == NULL)
+		return (-1);
 	args->path_srt += 5;
 	args->nb_of_paths = count_paths(args->path_srt);
 	args->all_paths = ft_split(args->path_srt, ':');
 	args->path_command = NULL;
+	return (0);
 }
 
 void	start_env(char **envp, t_attr *att)
