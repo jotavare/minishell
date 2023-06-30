@@ -6,16 +6,14 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/24 01:30:35 by jotavare          #+#    #+#             */
-/*   Updated: 2023/06/29 14:43:21 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/30 01:21:55 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-void	init_params(int ac, char **av, t_attr *att, char **envp)
+void	init_params(t_attr *att, char **envp)
 {
-	(void)ac;
-	(void)av;
 	init_attributes_one(att);
 	init_attributes_two(att);
 	start_env(envp, att);
@@ -69,6 +67,8 @@ void	init_toki(t_toki *tok)
 	tok->pos = 0;
 	tok->flag = 0;
 	tok->token = NULL;
+	tok->gt_flag = 0;
+	tok->gt_quotes = 0;
 }
 
 void	reinit_attributes(t_attr *att)

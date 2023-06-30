@@ -6,13 +6,13 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/24 01:30:53 by jotavare          #+#    #+#             */
-/*   Updated: 2023/06/29 14:14:46 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/29 18:08:33 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-int		start_args(t_exec *args, t_attr *att)
+int	start_args(t_exec *args, t_attr *att)
 {
 	args->i = 0;
 	args->command = att->tok_arr[0];

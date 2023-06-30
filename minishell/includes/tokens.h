@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:28:13 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/28 22:12:26 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/30 01:16:00 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ int		check_non_space_char(char *s, int len, int i, t_attr *att);
 int		check_special_char(char *s, int len, int i, t_attr *att);
 
 // get_tokens_1.c
-char	*get_token(char *s, t_attr *att, t_toki tok);
+char	*get_token(char *s, t_attr *att, t_toki *tok);
+char	*processt2_t3(char *s, t_attr *att);
 char	*quotentoken(char *s, t_attr *att, t_toki *tok);
 
 // get_tokens2.c
@@ -60,8 +61,14 @@ void	flag1up(char *s, t_attr *att, t_toki *tok);
 char	*process_single_quotes(char *s, t_attr *att, t_toki *tok);
 char	*process_double_quotes(char *s, t_attr *att, t_toki *tok);
 
+// tokens_utils_5.c
+void	reinit_gt_var(t_attr *att, t_toki *tok);
+char	*give_token(char *s, t_attr *att, t_toki *tok);
+int		to_quote(char *s, t_attr *att, t_toki *tok);
+int		to_dquote(char *s, t_attr *att, t_toki *tok);
+
 // tokens.c
-void	create_array(char *s, t_attr *att, t_toki tok);
-char	**get_tokens(char *str, t_attr *att, t_toki tok);
+void	create_array(char *s, t_attr *att, t_toki *tok);
+char	**get_tokens(char *str, t_attr *att, t_toki *tok);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 17:14:25 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/29 14:34:46 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/29 18:12:17 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,12 +71,8 @@ int	execute(t_attr *att, int index)
 {
 	t_exec	args;
 
-	if (start_args(&args, att) == -1)
-	{
-		att->has_path = 0;
-		printf ("Minishell: %s: No such file or directory\n", att->tok_arr[0]);
+	if (start_args_error(att, &args, &g_value) != -1)
 		return (g_value);
-	}
 	set_signals2();
 	args.pid = fork();
 	if (args.pid == -1)

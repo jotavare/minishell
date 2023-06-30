@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:57:28 by alexandre         #+#    #+#             */
-/*   Updated: 2023/06/29 14:42:20 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/30 02:10:21 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,8 +84,10 @@ int	echo_n(t_attr att)
 
 	i = 1;
 	if (ft_strcmp(att.tok_arr[i], "-n") != 0)
+	{
 		ft_putstr_fd(att.tok_arr[i], 1);
-	i++;
+		i++;
+	}
 	return (0);
 }
 
@@ -135,11 +137,11 @@ int	has_n(char *str, char n)
                         i++;
                 }
                 else if (str[i] != 0 && str[i] != n)
-                    return 0;
+                    return (0);
                 i++;
             }
-            return 1;
+            return (1);
         }
     }
-    return 0;
+    return (0);
 }*/

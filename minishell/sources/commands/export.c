@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:57:28 by alexandre         #+#    #+#             */
-/*   Updated: 2023/06/23 22:25:29 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/29 23:36:52 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,6 @@ void	export_check_equal(t_attr *att, int j)
 void	export_not_equal(t_attr *att, int j)
 {
 	if (check_the_arr(att->exp_env, att->tok_arr[j]) >= 0)
-		refresh_rmexp_env(att, check_the_arr(att->exp_env, att->tok_arr[j]));
+		return ;
 	refresh_add_exp(att, att->tok_arr[j]);
 }

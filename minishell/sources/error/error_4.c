@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_3.c                                          :+:      :+:    :+:   */
+/*   error_4.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:57:28 by alexandre         #+#    #+#             */
-/*   Updated: 2023/06/24 05:20:47 by alex             ###   ########.fr       */
+/*   Updated: 2023/06/29 18:12:54 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,4 +82,15 @@ int	error_mixed(char *str, char c, char r)
 		i++;
 	}
 	return (0);
+}
+
+int	start_args_error(t_attr *att, t_exec *args, int *g_value)
+{
+	if (start_args(args, att) == -1)
+	{
+		att->has_path = 0;
+		printf("Minishell: %s: No such file or directory\n", att->tok_arr[0]);
+		return (*g_value);
+	}
+	return (-1);
 }

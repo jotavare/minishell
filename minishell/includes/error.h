@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:28:13 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/27 14:46:08 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/29 18:11:08 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,6 @@ int	print_error_pipe(char *str, int i);
 int	error_onepipe(char *str);
 int	print_mixed_error(char *str, char r, int i);
 int	error_mixed(char *str, char c, char r);
+int	start_args_error(t_attr *att, t_exec *args, int *g_value);
 
 #endif

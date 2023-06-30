@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:57:28 by alexandre         #+#    #+#             */
-/*   Updated: 2023/06/29 17:43:21 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/29 18:07:37 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	handle_interrupt(int sig)
 	}
 	g_value = 130;
 }
+
 void	handler_exec(int sig)
 {
 	if (sig == SIGQUIT)

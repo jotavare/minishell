@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:28:13 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/29 14:16:59 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/30 00:18:09 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,9 @@ typedef struct s_toki
 {
 	char	*token;
 	int		flag;
+	int		gt_flag;
+	int		gt_quotes;
+	char	*gt_result;
 	int		pos;
 	int		j;
 	int		i;

@@ -6,7 +6,7 @@
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:28:13 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/29 14:14:57 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/30 01:19:38 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "minishell.h"
 
-void	init_params(int ac, char **av, t_attr *attr, char **envp);
+void	init_params(t_attr *attr, char **envp);
 void	init_attributes_one(t_attr *att);
 void	init_attributes_two(t_attr *att);
 void	init_toki(t_toki *tok);
