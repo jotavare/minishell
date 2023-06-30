@@ -81,7 +81,6 @@ int	export_print(t_attr att)
 		}
 		ft_putchar_fd('\n', 1);
 	}
-	printf("SIZE: %d\n", att.len_exp_env);
 	return (0);
 }
 

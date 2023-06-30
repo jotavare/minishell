@@ -12,7 +12,7 @@
 
 #include "../../includes/minishell.h"
 
-int		count_array(t_attr att, int i)
+int	count_array(t_attr att, int i)
 {
 	int	count;
 
@@ -22,15 +22,14 @@ int		count_array(t_attr att, int i)
 		count++;
 		i = i + 2;
 	}
-	return(count);
+	return (count);
 }
 
 char	**create_delims(t_attr att, int i, int count)
 {
-	char **delims;
+	char	**delims;
 	char	*temp;
 	int		j;
-
 
 	j = 0;
 	delims = malloc(sizeof(char *) * (count + 1));
@@ -43,91 +42,54 @@ char	**create_delims(t_attr att, int i, int count)
 		i = i + 2;
 		free(temp);
 	}
-	return(delims);
+	return (delims);
 }
 
-char **del_first(char **arr, int *count)
+void	init_h_doc(t_attr att, t_hdoc *hdoc)
 {
-	char **delims;
-	int		i;
-
-	i = 0;
-	delims = malloc(sizeof(char *) * (*count));
-	delims[*count] = NULL;
-	if (*count > 0)
-	{
-		while(i < *count)
-		{
-			if (*count > 1)
-			{
-				delims[i] = ft_strdup(arr[i + 1]);
-				free(arr[i + 1]);
-				*count = *count - 1;
-			}
-			else 
-			{
-				free(arr[0]);
-				delims[i] = NULL;
-				*count = *count - 1;
-			}
-			i++;
-		}
-	}
-	return(delims);
+	hdoc->i = att.i + 1;
+	hdoc->count = count_array(att, hdoc->i);
+	hdoc->delims = create_delims(att, hdoc->i, hdoc->count);
+	hdoc->temp = hdoc->delims;
+	hdoc->line = NULL;
+	hdoc->fd = 0;
+	hdoc->line2 = NULL;
 }
 
-void	heredoc(t_attr *att)
+void	heredoc2(t_attr *att, t_hdoc *hdoc)
 {
-	char	*line;
-	int		fd;
-	char	**delims;
-	int		i = att->i + 1;
-	int		count;
-	char	*line2;
-
-	count = count_array(*att, i);
-	delims = create_delims(*att, i, count);
-	set_signals2();
-	signal(SIGINT, &heredoc_handler);
-	signal(SIGQUIT, &heredoc_handler);
-	fd = open(".heredoc", O_CREAT | O_WRONLY | O_TRUNC, 0644);
-	while (1)
-	{
-		printf("%d\n", count);
-		write(1, ">", 1);
-		line = get_next_line(0, 1);
-		line2 = ft_strtrim(line, "\n");
-		if (ft_strcmp(delims[0], line2) == 0)
-			delims = del_first(delims, &count);
-		if (count == 0)
-			break;
-		write(fd, line, ft_strlen(line));
-		free(line);
-	}
-	close(fd);
+	free_arr(hdoc->temp);
+	close(hdoc->fd);
 	att->redir_fd = open(".heredoc", O_RDONLY);
 	dup2(att->redir_fd, 0);
 	close(att->redir_fd);
 	unlink(".heredoc");
-	
 }
 
- void	handle_heredoc(t_attr *att)
+void	heredoc(t_attr *att)
 {
-	int		i;
-	char	**d;
+	t_hdoc	h_doc;
 
-	i = 1;
-	d = ft_split(att->commands_arr[att->i + 2], ' ');
-	if (d[1] != NULL)
+	init_h_doc(*att, &h_doc);
+	set_signals2();
+	signal(SIGINT, &heredoc_handler);
+	signal(SIGQUIT, &heredoc_handler);
+	h_doc.fd = open(".heredoc", O_CREAT | O_WRONLY | O_TRUNC, 0644);
+	while (1)
 	{
-		while (d[i])
+		write(1, ">", 1);
+		h_doc.line = get_next_line(0, 1);
+		h_doc.line2 = ft_strtrim(h_doc.line, "\n");
+		if (ft_strcmp(h_doc.delims[0], h_doc.line2) == 0)
 		{
-			printf("%s: %s: No such file or directory\n",
-				att->commands_arr[att->i], d[i]);
-			i++;
+			h_doc.delims++;
+			h_doc.count--;
 		}
+		else
+			write(h_doc.fd, h_doc.line, ft_strlen(h_doc.line));
+		if (h_doc.count == 0)
+			break ;
+		free(h_doc.line);
 	}
-	heredoc(att);
-	free_arr(d);
+	heredoc2(att, &h_doc);
 }

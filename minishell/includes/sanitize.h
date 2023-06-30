@@ -17,6 +17,7 @@
 
 // free_one.c
 void	free_arr(char **arr);
+void	free_in_arr(char **arr);
 void	free_tokens(char **tokens, t_attr *att);
 void	free_g_env(t_attr *att);
 void	free_d_env(t_attr *att);

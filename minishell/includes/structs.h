@@ -101,4 +101,16 @@ typedef struct s_toki
 	int		i;
 }			t_toki;
 
+typedef struct s_hdoc
+{
+	char	*line;
+	int		fd;
+	char	**delims;
+	int		i;
+	char	**temp;
+	int		count;
+	char	*line2;
+	int		redir_fd;
+}			t_hdoc;
+
 #endif

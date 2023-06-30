@@ -36,3 +36,16 @@ void	ft_print_array(char **array)
 	}
 	printf("end of array\n\n");
 }
+
+void	free_exp_env(t_attr *att)
+{
+	int	i;
+
+	i = 0;
+	while (att->exp_env[i] != NULL)
+	{
+		free(att->exp_env[i]);
+		i++;
+	}
+	free(att->exp_env);
+}
