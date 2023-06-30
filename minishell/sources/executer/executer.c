@@ -44,7 +44,7 @@ void	check_flags(t_attr *att, int index, t_exec *args)
 		}
 	}
 	if (att->heredoc)
-		heredoc(att->commands_arr[att->i + 2], att);
+		heredoc(att);
 	if (att->write_to_pipe && att->read_from_pipe)
 		att->pipeindex++;
 	if (att->write_to_pipe)

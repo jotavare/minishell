@@ -28,7 +28,7 @@ int		exec_binaries(t_exec *args, t_attr *att);
 int		exec_absolute_path(t_exec *args, t_attr *att);
 
 // heredocs.c
-void	heredoc(char *delimiter, t_attr *att);
+void	heredoc(t_attr *att);
 void	handle_heredoc(t_attr *att);
 
 // paths.c

@@ -23,7 +23,7 @@ char	*prompt(t_attr *att)
 	char	*user;
 	char	*pwd;
 
-	user = custom_getenv("USERNAME", att);
+	user = custom_getenv("USER", att);
 	pwd = custom_getenv("PWD", att);
 	if (pwd != NULL && user != NULL)
 	{
