@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/04 17:16:53 by lde-sous          #+#    #+#             */
-/*   Updated: 2022/11/10 18:10:16 by lde-sous         ###   ########.fr       */
+/*   Created: 2022/11/04 15:25:40 by jotavare          #+#    #+#             */
+/*   Updated: 2023/06/30 06:11:34 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,3 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 	}
 	return (0);
 }
-/*
-int	main(void)
-{
-	char	a[] = "only another BIG test";
-	char	b[] = "only 1nother test";
-	printf("%d\n", ft_memcmp(a, b, 7));
-}*/

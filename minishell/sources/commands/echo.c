@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/12 15:57:28 by alexandre         #+#    #+#             */
-/*   Updated: 2023/06/30 02:10:21 by jotavare         ###   ########.fr       */
+/*   Created: 2023/05/12 15:57:28 by jotavare          #+#    #+#             */
+/*   Updated: 2023/06/30 06:54:52 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ int	has_n(char *str, char n)
 	int	len;
 
 	i = 0;
-	len = (int)strlen(str);
+	len = (int)ft_strlen(str);
 	if (str[i] && str[i] == '-')
 	{
 		i++;

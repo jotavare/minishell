@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printundec.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/12 18:46:35 by lde-sous          #+#    #+#             */
-/*   Updated: 2022/12/15 16:56:38 by lde-sous         ###   ########.fr       */
+/*   Created: 2022/11/04 15:25:40 by jotavare          #+#    #+#             */
+/*   Updated: 2023/06/30 06:10:57 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,3 @@ int	ft_printundec(unsigned int decimal)
 		count += ft_printchar(decimal + '0');
 	return (count);
 }
-/*
-int	main(void)
-{
-	unsigned int	test;
-
-	test = -712310;
-	ft_printundec(test);
-	write(1, "\n", 1);
-	printf("%u\n", test);
-	return (0);
-}*/

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/03 15:40:28 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/27 14:47:54 by jotavare         ###   ########.fr       */
+/*   Created: 2022/11/04 15:25:40 by jotavare          #+#    #+#             */
+/*   Updated: 2023/06/30 06:10:09 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,3 @@ char	*ft_strrchr(const char *s, int c)
 	}
 	return (NULL);
 }
-/*
-int	main(void)
-{
-	char	str[] = "this is a test";
-
-	printf("%s\n", ft_strrchr(str, 105));
-	return (0);
-}*/

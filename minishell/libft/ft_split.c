@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/14 11:55:06 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/27 14:47:33 by jotavare         ###   ########.fr       */
+/*   Created: 2022/11/04 15:25:40 by jotavare          #+#    #+#             */
+/*   Updated: 2023/06/30 06:10:44 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,17 +70,3 @@ char	**ft_split(char const *s, char c)
 	result[o] = 0;
 	return (result);
 }
-/*
-int	main(void)
-{
-	char	*c = "s_ola___os_meu_nome_e_luis_";
-	char	s = 's';
-	int	i = 0;
-	char	**temp;
-	temp = ft_split(c, s);
-	while (temp[i])
-	{
-		printf("%s\n", temp[i]);
-		i++;
-	}
-}*/

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printpointer.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/12 18:46:27 by lde-sous          #+#    #+#             */
-/*   Updated: 2022/12/21 15:02:28 by lde-sous         ###   ########.fr       */
+/*   Created: 2022/11/04 15:25:40 by jotavare          #+#    #+#             */
+/*   Updated: 2023/06/30 06:11:03 by jotavare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,3 @@ int	ft_printpointer(unsigned long point)
 	ft_printaux(point);
 	return (ft_loncount(point) + 2);
 }
-/*
-int	main(void)
-{
-	char	*string;
-
-	string = "qualquer coisa";
-	ft_printpointer((unsigned long)string);
-	return (0);
-}*/
