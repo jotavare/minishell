@@ -6,7 +6,7 @@
 /*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/24 01:30:35 by jotavare          #+#    #+#             */
-/*   Updated: 2023/06/30 23:45:55 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/07/02 14:49:22 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,15 @@
 
 void	init_params(t_attr *att, char **envp)
 {
+	char	*var_gval;
+
 	init_attributes_one(att);
 	init_attributes_two(att);
 	start_env(envp, att);
 	start_exp(envp, att);
+	var_gval = get_g_value();
+	refresh_addenv(att, var_gval);
+	free(var_gval);
 }
 
 void	init_attributes_one(t_attr *att)

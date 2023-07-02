@@ -1,38 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.c                                        :+:      :+:    :+:   */
+/*   init2.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/12 15:57:28 by jotavare          #+#    #+#             */
-/*   Updated: 2023/07/02 14:35:11 by joaoalme         ###   ########.fr       */
+/*   Created: 2023/07/02 14:55:28 by joaoalme          #+#    #+#             */
+/*   Updated: 2023/07/02 15:00:07 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
+#include "../../includes/minishell.h"
 
-int		g_value = 0;
-
-int	main(int ac, char **av, char **envp)
+void	update_g_val_var(t_attr *att)
 {
-	t_attr	att;
-	t_toki	tok;
-	char	*str;
+	refresh_rmenv(att, check_the_arr(att->g_env, get_g_value()));
+	refresh_addenv(att, get_g_value());
+}
 
-	void_params(ac, av);
-	first_step(envp, &att, &tok);
-	while (1)
-	{
-		att.i = 0;
-		str = prompt(&att);
-		if (str_empty(str))
-			break ;
-		reinit_attributes(&att);
-		if (str)
-			str_is_true(str, &att, &tok);
-	}
-	free_g_env(&att);
-	free_exp_env(&att);
-	return (0);
+char	*get_g_value(void)
+{
+	char	*var_gvalue;
+	char	*str_gvalue;
+
+	str_gvalue = ft_itoa(g_value);
+	var_gvalue = ft_strjoin("?=", str_gvalue);
+	free(str_gvalue);
+	return (var_gvalue);
 }

@@ -6,7 +6,7 @@
 /*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 18:15:45 by jotavare          #+#    #+#             */
-/*   Updated: 2023/06/30 23:45:58 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/07/02 12:16:05 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	expand_tokens2(char **tokens, t_exp *info, int j)
 	info->token_length = ft_strlen(tokens[info->i]) - j + 1;
 	info->expanded_token = malloc((info->token_length
 				+ info->expanded_length + 1) * sizeof(char));
-	ft_strncpy(info->expanded_token, tokens[info->i], j);
+	ft_strlcpy(info->expanded_token, tokens[info->i], j);
 	info->expanded_token[j] = '\0';
 	ft_strcat(info->expanded_token, info->value);
 	ft_strcat(info->expanded_token, tokens[info->i]

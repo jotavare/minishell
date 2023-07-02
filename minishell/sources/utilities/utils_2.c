@@ -6,7 +6,7 @@
 /*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:51:22 by jotavare          #+#    #+#             */
-/*   Updated: 2023/06/30 23:46:21 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/07/02 12:15:31 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,24 +59,6 @@ char	*ft_strcat(char *dest, const char *src)
 	while (*src)
 		*ptr++ = *src++;
 	*ptr = '\0';
-	return (dest);
-}
-
-char	*ft_strncpy(char *dest, const char *src, size_t n)
-{
-	size_t	i;
-
-	i = 0;
-	while (i < n && src[i] != '\0')
-	{
-		dest[i] = src[i];
-		i++;
-	}
-	while (i < n)
-	{
-		dest[i] = '\0';
-		i++;
-	}
 	return (dest);
 }
 

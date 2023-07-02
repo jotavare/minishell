@@ -6,7 +6,7 @@
 #    By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/12 15:15:58 by jotavare          #+#    #+#              #
-#    Updated: 2023/06/30 23:46:41 by joaoalme         ###   ########.fr        #
+#    Updated: 2023/07/02 14:52:56 by joaoalme         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,6 +51,7 @@ SRC =	sources/minishell.c \
 		sources/executer/pipes.c \
 		sources/executer/redirects.c \
     	sources/initialize/init.c \
+    	sources/initialize/init2.c \
 		sources/initialize/refresh.c \
     	sources/initialize/start.c \
 		sources/parser/check.c \

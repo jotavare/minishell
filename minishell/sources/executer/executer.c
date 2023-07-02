@@ -6,7 +6,7 @@
 /*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 17:14:25 by jotavare          #+#    #+#             */
-/*   Updated: 2023/06/30 23:45:48 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/07/02 14:53:52 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,9 @@ void	check_flags(t_attr *att, int index, t_exec *args)
 void	executer(t_attr *att, t_exec *args)
 {
 	if (!ft_strcmp(att->tok_arr[0], "pwd"))
+	{
 		g_value = pwd();
+	}
 	else if (!ft_strcmp(att->tok_arr[0], "echo"))
 		g_value = echo(*att);
 	else if (!ft_strcmp(att->tok_arr[0], "env"))
@@ -91,6 +93,7 @@ int	execute(t_attr *att, int index)
 	close_pipeline(att);
 	free_start_args(&args, att);
 	exit_child_status();
+	update_g_val_var(att);
 	set_signals();
 	return (g_value);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:57:28 by jotavare          #+#    #+#             */
-/*   Updated: 2023/06/30 06:54:52 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/07/02 14:35:57 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	echo(t_attr att)
 	}
 	if (fl_n == 0)
 		printf("\n");
-	return (0);
+	return (g_value);
 }
 
 /*
@@ -68,7 +68,7 @@ int	handle_echo_options(t_attr att, int *fl_n, int *fl_pr, int i)
 	if (ft_strnstr(att.tok_arr[i], "$?", ft_strlen(att.tok_arr[i])))
 	{
 		printf("%d", g_value);
-		return (1);
+		return (g_value);
 	}
 	return (0);
 }
