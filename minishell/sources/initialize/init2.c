@@ -6,7 +6,7 @@
 /*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/02 14:55:28 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/07/02 15:00:07 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/07/02 15:12:07 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,12 @@
 
 void	update_g_val_var(t_attr *att)
 {
-	refresh_rmenv(att, check_the_arr(att->g_env, get_g_value()));
-	refresh_addenv(att, get_g_value());
+	char	*gval_str;
+
+	gval_str = get_g_value();
+	refresh_rmenv(att, check_the_arr(att->g_env, gval_str));
+	refresh_addenv(att, gval_str);
+	free(gval_str);
 }
 
 char	*get_g_value(void)
