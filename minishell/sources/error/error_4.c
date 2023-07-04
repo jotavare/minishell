@@ -30,9 +30,9 @@ int	error_onepipe(char *str)
 	i = 0;
 	while (str[i])
 	{
-		if (str[i] == '"')
-			break ;
-		if ((str[i] == '>' || str[i] == '<') && str[i + 1] == '|')
+		if (str[i] == '\'' || str[i] == '"')
+			i = vrl_skip_quotes(str, i);
+		else if ((str[i] == '>' || str[i] == '<') && str[i + 1] == '|')
 		{
 			if (especialcase(str, i) || especialcase_two(str, i))
 				return (1);
@@ -59,26 +59,16 @@ int	print_mixed_error(char *str, char r, int i)
 
 int	error_mixed(char *str, char c, char r)
 {
-	int	*i;
+	int	i;
 	int	flag;
 
 	i = 0;
 	flag = 0;
 	while (str[i])
 	{
-		if (str[i] == '\'')
-		{
-			i++;
-			while (str[i] != '\'')
-				i++;
-		}
-		else if (str[i] == '"')
-		{
-			i++;
-			while (str[i] != '"')
-				i++;
-		}
-		if (str[i] == '>' && str[i + 1] == '|')
+		if (str[i] == '\'' || str[i] == '"')
+			i = vrl_skip_quotes(str, i);
+		else if (str[i] == '>' && str[i + 1] == '|')
 			return (0);
 		else if (str[i] == '<' && str[i + 1] == '>' && flag == 0)
 			return (0);

@@ -44,6 +44,7 @@ SRC =	sources/minishell.c \
 		sources/error/error_2.c \
 		sources/error/error_3.c \
 		sources/error/error_4.c \
+		sources/error/error_5.c \
     	sources/executer/executer.c \
 		sources/executer/execve.c \
 		sources/executer/heredocs.c \

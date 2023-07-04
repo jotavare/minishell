@@ -6,7 +6,7 @@
 /*   By: alexfern <alexfern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:57:28 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/30 23:19:02 by alexfern         ###   ########.fr       */
+/*   Updated: 2023/07/04 17:41:44 by alexfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,15 @@ int	error_single(char *str, char c)
 	int	i;
 	int	flag;
 
-	i = 0;
+	i = -1;
 	flag = 0;
-	while (str[i])
+	while (str[++i])
 	{
 		if (str[i] == c && str[i + 1] == c && flag == 0)
 			return (0);
-		if (str[i] == c && flag == 0)
+		if (str[i] == '\'' || str[i] == '"')
+			i = vrl_skip_quotes(str, i);
+		else if (str[i] == c && flag == 0)
 			flag = 1;
 		else if (str[i] != c && str[i] != ' ' && flag == 1)
 			flag = 0;
@@ -61,7 +63,6 @@ int	error_single(char *str, char c)
 				printf(ERROR_ONE, c);
 			return (1);
 		}
-		i++;
 	}
 	return (0);
 }
@@ -71,11 +72,13 @@ int	error_double(char *str, char c)
 	int	i;
 	int	flag;
 
-	i = 0;
+	i = -1;
 	flag = 0;
-	while (str[i])
+	while (str[++i])
 	{
-		if (str[i] == c && str[i + 1] == c && flag == 0)
+		if (str[i] == '\'' || str[i] == '"')
+			i = vrl_skip_quotes(str, i);
+		else if (str[i] == c && str[i + 1] == c && flag == 0)
 			flag = 1;
 		else if (str[i] != c && str[i] != ' ' && flag)
 			flag = 0;
@@ -89,7 +92,6 @@ int	error_double(char *str, char c)
 				printf(ERROR_ONE, c);
 			return (1);
 		}
-		i++;
 	}
 	return (0);
 }

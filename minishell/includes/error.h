@@ -6,7 +6,7 @@
 /*   By: alexfern <alexfern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:28:13 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/30 23:25:07 by alexfern         ###   ########.fr       */
+/*   Updated: 2023/07/04 17:42:03 by alexfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,8 @@ int		error_onepipe(char *str);
 int		print_mixed_error(char *str, char r, int i);
 int		error_mixed(char *str, char c, char r);
 int		start_args_error(t_attr *att, t_exec *args, int *g_value);
+
+// error_5.c
+int		vrl_skip_quotes(char *str, int i);
 
 #endif
