@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alexfern <alexfern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:28:13 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/28 23:17:41 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/30 23:25:07 by alexfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,13 @@ int		check_equal(char *str);
 // expander.c
 char	*custom_getenv(const char *var_name, t_attr *att);
 char	**expand_tokens(char **tokens, t_attr *att);
-void	expand_tokens2(char **tokens, t_exp *info, int j);
-char	*correct_name(char *str);
+void	expand_tokens2(char **tokens, t_exp *info);
+void	countj(char *str, t_exp *info);
+
+// expander_utils.c
+void	find_it(char *str, t_exp *info);
+void	find_it_aux1(char *str, t_exp *info);
+void	find_it_aux2(char *str, t_exp *info);
 
 // lexer.c
 void	command(t_attr *att, int index);

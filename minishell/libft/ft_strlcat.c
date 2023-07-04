@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alexfern <alexfern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/07 14:53:41 by lde-sous          #+#    #+#             */
-/*   Updated: 2022/11/18 19:52:21 by lde-sous         ###   ########.fr       */
+/*   Created: 2022/11/04 15:25:40 by lde-sous          #+#    #+#             */
+/*   Updated: 2023/06/30 23:24:07 by alexfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,3 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 	dst[j] = '\0';
 	return (dstlng + srclng);
 }
-/*
-int	main(void)
-{
-//	char	str1[] = "Luis";
-//	char	str2[] = "Eduardo";
-	char	b[0xF] = "nigh !";
-	printf("%zu\n", ft_strlcat(((void *)0), b, 0));
-//	printf("%zu\n", ft_strlcat(str1, str2, 13));
-//	puts(str1);
-}*/

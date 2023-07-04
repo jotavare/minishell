@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execve.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alexfern <alexfern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/24 00:50:35 by jotavare          #+#    #+#             */
-/*   Updated: 2023/06/24 00:50:40 by jotavare         ###   ########.fr       */
+/*   Created: 2023/06/24 00:50:35 by lde-sous          #+#    #+#             */
+/*   Updated: 2023/06/30 23:28:53 by alexfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int	exec_commands(t_exec *args, t_attr *att)
 			if (args->ret != 0)
 			{
 				perror("execve");
+				free_arr(args->path_command);
 				return (-1);
 			}
 		}

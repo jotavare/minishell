@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alexfern <alexfern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/12 15:57:28 by alexandre         #+#    #+#             */
-/*   Updated: 2023/06/29 14:42:20 by jotavare         ###   ########.fr       */
+/*   Created: 2023/05/12 15:57:28 by lde-sous          #+#    #+#             */
+/*   Updated: 2023/06/30 23:20:01 by alexfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	echo(t_attr att)
 	}
 	if (fl_n == 0)
 		printf("\n");
-	return (0);
+	return (g_value);
 }
 
 /*
@@ -68,7 +68,7 @@ int	handle_echo_options(t_attr att, int *fl_n, int *fl_pr, int i)
 	if (ft_strnstr(att.tok_arr[i], "$?", ft_strlen(att.tok_arr[i])))
 	{
 		printf("%d", g_value);
-		return (1);
+		return (g_value);
 	}
 	return (0);
 }
@@ -84,8 +84,10 @@ int	echo_n(t_attr att)
 
 	i = 1;
 	if (ft_strcmp(att.tok_arr[i], "-n") != 0)
+	{
 		ft_putstr_fd(att.tok_arr[i], 1);
-	i++;
+		i++;
+	}
 	return (0);
 }
 
@@ -95,7 +97,7 @@ int	has_n(char *str, char n)
 	int	len;
 
 	i = 0;
-	len = (int)strlen(str);
+	len = (int)ft_strlen(str);
 	if (str[i] && str[i] == '-')
 	{
 		i++;
@@ -135,11 +137,11 @@ int	has_n(char *str, char n)
                         i++;
                 }
                 else if (str[i] != 0 && str[i] != n)
-                    return 0;
+                    return (0);
                 i++;
             }
-            return 1;
+            return (1);
         }
     }
-    return 0;
+    return (0);
 }*/

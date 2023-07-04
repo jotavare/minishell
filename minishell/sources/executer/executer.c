@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   executer.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alexfern <alexfern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 17:14:25 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/29 14:34:46 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/30 23:56:20 by alexfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	check_flags(t_attr *att, int index, t_exec *args)
 		}
 	}
 	if (att->heredoc)
-		heredoc(att->commands_arr[att->i + 2], att);
+		heredoc(att);
 	if (att->write_to_pipe && att->read_from_pipe)
 		att->pipeindex++;
 	if (att->write_to_pipe)
@@ -71,12 +71,8 @@ int	execute(t_attr *att, int index)
 {
 	t_exec	args;
 
-	if (start_args(&args, att) == -1)
-	{
-		att->has_path = 0;
-		printf ("Minishell: %s: No such file or directory\n", att->tok_arr[0]);
+	if (start_args_error(att, &args, &g_value) != -1)
 		return (g_value);
-	}
 	set_signals2();
 	args.pid = fork();
 	if (args.pid == -1)
@@ -95,6 +91,7 @@ int	execute(t_attr *att, int index)
 	close_pipeline(att);
 	free_start_args(&args, att);
 	exit_child_status();
+	update_g_val_var(att);
 	set_signals();
 	return (g_value);
 }

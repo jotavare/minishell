@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/12 18:46:21 by lde-sous          #+#    #+#             */
-/*   Updated: 2022/12/21 15:08:54 by lde-sous         ###   ########.fr       */
+/*   Created: 2022/11/04 15:25:40 by lde-sous          #+#    #+#             */
+/*   Updated: 2023/06/30 06:11:12 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,17 +44,3 @@ int	ft_printhexa(unsigned int to_hex, char s)
 		ft_printchar(hexbase[to_hex]);
 	return (ft_lencount(to_hex));
 }
-/*
-int	main(void)
-{
-	ft_printhexa(0, 'X');
-	write(1, "\n", 1);
-	ft_printhexa(-1, 'x');
-	write(1, "\n", 1);
-	ft_printhexa(1, 'x');
-	write(1, "\n", 1);
-	ft_printhexa(9, 'x');
-	write(1, "\n", 1);
-	ft_printhexa(11, 'x');
-	return (0);
-}*/

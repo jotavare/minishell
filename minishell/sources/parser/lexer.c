@@ -3,24 +3,43 @@
 /*                                                        :::      ::::::::   */
 /*   lexer.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alexfern <alexfern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 18:15:45 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/29 12:19:26 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/30 23:34:03 by alexfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-/*
-    The command function handles basic command recognition
-    and execution based on the input string, providing
-    feedback or return values accordingly.
-*/
+int	verifydollar(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == '$')
+			return (1);
+		i++;
+	}
+	return (0);
+}
 
 void	command(t_attr *att, int index)
 {
-	if (att->inside_single_quotes == 0)
+	int		i;
+	int		flag;
+
+	i = 0;
+	flag = 0;
+	while (att->tok_arr[i])
+	{
+		if (verifydollar(att->tok_arr[i]))
+			flag = 1;
+		i++;
+	}
+	if (att->inside_single_quotes == 0 && flag == 1)
 		expand_tokens(&att->tok_arr[0], att);
 	if (!att->tok_arr[0])
 		return ;
@@ -35,4 +54,3 @@ void	command(t_attr *att, int index)
 	else
 		execute(att, index);
 }
-

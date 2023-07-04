@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alexfern <alexfern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/12 15:57:28 by alexandre         #+#    #+#             */
-/*   Updated: 2023/06/23 22:25:29 by jotavare         ###   ########.fr       */
+/*   Created: 2023/05/12 15:57:28 by lde-sous          #+#    #+#             */
+/*   Updated: 2023/06/30 23:31:00 by alexfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,6 @@ int	export_print(t_attr att)
 		}
 		ft_putchar_fd('\n', 1);
 	}
-	printf("SIZE: %d\n", att.len_exp_env);
 	return (0);
 }
 
@@ -98,6 +97,6 @@ void	export_check_equal(t_attr *att, int j)
 void	export_not_equal(t_attr *att, int j)
 {
 	if (check_the_arr(att->exp_env, att->tok_arr[j]) >= 0)
-		refresh_rmexp_env(att, check_the_arr(att->exp_env, att->tok_arr[j]));
+		return ;
 	refresh_add_exp(att, att->tok_arr[j]);
 }

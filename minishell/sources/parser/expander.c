@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expander.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alexfern <alexfern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 18:15:45 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/29 12:15:59 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/30 23:33:44 by alexfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,73 +54,60 @@ void	init_var(t_exp *var)
 	var->i = 0;
 	var->j = 0;
 	var->has_quote = 0;
+	var->x = 0;
+	var->y = 0;
+	var->correct = NULL;
+	var->len = 0;
+	var->full = 0;
 }
 
-void	expand_tokens2(char **tokens, t_exp *info, int j)
+void	expand_tokens2(char **tokens, t_exp *info)
 {
 	info->expanded_length = ft_strlen(info->value);
-	info->token_length = ft_strlen(tokens[info->i]) - j + 1;
+	info->token_length = ft_strlen(tokens[info->i]) - info->j + 1;
 	info->expanded_token = malloc((info->token_length
 				+ info->expanded_length + 1) * sizeof(char));
-	ft_strncpy(info->expanded_token, tokens[info->i], j);
-	info->expanded_token[j] = '\0';
+	ft_strncpy(info->expanded_token, tokens[info->i], info->j);
+	info->expanded_token[info->j] = '\0';
 	ft_strcat(info->expanded_token, info->value);
 	ft_strcat(info->expanded_token, tokens[info->i]
-		+ j + ft_strlen(info->var_name) + 1);
+		+ info->j + ft_strlen(info->var_name) + 1);
 	free(tokens[info->i]);
 	tokens[info->i] = info->expanded_token;
-	if (info->has_quote)
+	if (info->var_name)
 		free(info->var_name);
-	j += info->expanded_length;
+	info->j += info->expanded_length;
+}
+
+void	countj(char *str, t_exp *info)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == '$')
+			break ;
+		i++;
+		info->j++;
+	}
 }
 
 char	**expand_tokens(char **tokens, t_attr *att)
 {
 	t_exp	info;
-	int		j;
 
 	init_var(&info);
 	while (tokens[info.i])
 	{
-		j = 0;
-		while (tokens[info.i][j])
-		{
-			if (tokens[info.i][j] == '"')
-				info.has_quote = 1;
-			else if ((tokens[info.i][j] == '$' && tokens[info.i][j + 1]))
-			{
-				info.var_name = tokens[info.i] + j + 1;
-				if (info.has_quote == 1)
-					info.var_name = correct_name(tokens[info.i] + j + 1);
-				info.value = custom_getenv(info.var_name, att);
-				if (info.value)
-					expand_tokens2(tokens, &info, j);
-			}
-			j++;
-		}
+		info.j = 0;
+		find_it(tokens[info.i], &info);
+		info.value = custom_getenv(info.var_name, att);
+		if (info.value)
+			expand_tokens2(tokens, &info);
+		if (!info.value)
+			free(info.correct);
 		info.i++;
 	}
 	return (tokens);
-}
-
-char	*correct_name(char *str)
-{
-	int		i;
-	int		j;
-	char	*correct;
-
-	correct = malloc(sizeof(char) * (ft_strlen(str) + 1));
-	i = 0;
-	j = 0;
-	while (str[i])
-	{
-		if (str[i] != '\'')
-		{
-			correct[j] = str[i];
-			j++;
-		}
-		i++;
-	}
-	correct[j] = 0;
-	return (correct);
 }

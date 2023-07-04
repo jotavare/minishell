@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/04 18:12:25 by lde-sous          #+#    #+#             */
-/*   Updated: 2022/11/10 18:20:15 by lde-sous         ###   ########.fr       */
+/*   Created: 2022/11/04 15:25:40 by lde-sous          #+#    #+#             */
+/*   Updated: 2023/06/30 06:11:26 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,3 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 			*dest2++ = *src2++;
 	return (dest);
 }
-/*
-int	main(void)
-{
-	char	a[] = "123456789";
-	char	b[] = "may tests";
-
-	printf("%s\n", (unsigned char *)ft_memmove(a, b + 2, 8));
-	printf("%s\n", (unsigned char *)memmove(a, b + 2, 8));
-	return (0);
-}*/

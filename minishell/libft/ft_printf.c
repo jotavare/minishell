@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/06 18:33:25 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/05/15 17:36:16 by lde-sous         ###   ########.fr       */
+/*   Created: 2022/11/04 15:25:40 by lde-sous          #+#    #+#             */
+/*   Updated: 2023/06/30 06:11:18 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,18 +62,3 @@ int	ft_printf(const char *format, ...)
 	va_end(arguments);
 	return (count);
 }
-/*
-int	main(void)
-{
-//	ft_printf("Print a char: %c.\n", 'c');
-//	ft_printf("Print a string: %s.\n", "f13itman: \nCodename 47");
-//	ft_printf("Print a positive i: %d.\n", 47);
-//	ft_printf("Print a zero i: %d.\n", 0);
-//	ft_printf("Print a negative i: %d.\n", -42);
-//	ft_printf("Print a lower hex i: %x.\n", 477);
-//	ft_printf("Print a UPPER hex: %X.\n", 477);
-//	ft_printf("Print a zero hex: %x.\n", 0);
-	ft_printf("Print a pointer: %p.\n", 16);
-//	ft_printf("Print a %%");
-	return (0);
-}*/

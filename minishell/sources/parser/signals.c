@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   signals.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alexfern <alexfern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/12 15:57:28 by alexandre         #+#    #+#             */
-/*   Updated: 2023/06/29 17:43:21 by jotavare         ###   ########.fr       */
+/*   Created: 2023/05/12 23:16:20 by alexfern          #+#    #+#             */
+/*   Updated: 2023/06/30 23:16:35 by alexfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,10 @@ void	handle_interrupt(int sig)
 		rl_replace_line("", 0);
 		rl_on_new_line();
 		rl_redisplay();
+		g_value = 130;
 	}
-	g_value = 130;
 }
+
 void	handler_exec(int sig)
 {
 	if (sig == SIGQUIT)

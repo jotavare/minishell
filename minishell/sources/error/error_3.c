@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error_3.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alex <alex@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: alexfern <alexfern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/12 15:57:28 by alexandre         #+#    #+#             */
-/*   Updated: 2023/06/24 05:20:47 by alex             ###   ########.fr       */
+/*   Created: 2023/05/12 15:57:28 by lde-sous          #+#    #+#             */
+/*   Updated: 2023/06/30 23:18:56 by alexfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,53 +28,29 @@ int	error_dirdoc(char *str)
 	return (0);
 }
 
-int	double_quote(char *str, char c)
+void	unclosed_quotes_aux(t_err *error, char c, char *str)
 {
-	int	i;
-	int	flag;
-
-	flag = 0;
-	i = 0;
-	while (str[i])
-	{
-		if (str[i] == c && flag == 0)
-			flag = 1;
-		else if (str[i] == '\'' && flag == 1)
-			flag = 2;
-		else if (str[i] == '\'' && flag == 2)
-			flag = 1;
-		else if (str[i] == c && flag == 1)
-			flag = 0;
-		i++;
-	}
-	if (flag)
-	{
-		printf(ERROR_UNCLOSED);
-		return (1);
-	}
-	return (0);
+	error->is_open++;
+	error->i++;
+	while (str[error->i] != c && str[error->i])
+		error->i++;
+	if (str[error->i] == c)
+		error->is_open++;
 }
 
-int	single_quote(char *str, char c)
+int	unclosed_quotes(char *str, t_err *error)
 {
-	int	i;
-	int	flag;
-
-	flag = 0;
-	i = 0;
-	while (str[i])
+	while (str[error->i])
 	{
-		if (str[i] == c && flag == 0)
-			flag = 1;
-		else if (str[i] == '\"' && flag == 1)
-			flag = 2;
-		else if (str[i] == '\"' && flag == 2)
-			flag = 1;
-		else if (str[i] == c && flag == 1)
-			flag = 0;
-		i++;
+		if (str[error->i] == 34 && str[error->i])
+			unclosed_quotes_aux(error, 34, str);
+		else if (str[error->i] == 39 && str[error->i])
+			unclosed_quotes_aux(error, 39, str);
+		if (!str[error->i])
+			break ;
+		error->i++;
 	}
-	if (flag)
+	if (error->is_open % 2 != 0)
 	{
 		printf(ERROR_UNCLOSED);
 		return (1);
@@ -84,7 +60,11 @@ int	single_quote(char *str, char c)
 
 int	error_quotes(char *str)
 {
-	if (double_quote(str, '\"') || single_quote(str, '\''))
+	t_err	error;
+
+	error.i = 0;
+	error.is_open = 0;
+	if (unclosed_quotes(str, &error))
 		return (1);
 	return (0);
 }
@@ -93,16 +73,19 @@ int	verify_readline(char *str)
 {
 	if (error_pipes(str))
 	{
+		add_history(str);
 		g_value = 2;
 		return (1);
 	}
-	else if (error_dirdoc(str))
+	if (error_dirdoc(str))
 	{
+		add_history(str);
 		g_value = 2;
 		return (1);
 	}
-	else if (error_quotes(str))
+	if (error_quotes(str))
 	{
+		add_history(str);
 		g_value = 2;
 		return (1);
 	}

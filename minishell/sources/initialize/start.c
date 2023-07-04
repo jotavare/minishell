@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   start.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alexfern <alexfern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/24 01:30:53 by jotavare          #+#    #+#             */
-/*   Updated: 2023/06/29 14:14:46 by jotavare         ###   ########.fr       */
+/*   Created: 2023/06/24 01:30:53 by lde-sous          #+#    #+#             */
+/*   Updated: 2023/06/30 23:17:37 by alexfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-int		start_args(t_exec *args, t_attr *att)
+int	start_args(t_exec *args, t_attr *att)
 {
 	args->i = 0;
 	args->command = att->tok_arr[0];

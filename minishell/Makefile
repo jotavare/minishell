@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jotavare <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: alexfern <alexfern@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/05/12 15:15:58 by alexandre         #+#    #+#              #
-#    Updated: 2023/06/28 21:12:20 by jotavare         ###   ########.fr        #
+#    Created: 2023/05/12 15:15:58 by lde-sous          #+#    #+#              #
+#    Updated: 2023/06/30 23:25:06 by alexfern         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,10 +51,12 @@ SRC =	sources/minishell.c \
 		sources/executer/pipes.c \
 		sources/executer/redirects.c \
     	sources/initialize/init.c \
+    	sources/initialize/init_2.c \
 		sources/initialize/refresh.c \
     	sources/initialize/start.c \
 		sources/parser/check.c \
 		sources/parser/expander.c \
+		sources/parser/expander_utils.c \
     	sources/parser/lexer.c \
 		sources/parser/parser.c \
 		sources/parser/signals.c \
@@ -67,8 +69,10 @@ SRC =	sources/minishell.c \
 		sources/tokens/tokens_utils_2.c \
 		sources/tokens/tokens_utils_3.c \
 		sources/tokens/tokens_utils_4.c \
+		sources/tokens/tokens_utils_5.c \
 		sources/tokens/tokens.c \
 		sources/utilities/debugg.c \
+		sources/utilities/minishell_utils.c \
     	sources/utilities/prompt.c \
     	sources/utilities/utils_1.c \
 		sources/utilities/utils_2.c \

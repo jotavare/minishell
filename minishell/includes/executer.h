@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   executer.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alexfern <alexfern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:28:13 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/28 15:26:01 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/30 23:55:14 by alexfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int		exec_binaries(t_exec *args, t_attr *att);
 int		exec_absolute_path(t_exec *args, t_attr *att);
 
 // heredocs.c
-void	heredoc(char *delimiter, t_attr *att);
+void	heredoc(t_attr *att);
 void	handle_heredoc(t_attr *att);
 
 // paths.c

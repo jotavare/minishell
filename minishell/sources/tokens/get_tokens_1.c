@@ -3,94 +3,110 @@
 /*                                                        :::      ::::::::   */
 /*   get_tokens_1.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alexfern <alexfern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 18:15:45 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/29 14:35:58 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/30 23:12:59 by alexfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-char	*get_token(char *s, t_attr *att, t_toki tok)
+char	*get_token(char *s, t_attr *att, t_toki *tok)
 {
-	int	flag;
-	int	quotes;
-
-	flag = 0;
-	quotes = 0;
-	att->tok_arr_i = 0;
+	reinit_gt_var(att, tok);
 	while (s[att->tok_arr_i])
 	{
-		if (s[att->tok_arr_i] == '"' && (flag == 0 || flag == 2))
+		if (s[att->tok_arr_i] == '"' && (tok->gt_flag == 0
+				|| tok->gt_flag == 2))
 		{
-				att->inside_single_quotes = 0;
-			flag = 2;
-			quotes++;
-			if (att->o_dquotes == quotes && s[att->tok_arr_i + 1])
-			{
-				if (s[att->tok_arr_i + 1] == ' ')
-				{
-					att->tok_arr_i++;
-					break ;
-				}
-			}
+			if (to_dquote(s, att, tok) == 1)
+				break ;
 		}
-		else if (s[att->tok_arr_i] == '\'' && (flag == 0 || flag == 1))
+		else if (s[att->tok_arr_i] == '\'' && (tok->gt_flag == 0
+				|| tok->gt_flag == 1))
 		{
-			att->inside_single_quotes = 1;
-			flag = 1;
-			quotes++;
-			if (att->o_quotes == quotes && s[att->tok_arr_i + 1])
-			{
-				if (s[att->tok_arr_i + 1] == ' ')
-				{
-					att->tok_arr_i++;
-					break ;
-				}
-			}
+			if (to_quote(s, att, tok) == 1)
+				break ;
 		}
-		else if (s[att->tok_arr_i] == ' ' && quotes % 2 == 0 && quotes % 2 == 0)
+		else if (s[att->tok_arr_i] == ' ' && tok->gt_quotes % 2 == 0
+			&& tok->gt_quotes % 2 == 0)
 			break ;
-		else if (s[att->tok_arr_i] == '|' && s[att->tok_arr_i + 1] != '|'
-			&& att->o_quotes % 2 == 0 && att->o_dquotes % 2 == 0)
-			return (process_token_two(s, att));
-		else if (s[att->tok_arr_i] == '|' && s[att->tok_arr_i + 1] == '|'
-			&& att->o_quotes % 2 == 0 && att->o_dquotes % 2 == 0)
-			return (process_token_three(s, att));
-		else if (s[att->tok_arr_i] == '>' && s[att->tok_arr_i + 1] != '>'
-			&& att->o_quotes % 2 == 0 && att->o_dquotes % 2 == 0)
-			return (process_token_two(s, att));
-		else if (s[att->tok_arr_i] == '>' && s[att->tok_arr_i + 1] == '>'
-			&& att->o_quotes % 2 == 0 && att->o_dquotes % 2 == 0)
-			return (process_token_three(s, att));
-		else if (s[att->tok_arr_i] == '<' && s[att->tok_arr_i + 1] != '<'
-			&& att->o_quotes % 2 == 0 && att->o_dquotes % 2 == 0)
-			return (process_token_two(s, att));
-		else if (s[att->tok_arr_i] == '<' && s[att->tok_arr_i + 1] == '<'
-			&& att->o_quotes % 2 == 0 && att->o_dquotes % 2 == 0)
-			return (process_token_three(s, att));
+		if (tok->gt_flag == 0)
+			tok->gt_result = processt2_t3(s, att);
+		if (tok->gt_result != NULL)
+			return (tok->gt_result);
 		att->tok_arr_i++;
 	}
-	if (quotes >= 2)
-		return (process_multi_quote(s, att, &tok));
-	else
-		return (process_default(s, att));
+	return (give_token(s, att, tok));
 }
 
-char	*quotentoken(char *s, t_attr *att, t_toki *tok)
+char	*processt2_t3(char *s, t_attr *att)
 {
+	if (s[att->tok_arr_i] == '|' && s[att->tok_arr_i + 1] != '|'
+		&& att->o_quotes % 2 == 0 && att->o_dquotes % 2 == 0)
+		return (process_token_two(s, att));
+	else if (s[att->tok_arr_i] == '|' && s[att->tok_arr_i + 1] == '|'
+		&& att->o_quotes % 2 == 0 && att->o_dquotes % 2 == 0)
+		return (process_token_three(s, att));
+	else if (s[att->tok_arr_i] == '>' && s[att->tok_arr_i + 1] != '>'
+		&& att->o_quotes % 2 == 0 && att->o_dquotes % 2 == 0)
+		return (process_token_two(s, att));
+	else if (s[att->tok_arr_i] == '>' && s[att->tok_arr_i + 1] == '>'
+		&& att->o_quotes % 2 == 0 && att->o_dquotes % 2 == 0)
+		return (process_token_three(s, att));
+	else if (s[att->tok_arr_i] == '<' && s[att->tok_arr_i + 1] != '<'
+		&& att->o_quotes % 2 == 0 && att->o_dquotes % 2 == 0)
+		return (process_token_two(s, att));
+	else if (s[att->tok_arr_i] == '<' && s[att->tok_arr_i + 1] == '<'
+		&& att->o_quotes % 2 == 0 && att->o_dquotes % 2 == 0)
+		return (process_token_three(s, att));
+	return (NULL);
+}
+
+char	*quotentoken(char *s, t_toki *tok)
+{
+	tok->i = 0;
+	tok->endmalloc = 0;
+	tok->pos = count_true_chars(s, tok);
 	tok->token = malloc(sizeof(char) * (tok->pos + 1));
 	tok->token[tok->pos] = 0;
 	tok->i = 0;
 	tok->j = 0;
-	while (tok->j < tok->pos && s[tok->i] != '\0')
+	deal_with_it(s, tok);
+	return (tok->token);
+}
+
+void	deal_with_it(char *s, t_toki *tok)
+{
+	while (tok->j < tok->pos && s[tok->i])
 	{
-		if (tok->flag == 1)
-			tok->token = process_single_quotes(s, att, tok);
-		else if (tok->flag == 2)
-			tok->token = process_double_quotes(s, att, tok);
+		if (s[tok->i] == 34)
+		{
+			tok->i++;
+			while (s[tok->i] != 34)
+				deal_aux(s, tok);
+		}
+		else if (s[tok->i] == ' ')
+			break ;
+		else if (s[tok->i] == 39)
+		{
+			tok->i++;
+			while (s[tok->i] != 39)
+				deal_aux(s, tok);
+		}
+		if (s[tok->i] != 34 && s[tok->i] != 39)
+		{
+			tok->token[tok->j] = s[tok->i];
+			tok->j++;
+		}
 		tok->i++;
 	}
-	return (tok->token);
+}
+
+void	deal_aux(char *s, t_toki *tok)
+{
+	tok->token[tok->j] = s[tok->i];
+	tok->i++;
+	tok->j++;
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alexfern <alexfern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 12:42:40 by lde-sous          #+#    #+#             */
-/*   Updated: 2022/11/08 14:38:59 by lde-sous         ###   ########.fr       */
+/*   Updated: 2023/06/30 23:25:06 by alexfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,3 @@ int	ft_atoi(const char *nptr)
 	}
 	return (result * sign);
 }
-/*
-int	main(void)
-{
-	char	s[] = "    +1355234";
-
-	printf("%d %d", ft_atoi(s), atoi(s));
-	return (0);
-}*/

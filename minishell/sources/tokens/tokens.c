@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   tokens.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alexfern <alexfern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 18:15:45 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/28 22:18:21 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/06/30 23:10:43 by alexfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-void	create_array(char *s, t_attr *att, t_toki tok)
+void	create_array(char *s, t_attr *att, t_toki *tok)
 {
 	int	count;
 
@@ -37,11 +37,43 @@ void	create_array(char *s, t_attr *att, t_toki tok)
 	}
 }
 
-char	**get_tokens(char *str, t_attr *att, t_toki tok)
+char	**get_tokens(char *str, t_attr *att, t_toki *tok)
 {
 	if (!str)
 		return (NULL);
 	count_tokens(str, att);
 	create_array(str, att, tok);
 	return (att->beforet);
+}
+
+int	count_true_chars(char *str, t_toki *tok)
+{
+	while (str[tok->i])
+	{
+		if (str[tok->i] == 34)
+		{
+			tok->i++;
+			dif_from_c(str, 34, tok);
+		}
+		else if (str[tok->i] == ' ')
+			break ;
+		else if (str[tok->i] == 39)
+		{
+			tok->i++;
+			dif_from_c(str, 39, tok);
+		}
+		if (str[tok->i] != 34 && str[tok->i] != 39)
+			tok->endmalloc++;
+		tok->i++;
+	}
+	return (tok->endmalloc);
+}
+
+void	dif_from_c(char *str, char c, t_toki *tok)
+{
+	while (str[tok->i] != c)
+	{
+		tok->endmalloc++;
+		tok->i++;
+	}
 }

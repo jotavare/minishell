@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/02 19:58:22 by lde-sous          #+#    #+#             */
-/*   Updated: 2022/11/08 14:46:52 by lde-sous         ###   ########.fr       */
+/*   Created: 2022/11/04 15:25:40 by lde-sous          #+#    #+#             */
+/*   Updated: 2023/06/30 06:11:23 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,3 @@ void	*ft_memset(void *s, int c, size_t n)
 	}
 	return (s);
 }
-/*
-int	main(void)
-{
-	int		t;
-	char	a[] = "its a test";
-
-	t = 0;
-
-	printf("%s\n", (char *)ft_memset(a, t, 6));
-	printf("%s\n", (char *)memset(a, t, 6));
-	return (0);
-}*/

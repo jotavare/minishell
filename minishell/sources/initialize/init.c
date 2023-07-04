@@ -3,23 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/24 01:30:35 by jotavare          #+#    #+#             */
-/*   Updated: 2023/06/29 14:43:21 by jotavare         ###   ########.fr       */
+/*   Created: 2023/06/24 01:30:35 by lde-sous          #+#    #+#             */
+/*   Updated: 2023/07/04 11:52:29 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-void	init_params(int ac, char **av, t_attr *att, char **envp)
+void	init_params(t_attr *att, char **envp)
 {
-	(void)ac;
-	(void)av;
+	char	*var_gval;
+
 	init_attributes_one(att);
 	init_attributes_two(att);
 	start_env(envp, att);
 	start_exp(envp, att);
+	var_gval = get_g_value();
+	refresh_addenv(att, var_gval);
+	free(var_gval);
 }
 
 void	init_attributes_one(t_attr *att)
@@ -41,6 +44,8 @@ void	init_attributes_one(t_attr *att)
 	att->first_flag = 0;
 	att->already_dealt = 0;
 	att->has_path = 1;
+	att->l = 0;
+	att->j = 0;
 }
 
 void	init_attributes_two(t_attr *att)
@@ -69,6 +74,8 @@ void	init_toki(t_toki *tok)
 	tok->pos = 0;
 	tok->flag = 0;
 	tok->token = NULL;
+	tok->gt_flag = 0;
+	tok->gt_quotes = 0;
 }
 
 void	reinit_attributes(t_attr *att)
@@ -88,4 +95,6 @@ void	reinit_attributes(t_attr *att)
 	att->aftert = NULL;
 	att->already_dealt = 0;
 	att->has_path = 1;
+	g_value = 0;
+	att->l = 0;
 }

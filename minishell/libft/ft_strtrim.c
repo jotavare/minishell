@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alexfern <alexfern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/10 14:08:12 by lde-sous          #+#    #+#             */
-/*   Updated: 2022/11/18 20:29:24 by lde-sous         ###   ########.fr       */
+/*   Created: 2022/11/04 15:25:40 by lde-sous          #+#    #+#             */
+/*   Updated: 2023/06/30 23:23:07 by alexfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,3 @@ char	*ft_strtrim(char const *s1, char const *set)
 	temp[i] = '\0';
 	return (temp);
 }
-/*
-int	main(void)
-{
-	char	str[] = "bugIs strange!gub";
-	char	totrim[] = "bug";
-	printf("%s\n", ft_strtrim(str, totrim));
-	return (0);
-}*/

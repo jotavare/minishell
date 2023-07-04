@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lde-sous <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alexfern <alexfern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/07 18:16:28 by lde-sous          #+#    #+#             */
-/*   Updated: 2022/12/02 11:32:08 by lde-sous         ###   ########.fr       */
+/*   Created: 2022/11/04 15:25:40 by lde-sous          #+#    #+#             */
+/*   Updated: 2023/06/30 23:23:01 by alexfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,18 +40,3 @@ char	*ft_substr(const char *s, unsigned int start, size_t len)
 	}
 	return (sub);
 }
-/*
-int	main(void)
-{
-	const char	str[] = "This is a test";
-	unsigned int	i;
-	size_t		size;
-	char	*lolo;
-
-	i = 5;
-	size = 11;
-	lolo = ft_substr(str, i, size);
-	puts(lolo);
-	free(lolo);
-	return (0);
-}*/

@@ -3,23 +3,18 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lde-sous <lde-sous@student.42porto.com>    +#+  +:+       +#+         #
+#    By: alexfern <alexfern@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/11/07 13:59:19 by lde-sous          #+#    #+#              #
-#    Updated: 2023/05/25 15:27:02 by lde-sous         ###   ########.fr        #
+#    Created: 2022/11/04 15:25:40 by lde-sous          #+#    #+#              #
+#    Updated: 2023/06/30 23:25:06 by alexfern         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
-
 CC = cc
-
 CFLAGS  = -Wall -Wextra -Werror
-
 RM = rm -rf
-
 OBJ = $(FT_FUNCTIONS:.c=.o)
-
 BONUS_OBJ = $(BONUS:.c=.o)
 
 FT_FUNCTIONS = ft_printf.c \
