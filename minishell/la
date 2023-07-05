@@ -1,3 +1,0 @@
- 16:30:06 up 7 days,  3:22,  1 user,  load average: 0.21, 0.73, 0.81
-USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
-lde-sous tty7     :0               10:52    7days 12:21   0.00s /bin/sh /usr/share/42/scripts/hook-login-user.sh env GNOME_SHELL_SESSION_MODE=ubuntu /usr/bin/gnome-session --systemd --session=ubuntu

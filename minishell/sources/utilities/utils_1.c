@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   utils_1.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexfern <alexfern@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lde-sous <lde-sous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:51:22 by lde-sous          #+#    #+#             */
 /*   Updated: 2023/06/30 23:25:06 by alexfern         ###   ########.fr       */

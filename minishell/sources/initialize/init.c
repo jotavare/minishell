@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alexfern <alexfern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/24 01:30:35 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/07/04 11:52:29 by joaoalme         ###   ########.fr       */
+/*   Created: 2023/06/24 01:30:35 by alexfern          #+#    #+#             */
+/*   Updated: 2023/07/04 22:13:55 by alexfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ void	init_attributes_two(t_attr *att)
 	att->o_quotes = 0;
 	att->aftert = NULL;
 	att->inside_single_quotes = 0;
+	att->is_builtin = 0;
 }
 
 void	init_toki(t_toki *tok)

@@ -23,7 +23,7 @@ int	vrl_skip_quotes(char *str, int i)
 	else if (str[i] == '"')
 	{
 		i++;
-		while (str[i] != '"')
+		while (str[i] != '"' && str[i])
 			i++;
 	}
 	return (i);

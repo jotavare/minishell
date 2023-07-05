@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: alexfern <alexfern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/12 15:57:28 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/30 23:18:56 by alexfern         ###   ########.fr       */
+/*   Created: 2023/05/12 15:57:28 by alexfern          #+#    #+#             */
+/*   Updated: 2023/07/04 23:18:21 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,12 @@ int	error_quotes(char *str)
 
 int	verify_readline(char *str)
 {
+	if (error_quotes(str))
+	{
+		add_history(str);
+		g_value = 2;
+		return (1);
+	}
 	if (error_pipes(str))
 	{
 		add_history(str);
@@ -78,12 +84,6 @@ int	verify_readline(char *str)
 		return (1);
 	}
 	if (error_dirdoc(str))
-	{
-		add_history(str);
-		g_value = 2;
-		return (1);
-	}
-	if (error_quotes(str))
 	{
 		add_history(str);
 		g_value = 2;

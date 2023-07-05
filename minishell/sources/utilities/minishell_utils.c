@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   minishell_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexfern <alexfern@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lde-sous <lde-sous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 15:38:30 by lde-sous          #+#    #+#             */
 /*   Updated: 2023/07/01 00:39:06 by alexfern         ###   ########.fr       */

@@ -3,32 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get_tokens_2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lubu <lubu@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: lde-sous <lde-sous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/15 18:15:45 by jotavare          #+#    #+#             */
-/*   Updated: 2023/07/03 12:11:38 by lubu             ###   ########.fr       */
+/*   Created: 2023/05/15 18:15:45 by lde-sous          #+#    #+#             */
+/*   Updated: 2023/07/03 12:11:38 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
-/* 
-void	advance_in_quotes(char *s, t_attr *att)
-{
-	if (s[att->l] == '"')
-	{
-		att->l--;
-		while (att->l >= 0 && s[att->l] != '"')
-			att->l--;
-		att->l--;
-	}
-	else if (s[att->l] == '\'')
-	{
-		att->l--;
-		while (att->l >= 0 && s[att->l] != '\'')
-			att->l--;
-		att->l--;
-	}
- }*/
 
 int	count_tokens2(char *s, t_attr *att)
 {
@@ -40,21 +22,9 @@ int	count_tokens2(char *s, t_attr *att)
 		if (att->pars_data.nb_tokenst == 0 || (s[att->l - 1] && (s[att->l + 1]
 					== '|' || s[att->l + 1] == '<' || s[att->l + 1] == '>')))
 			att->pars_data.nb_tokenst++;
-		if (s[att->l] == '"')
-		{
-			att->l--;
-			while (att->l >= 0 && s[att->l] != '"')
-				att->l--;
-			att->l--;
-		}
-		else if (s[att->l] == '\'')
-		{
-			att->l--;
-			while (att->l >= 0 && s[att->l] != '\'')
-				att->l--;
-			att->l--;
-		}
-		else if (s[att->l] != ' ' && s[att->l] != '|' && s[att->l] 
+		backup_in_quotes(s, '\'', att);
+		backup_in_quotes(s, '"', att);
+		if (s[att->l] != ' ' && s[att->l] != '|' && s[att->l] 
 			!= '<' && s[att->l] != '>' && s[att->l]
 			!= '"' && s[att->l] != '\'')
 		{
@@ -68,8 +38,7 @@ int	count_tokens2(char *s, t_attr *att)
 		else if (s[att->l] == '|' || s[att->l] == '<' || s[att->l] == '>')
 			att->l = process_next_token(att, s);
 	}
-	att->pars_data.nb_tokenst++;
-	return (att->pars_data.nb_tokenst);
+	return (++att->pars_data.nb_tokenst);
 }
 
 char	*get_token2(char *s, t_attr *att)
@@ -84,25 +53,13 @@ char	*get_token2(char *s, t_attr *att)
 	{
 		if (s[0] == '|' || s[0] == '<' || s[0] == '>')
 			return (process_next_check(s, att));
-		if (s[att->j] == '"')
-		{
-			att->j++;
-			while (s[att->j] && s[att->j] != '"')
-				att->j++;
-		}
-		else if (s[att->j] == '\'')
-		{
-			att->j++;
-			while (s[att->j] && s[att->j] != '\'')
-				att->j++;
-		}
-		else if (s[att->j] == '|' || s[att->j] == '<' || s[att->j] == '>')
+		advance_in_quotes(s, '\'', att);
+		advance_in_quotes(s, '"', att);
+		if (s[att->j] == '|' || s[att->j] == '<' || s[att->j] == '>')
 			break ;
 		att->j++;
 	}
 	token = malloc(sizeof(char) * (att->j + 1));
-	if (!token)
-		return (NULL);
 	while (i < att->j)
 	{
 		token[i] = s[i];

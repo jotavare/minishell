@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: alexfern <alexfern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/12 15:57:28 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/30 23:19:20 by alexfern         ###   ########.fr       */
+/*   Created: 2023/05/12 15:57:28 by alexfern          #+#    #+#             */
+/*   Updated: 2023/07/04 22:16:22 by alexfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,13 +90,13 @@ int	unset(t_attr *att)
 	int	j;
 
 	j = 1;
+	att->is_builtin = 1;
 	if (!att->tok_arr[1])
 		return (0);
 	while (att->tok_arr[j])
 	{
 		if (!check_alpha(att->tok_arr[j]))
 		{
-			printf("TOKEN: %s \n", att->tok_arr[j]);
 			printf("bash: unset: '%s': not a valid identifier\n",
 				att->tok_arr[j]);
 			return (1);

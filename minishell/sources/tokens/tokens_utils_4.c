@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   tokens_utils_4.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexfern <alexfern@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lde-sous <lde-sous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 18:52:47 by lde-sous          #+#    #+#             */
 /*   Updated: 2023/06/30 23:11:07 by alexfern         ###   ########.fr       */
@@ -94,4 +94,25 @@ char	*process_multi_quote(char *s, t_attr *att, t_toki *tok)
 	}
 	tok->token = quotentoken(s, tok);
 	return (tok->token);
+}
+
+void	backup_in_quotes(char *s, char c, t_attr *att)
+{
+	if (s[att->l] == c)
+	{
+		att->l--;
+		while (att->l >= 0 && s[att->l] != '"')
+			att->l--;
+		att->l--;
+	}
+}
+
+void	advance_in_quotes(char *s, char c, t_attr *att)
+{
+	if (s[att->j] == c)
+	{
+		att->j++;
+		while (s[att->j] && s[att->j] != c)
+			att->j++;
+	}
 }

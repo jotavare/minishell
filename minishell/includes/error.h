@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexfern <alexfern@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lde-sous <lde-sous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:28:13 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/07/04 17:42:03 by alexfern         ###   ########.fr       */
+/*   Updated: 2023/07/04 23:18:39 by alex             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,16 @@
 # include "macros.h"
 
 // error messages
-# define ERROR_CD "minishell: cd: %s: No such file or directory\n"
-# define ERROR_EXPORT "minishell: export: '%s': not a valid identifier\n"
-# define ERROR_NLINE "minishell: syntax error near unexpected token 'newline'\n"
-# define ERROR_SIMPLE_2 "minishell: parse error near '%c%c'\n"
-# define ERROR_SIMPLE_1 "minishell: parse error near '%c'\n"
-# define ERROR_PIPE2 "minishell: syntax error near unexpected token `||'\n"
-# define ERROR_PIPE1 "minishell: syntax error near unexpected token `|'\n"
-# define ERROR_TWO "minishell: syntax error near unexpected token `%c%c'\n"
-# define ERROR_ONE "minishell: syntax error near unexpected token `%c'\n"
-# define ERROR_UNCLOSED "minishell : syntax error unclosed quotes\n"
+# define ERROR_CD "Quack! cd: %s: No such file or directory\n"
+# define ERROR_EXPORT "Quack! export: '%s': not a valid identifier\n"
+# define ERROR_NLINE "Quack! syntax error near unexpected token 'newline'\n"
+# define ERROR_SIMPLE_2 "Quack! parse error near '%c%c'\n"
+# define ERROR_SIMPLE_1 "Quack! parse error near '%c'\n"
+# define ERROR_PIPE2 "Quack! syntax error near unexpected token `||'\n"
+# define ERROR_PIPE1 "Quack! syntax error near unexpected token `|'\n"
+# define ERROR_TWO "Quack! syntax error near unexpected token `%c%c'\n"
+# define ERROR_ONE "Quack! syntax error near unexpected token `%c'\n"
+# define ERROR_UNCLOSED "Quack! syntax error unclosed quotes\n"
 
 // error_1.c
 int		error_last(char *str, char c);

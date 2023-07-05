@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexfern <alexfern@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lde-sous <lde-sous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:57:28 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/30 23:20:09 by alexfern         ###   ########.fr       */
+/*   Updated: 2023/07/04 22:50:38 by alexfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,13 @@ void	cd_rm_add_path(t_attr *att, char *to_remove, char *s)
 	refresh_add_exp(att, s);
 }
 
+int	print_free_return(char *curr_path)
+{
+	ft_putstr_fd("minishell: cd: too many arguments\n", 1);
+	free(curr_path);
+	return (1);
+}
+
 int	cd(t_attr *att)
 {
 	char	*destiny_path;
@@ -51,11 +58,7 @@ int	cd(t_attr *att)
 	destiny_path = att->tok_arr[1];
 	current_path = getcwd(NULL, 0);
 	if (att->nb_tokens > 2)
-	{
-		ft_putstr_fd("minishell: cd: too many arguments\n", 1);
-		free(current_path);
-		return (1);
-	}
+		return (print_free_return(current_path));
 	if (!destiny_path || !ft_strcmp(destiny_path, "~"))
 		destiny_path = search_var_in_g_env(att, "HOME");
 	else if (!ft_strcmp(att->tok_arr[1], "-"))
@@ -69,6 +72,7 @@ int	cd(t_attr *att)
 	update_oldpwd(att, current_path);
 	update_pwd(att);
 	free(current_path);
+	att->is_builtin = 1;
 	return (0);
 }
 

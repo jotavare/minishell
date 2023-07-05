@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tokens.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lubu <lubu@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: lde-sous <lde-sous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:28:13 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/07/03 11:47:08 by lubu             ###   ########.fr       */
+/*   Updated: 2023/07/03 11:47:08 by lde-sous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,6 @@ int		count_tokens2(char *s, t_attr *att);
 char	*get_token2(char *s, t_attr *att);
 void	create_array2(char *s, t_attr *att);
 char	**get_tokens2(char *str, t_attr *att);
-int		not_to_treat(char *s);
-//void	advance_in_quotes(char *s, int *len);
 
 // tokens_utils_1.c
 void	count_quotes(char *s, t_attr *att);
@@ -60,6 +58,8 @@ char	*process_special_char(char *s, t_attr *att);
 char	*process_multi_quote(char *s, t_attr *att, t_toki *tok);
 void	flag2up(char *s, t_attr *att, t_toki *tok);
 void	flag1up(char *s, t_attr *att, t_toki *tok);
+void	backup_in_quotes(char *s, char c, t_attr *att);
+void	advance_in_quotes(char *s, char c, t_attr *att);
 
 // tokens_utils_5.c
 void	reinit_gt_var(t_attr *att, t_toki *tok);

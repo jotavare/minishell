@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: alexfern <alexfern@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/23 17:14:25 by lde-sous          #+#    #+#             */
-/*   Updated: 2023/06/30 23:56:20 by alexfern         ###   ########.fr       */
+/*   Created: 2023/05/23 17:14:25 by alexfern          #+#    #+#             */
+/*   Updated: 2023/07/04 22:15:32 by alexfern         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,12 @@ int	execute_core(t_attr *att, t_exec *args)
 		exec_binaries(args, att);
 	else
 		exec_commands(args, att);
-	printf("%s: command not found \n", att->tok_arr[0]);
-	return (127);
+	if (!att->is_builtin)
+	{
+		printf("%s: command not found \n", att->tok_arr[0]);
+		return (127);
+	}
+	return (g_value);
 }
 
 void	check_flags(t_attr *att, int index, t_exec *args)
