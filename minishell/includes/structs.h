@@ -6,7 +6,7 @@
 /*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:28:13 by jotavare          #+#    #+#             */
-/*   Updated: 2023/06/30 23:45:34 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/07/04 18:49:18 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ typedef struct s_attr
 	int		first_flag;
 	int		already_dealt;
 	int		has_path;
+	int		is_builtin;
 	t_pars	pars_data;
 }			t_attr;
 

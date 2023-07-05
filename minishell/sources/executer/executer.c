@@ -6,7 +6,7 @@
 /*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 17:14:25 by jotavare          #+#    #+#             */
-/*   Updated: 2023/07/02 14:53:52 by joaoalme         ###   ########.fr       */
+/*   Updated: 2023/07/05 09:15:48 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,10 @@ int	execute_core(t_attr *att, t_exec *args)
 		exec_binaries(args, att);
 	else
 		exec_commands(args, att);
-	printf("%s: command not found \n", att->tok_arr[0]);
+	if (!att->is_builtin)
+	{
+		printf("%s: command not found \n", att->tok_arr[0]);
+	}
 	return (127);
 }
 
@@ -56,14 +59,12 @@ void	check_flags(t_attr *att, int index, t_exec *args)
 void	executer(t_attr *att, t_exec *args)
 {
 	if (!ft_strcmp(att->tok_arr[0], "pwd"))
-	{
 		g_value = pwd();
-	}
 	else if (!ft_strcmp(att->tok_arr[0], "echo"))
 		g_value = echo(*att);
 	else if (!ft_strcmp(att->tok_arr[0], "env"))
 		g_value = env(att);
-	else if (ft_strcmp(att->tok_arr[0], "export") == 0)
+	else if (!ft_strcmp(att->tok_arr[0], "export"))
 		export_print(*att);
 	else
 		g_value = execute_core(att, args);

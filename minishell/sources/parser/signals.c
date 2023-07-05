@@ -6,19 +6,7 @@
 /*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 23:46:00 by joaoalme          #+#    #+#             */
-/*   Updated: 2023/06/30 23:46:01 by joaoalme         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   signals.c                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/12 15:57:28 by jotavare         #+#    #+#             */
-/*   Updated: 2023/06/29 18:07:37 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/07/05 09:20:38 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +29,8 @@ void	handle_interrupt(int sig)
 		rl_replace_line("", 0);
 		rl_on_new_line();
 		rl_redisplay();
+		g_value = 130;
 	}
-	g_value = 130;
 }
 
 void	handler_exec(int sig)
@@ -56,6 +44,7 @@ void	set_signals(void)
 {
 	signal(SIGINT, handle_interrupt);
 	signal(SIGQUIT, SIG_IGN);
+	return;
 }
 
 void	set_signals2(void)

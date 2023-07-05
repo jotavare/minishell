@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   unset.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jotavare <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: joaoalme <joaoalme@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 15:57:28 by jotavare          #+#    #+#             */
-/*   Updated: 2023/06/30 06:12:46 by jotavare         ###   ########.fr       */
+/*   Updated: 2023/07/04 19:07:48 by joaoalme         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,7 @@ int	unset(t_attr *att)
 	int	j;
 
 	j = 1;
+	att->is_builtin = 1;
 	if (!att->tok_arr[1])
 		return (0);
 	while (att->tok_arr[j])
