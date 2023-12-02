@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/jotavare/jotavare/blob/main/42/banner/new/42_minishell_banner_new.png">
+  <img src="https://github.com/jotavare/jotavare/blob/main/42/banners/piscine_and_common_core/github_piscine_and_common_core_banner_minishell.png">
 </p>
 
 <p align="center">
@@ -14,12 +14,14 @@
 
 <p align="center">
 	<a href="#before-evaluation">Before evaluation</a> •
-	<a href="#utilities">Utilities</a>
+	<a href="#utilities">Utilities</a> •
+	<a href="#norminette">Norminette</a> •
+	<a href="#license">License</a>
 </p>
 
 ## BEFORE EVALUATION
 - [ ] Check norminette for any errors.
-- [ ] Check for segmentation fault, bus error, double free, leaks, ...
+- [ ] Check for segmentation faults, bus errors, double free, leaks, ...
 - [ ] Must compile with -Wall, -Wextra and -Werror.
 - [ ] Makefile must contain $(NAME), all, clean, fclean.
 - [ ] Check for forbidden functions in your code.
@@ -34,7 +36,7 @@
 | `-R CheckForbiddenSourceHeader`   | Check the code in header files.                                          |
 | `cc -g -Wall -Wextra -Werror`     | Compile with the mandatory flags.                                        |
 | `-fsanitize=address`              | Check for leaks.                                                         |
-| `-lreadline`                      | Necessary to use readline library.                                       |
+| `-lreadline`                      | Necessary to use the readline library.                                   |
 | `ps -e` or `ps -A`                | See all processes currently running on your computer.                    |
 | `ps -a`                           | Check for any dead children.                                             |
 
@@ -87,15 +89,15 @@
 | `255`   | Exit code out of bounds. Example: `exit -1`.                                     |
 
 ### Command Reminders
-| Command   | Description                                                                                 |
-| :-------- | :------------------------------------------------------------------------------------------ |
+| Command       | Description                                                                                 |
+| :------------ | :------------------------------------------------------------------------------------------ |
 | `yes`		| Writes in an infinite loop `yes teste`.                                                     |
 | `ln`		| Bind a file or directory.                                                                   |
 | `chmod`	| Change file permissions `chmod 777` (all permissions) `chmod 000` (no permissions).         |
 | `cd`		| Change directory. `cd -` (last visited directory) `cd` (user directory) `cd /` (root).      |
 | `clear`	| Clear the screen.                                                                           |	
 | `diff`	| Compare files line by line.                                                                 |
-| `cmp`		| Write first line of difference between 2 files.                                             |
+| `cmp`		| Write the first line of difference between 2 files.                                         |
 | `pc`		| Copying files.                                                                              |
 | `rm`		| Delete file.                                                                                |
 | `rm -rf`	| Delete the directory recursively.                                                           |
@@ -130,14 +132,36 @@
 ### MAX/MIN
 | Data Types | Qualifiers                        | Size (in byte) | Range                          |
 | :--------- | :-------------------------------- | :------------- | :----------------------------- |
-| `char`	 | `char` or `signed char`			 | `1`            | `-128` to `127`                |
-| `char`	 | `unsigned char`					 | `1`            | `0` to `255`                   |
-| `int`		 | `int` or `signed int`			 | `4`            | `-2147483648` to `2147483647`  |
-| `int`		 | `unsigned int`					 | `4`            | `0` to `4294967295`            |
-| `int`		 | `short int` or `short signed int` | `2`            | `-32768` to `32767`            |
-| `int`		 | `unsigned short int`				 | `2`            | `0` to `65535`                 |
-| `int`		 | `long int` or `signed long int`	 | `4`            | `-2147483648` to `2147483647`  |
-| `int`		 | `unsigned long int`				 | `4`            | `0` to `4294967295`            |
-| `float`	 | `float`							 | `4`            | `1.1754e-38` to `3.4028e+38`   |
-| `float`	 | `double`							 | `8`            | `2.2250e-308` to `1.7976e+308` |
-| `float`	 | `long double`					 | `10`           | `3.4E-4932` to `3.4E+4932`     |
+| `char`     | `char` or `signed char`		 | `1`            | `-128` to `127`                |
+| `char`     | `unsigned char`			 | `1`            | `0` to `255`                   |
+| `int`	     | `int` or `signed int`		 | `4`            | `-2147483648` to `2147483647`  |
+| `int`	     | `unsigned int`			 | `4`            | `0` to `4294967295`            |
+| `int`	     | `short int` or `short signed int` | `2`            | `-32768` to `32767`            |
+| `int`	     | `unsigned short int`		 | `2`            | `0` to `65535`                 |
+| `int`	     | `long int` or `signed long int`	 | `4`            | `-2147483648` to `2147483647`  |
+| `int`	     | `unsigned long int`		 | `4`            | `0` to `4294967295`            |
+| `float`    | `float`				 | `4`            | `1.1754e-38` to `3.4028e+38`   |
+| `float`    | `double`				 | `8`            | `2.2250e-308` to `1.7976e+308` |
+| `float`    | `long double`			 | `10`           | `3.4E-4932` to `3.4E+4932`     |
+
+## NORMINETTE
+At 42 School, it is expected that almost every project is written following the Norm, which is the coding standard of the school.
+
+```
+- No for, do...while, switch, case, goto, ternary operators and variable-length arrays are allowed;
+- Each function must be a maximum of 25 lines, not counting the function's curly brackets;
+- Each line must be at most 80 columns wide, with comments included;
+- A function can take 4 named parameters maximum;
+- No assigns and declarations in the same line (unless static);
+- You can't declare more than 5 variables per function;
+- ...
+```
+
+* [42 Norms](https://github.com/42School/norminette/blob/master/pdf/en.norm.pdf) - Information about 42 code norms. `PDF`
+* [Norminette](https://github.com/42School/norminette) - Tool by 42, to respect the code norm. `GitHub`
+* [42 Header](https://github.com/42Paris/42header) - 42 header for Vim. `GitHub`
+
+## LICENSE
+<p>
+This work is published under the terms of <a href="https://github.com/jotavare/jotavare/blob/main/LICENSE">42 Unlicense</a>.
+</p>
