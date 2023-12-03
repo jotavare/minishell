@@ -16,6 +16,7 @@
 	<a href="#about">About</a> •
 	<a href="#important-information">Important Information</a> •
 	<a href="#utilities">Utilities</a> •
+	<a href="#command-examples">Command Examples</a> •
 	<a href="#norminette">Norminette</a> •
 	<a href="#license">License</a>
 </p>
