@@ -31,6 +31,7 @@ Thanks to Minishell, I travelled through time and came back to problems people f
 ## IMPORTANT INFORMATION
 #### BEFORE EVALUATION
 > Check this list before delivering the project.
+
 - [x] Check the norminette for any errors.
 - [x] Check for segmentation faults, bus errors, double free, leaks, ...
 - [x] Must compile with -Wall, -Wextra and -Werror.
@@ -39,6 +40,8 @@ Thanks to Minishell, I travelled through time and came back to problems people f
 - [x] Check the subject for any other requirements.
 
 #### NICE TO KNOW
+> Some nice-to-know commands that will help the evaluatee and the evaluator.
+
 | Important Commands                | Description                                                              |
 | :-------------------------------- | :----------------------------------------------------------------------- |
 | `make -n`                         | Display the compilation information without actually compiling the code. |
@@ -53,6 +56,8 @@ Thanks to Minishell, I travelled through time and came back to problems people f
 | `ps -a`                           | Check for any dead children.                                             |
 
 #### VALGRIND
+> Important valgrind flags that are necessary to know every single leak.
+
 | Valgrind Flags                 | Description                                      |
 | :----------------------------- | :----------------------------------------------- |
 | `valgrind ./minishell`         | Check for leaks                                  |
@@ -84,6 +89,7 @@ Thanks to Minishell, I travelled through time and came back to problems people f
 
 ## UTILITIES
 #### Return Values ($?)
+> The values that a function returns when it completes.
 
 * All Linux commands return an error code between `0` and `255`.
 * The value 0 represents the value true (command success).
@@ -102,6 +108,8 @@ Thanks to Minishell, I travelled through time and came back to problems people f
 | `255`   | Exit code out of bounds. Example: `exit -1`.                                            |
 
 #### Command Reminders
+> More nice-to-know commands that may be useful in the future.
+
 | Command       | Description                                                                                 |
 | :------------ | :------------------------------------------------------------------------------------------ |
 | `yes`		| Writes in an infinite loop `yes teste`.                                                     |
@@ -125,6 +133,8 @@ Thanks to Minishell, I travelled through time and came back to problems people f
 | `cat`		| Send the file to stdout.                                                                    |
 
 #### CHMOD
+> Change the access permissions and the special mode flags of file system objects.
+
 | Rights        | Number |
 | :------------ | :----- |
 | `r` (read)	| `4`    |
@@ -142,7 +152,9 @@ Thanks to Minishell, I travelled through time and came back to problems people f
 | `x-ray` | `4+0+1`     | `5`   |
 | `rwx`   | `4+2+1`     | `7`   |
 
-#### DATA TYPES AND MAX/MIN
+#### DATA TYPES
+> All data types, their size in bytes and the INT MIN and INT MAX range.
+
 | Data Types | Qualifiers                        | Size (in byte) | Range                          |
 | :--------- | :-------------------------------- | :------------- | :----------------------------- |
 | `char`     | `char` or `signed char`		 | `1`            | `-128` to `127`                |
@@ -158,19 +170,20 @@ Thanks to Minishell, I travelled through time and came back to problems people f
 | `float`    | `long double`			 | `10`           | `3.4E-4932` to `3.4E+4932`     |
 
 ## COMMAND EXAMPLES
-> Some example commands that can be tested on minishell. Feel free to use to test your own.
+> Some example commands that can be tested on minishell or break it.
 
 | Status  | Definition |
 | :------ | :--------- |
-| 🟢 | Working.                    |
-| 🟡 | Didn't test yet.            |
-| 🟣 | Leaks or segmenation fault. |
-| ⚪ | Weird behavior.             |
-| 🔴 | Not working.                |
-| 🔵 | Not mandatory.              |
+| 🟢 | Working.                     |
+| 🟡 | Didn't test yet.             |
+| 🟣 | Leaks or segmentation fault. |
+| ⚪ | Weird behaviour.             |
+| 🔴 | Not working.                 |
+| 🔵 | Not mandatory.               |
 
 #### BLANK
-> Exploring fundamental commands in Minishell, unraveling the core of shell interactions.
+> Exploring fundamental commands in Minishell, unravelling the core of shell interactions.
+
 | Status  | Command |
 | :------ | :------ |
 | 🟢 | `<empty>`  |
@@ -180,6 +193,7 @@ Thanks to Minishell, I travelled through time and came back to problems people f
 
 #### SIGNALS
 > Understanding system signals, showcasing the shell's adaptability in various scenarios.
+
 | Status  | Command |
 | :------ | :------ |
 | 🟢 | `Ctrl` + `C`                                |
@@ -197,6 +211,7 @@ Thanks to Minishell, I travelled through time and came back to problems people f
 	
 #### PATH
 > Managing executable file access by manipulating the system path in Minishell.
+
 | Status  | Command |
 | :------ | :------ |
 | 🟢 | `/bin/echo`        |
@@ -212,6 +227,7 @@ Thanks to Minishell, I travelled through time and came back to problems people f
 
 #### PWD
 > Locating the present directory through the pwd command in Minishell.
+
 | Status  | Command |
 | :------ | :------ |
 | 🟢 | `pwd`         |
@@ -245,31 +261,31 @@ Thanks to Minishell, I travelled through time and came back to problems people f
 | 🟢 | `export `                    	|
 | 🟢 | `  export  `                 	|
 | 🟢 | `export a=42`                	|
-| 🟢 | `export a=24`		    		|
+| 🟢 | `export a=24`		    	|
 | 🟢 | `export b=42`                	|
 | 🟢 | `export a = 42`              	|
 | 🟢 | `export a=" 42 "`            	|
 | 🟢 | `export a=' 42 '`            	|
 | 🟢 | `export a = 42`              	|
-| 🟢 | `export a` 		    			|
+| 🟢 | `export a` 		    	|
 | 🟢 | `export a=''`           	    	|                                         
 | 🟢 | `export a='"'`               	|                                   
 | 🟢 | `export a='\'`               	|                                
 | 🟢 | `export a='$'`               	|                                 
 | 🟢 | `export a='\t'`              	|                                    
-| 🟢 | `export a='''` 		 			| 
-| 🟢 | `export =` 		  				|
-| 🟢 | `export ==`		  				|
-| 🟢 | `export a=` 		  				|
-| 🟢 | `export a=42=` 		    		|
-| 🟢 | `export =a=42` 		    		|
-| 🟢 | `export a==42` 		    		|
-| 🟢 | `export "a=42"` 		    		|
-| 🟢 | `export a="42"` 		    		|
-| 🟢 | `export _=42` 		    		|
-| 🟢 | `export 42=42`		    		|
-| 🟢 | `export a b = 42`	    		|
-| 🟢 | `export a= b= 42`	    		|
+| 🟢 | `export a='''` 		 	| 
+| 🟢 | `export =` 		  	|
+| 🟢 | `export ==`		  	|
+| 🟢 | `export a=` 		  	|
+| 🟢 | `export a=42=` 		    	|
+| 🟢 | `export =a=42` 		    	|
+| 🟢 | `export a==42` 		    	|
+| 🟢 | `export "a=42"` 		    	|
+| 🟢 | `export a="42"` 		    	|
+| 🟢 | `export _=42` 		    	|
+| 🟢 | `export 42=42`		    	|
+| 🟢 | `export a b = 42`	    	|
+| 🟢 | `export a= b= 42`	    	|
 | 🟢 | `export a=42 % b=42 @ c=42`  	|
 | 🟢 | `export a=42 b=42 c=42`	    	|
 | 🟢 | `export A=a B=b C=c D=d E=e` 	|
@@ -277,7 +293,7 @@ Thanks to Minishell, I travelled through time and came back to problems people f
 | 🟢 | `export K=k L=l M=m N=n O=o` 	|
 | 🟢 | `export P=p Q=q R=r S=s T=t` 	|
 | 🟢 | `export U=u V=v W=w X=x Y=y Z=z` |
-| 🟢 | `export _=a; echo $_a` 			|
+| 🟢 | `export _=a; echo $_a` 		|
 
 #### EXIT
 > Concluding Minishell's operations gracefully using the exit command.
