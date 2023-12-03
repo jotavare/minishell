@@ -19,6 +19,14 @@
 	<a href="#license">License</a>
 </p>
 
+## ABOUT
+The existence of shells is linked to the very existence of IT. At the time, all developers agreed that communicating with a computer using aligned 1/0 switches was seriously irritating. It was only logical that they came up with the idea of creating a software to communicate with a computer using interactive lines of commands in a language somewhat close to the human language.
+
+Thanks to Minishell, I’ll be able to travel through time and come back to problems people faced when Windows didn’t exist. This project is about creating a simple shell, my own little bash. I learned a lot about processes and file descriptors.
+
+- [Subject](https://github.com/jotavare/minishell/blob/main/subject/en_subject_minishell.pdf) `PDF`
+- [References](https://github.com/jotavare/42-resources#03-minishell) `GitHub`
+
 ## BEFORE EVALUATION
 - [ ] Check norminette for any errors.
 - [ ] Check for segmentation faults, bus errors, double free, leaks, ...
