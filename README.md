@@ -13,27 +13,28 @@
 </p>
 
 <p align="center">
-	<a href="#before-evaluation">Before evaluation</a> •
+	<a href="#about">About</a> •
+	<a href="#important-information">Important Information</a> •
 	<a href="#utilities">Utilities</a> •
 	<a href="#norminette">Norminette</a> •
 	<a href="#license">License</a>
 </p>
 
 ## ABOUT
-The existence of shells is linked to the very existence of IT. At the time, all developers agreed that communicating with a computer using aligned 1/0 switches was seriously irritating. It was only logical that they came up with the idea of creating a software to communicate with a computer using interactive lines of commands in a language somewhat close to the human language.
+The existence of shells is linked to the very existence of IT. At the time, all developers agreed that communicating with a computer using aligned 1/0 switches was seriously irritating. It was only logical that they came up with the idea of creating software to communicate with a computer using interactive lines of commands in a language somewhat close to the human language.
 
-Thanks to Minishell, I’ll be able to travel through time and come back to problems people faced when Windows didn’t exist. This project is about creating a simple shell, my own little bash. I learned a lot about processes and file descriptors.
+Thanks to Minishell, I travelled through time and came back to problems people faced when Windows didn’t exist. This project was about creating a simple shell, my own little bash. I learned a lot about processes and file descriptors.
 
 - [Subject](https://github.com/jotavare/minishell/blob/main/subject/en_subject_minishell.pdf) `PDF`
 - [References](https://github.com/jotavare/42-resources#03-minishell) `GitHub`
 
-## BEFORE EVALUATION
-- [ ] Check norminette for any errors.
-- [ ] Check for segmentation faults, bus errors, double free, leaks, ...
-- [ ] Must compile with -Wall, -Wextra and -Werror.
-- [ ] Makefile must contain $(NAME), all, clean, fclean.
-- [ ] Check for forbidden functions in your code.
-- [ ] Check the [evaluation page](https://github.com/jotavare/jotavare/blob/main/42/project_evaluations/minishell_evaluation_page.pdf) for any errors, leaks or other requirements.
+## IMPORTANT INFORMATION
+- [x] Check the norminette for any errors.
+- [x] Check for segmentation faults, bus errors, double free, leaks, ...
+- [x] Must compile with -Wall, -Wextra and -Werror.
+- [x] Makefile must contain $(NAME), all, clean, fclean.
+- [x] Check for forbidden functions in your code.
+- [x] Check the subject for any other requirements.
 
 | Important Commands                | Description                                                              |
 | :-------------------------------- | :----------------------------------------------------------------------- |
@@ -85,16 +86,16 @@ Thanks to Minishell, I’ll be able to travel through time and come back to prob
 * Values greater than 0 represent false (command failure).
 * The error code of the last command used is contained in the variable `$?`.
 
-| $?      | Description                                                                      |
-| :------ | :------------------------------------------------------------------------------- |
-| `1`     | Standard for general errors, such as a division by zero.                         |
-| `2`     | Improper use of built-in commands, per Bash documentation.                       |
-| `126`   | The command called cannot be executed, rights problem or command not executable. |
-| `127`   | Command not found, possible problem with $PATH or typing error.                  |
-| `128`   | Invalid command argument.                                                        |
-| `128+n` | 128 + signal number.                                                             |
-| `130`   | Finished with `Ctrl` + `C` (130 = 128 + 2).                                      |
-| `255`   | Exit code out of bounds. Example: `exit -1`.                                     |
+| $?      | Description                                                                             |
+| :------ | :-------------------------------------------------------------------------------------- |
+| `1`     | Standard for general errors, such as a division by zero.                                |
+| `2`     | Improper use of built-in commands, per Bash documentation.                              |
+| `126`   | The command called cannot be executed, rights problem or the command is not executable. |
+| `127`   | Command not found, possible problem with $PATH or typing error.                         |
+| `128`   | Invalid command argument.                                                               |
+| `128+n` | 128 + signal number.                                                                    |
+| `130`   | Finished with `Ctrl` + `C` (130 = 128 + 2).                                             |
+| `255`   | Exit code out of bounds. Example: `exit -1`.                                            |
 
 ### Command Reminders
 | Command       | Description                                                                                 |
