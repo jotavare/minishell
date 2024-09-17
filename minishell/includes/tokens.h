@@ -15,6 +15,8 @@
 
 # include "minishell.h"
 
+char	*select_processing_strategy(int quotes, t_attr *att, char *s, t_toki tok);
+
 // count_tokens.c
 int		count_tokens(char *s, t_attr *att);
 int		check_single_quotes(char *s, int len, int i, t_attr *att);

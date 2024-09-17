@@ -1,0 +1,294 @@
+| -> bash: syntax error near unexpected token '|';
+|| -> bash: syntax error near unexpected token '||';
+
+
+echo ola >| ls -l -> VALID COMMAND                                  DONE
+echo ola | -> VALID COMMAND                                         DONE
+>| file -> VALID COMMAND                                            DONE
+echo ola || ls -l -> bash: syntax error near unexpected token '|';  DONE
+echo ola || | ls -l -> bash: parse error near '|';                  DONE
+ls -l >| -> bash: syntax error near unexpected token 'newline';     DONE
+echo ola || -> bash: syntax error near unexpected token '|';        DONE
+ls -l > | file -> bash: syntax error near unexpected token '|';     DONE
+ls -l > | -> bash: syntax error near unexpected token '|';          DONE
+ls -l > || -> bash: syntax error near unexpected token '||';        DONE 
+ls -l <| -> bash: syntax error near unexpected token '|';           DONE 
+ls -l <|| -> bash: syntax error near unexpected token '||';         DONE 
+ls -l >>| -> bash: syntax error near unexpected token '|';          DONE 
+ls -l >>| file -> bash: syntax error near unexpected token '|';     DONE 
+ls -l >>|| file -> bash: syntax error near unexpected token '||';   DONE 
+
+> -> bash: syntax error near unexpected token 'newline';            DONE
+>> -> bash: syntax error near unexpected token 'newline';           DONE
+< -> bash: syntax error near unexpected token 'newline';            DONE
+<< -> bash: syntax error near unexpected token 'newline';           DONE
+
+echo >| grep D -> VALID COMMAND                                       DONE
+echo ola > > -> bash: syntax error near unexpected token '>';         DONE
+echo ola > > file -> bash: syntax error near unexpected token '>';    DONE
+echo ola < < -> bash: syntax error near unexpected token '<';         DONE
+echo ola < < file -> bash: syntax error near unexpected token '<';    DONE
+echo ola >>> file -> bash: syntax error near unexpected token '>';    DONE
+echo ola > >> file -> bash: syntax error near unexpected token '>>';  DONE
+echo ola >>>> file -> bash: syntax error near unexpected token '>>';  DONE
+echo > | grep D -> bash: syntax error near unexpected token '|'       DONE
+ls -l > >file -> bash: syntax error near unexpected token '>';        DONE
+ls -l < < file -> bash: syntax error near unexpected token '<';       DONE
+
+#mixed redirects and heredocs#
+ls -l <> file -> VALID COMMAND;                                       DONE
+ls -l < file0 > file -> VALID COMMAND;                                DONE {se existir - tratar no minishell}
+ls -l < file0 >> file -> VALID COMMAND;                               DONE {se existir - tratar no minishell}
+ls -l << file0 >> file -> VALID COMMAND;                              DONE {se existir - tratar no minishell}
+ls -l < > file -> bash: syntax error near unexpected token '>';       DONE
+ls -l < >> file -> bash: syntax error near unexpected token '>>';     DONE
+ls -l <<> file -> bash: syntax error near unexpected token '>';       DONE
+ls -l << > file -> bash: syntax error near unexpected token '>';      DONE
+ls -l <<>> file -> bash: parse error near '>>';                       DONE
+ls -l << >> file -> bash: parse error near '>>';                      DONE
+
+ls -l >< file -> bash: parse error near '<';                          DONE
+ls -l > < file -> bash: parse error near '<';                         DONE
+ls -l ><< file -> bash: parse error near '<<';                        DONE
+ls -l > << file -> bash: parse error near '<<';                       DONE
+
+
+
+ls -l >>< file -> bash: parse error near '<';                         DONE
+ls -l >> < file -> bash: parse error near '<';                        DONE
+ls -l >><< file -> bash: parse error near '<<';                       DONE
+ls -l >> << file -> bash: parse error near '<<';                      DONE
+
+
+#Ver com o Luis#
+quotron 1 == Erro (verifica aspas)
+"" -> Command '' not found;
+'' -> Command '' not found;
+"ls -l" -> ls -l: command not found; (a funcionar)
+'ls -l' -> ls -l: command not found; (a funcionar)
+
+
+
+'#"NO MINISHELL"#
+echo ola > ./Desktop -> bash: is a directory: ./Desktop; 
+echo ola > / -> bash: is a directory: /;
+echo ola > ? -> bash: no matches found : ?;
+echo ola > ?l -> bash: no matches found : ?l;
+
+#####################################################################
+                        NOVOS ERROR ENCONTRADOS
+                    (coloquem depois digo trato deles)
+#####################################################################
+
+
+"echo -> bash: syntax error unclosed quotes         DONE
+'echo -> bash: syntax error unclosed quotes         DONE
+""echo -> VALID COMMAND;                            DONE
+''echo -> VALID COMMAND;                            DONE
+echo"" -> VALID COMMAND;                            
+"" echo -> Command '' not found;                    
+'' echo -> Command '' not found;                    
+"    " echo ->     : command not found;             
+'    ' echo ->     : command not found;             
+"    "echo ->     echo: command not found;          
+'    'echo ->     echo: command not found;
+
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+\\\\\\\\\\\\\\\\\\\\Evaluation 25 jun 2023 - 15h30\\\\\\\\\\\\\\\\\\\\
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+
+Norminette nao esta checked btw, ela dirá se estámos a usar external functions
+
+
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+############################### ECHO ################################
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+
+command: "echo -n"                              CORRECT!
+leaks:
+
+
+
+
+______________________________________________________________________________________
+
+command: "echo ola -n tudo bem"                 CORRECT!
+leaks:
+
+
+
+=14542== 48 bytes in 1 blocks are still reachable in loss record 22 of 71
+
+
+______________________________________________________________________________________
+
+command: "echo $USER"                           CORRECT!
+
+command: "echo -n nnnnnnnnnnnnnnnnnnnnnnnn"     CORRECT!
+
+command: "echo aaaa$USER"                       CORRECT!
+
+command: "echo -n -n -n -n"                     CORRECT!
+
+command: "echo -n -n -n a -n"                   CORRECT!
+
+command: "echo -n -n -n -a -n"                  CORRECT!
+
+command: "echo |"                               CORRECT! (visto que nao lidámos com dquotes)
+
+command: "echo >"                               CORRECT!
+
+______________________________________________________________________
+command: "echo ##"
+return: ##
+expected:
+        (newline)
+        prompt
+
+______________________________________________________________________
+command: "echo $$"
+return: $$
+expected: PID of the current shell (ex: 10085)
+
+______________________________________________________________________
+
+command: "echo $$$"
+return $$$ 
+expected: PID of the current shell+$ (ex: 10085$)
+
+______________________________________________________________________
+
+command: "echo $$$$"
+return $$$$ 
+expected: PID of the current shell twice (ex: 1008510085)
+
+______________________________________________________________________
+
+
+command: "echo -nnnnnnnnnnnnnnnnnnnnnnnnnn"
+return: "-nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn┏━ user@:~/minishell/minishell"
+expected: prompt
+
+
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+###############################  EXIT  ##############################
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+
+command: "exit"                                         CORRECT!
+leaks:
+
+______________________________________________________________________
+
+command: "exit 1"                                       CORRECT!
+leaks: 
+
+______________________________________________________________________
+
+command: "exit a"                                       ???????
+leaks: need to be checked. (probably same has the previous command)
+return:
+exit
+minishell: exit: a: numeric argument required
+
+______________________________________________________________________
+
+command: "exit 1 2 3"                                  CORRECT!
+leaks: none, just the same leak when you make the command "exit"
+
+
+
+#######################################################################
+#####################  RETURN VALUE OF A PROCESS  #####################
+#######################################################################
+
+
+command: "/bin/ls" + "echo $?"                        CORRECT!  
+leaks: 
+-- first command "/bin/ls" NO LEAKS;
+-- second command "echo $?"
+
+
+
+
+
+
+___________________________________________________________________
+
+command: "bin/ls/filethatdoesntexist" + "echo $?"
+returns: "/bin/ls/filethatdoesntexist: command not found" + "0";
+expected return: "bash: /bin/ls/filethatdoesntexist: Not a directory" + "126"
+leaks:
+
+
+
+
+
+
+____________________________________________________________________________
+
+command: "CTRL + C" + "echo $?"                         CORRECT!
+return: 130
+leaks:
+--first command NO LEAKS;
+--second command probably same has the previous command;
+
+____________________________________________________________________________
+
+command: ">>" + "echo $"                                CORRECT!
+return: 2
+leaks:
+--first command NO LEAKS;
+--second command probably same has the previous command;
+
+____________________________________________________________________________
+
+command: echo $? + $?                               ?????????/CORRECT
+return: 0+0
+expected: 0 + 0 (just missing some spaces);
+leaks: need to be checked. (probably same has the previous command)
+
+____________________________________________________________________________
+
+
+
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+#############################  SIGNALS  ###############################
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+ctrl-C                          CORRECT!
+ctrl-\                          CORRECT!
+ctrl-D                          CORRECT!
+"write some stuff" + ctrl-C     CORRECT!
+buffer cleaned                  CORRECT!
+"write some stuff" + ctrl-D     CORRECT!
+"write some stuff" + ctrl-\     CORRECT!
+
+Try ctrl-C after running a blocking command 
+like cat without arguments or grep "seomthing"          CORRECT!
+
+Try ctrl-D after running a blocking command 
+like cat without arguments or grep "seomthing"          CORRECT!
+
+Try ctrl-\ after running a blocking command 
+like cat without arguments or grep "seomthing"          ????????
+return:^\^\ (we need to spam the command)
+expected:
+^\
+new prompt
+
+
+Leaks: "ctrl-C"
+-- NONE
+
+Leaks: "ctrl-\"
+-- NONE, fact is... impossible to check
+
+Leaks: "ctrl-D"
+--NONE, just readline leaks;
+
+
