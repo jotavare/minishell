@@ -12,11 +12,66 @@
 
 #include "../../includes/minishell.h"
 
+int	handle_double_quote_opening(t_attr *att, int *flag, int *quotes, char *s)
+{
+	att->inside_single_quotes = 0;
+	*flag = 2;
+	(*quotes)++;
+	if (att->o_dquotes == *quotes && s[att->tok_arr_i + 1])
+	{
+		if (s[att->tok_arr_i + 1] == ' ')
+		{
+			att->tok_arr_i++;
+			return (1);
+		}
+	}
+	return (0);
+}
+
+int	handle_single_quote_opening(t_attr *att, int *flag, int *quotes, char *s)
+{
+	att->inside_single_quotes = 1;
+	*flag = 1;
+	(*quotes)++;
+	if (att->o_quotes == *quotes && s[att->tok_arr_i + 1])
+	{
+		if (s[att->tok_arr_i + 1] == ' ')
+		{
+			att->tok_arr_i++;
+			return (1);
+		}
+	}
+	return (0);
+}
+
+char	*handle_token_based_on_context(t_attr *att, char *s)
+{
+	if (s[att->tok_arr_i] == '|' && s[att->tok_arr_i + 1] != '|' \
+			&& att->o_quotes % 2 == 0 && att->o_dquotes % 2 == 0)
+		return (process_token_two(s, att));
+	else if (s[att->tok_arr_i] == '|' && s[att->tok_arr_i + 1] == '|' \
+			&& att->o_quotes % 2 == 0 && att->o_dquotes % 2 == 0)
+		return (process_token_three(s, att));
+	else if (s[att->tok_arr_i] == '>' && s[att->tok_arr_i + 1] != '>' \
+			&& att->o_quotes % 2 == 0 && att->o_dquotes % 2 == 0)
+		return (process_token_two(s, att));
+	else if (s[att->tok_arr_i] == '>' && s[att->tok_arr_i + 1] == '>' \
+			&& att->o_quotes % 2 == 0 && att->o_dquotes % 2 == 0)
+		return (process_token_three(s, att));
+	else if (s[att->tok_arr_i] == '<' && s[att->tok_arr_i + 1] != '<' \
+			&& att->o_quotes % 2 == 0 && att->o_dquotes % 2 == 0)
+		return (process_token_two(s, att));
+	else if (s[att->tok_arr_i] == '<' && s[att->tok_arr_i + 1] == '<' \
+			&& att->o_quotes % 2 == 0 && att->o_dquotes % 2 == 0)
+		return (process_token_three(s, att));
+	return (NULL);
+}
+
 char	*get_token(char *s, t_attr *att, t_toki tok)
 {
 	int	flag;
 	int	quotes;
-
+	
 	flag = 0;
 	quotes = 0;
 	att->tok_arr_i = 0;
@@ -24,58 +79,21 @@ char	*get_token(char *s, t_attr *att, t_toki tok)
 	{
 		if (s[att->tok_arr_i] == '"' && (flag == 0 || flag == 2))
 		{
-				att->inside_single_quotes = 0;
-			flag = 2;
-			quotes++;
-			if (att->o_dquotes == quotes && s[att->tok_arr_i + 1])
-			{
-				if (s[att->tok_arr_i + 1] == ' ')
-				{
-					att->tok_arr_i++;
-					break ;
-				}
-			}
+			if (handle_double_quote_opening(att, &flag, &quotes, s))
+				break ;
 		}
 		else if (s[att->tok_arr_i] == '\'' && (flag == 0 || flag == 1))
 		{
-			att->inside_single_quotes = 1;
-			flag = 1;
-			quotes++;
-			if (att->o_quotes == quotes && s[att->tok_arr_i + 1])
-			{
-				if (s[att->tok_arr_i + 1] == ' ')
-				{
-					att->tok_arr_i++;
-					break ;
-				}
-			}
+			if (handle_single_quote_opening(att, &flag, &quotes, s))
+				break ;
 		}
 		else if (s[att->tok_arr_i] == ' ' && quotes % 2 == 0 && quotes % 2 == 0)
 			break ;
-		else if (s[att->tok_arr_i] == '|' && s[att->tok_arr_i + 1] != '|'
-			&& att->o_quotes % 2 == 0 && att->o_dquotes % 2 == 0)
-			return (process_token_two(s, att));
-		else if (s[att->tok_arr_i] == '|' && s[att->tok_arr_i + 1] == '|'
-			&& att->o_quotes % 2 == 0 && att->o_dquotes % 2 == 0)
-			return (process_token_three(s, att));
-		else if (s[att->tok_arr_i] == '>' && s[att->tok_arr_i + 1] != '>'
-			&& att->o_quotes % 2 == 0 && att->o_dquotes % 2 == 0)
-			return (process_token_two(s, att));
-		else if (s[att->tok_arr_i] == '>' && s[att->tok_arr_i + 1] == '>'
-			&& att->o_quotes % 2 == 0 && att->o_dquotes % 2 == 0)
-			return (process_token_three(s, att));
-		else if (s[att->tok_arr_i] == '<' && s[att->tok_arr_i + 1] != '<'
-			&& att->o_quotes % 2 == 0 && att->o_dquotes % 2 == 0)
-			return (process_token_two(s, att));
-		else if (s[att->tok_arr_i] == '<' && s[att->tok_arr_i + 1] == '<'
-			&& att->o_quotes % 2 == 0 && att->o_dquotes % 2 == 0)
-			return (process_token_three(s, att));
+        	if (handle_token_based_on_context(att, s))
+        		return (handle_token_based_on_context(att, s));
 		att->tok_arr_i++;
 	}
-	if (quotes >= 2)
-		return (process_multi_quote(s, att, &tok));
-	else
-		return (process_default(s, att));
+	return (select_processing_strategy(quotes, att, s, tok));
 }
 
 char	*quotentoken(char *s, t_attr *att, t_toki *tok)
