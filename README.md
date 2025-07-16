@@ -27,9 +27,6 @@ The existence of shells is linked to the very existence of IT. At the time, all 
 
 Thanks to Minishell, I travelled through time and came back to problems people faced when Windows didn’t exist. This project was about creating a simple shell, my own little bash. I learned a lot about processes and file descriptors.
 
-- [Subject](https://github.com/jotavare/minishell/blob/main/subject/en_subject_minishell.pdf) `PDF`
-- [References](https://github.com/jotavare/42-resources#03-minishell) `GitHub`
-
 ## IMPORTANT INFORMATION
 #### BEFORE EVALUATION
 > Check this list before delivering the project.
