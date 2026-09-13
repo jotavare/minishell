@@ -33,6 +33,8 @@ char	*readnsave(int fd, char *str)
 	int		bytesread;
 
 	sample = ft_calloc((BUFFER_SIZE + 1), sizeof(char));
+	if (!sample)
+		return (NULL);
 	bytesread = 1;
 	while (!ft_strchr_mod(str, '\n') && bytesread > 0)
 	{
@@ -61,6 +63,8 @@ char	*ft_gline(char *str)
 	while (str[i] && str[i] != '\n')
 		i++;
 	line = ft_calloc((i + 2), sizeof(char));
+	if (!line)
+		return (NULL);
 	i = 0;
 	while (str[i] && str[i] != '\n')
 	{
@@ -87,6 +91,8 @@ char	*save_rest(char *str)
 		return (NULL);
 	}
 	saved_trim = ft_calloc((ft_strlen(str) - i + 1), sizeof(char));
+	if (!saved_trim)
+		return (NULL);
 	i++;
 	j = 0;
 	while (str[i])

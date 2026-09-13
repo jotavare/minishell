@@ -18,6 +18,8 @@ char	**build_path(char **all_paths, int nb, char *command)
 	int		i;
 
 	paths_comm = malloc(sizeof(char *) * (nb + 1));
+	if (!paths_comm)
+		return (NULL);
 	i = 0;
 	paths_comm[nb] = NULL;
 	while (i < nb)

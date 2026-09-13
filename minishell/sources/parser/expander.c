@@ -62,6 +62,8 @@ void	expand_tokens2(char **tokens, t_exp *info, int j)
 	info->token_length = ft_strlen(tokens[info->i]) - j + 1;
 	info->expanded_token = malloc((info->token_length
 				+ info->expanded_length + 1) * sizeof(char));
+	if (!info->expanded_token)
+		return ;
 	ft_strncpy(info->expanded_token, tokens[info->i], j);
 	info->expanded_token[j] = '\0';
 	ft_strcat(info->expanded_token, info->value);
@@ -110,6 +112,8 @@ char	*correct_name(char *str)
 	char	*correct;
 
 	correct = malloc(sizeof(char) * (ft_strlen(str) + 1));
+	if (!correct)
+		return (NULL);
 	i = 0;
 	j = 0;
 	while (str[i])
