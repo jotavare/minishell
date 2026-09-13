@@ -8,7 +8,7 @@
 	<img src="https://img.shields.io/badge/score-100%20%2F%20100-success?color=%2312bab9&style=flat-square"/>
 	<img src="https://img.shields.io/github/languages/top/jotavare/minishell?color=%2312bab9&style=flat-square"/>
 	<img src="https://img.shields.io/github/last-commit/jotavare/minishell?color=%2312bab9&style=flat-square"/>
-	<a href='https://www.linkedin.com/in/joaoptoliveira' target="_blank"><img alt='Linkedin' src='https://img.shields.io/badge/LinkedIn-100000?style=flat-square&logo=Linkedin&logoColor=white&labelColor=0A66C2&color=0A66C2'/></a>
+	<a href='https://www.linkedin.com/in/jotavare' target="_blank"><img alt='Linkedin' src='https://img.shields.io/badge/LinkedIn-blue?style=flat-square'/></a>
 	<a href='https://profile.intra.42.fr/users/jotavare' target="_blank"><img alt='42' src='https://img.shields.io/badge/Porto-100000?style=flat-square&logo=42&logoColor=white&labelColor=000000&color=000000'/></a>
 </p>
 
@@ -27,8 +27,8 @@ The existence of shells is linked to the very existence of IT. At the time, all 
 
 Thanks to Minishell, I travelled through time and came back to problems people faced when Windows didn’t exist. This project was about creating a simple shell, my own little bash. I learned a lot about processes and file descriptors.
 
-- [Subject](https://github.com/jotavare/minishell/blob/main/subject/en_subject_minishell.pdf) `PDF`
-- [References](https://github.com/jotavare/42-resources#03-minishell) `GitHub`
+> [!NOTE]
+> For the rest of the projects and exams in the cursus, <a href="https://github.com/jotavare/42-common-core">click here</a>.
 
 ## IMPORTANT INFORMATION
 #### BEFORE EVALUATION
@@ -501,8 +501,9 @@ Thanks to Minishell, I travelled through time and came back to problems people f
 
 ## CONTRIBUTING
 
-If you find any issues or have suggestions for improvements, feel free to fork the repository and open an issue or submit a pull request.
+This repository documents work already submitted and graded, so it is not open
+to changes. Feel free to fork it if any of it is useful to you.
 
 ## LICENSE
 
-This project is available under the MIT License. For further details, please refer to the [LICENSE](https://github.com/jotavare/minishell/blob/master/LICENSE) file.
+This project is available under the MIT License. For further details, please refer to the [LICENSE](https://github.com/jotavare/minishell/blob/main/LICENSE) file.
