@@ -5,6 +5,9 @@
 minishell/objects/
 minishell/minishell
 
+# Heredoc scratch file; the shell unlinks it, but an interrupted run leaves one.
+minishell/.heredoc
+
 # Editor and OS droppings.
 .vscode/
 .idea/
