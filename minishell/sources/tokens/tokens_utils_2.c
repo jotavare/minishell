@@ -17,6 +17,8 @@ int	check_if_pipe(char **token, int j, char *s)
 	if (s[j] == '|' && s[j + 1] != '|')
 	{
 		*token = malloc(sizeof(char) * 2);
+		if (!*token)
+			return (0);
 		(*token)[0] = s[j];
 		(*token)[1] = 0;
 		return (1);
@@ -24,6 +26,8 @@ int	check_if_pipe(char **token, int j, char *s)
 	else if (s[j] == '|' && s[j + 1] == '|')
 	{
 		*token = malloc(sizeof(char) * 3);
+		if (!*token)
+			return (0);
 		(*token)[0] = s[j];
 		(*token)[1] = s[j + 1];
 		(*token)[2] = 0;
@@ -37,6 +41,8 @@ int	check_if_redir(char **token, int j, char *s)
 	if (s[j] == '>' && s[j + 1] != '>')
 	{
 		*token = malloc(sizeof(char) * 2);
+		if (!*token)
+			return (0);
 		(*token)[0] = s[j];
 		(*token)[1] = 0;
 		return (1);
@@ -44,6 +50,8 @@ int	check_if_redir(char **token, int j, char *s)
 	else if (s[j] == '>' && s[j + 1] == '>')
 	{
 		*token = malloc(sizeof(char) * 3);
+		if (!*token)
+			return (0);
 		(*token)[0] = s[j];
 		(*token)[1] = s[j + 1];
 		(*token)[2] = 0;
@@ -57,6 +65,8 @@ int	check_if_read(char **token, int j, char *s)
 	if (s[j] == '<' && s[j + 1] != '<')
 	{
 		*token = malloc(sizeof(char) * 2);
+		if (!*token)
+			return (0);
 		(*token)[0] = s[j];
 		(*token)[1] = 0;
 		return (1);
@@ -64,6 +74,8 @@ int	check_if_read(char **token, int j, char *s)
 	else if (s[j] == '<' && s[j + 1] == '<')
 	{
 		*token = malloc(sizeof(char) * 3);
+		if (!*token)
+			return (0);
 		(*token)[0] = s[j];
 		(*token)[1] = s[j + 1];
 		(*token)[2] = 0;

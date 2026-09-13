@@ -99,6 +99,8 @@ char	*get_token(char *s, t_attr *att, t_toki tok)
 char	*quotentoken(char *s, t_attr *att, t_toki *tok)
 {
 	tok->token = malloc(sizeof(char) * (tok->pos + 1));
+	if (!tok->token)
+		return (NULL);
 	tok->token[tok->pos] = 0;
 	tok->i = 0;
 	tok->j = 0;

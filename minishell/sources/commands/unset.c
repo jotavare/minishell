@@ -19,6 +19,8 @@ char	*add_equal(char *str)
 
 	i = 0;
 	p_equal = malloc(sizeof(char) * ft_strlen(str) + 2);
+	if (!p_equal)
+		return (NULL);
 	while (str[i])
 	{
 		p_equal[i] = str[i];

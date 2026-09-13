@@ -70,9 +70,9 @@ void	create_array2(char *s, t_attr *att)
 	att->index = 0;
 	att->pars_data.pars_arr = malloc((att->pars_data.nb_tokenst + 1)
 			* sizeof(char *));
-	att->pars_data.pars_arr[att->pars_data.nb_tokenst] = NULL;
 	if (!att->pars_data.pars_arr)
 		return ;
+	att->pars_data.pars_arr[att->pars_data.nb_tokenst] = NULL;
 	count = 0;
 	while (count < att->pars_data.nb_tokenst)
 	{

@@ -47,6 +47,7 @@ void	init_pipes(t_attr *att)
 	while (++i < att->number_of_pipes)
 	{
 		att->pipesfd[i] = malloc(2 * sizeof(int));
-		pipe(att->pipesfd[i]);
+		if (!att->pipesfd[i] || pipe(att->pipesfd[i]) == -1)
+			return ;
 	}
 }
