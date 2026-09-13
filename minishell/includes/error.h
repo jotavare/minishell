@@ -21,11 +21,11 @@
 # define ERROR_NLINE "minishell: syntax error near unexpected token 'newline'\n"
 # define ERROR_SIMPLE_2 "minishell: parse error near '%c%c'\n"
 # define ERROR_SIMPLE_1 "minishell: parse error near '%c'\n"
-# define ERROR_PIPE2 "minishel: syntax error near unexpected token '||'\n"
-# define ERROR_PIPE1 "minishel: syntax error near unexpected token '|'\n"
+# define ERROR_PIPE2 "minishell: syntax error near unexpected token '||'\n"
+# define ERROR_PIPE1 "minishell: syntax error near unexpected token '|'\n"
 # define ERROR_TWO "minishell: syntax error near unexpected token '%c%c'\n"
 # define ERROR_ONE "minishell: syntax error near unexpected token '%c'\n"
-# define ERROR_UNCLOSED "minishell : syntax error unclosed quotes\n"
+# define ERROR_UNCLOSED "minishell: syntax error unclosed quotes\n"
 
 // error_1.c
 int	error_last(char *str, char c);

@@ -14,6 +14,7 @@
 
 <p align="center">
 	<a href="#about">About</a> •
+	<a href="#how-to-use">How to use</a> •
 	<a href="#important-information">Important Information</a> •
 	<a href="#utilities">Utilities</a> •
 	<a href="#command-examples">Command Examples</a> •
@@ -88,6 +89,36 @@ Thanks to Minishell, I travelled through time and came back to problems people f
 ```
 
 `valgrind --suppressions=readline.supp --leak-check=full --show-leak-kinds=all ./minishell`
+
+## HOW TO USE
+#### 1º - Clone the repository
+```bash
+git clone git@github.com:jotavare/minishell.git
+```
+
+#### 2º - Install the readline development headers
+```bash
+sudo apt-get install -y libreadline-dev
+```
+
+#### 3º - Enter the project folder and run `make`
+```bash
+cd minishell/minishell
+make
+./minishell
+```
+
+#### MAKEFILE RULES
+
+`make` - Compile the shell.
+
+`make all` - Same as `make`.
+
+`make clean` - Delete the object files, keeping the binary.
+
+`make fclean` - Delete the object files and the binary.
+
+`make re` - Use rules `fclean` + `all`.
 
 ## UTILITIES
 #### Return Values ($?)
