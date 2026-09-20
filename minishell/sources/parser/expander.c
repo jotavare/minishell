@@ -58,8 +58,11 @@ void	init_var(t_exp *var)
 
 void	expand_tokens2(char **tokens, t_exp *info, int j)
 {
+	char	*suffix;
+
 	info->expanded_length = ft_strlen(info->value);
-	info->token_length = ft_strlen(tokens[info->i]) - j + 1;
+	suffix = tokens[info->i] + j + ft_strlen(info->var_name) + 1;
+	info->token_length = (size_t)j + ft_strlen(suffix);
 	info->expanded_token = malloc((info->token_length
 				+ info->expanded_length + 1) * sizeof(char));
 	if (!info->expanded_token)
@@ -67,8 +70,7 @@ void	expand_tokens2(char **tokens, t_exp *info, int j)
 	ft_strncpy(info->expanded_token, tokens[info->i], j);
 	info->expanded_token[j] = '\0';
 	ft_strcat(info->expanded_token, info->value);
-	ft_strcat(info->expanded_token, tokens[info->i]
-		+ j + ft_strlen(info->var_name) + 1);
+	ft_strcat(info->expanded_token, suffix);
 	free(tokens[info->i]);
 	tokens[info->i] = info->expanded_token;
 	if (info->has_quote)

@@ -74,15 +74,6 @@ int	cd(t_attr *att)
 
 void	cd_previous_path(t_attr *att, char **destiny_path)
 {
-	if (!att->first_flag)
-	{
-		*destiny_path = search_var_in_g_env(att, "PWD");
-		att->first_flag = 1;
-		printf("%s\n", *destiny_path);
-	}
-	else
-	{
-		*destiny_path = att->last_path;
-		printf("%s\n", *destiny_path);
-	}
+	*destiny_path = att->last_path;
+	printf("%s\n", *destiny_path);
 }
